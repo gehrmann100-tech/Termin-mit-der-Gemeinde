@@ -1,17 +1,38 @@
 {
   "gemeinde_konfiguration": {
-    "app_titel": "Termin mit der Gemeinde",
+    "app_titel": "Termin <span>mit der Gemeinde</span>",
     "gemeinde_name": "Solingen-Merscheid",
-    "kirchen_bild": "images/kirche-merscheid.jpg",
-    "wochen_news": "Herzlich willkommen in der digitalen Merscheider Gemeinde-App! Unser neuer Gemeindebrief ist ab sofort online. Am kommenden Sonntag laden wir alle herzlich zum gemütlichen Kirchen-Café nach dem Gottesdienst ein. Wir freuen uns auf gute Gespräche bei Kaffee und frischem Streuselkuchen!"
+    "kirchen_bild": "https://images.unsplash.com/photo-1548625361-155de0cbb55a?auto=format&fit=crop&w=500&q=80",
+    "wochen_news": "<strong>Herzlich willkommen in Merscheid!</strong><br><br>Unser neuer Gemeindebrief ist da! Wir laden Sie herzlich ein, die gedruckte Ausgabe in der Kirche mitzunehmen oder die Berichte direkt hier digital zu lesen. Am kommenden Sonntag feiern wir nach dem Gottesdienst unser gemütliches Kirchen-Café im Garten. Kommen Sie gerne auf eine Tasse Kaffee und frischen Streuselkuchen vorbei – wir freuen uns auf gute Gespräche!"
   },
   "06-01": {
+    "original": "Merscheider Wochenspruch",
+    "volltext": "„Es ist noch kein Meister vom Himmel gefallen, aber jeder Schritt in die richtige Richtung zählt.“",
+    "code_knacker": "<strong>Ein Impuls für den Merscheider Start</strong><br><br>Dieser Prototyp markiert den Beginn unseres neuen Projekts. Perfekt abgestimmt auf den heutigen Tag der Freischaltung.",
+    "uebersetzung": "Wir starten heute etwas völlig Neues. Das darf sich am Anfang noch ungewohnt anfühlen. Atme tief durch und vertraue darauf, dass das Fundament steht. Jeder Schritt, den du heute tust, bringt dich deinem Ziel näher.",
+    "challenge": "Schicke heute einer Person, mit der du länger nicht gesprochen hast, eine kurze, nette Nachricht und grüße sie einfach von Herzen.",
     "termine": [
       {"zeit": "10:00 Uhr", "titel": "Merscheider Krabbelgruppe (Gemeindehaus)"},
-      {"zeit": "19:00 Uhr", "titel": "Probe des Kirchenchors"}
+      {"zeit": "15:00 Uhr", "titel": "Senioren-Nachmittag & Erzählcafé"},
+      {"zeit": "19:00 Uhr", "titel": "Probe des Kirchenchors (Merscheider Kirche)"}
     ]
   },
   "06-02": {
+    "original": "Losung für Dienstag",
+    "volltext": "„Deine Worte sind meine Speise, sooft ich sie finde.“",
+    "code_knacker": "<strong>Jeremia 15,16</strong><br><br>Der Prophet Jeremia beschreibt hier eine tiefe, innere Stärkung durch gute Gedanken – wie geistliche Nahrung.",
+    "uebersetzung": "Gute Gedanken sind wie ein gutes Frühstück für die Seele. Sie geben dir Kraft für den Tag, wenn es draußen mal wieder hektisch wird. Nimm dir diesen Satz heute als Proviant mit.",
+    "challenge": "Achte heute beim Mittagessen ganz bewusst auf den Geschmack und schalte für zehn Minuten alle digitalen Geräte komplett aus.",
+    "termine": [
+      {"zeit": "18:30 Uhr", "titel": "Friedensgebet in der Merscheider Kapelle"}
+    ]
+  },
+  "06-03": {
+    "original": "Alltagsweisheit",
+    "volltext": "„Die größte Offenbarung ist die Stille.“",
+    "code_knacker": "<strong>Laotse (Philosoph)</strong><br><br>Ein klassischer Satz über den Wert des Rückzugs und der Meditation, der perfekt zum Charakter unserer App passt.",
+    "uebersetzung": "In einer lauten Welt vergessen wir oft, wie kraftvoll Momente ohne Ton sind. Stille ist nicht leer, sie ist voll von Antworten.",
+    "challenge": "Suche dir heute am Nachmittag einen ruhigen Ort. Setze dich für genau 5 Minuten einfach nur hin, schließe die Augen und lausche der Stille.",
     "termine": []
   }
 }
