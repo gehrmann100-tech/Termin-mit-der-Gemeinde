@@ -248,6 +248,85 @@
             z-index: 10;
         }
 
+        /* NEUE GEMEINDE STYLE SECTIONEN */
+        .gemeinde-image-box {
+            display: none;
+            width: 100%;
+            height: 140px;
+            border-radius: var(--radius-element);
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: var(--main-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .gemeinde-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gemeinde-section {
+            display: none;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .gemeinde-card {
+            background: var(--bg-premium-white);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius-element);
+            padding: 20px;
+            box-shadow: var(--main-shadow);
+            text-align: left;
+        }
+
+        .gemeinde-card-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-challenge-title);
+            margin-bottom: 10px;
+        }
+
+        .news-text {
+            font-family: var(--font-body);
+            font-size: var(--fs-challenge-text);
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .termin-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .termin-item {
+            display: flex;
+            gap: 12px;
+            font-family: var(--font-body);
+            font-size: var(--fs-challenge-text);
+            line-height: 1.4;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--btn-outline-color);
+        }
+        .termin-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .termin-zeit {
+            font-weight: 700;
+            color: #2980b9;
+            white-space: nowrap;
+        }
+
         /* INHALTSBÜHNE */
         .content-stage {
             background: var(--bg-premium-white);
@@ -732,8 +811,8 @@
     <div class="toast-notification" id="toast">📋 In Zwischenablage kopiert!</div>
     
     <div class="header-container">
-        <div class="header-icon-deco">✨</div>
-        <div class="app-title">Termin <span>mit dem Leben</span></div>
+        <div class="header-icon-deco" id="headerDeco">✨</div>
+        <div class="app-title" id="appTitle">Termin <span>mit dem Leben</span></div>
         
         <div class="date-navigation">
             <button class="nav-btn" onclick="navigateDay(-1)">❮</button>
@@ -745,8 +824,29 @@
         </div>
     </div>
     
-    <div class="app-subtitle">Ein Gedanke für heute</div>
+    <div class="app-subtitle" id="appSubtitle">Ein Gedanke für heute</div>
 
+    <!-- OPTIONALES KIRCHENBILD -->
+    <div class="gemeinde-image-box" id="gemeindeImageBox">
+        <img src="" id="gemeindeImg" alt="Kirchengemeinde">
+    </div>
+
+    <!-- NEU: GEMEINDE-SEKTION FÜR PROTOTYP -->
+    <div class="gemeinde-section" id="gemeindeSection">
+        <!-- Wöchentliche News -->
+        <div class="gemeinde-card" id="newsCard">
+            <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuell</h2>
+            <div class="news-text" id="newsText"></div>
+        </div>
+
+        <!-- Tagesaktuelle Termine -->
+        <div class="gemeinde-card" id="termineCard">
+            <h2 class="gemeinde-card-title">Termine heute</h2>
+            <ul class="termin-list" id="terminList"></ul>
+        </div>
+    </div>
+
+    <!-- MAIN BÜHNE -->
     <div class="content-stage">
         <div class="text-display" id="mainText">
             Lade heutigen Impuls...
@@ -816,12 +916,12 @@
             </select>
         </div>
 
-     <!-- UN-AUFFÄLLIGER KAFFEEKASSE TEXTLINK -->
-<div class="settings-row" style="margin-top: 18px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 14px; justify-content: center;">
-    <a href="https://paypal.me/medienandmore/2" target="_blank" rel="noopener" class="coffee-link-text">
-        ☕ Ein Tässchen Kaffee spendieren (2 €)
-    </a>
-</div>
+        <!-- KAFFEEKASSE TEXTLINK -->
+        <div class="settings-row" style="margin-top: 18px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 14px; justify-content: center;">
+            <a href="https://paypal.me/medienandmore/2" target="_blank" rel="noopener" class="coffee-link-text">
+                ☕ Ein Tässchen Kaffee spendieren (2 €)
+            </a>
+        </div>
     </div>
 
     <div class="modal-overlay" id="impressumModal" onclick="closeModal('impressumModal')">
@@ -879,6 +979,7 @@
 <script>
     let allData = null;
     let currentData = null;
+    let gemeindeConfig = null;
     let isOriginal = true;
     let challengeRevealed = false;
     
@@ -912,18 +1013,61 @@
         const wrapperEl = document.getElementById('appWrapper');
         if (wrapperEl) wrapperEl.className = `app-wrapper style-${savedBtnStyle}`;
 
-        fetch('data/sprueche.json')
+        // DYNAMISCHE PARAMETER-ABFRAGE FÜR B2B-KUNDEN
+        const urlParams = new URLSearchParams(window.location.search);
+        const gemeindeParam = urlParams.get('gemeinde');
+
+        let jsonPfad = 'data/sprueche.json';
+        if (gemeindeParam) {
+            jsonPfad = `data/${gemeindeParam.toLowerCase()}.json`;
+        }
+
+        fetch(jsonPfad)
             .then(response => response.json())
             .then(data => {
+                if (data.gemeinde_konfiguration) {
+                    gemeindeConfig = data.gemeinde_konfiguration;
+                    applyGemeindeHeaderAndNews();
+                }
                 allData = data;
                 updatePage();
             })
             .catch(error => {
                 console.error('Fehler beim Laden:', error);
                 const textDisplay = document.getElementById('mainText');
-                if (textDisplay) textDisplay.innerText = "Fehler beim Laden des Tagesimpulses.";
+                if (textDisplay) textDisplay.innerText = "Fehler beim Laden der Tagesdaten.";
             });
     });
+
+    function applyGemeindeHeaderAndNews() {
+        if (!gemeindeConfig) return;
+        
+        // Dynamische Titelwahl
+        if (gemeindeConfig.app_titel) {
+            document.getElementById('appTitle').innerHTML = gemeindeConfig.app_titel;
+        }
+        if (gemeindeConfig.gemeinde_name) {
+            document.getElementById('appSubtitle').innerText = gemeindeConfig.gemeinde_name;
+        }
+        
+        // Atmosphärisches Kirchenbild
+        if (gemeindeConfig.kirchen_bild) {
+            const imgBox = document.getElementById('gemeindeImageBox');
+            const imgEl = document.getElementById('gemeindeImg');
+            imgEl.src = gemeindeConfig.kirchen_bild;
+            imgBox.style.display = 'block';
+            if (document.getElementById('headerDeco')) document.getElementById('headerDeco').style.display = 'none';
+        }
+
+        // Wochen-News direkt als sauberer Fließtext einblenden
+        if (gemeindeConfig.wochen_news) {
+            document.getElementById('gemeindeSection').style.display = 'flex';
+            document.getElementById('newsText').innerHTML = gemeindeConfig.wochen_news;
+            if (gemeindeConfig.gemeinde_name) {
+                document.getElementById('newsTitle').innerText = `Aktuelles aus ${gemeindeConfig.gemeinde_name}`;
+            }
+        }
+    }
 
     function getOstersonntag(jahr) {
         const a = jahr % 19;
@@ -1036,6 +1180,24 @@
             if (textDisplay) textDisplay.innerHTML = currentData.volltext;
             if (document.getElementById('codeBoxContent')) document.getElementById('codeBoxContent').innerHTML = currentData.code_knacker;
             if (document.getElementById('challengeText')) document.getElementById('challengeText').innerText = currentData.challenge;
+
+            // DYNAMISCHES AUSLESEN DER KIRCHENTERMINE FÜR DIESEN TAG
+            const termList = document.getElementById('terminList');
+            const termCard = document.getElementById('termineCard');
+            if (termList) termList.innerHTML = '';
+
+            if (currentData.termine && currentData.termine.length > 0) {
+                if (termCard) termCard.style.display = 'block';
+                if (document.getElementById('gemeindeSection')) document.getElementById('gemeindeSection').style.display = 'flex';
+                currentData.termine.forEach(term => {
+                    const li = document.createElement('li');
+                    li.className = 'termin-item';
+                    li.innerHTML = `<span class="termin-zeit">${term.zeit}</span><span class="termin-titel">${term.titel}</span>`;
+                    termList.appendChild(li);
+                });
+            } else {
+                if (termCard) termCard.style.display = 'none';
+            }
         } else {
             if (textDisplay) textDisplay.innerText = "Für diesen Tag ist noch kein Impuls eingetragen. Genieße die Zeit!";
             if (document.getElementById('actionBtn')) document.getElementById('actionBtn').style.display = 'none';
@@ -1043,6 +1205,7 @@
             if (document.getElementById('shareBtn')) document.getElementById('shareBtn').style.display = 'none';
             if (document.getElementById('challengeBox')) document.getElementById('challengeBox').style.display = 'none';
             if (document.getElementById('challengeDivider')) document.getElementById('challengeDivider').style.display = 'none'; 
+            if (document.getElementById('termineCard')) document.getElementById('termineCard').style.display = 'none';
         }
     }
 
@@ -1090,6 +1253,7 @@
         }
     }
 
+    // [Deine restlichen unberührten JavaScript-Funktionen wie toggleCode, translateText etc. bleiben 1:1 aktiv]
     function toggleCode() {
         const box = document.getElementById('codeBox');
         if (box && currentData && currentData.code_knacker && currentData.code_knacker.trim() !== "") {
@@ -1193,7 +1357,6 @@
 
     function openModal(id) {
         if (document.getElementById('settingsPanel')) document.getElementById('settingsPanel').style.display = 'none';
-        
         const modal = document.getElementById(id);
         if (modal) modal.style.display = 'flex';
     }
@@ -1219,7 +1382,6 @@
         if (selectEl) {
             const selectedTheme = selectEl.value;
             localStorage.setItem('appTheme', selectedTheme);
-            
             if (selectedTheme === "default") {
                 document.documentElement.removeAttribute('data-theme');
             } else {
@@ -1233,7 +1395,6 @@
         if (selectEl) {
             const selectedStyle = selectEl.value;
             localStorage.setItem('appBtnStyle', selectedStyle);
-            
             const wrapperEl = document.getElementById('appWrapper');
             if (wrapperEl) {
                 wrapperEl.className = `app-wrapper style-${selectedStyle}`;
@@ -1246,7 +1407,6 @@
         if (selectEl) {
             const selectedFont = selectEl.value;
             localStorage.setItem('appFont', selectedFont);
-            
             if (selectedFont === "default") {
                 document.documentElement.removeAttribute('data-font');
             } else {
@@ -1260,7 +1420,6 @@
         if (selectEl) {
             const selectedSize = selectEl.value;
             localStorage.setItem('appSize', selectedSize);
-            
             if (selectedSize === "default") {
                 document.documentElement.removeAttribute('data-size');
             } else {

@@ -598,6 +598,22 @@
         .settings-select:focus {
             border-color: #2980b9;
         }
+
+        /* DEZENTER KAFFEE LINK STYLE */
+        .coffee-link-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease, border-bottom-color 0.2s ease;
+            border-bottom: 1px dashed transparent;
+            padding-bottom: 1px;
+            display: inline-block;
+        }
+        .coffee-link-text:hover {
+            color: #2c3e50;
+            border-bottom-color: #2c3e50;
+        }
         
         /* MEDITATIVE MODAL OVERLAYS */
         .modal-overlay {
@@ -799,6 +815,13 @@
                 <option value="buttons">Feine Outline-Buttons</option>
             </select>
         </div>
+
+     <!-- UN-AUFFÄLLIGER KAFFEEKASSE TEXTLINK -->
+<div class="settings-row" style="margin-top: 18px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 14px; justify-content: center;">
+    <a href="https://paypal.me/medienandmore/2" target="_blank" rel="noopener" class="coffee-link-text">
+        ☕ Ein Tässchen Kaffee spendieren (2 €)
+    </a>
+</div>
     </div>
 
     <div class="modal-overlay" id="impressumModal" onclick="closeModal('impressumModal')">
@@ -814,7 +837,7 @@
                     Deutschland
                 </p>
                 <h4>Kontakt</h4>
-                <p>E-Mail: gehrmann100@gmail.com</p>
+                <p>E-Mail: info@andreas-gehrmann.de</p>
                 <h4>Hoster</h4>
                 <p>
                     Diese Anwendung wird auf Servern von Netlify gehostet.<br>

@@ -1,0 +1,17 @@
+{
+  "gemeinde_konfiguration": {
+    "app_titel": "Termin mit der Gemeinde",
+    "gemeinde_name": "Solingen-Merscheid",
+    "kirchen_bild": "images/kirche-merscheid.jpg",
+    "wochen_news": "Herzlich willkommen in der digitalen Merscheider Gemeinde-App! Unser neuer Gemeindebrief ist ab sofort online. Am kommenden Sonntag laden wir alle herzlich zum gemütlichen Kirchen-Café nach dem Gottesdienst ein. Wir freuen uns auf gute Gespräche bei Kaffee und frischem Streuselkuchen!"
+  },
+  "06-01": {
+    "termine": [
+      {"zeit": "10:00 Uhr", "titel": "Merscheider Krabbelgruppe (Gemeindehaus)"},
+      {"zeit": "19:00 Uhr", "titel": "Probe des Kirchenchors"}
+    ]
+  },
+  "06-02": {
+    "termine": []
+  }
+}
