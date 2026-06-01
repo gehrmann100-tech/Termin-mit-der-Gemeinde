@@ -291,13 +291,6 @@
             margin-bottom: 10px;
         }
 
-        .news-text {
-            font-family: var(--font-body);
-            font-size: var(--fs-challenge-text);
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
-
         .termin-list {
             display: flex;
             flex-direction: column;
@@ -545,8 +538,6 @@
         [data-font="modern"] .challenge-instruction {
             font-style: normal;
         }
-        
-        /* AUF WUNSCH: WURDE VON NUN AN ENT-FETTET (NORMALGEWICHT) */
         .challenge-actual-text {
             font-family: var(--font-body); 
             font-style: italic;
@@ -554,7 +545,7 @@
             line-height: 1.6;
             color: #1a202c;
             display: none;
-            font-weight: 500; /* Standard, nicht fett */
+            font-weight: 500;
             text-align: center;
             padding-bottom: 2px; 
             padding-left: 5px;
@@ -833,16 +824,9 @@
         <img src="" id="gemeindeImg" alt="Kirchengemeinde">
     </div>
 
-    <!-- GEMEINDE-SEKTION FÜR NEWS UND TERMINE -->
+    <!-- GEMEINDE-SEKTION FÜR TERMINE -->
     <div class="gemeinde-section" id="gemeindeSection">
-        <!-- Wöchentliche News (Erscheint nur, wenn gefüllt) -->
-        <div class="gemeinde-card" id="newsCard" style="display: none;">
-            <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuell</h2>
-            <div class="news-text" id="newsText"></div>
-        </div>
-
-        <!-- Tagesaktuelle Termine -->
-        <div class="gemeinde-card" id="termineCard" style="display: none;">
+        <div class="gemeinde-card" id="termineCard">
             <h2 class="gemeinde-card-title">Termine heute</h2>
             <ul class="termin-list" id="terminList"></ul>
         </div>
@@ -1078,19 +1062,6 @@
             imgBox.style.display = 'block';
             if (document.getElementById('headerDeco')) document.getElementById('headerDeco').style.display = 'none';
         }
-
-        // INTELLIGENTE NEWS-BOX: BLENDET SICH NUR EIN WENN TEXT IN DER JSON STEHT
-        const newsCard = document.getElementById('newsCard');
-        if (gemeindeConfig.wochen_news && gemeindeConfig.wochen_news.trim() !== "") {
-            if (newsCard) newsCard.style.display = 'block';
-            if (document.getElementById('gemeindeSection')) document.getElementById('gemeindeSection').style.style.display = 'flex';
-            document.getElementById('newsText').innerHTML = gemeindeConfig.wochen_news;
-            if (gemeindeConfig.gemeinde_name) {
-                document.getElementById('newsTitle').innerText = `Aktuelles aus ${gemeindeConfig.gemeinde_name}`;
-            }
-        } else {
-            if (newsCard) newsCard.style.display = 'none';
-        }
     }
 
     function getOstersonntag(jahr) {
@@ -1164,6 +1135,7 @@
 
         const nextBtn = document.getElementById('nextDayBtn');
         if (nextBtn) {
+            // IM GEMEINDE-MODUS DARF DER BUTTON NICHT DEAKTIVIERT WERDEN
             nextBtn.disabled = !gemeindeConfig && isToday;
         }
 
@@ -1209,7 +1181,6 @@
             const termList = document.getElementById('terminList');
             const termCard = document.getElementById('termineCard');
             const gemSection = document.getElementById('gemeindeSection');
-            const newsCard = document.getElementById('newsCard');
             
             if (termList) termList.innerHTML = '';
 
@@ -1224,12 +1195,7 @@
                 });
             } else {
                 if (termCard) termCard.style.display = 'none';
-                
-                // Falls weder Termine noch Wochen-News aktiv sind, die Sektion ganz schließen
-                const newsSichtbar = newsCard && newsCard.style.display === 'block';
-                if (gemSection && !newsSichtbar) {
-                    gemSection.style.display = 'none';
-                }
+                if (gemSection) gemSection.style.display = 'none';
             }
         } else {
             if (textDisplay) textDisplay.innerText = "Für diesen Tag ist noch kein Impuls eingetragen. Genieße die Zeit!";
@@ -1263,6 +1229,7 @@
             const tempDate = new Date(displayDate);
             tempDate.setDate(tempDate.getDate() + direction);
             
+            // IM GEMEINDE-MODUS DARF MAN UNBEGRENZT VORSCHALTEN
             if (!gemeindeConfig) {
                 if (tempDate > today && tempDate.getDate() !== today.getDate()) return;
             }
@@ -1401,7 +1368,6 @@
         if (modal) modal.style.display = 'none';
     }
 
-    // TOGGLE FÜR EINSTELLUNGEN
     function toggleSettingsView() {
         const panel = document.getElementById('settingsPanel');
         if (panel) {
