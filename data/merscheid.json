@@ -2,7 +2,7 @@
   "gemeinde_konfiguration": {
     "app_titel": "Termin <span>mit der Gemeinde</span>",
     "gemeinde_name": "Solingen-Merscheid",
-    "kirchen_bild": "https://images.unsplash.com/photo-1548625361-155de0cbb55a?auto=format&fit=crop&w=500&q=80",
+    "kirchen_bild": "images/kirche-merscheid.jpg",
     "wochen_news": "<strong>Herzlich willkommen in Merscheid!</strong><br><br>Unser neuer Gemeindebrief ist da! Wir laden Sie herzlich ein, die gedruckte Ausgabe in der Kirche mitzunehmen oder die Berichte direkt hier digital zu lesen. Am kommenden Sonntag feiern wir nach dem Gottesdienst unser gemütliches Kirchen-Café im Garten. Kommen Sie gerne auf eine Tasse Kaffee und frischen Streuselkuchen vorbei – wir freuen uns auf gute Gespräche!"
   },
   "06-01": {
