@@ -294,17 +294,6 @@
             font-style: normal;
             font-weight: 400; 
         }
-        
-        .text-display.translation-mode {
-            font-family: var(--font-body) !important; 
-            font-style: italic !important;
-            font-size: var(--fs-translation-text) !important;
-            line-height: 1.6 !important;
-            color: #2c3e50 !important;
-            text-align: center;
-            margin-bottom: 12px;
-            font-weight: 400;
-        }
 
         /* BEDIENZEILE INNERHALB DER BOX */
         .box-action-row {
@@ -380,8 +369,8 @@
             opacity: 1;
         }
 
-        /* CODE-KNACKER BLOCK */
-        .code-box {
+        /* CODE-KNACKER & ÜBERSETZUNGS-BOXEN */
+        .code-box, .translation-box {
             display: none;
             background: var(--bg-premium-white);
             padding: 20px;
@@ -395,6 +384,37 @@
             animation: blockSlideDown 0.3s ease-out;
             box-shadow: var(--main-shadow);
             position: relative;
+            text-align: center;
+        }
+
+        .translation-box {
+            font-family: var(--font-body);
+            font-style: italic;
+            color: #2c3e50;
+            border-color: rgba(41, 128, 185, 0.3);
+        }
+
+        [data-font="modern"] .code-box, 
+        [data-font="modern"] .translation-box {
+            font-style: normal;
+        }
+
+        .box-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #cbd5e0;
+            cursor: pointer;
+            line-height: 1;
+            padding: 2px 6px;
+            transition: color 0.2s ease;
+        }
+        .box-close-btn:hover {
+            color: var(--text-muted);
         }
 
         .challenge-divider {
@@ -484,13 +504,13 @@
             scroll-margin-top: 20px;
         }
 
-        /* HIGH-END PREMIUM BOX FÜR DIE DIGITALE KOLLEKTE MIT BILD-INTEGRATION */
+        /* HIGH-END PREMIUM BOX FÜR DIE DIGITALE KOLLEKTE */
         .kollekten-premium-box {
             background: var(--bg-premium-white);
             border: 1px solid rgba(184, 134, 11, 0.15);
             border-radius: var(--radius-element);
-            padding: 0 0 20px 0; /* Vertikales Padding unten, oben Platz fürs Bild */
-            overflow: hidden; /* Garantiert, dass das Bild sauber an den Box-Ecken abschließt */
+            padding: 0 0 20px 0; 
+            overflow: hidden; 
             box-shadow: var(--main-shadow);
             text-align: center;
             margin-bottom: 12px; 
@@ -814,20 +834,27 @@
         <button class="nav-btn" id="nextDayBtn" onclick="navigateDay(1)">❯</button>
     </div>
 
-    <!-- 4. INHALTSBÜHNE MIT INTERNEN AKTIONEN -->
+    <!-- 4. INHALTSBÜHNE (Zeigt dauerhaft das Originalzitat) -->
     <div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         <div class="box-action-row" id="boxActionRow">
             <div class="meta-source-row" id="sourceRow">
                 <span class="source-tag" id="sourceTag" onclick="toggleCode()">Quelle laden...</span>
             </div>
-            <button class="btn-premium" id="actionBtn" onclick="translateText()">Ins Jetzt übertragen</button>
+            <!-- Der Button steuert jetzt das meditative Aufklappen der separaten Box -->
+            <button class="btn-premium" id="actionBtn" onclick="toggleTranslationBox()">Ins Jetzt übertragen</button>
             <button class="btn-premium" id="shareBtn" onclick="shareContent()" title="Kopieren & teilen">Teilen</button>
         </div>
     </div>
 
+    <!-- DIE NEUE DIALOG-BOX FÜR DIE GEGENWARTS-ÜBERTRAGUNG -->
+    <div class="translation-box" id="translationBox">
+        <button class="box-close-btn" onclick="toggleTranslationBox()" title="Schließen">×</button>
+        <div id="translationBoxContent"></div>
+    </div>
+
     <div class="code-box" id="codeBox">
-        <button class="code-close-btn" onclick="toggleCode()" title="Schließen">×</button>
+        <button class="box-close-btn" onclick="toggleCode()" title="Schließen">×</button>
         <span id="codeBoxContent"></span>
     </div>
     
@@ -842,7 +869,7 @@
         <span class="challenge-actual-text" id="challengeText"></span>
     </div>
 
-    <!-- 6. GEMEINDE INFORMATIONEN (TERMINE UND ANGEBOTE) -->
+    <!-- 6. GEMEINDE INFORMATIONEN -->
     <div class="gemeinde-section" id="gemeindeSection">
         <!-- Wöchentliche News -->
         <div class="gemeinde-card" id="newsCard" style="display: none;">
@@ -882,7 +909,7 @@
             </div>
         </div>
 
-        <!-- PREMIUM BOX FÜR DIE KOLLEKTE MIT INTEGRATION DES GRAFIKBANNERS -->
+        <!-- PREMIUM BOX FÜR DIE KOLLEKTE -->
         <div class="kollekten-premium-box" id="kollektenBox" style="display: none;">
             <div class="kollekten-image-banner">
                 <img src="images/kollekte.jpg" alt="Digitale Kollekte">
@@ -942,39 +969,6 @@
         </div>
     </div>
 
-    <div class="modal-overlay" id="impressumModal" onclick="closeModal('impressumModal')">
-        <div class="modal-card" onclick="event.stopPropagation()">
-            <button class="modal-close-btn" onclick="closeModal('impressumModal')">×</button>
-            <div class="modal-header">Impressum</div>
-            <div class="modal-body">
-                <h4>Dienstanbieter & Verantwortlich</h4>
-                <p>Andreas Gehrmann<br>Olgastr. 39<br>42699 Solingen<br>Deutschland</p>
-                <h4>Kontakt</h4>
-                <p>E-Mail: info@andreas-gehrmann.de</p>
-                <h4>Hoster</h4>
-                <p>Diese Anwendung wird auf Servern von Netlify gehostet.<br>Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="datenschutzModal" onclick="closeModal('datenschutzModal')">
-        <div class="modal-card" onclick="event.stopPropagation()">
-            <button class="modal-close-btn" onclick="closeModal('datenschutzModal')">×</button>
-            <div class="modal-header">Datenschutzerklärung</div>
-            <div class="modal-body">
-                <p>Diese meditative Web-App ist auf maximale Datensparsamkeit ausgelegt. Du kannst sie komplett ohne Angabe von persönlichen Daten nutzen.</p>
-                <h4>1. Lokale Speicherung (LocalStorage)</h4>
-                <p>Sämtliche Einstellungen, die du in der App vornimmst, werden ausschließlich lokal in deinem eigenen Browser auf deinem Gerät gespeichert.</p>
-                <h4>2. Server-Logfiles & Hosting</h4>
-                <p>Die App wird über den Plattform-Dienst Netlify bereitgestellt. Beim Aufruf der App erfasst Netlify technisch bedingt automatisierte Protokolldaten.</p>
-                <h4>3. Keine Analyse oder Tracking</h4>
-                <p>Wir verwenden keine Analyse-Tools, setzen keine Tracking-Cookies ein und binden keine Werbenetzwerke ein.</p>
-                <h4>4. Deine Rechte</h4>
-                <p>Da wir keine personenbezogenen Daten von dir auf Servern speichern, können wir dir gegenüber auch keine Daten ausgeben, korrigieren oder löschen.</p>
-            </div>
-        </div>
-    </div>
-
     <footer class="app-footer">
         <a href="#impressum" onclick="openModal('impressumModal')">Impressum</a>
         <a href="#datenschutz" onclick="openModal('datenschutzModal')">Datenschutz</a>
@@ -986,7 +980,6 @@
     let allData = null;
     let currentData = null;
     let gemeindeConfig = null;
-    let isOriginal = true;
     let challengeRevealed = false;
     
     let displayDate = new Date();
@@ -1191,10 +1184,10 @@
         const feiertagKey = getFeiertagKey(displayDate);
         currentData = feiertagKey ? allData[feiertagKey] : allData[`${month}-${day}`];
         
-        isOriginal = true; challengeRevealed = false;
+        challengeRevealed = false;
         document.getElementById('codeBox').style.display = 'none';
+        document.getElementById('translationBox').style.display = 'none'; // Schließt Box bei Datumswechsel
         document.getElementById('actionBtn').innerText = "Ins Jetzt übertragen";
-        document.getElementById('mainText').classList.remove('translation-mode');
         document.getElementById('sourceRow').style.display = 'inline-flex';
 
         resetChallengeBox();
@@ -1207,6 +1200,7 @@
             document.getElementById('sourceTag').innerText = `${currentData.original} (Info)`;
             document.getElementById('mainText').innerHTML = currentData.volltext;
             document.getElementById('codeBoxContent').innerHTML = currentData.code_knacker;
+            document.getElementById('translationBoxContent').innerHTML = currentData.uebersetzung;
             document.getElementById('challengeText').innerText = currentData.challenge;
         }
 
@@ -1229,7 +1223,36 @@
 
     function toggleCode() {
         const b = document.getElementById('codeBox');
-        if (b && currentData?.code_knacker) b.style.display = b.style.display === 'block' ? 'none' : 'block';
+        const tBox = document.getElementById('translationBox');
+        if (b && currentData?.code_knacker) {
+            if (b.style.display === 'block') {
+                b.style.display = 'none';
+            } else {
+                b.style.display = 'block';
+                tBox.style.display = 'none'; // Schließt die jeweils andere Box für sauberen Fokus
+            }
+        }
+    }
+
+    // DIE NEUE STEUERUNGSFUNKTION FÜR DIE SEPARATE ÜBERTRAGUNGS-BOX
+    function toggleTranslationBox() {
+        const tBox = document.getElementById('translationBox');
+        const b = document.getElementById('codeBox');
+        const btn = document.getElementById('actionBtn');
+        
+        if (tBox && currentData?.uebersetzung) {
+            if (tBox.style.display === 'block') {
+                tBox.style.display = 'none';
+                btn.innerText = "Ins Jetzt übertragen";
+            } else {
+                tBox.style.display = 'block';
+                b.style.display = 'none'; // Schließt Code-Knacker
+                btn.innerText = "Übertragung schließen";
+                setTimeout(() => {
+                    tBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
     }
 
     function resetChallengeBox() {
@@ -1248,26 +1271,6 @@
         challengeRevealed = true;
     }
 
-    function translateText() {
-        if (!currentData) return;
-        const btn = document.getElementById('actionBtn'), cBox = document.getElementById('challengeBox');
-        const cDiv = document.getElementById('challengeDivider'), txt = document.getElementById('mainText');
-        
-        animateTextChange(() => {
-            if (isOriginal) {
-                txt.innerText = currentData.uebersetzung; txt.classList.add('translation-mode'); 
-                cBox.style.display = 'none'; cDiv.style.display = 'none';
-                document.getElementById('sourceRow').style.display = 'none';
-                btn.innerText = "Original anzeigen"; isOriginal = false;
-            } else {
-                txt.innerHTML = currentData.volltext; txt.classList.remove('translation-mode'); 
-                cBox.style.display = 'block'; cDiv.style.display = 'block';
-                document.getElementById('sourceRow').style.display = 'inline-flex';
-                btn.innerText = "Ins Jetzt übertragen"; isOriginal = true;
-            }
-        });
-    }
-
     function shareContent() {
         if (!currentData) return;
         const cleanVolltext = currentData.volltext.replace(/^[„"']|[“"']$/g, '');
@@ -1277,7 +1280,6 @@
         });
     }
 
-    // MODAL-STEUERUNG
     function openModal(id) { document.getElementById(id).style.display = 'flex'; }
     function closeModal(id) { document.getElementById(id).style.display = 'none'; }
     

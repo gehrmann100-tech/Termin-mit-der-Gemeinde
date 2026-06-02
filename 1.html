@@ -34,8 +34,9 @@
             /* SCHRIFT-CHARAKTERE VARIABLES (STANDARD: BUCH-ÄSTHETIK) */
             --font-title: 'Playfair Display', serif;
             --font-body: 'Lora', serif;
+            --font-challenge: 'Lora', serif;
 
-            /* SCHRIFTGRÖSSEN VARIABLES (STANDARD: MINIMALISTISCH) */
+            /* SCHRIFTGRÖSSEN VARIABLES */
             --fs-main-text: 1.1rem;
             --fs-translation-text: 1.1rem;
             --fs-challenge-text: 1.1rem;
@@ -63,22 +64,24 @@
         [data-font="modern"] {
             --font-title: 'Inter', sans-serif;
             --font-body: 'Inter', sans-serif;
+            --font-challenge: 'Inter', sans-serif;
         }
 
         /* SCHRIFT-CHARAKTER: KLASSISCHE ELEGANZ */
         [data-font="elegance"] {
             --font-title: 'Cormorant Garamond', serif;
             --font-body: 'Cormorant Garamond', serif;
+            --font-challenge: 'Cormorant Garamond', serif;
         }
 
-        /* SCHRIFTGRÖSSE: WEITSICHT (GROSS) */
+        /* SCHRIFTGRÖSSE: WEITSICHT */
         [data-size="large"] {
             --fs-main-text: 1.45rem;
             --fs-translation-text: 1.4rem;
             --fs-challenge-text: 1.2rem;
         }
 
-        /* SCHRIFTGRÖSSE: MORGENBLICK (SEHR GROSS) */
+        /* SCHRIFTGRÖSSE: MORGENBLICK */
         [data-size="xlarge"] {
             --fs-main-text: 1.6rem;
             --fs-translation-text: 1.55rem;
@@ -101,6 +104,7 @@
             padding: 24px 15px 20px 15px; 
             align-items: center;
             transition: background 0.4s ease;
+            scroll-behavior: smooth;
         }
 
         .app-wrapper {
@@ -114,7 +118,7 @@
         /* HEADER BEREICH */
         .header-container {
             text-align: center;
-            margin-bottom: 12px; 
+            margin-bottom: 4px; 
         }
         .header-icon-deco {
             display: inline-block;
@@ -125,15 +129,13 @@
         }
         .app-title {
             font-family: var(--font-title);
-            font-size: 1.6rem; /* Auf 1.6rem angepasst, damit es sicher in eine Zeile passt */
+            font-size: 1.6rem; 
             font-weight: 800;
             color: #2c3e50;
             letter-spacing: -0.01em;
             line-height: 1.1;
-            margin-bottom: 12px; 
+            margin-bottom: 4px; 
             white-space: nowrap; 
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
         
         .app-title span {
@@ -141,11 +143,6 @@
             font-style: italic; 
             font-weight: 400;
             color: #2980b9;
-        }
-
-        [data-font="modern"] .app-title span {
-            font-style: italic; 
-            font-weight: 400;
         }
         
         .app-subtitle {
@@ -155,13 +152,29 @@
             letter-spacing: 2px;
             color: #2c3e50; 
             font-weight: 700; 
-            margin-bottom: 6px; 
+            margin-bottom: 10px; 
             text-align: center;
             opacity: 0.9;
-            width: 100%;
         }
 
-        /* DATUMSNAVI */
+        /* GEMEINDE BILD GANZ OBEN */
+        .gemeinde-image-box {
+            display: none;
+            width: 100%;
+            height: 140px;
+            border-radius: var(--radius-element);
+            overflow: hidden;
+            margin-bottom: 12px; 
+            box-shadow: var(--main-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .gemeinde-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* DATUMSNAVI UNTER DEM BILD */
         .date-navigation {
             display: flex;
             justify-content: space-between;
@@ -183,7 +196,7 @@
         [data-font="modern"] .date {
             font-style: normal;
             font-weight: 400; 
-            font-size: 1.0 Geno;
+            font-size: 1.0rem;
         }
         .nav-btn {
             background: none;
@@ -252,29 +265,212 @@
             z-index: 10;
         }
 
-        /* GEMEINDE STYLE SECTIONEN */
-        .gemeinde-image-box {
-            display: none;
-            width: 100%;
-            height: 140px;
+        /* INHALTSBÜHNE */
+        .content-stage {
+            background: var(--bg-premium-white);
             border-radius: var(--radius-element);
-            overflow: hidden;
-            margin-top: 2px; 
-            margin-bottom: 18px; 
             box-shadow: var(--main-shadow);
             border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-        .gemeinde-image-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            padding: 26px 22px 14px 22px; 
+            display: flex;
+            flex-direction: column;
+            margin-top: 14px; 
+            margin-bottom: 14px; 
+            text-align: center;
         }
 
+        .text-display {
+            font-family: var(--font-body); 
+            font-style: italic; 
+            font-size: var(--fs-main-text); 
+            line-height: 1.6; 
+            color: #1a202c; 
+            text-align: center;
+            transition: opacity 0.2s ease-in-out, font-size 0.2s ease;
+            opacity: 1;
+            margin-bottom: 16px;
+        }
+        [data-font="modern"] .text-display {
+            font-style: normal;
+            font-weight: 400; 
+        }
+        
+        .text-display.translation-mode {
+            font-family: var(--font-body) !important; 
+            font-style: italic !important;
+            font-size: var(--fs-translation-text) !important;
+            line-height: 1.6 !important;
+            color: #2c3e50 !important;
+            text-align: center;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        /* BEDIENZEILE INNERHALB DER BOX */
+        .box-action-row {
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            gap: 24px; 
+            margin-top: 8px;
+            padding-top: 12px;
+            border-top: 1px dashed rgba(0, 0, 0, 0.05);
+        }
+
+        .meta-source-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* ZWEI STIL-WELTEN (TEXTLINKS VS OUTLINE-BUTTONS) */
+        .app-wrapper.style-links .source-tag, 
+        .app-wrapper.style-links .btn-premium {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent !important;
+            border: none !important;
+            border-radius: 0 !important;
+            padding: 2px 0 !important;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            opacity: 0.75;
+            border-bottom: 1px dashed transparent !important;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
+            box-shadow: none !important;
+        }
+        
+        .app-wrapper.style-links .source-tag:hover, 
+        .app-wrapper.style-links .btn-premium:hover {
+            color: #2c3e50 !important; 
+            border-bottom: 1px dashed #2c3e50 !important;
+            opacity: 1;
+        }
+
+        .app-wrapper.style-buttons .source-tag, 
+        .app-wrapper.style-buttons .btn-premium {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--btn-outline-color) !important;
+            border-radius: 8px !important;
+            padding: 4px 12px !important;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            background-color: rgba(255, 255, 255, 0.4) !important;
+            color: var(--text-muted) !important;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            opacity: 0.9;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
+        }
+        
+        .app-wrapper.style-buttons .source-tag:hover, 
+        .app-wrapper.style-buttons .btn-premium:hover {
+            color: #2c3e50 !important;
+            border-color: #2c3e50 !important;
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            opacity: 1;
+        }
+
+        /* CODE-KNACKER BLOCK */
+        .code-box {
+            display: none;
+            background: var(--bg-premium-white);
+            padding: 20px;
+            border-radius: var(--radius-element);
+            font-family: var(--font-body); 
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: var(--text-dark);
+            animation: blockSlideDown 0.3s ease-out;
+            box-shadow: var(--main-shadow);
+            position: relative;
+        }
+
+        .challenge-divider {
+            text-align: center;
+            color: #b2bec3;
+            font-size: 0.8rem;
+            letter-spacing: 6px;
+            margin-bottom: 12px; 
+            opacity: 0.5;
+        }
+        
+        /* CHALLENGE-BEREICH */
+        .challenge-box {
+            background: var(--bg-challenge); 
+            border-radius: var(--radius-element);
+            padding: 16px 20px; 
+            box-shadow: var(--main-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: var(--text-dark); 
+            animation: blockSlideDown 0.3s ease-out;
+            text-align: center;
+            position: relative; 
+            margin-bottom: 16px;
+        }
+        .challenge-title {
+            color: var(--text-challenge-title);
+            display: block;
+            font-family: 'Inter', sans-serif; 
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px; 
+        }
+        .challenge-instruction {
+            font-family: var(--font-challenge); 
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 8px; 
+            display: block;
+        }
+        
+        .challenge-actual-text {
+            font-family: var(--font-challenge); 
+            font-style: italic;
+            font-size: var(--fs-challenge-text);
+            line-height: 1.6;
+            color: #1a202c;
+            display: none;
+            text-align: center;
+        }
+        [data-font="modern"] .challenge-actual-text {
+            font-style: normal;
+        }
+
+        .challenge-sub-btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--text-challenge-title); 
+            border: none; 
+            border-bottom: 1px dashed #cbd5e1;
+            padding: 2px 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* GEMEINDE SECTION UNTEN */
         .gemeinde-section {
             display: none;
             flex-direction: column;
             gap: 12px; 
-            margin-top: 14px;
+            margin-top: 4px;
             margin-bottom: 20px;
         }
 
@@ -285,6 +481,69 @@
             padding: 14px 20px; 
             box-shadow: var(--main-shadow);
             text-align: left;
+            scroll-margin-top: 20px;
+        }
+
+        /* HIGH-END PREMIUM BOX FÜR DIE DIGITALE KOLLEKTE MIT BILD-INTEGRATION */
+        .kollekten-premium-box {
+            background: var(--bg-premium-white);
+            border: 1px solid rgba(184, 134, 11, 0.15);
+            border-radius: var(--radius-element);
+            padding: 0 0 20px 0; /* Vertikales Padding unten, oben Platz fürs Bild */
+            overflow: hidden; /* Garantiert, dass das Bild sauber an den Box-Ecken abschließt */
+            box-shadow: var(--main-shadow);
+            text-align: center;
+            margin-bottom: 12px; 
+            animation: blockSlideDown 0.3s ease-out;
+        }
+        .kollekten-image-banner {
+            width: 100%;
+            height: 130px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(184, 134, 11, 0.1);
+        }
+        .kollekten-image-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .kollekten-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b7870a;
+            margin-bottom: 6px;
+        }
+        .kollekten-text {
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            padding: 0 16px;
+        }
+        .btn-kollekten-pay {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #2c3e50;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 10px 22px;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+            transition: all 0.2s ease;
+        }
+        .btn-kollekten-pay:hover {
+            background-color: var(--color-blue);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(41, 128, 185, 0.25);
         }
 
         .collapsible-header {
@@ -296,12 +555,16 @@
             -webkit-tap-highlight-color: transparent;
         }
         
+        .title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .gemeinde-card-title {
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
             font-weight: 500;
-            text-transform: none;
-            letter-spacing: 0px;
             color: var(--text-challenge-title);
             margin-bottom: 0;
         }
@@ -371,270 +634,6 @@
         .termin-titel {
             color: var(--text-dark);
         }
-
-        /* INHALTSBÜHNE */
-        .content-stage {
-            background: var(--bg-premium-white);
-            border-radius: var(--radius-element);
-            box-shadow: var(--main-shadow);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 26px 22px 22px 22px; 
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 16px; 
-            text-align: center;
-        }
-
-        .text-display {
-            font-family: var(--font-body); 
-            font-style: italic; 
-            font-size: var(--fs-main-text); 
-            line-height: 1.6; 
-            color: #1a202c; 
-            text-align: center;
-            transition: opacity 0.2s ease-in-out, font-size 0.2s ease;
-            opacity: 1;
-            margin-bottom: 14px;
-        }
-        [data-font="modern"] .text-display {
-            font-style: normal;
-            font-weight: 400; 
-        }
-        
-        .text-display.translation-mode {
-            font-family: var(--font-body) !important; 
-            font-style: italic !important;
-            font-size: var(--fs-translation-text) !important;
-            line-height: 1.6 !important;
-            color: #2c3e50 !important;
-            text-align: center;
-            margin-bottom: 0px;
-            font-weight: 400;
-        }
-        [data-font="modern"] .text-display.translation-mode {
-            font-style: normal !important;
-        }
-        
-        .meta-source-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-top: 2px;
-            transition: opacity 0.2s ease;
-        }
-        .source-tag {
-            display: inline-block;
-            font-family: var(--font-body); 
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s ease, padding 0.3s ease, border-radius 0.3s ease;
-            opacity: 0.8;
-            border-bottom: 1px dashed transparent;
-        }
-        [data-font="modern"] .source-tag {
-            font-style: normal;
-            font-weight: 500;
-        }
-
-        /* BEDIENZEILE & BUTTON-STILE */
-        .action-footer-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 24px; 
-            margin-top: 2px;
-            margin-bottom: 12px;
-            transition: gap 0.3s ease;
-        }
-
-        .btn-premium {
-            background: transparent;
-            border: none; 
-            padding: 6px 12px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.88rem; 
-            font-weight: 500;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s ease, border-radius 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            -webkit-tap-highlight-color: transparent;
-            border-bottom: 1px dashed transparent; 
-        }
-        
-        .app-wrapper.style-links .btn-premium:hover {
-            color: #2c3e50; 
-            border-bottom: 1px dashed #2c3e50;
-        }
-        .app-wrapper.style-links .source-tag:hover {
-            border-bottom-color: #2c3e50;
-        }
-
-        .app-wrapper.style-buttons .action-footer-row {
-            gap: 16px; 
-        }
-        .app-wrapper.style-buttons .btn-premium,
-        .app-wrapper.style-buttons .source-tag {
-            border: 1px solid var(--btn-outline-color);
-            border-radius: 12px;
-            padding: 8px 20px;
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-        .app-wrapper.style-buttons .source-tag {
-            padding: 4px 14px;
-            border-radius: 10px;
-        }
-        .app-wrapper.style-buttons .btn-premium:hover,
-        .app-wrapper.style-buttons .source-tag:hover {
-            color: #2c3e50;
-            border-color: #2c3e50;
-            background-color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* CODE-KNACKER BLOCK */
-        .code-box {
-            display: none;
-            background: var(--bg-premium-white);
-            padding: 20px;
-            border-radius: var(--radius-element);
-            font-family: var(--font-body); 
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            color: var(--text-dark);
-            animation: blockSlideDown 0.3s ease-out;
-            box-shadow: var(--main-shadow);
-            position: relative;
-        }
-        [data-font="modern"] .code-box {
-            font-style: normal;
-        }
-        .code-box h3, .code-box strong {
-            font-family: var(--font-body);
-            color: #2c3e50;
-        }
-        .code-close-btn {
-            position: absolute;
-            top: 10px;
-            right: 12px;
-            background: none;
-            border: none;
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: #cbd5e0;
-            cursor: pointer;
-            transition: color 0.2s ease;
-            line-height: 1;
-            padding: 2px 6px;
-        }
-        .code-close-btn:hover {
-            color: var(--text-muted);
-        }
-        
-        .challenge-divider {
-            text-align: center;
-            color: #b2bec3;
-            font-size: 0.8rem;
-            letter-spacing: 6px;
-            margin-bottom: 12px; 
-            user-select: none;
-            opacity: 0.6;
-        }
-        
-        /* CHALLENGE-BEREICH */
-        .challenge-box {
-            background: var(--bg-challenge); 
-            border-radius: var(--radius-element);
-            padding: 16px 20px; 
-            box-shadow: var(--main-shadow);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: var(--text-dark); 
-            animation: blockSlideDown 0.3s ease-out;
-            text-align: center;
-            position: relative; 
-            transition: background 0.4s ease;
-        }
-        .challenge-title {
-            color: var(--text-challenge-title);
-            display: block;
-            font-family: 'Inter', sans-serif; 
-            font-size: 0.95rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px; 
-        }
-        .challenge-instruction {
-            font-family: var(--font-body); 
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 8px; 
-            display: block;
-            padding: 0 10px;
-        }
-        
-        .challenge-actual-text {
-            font-family: var(--font-body); 
-            font-style: italic;
-            font-size: var(--fs-challenge-text);
-            line-height: 1.6;
-            color: #1a202c;
-            display: none;
-            font-weight: 400; 
-            text-align: center;
-            padding-bottom: 2px; 
-            padding-left: 5px;
-            padding-right: 5px;
-            transition: opacity 0.3s ease-in-out, font-size 0.2s ease; 
-        }
-        [data-font="modern"] .challenge-actual-text {
-            font-style: normal;
-        }
-        .challenge-sub-btn {
-            display: inline-block;
-            background: transparent;
-            color: var(--text-challenge-title); 
-            border: none; 
-            border-bottom: 1px dashed #cbd5e1;
-            padding: 2px 8px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.92rem;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin-bottom: 2px;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .challenge-sub-btn:hover {
-            color: #2c3e50;
-            border-bottom-color: #2c3e50;
-        }
-
-        .challenge-close-btn {
-            display: none;
-            position: absolute;
-            top: 10px;
-            right: 12px;
-            background: none;
-            border: none;
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: #b2bec3;
-            cursor: pointer;
-            transition: color 0.2s ease;
-            line-height: 1;
-            padding: 2px 6px;
-        }
-        .challenge-close-btn:hover {
-            color: var(--text-muted);
-        }
         
         /* PREMIUM EINSTELLUNGS PANEL */
         .settings-panel {
@@ -658,12 +657,8 @@
             font-weight: 400;
             color: #cbd5e0;
             cursor: pointer;
-            transition: color 0.2s ease;
             line-height: 1;
             padding: 2px 6px;
-        }
-        .settings-close-btn:hover {
-            color: var(--text-muted);
         }
         .settings-title {
             display: block;
@@ -709,7 +704,7 @@
             border-bottom-color: #2c3e50;
         }
         
-        /* MEDITATIVE MODAL OVERLAYS */
+        /* MODAL OVERLAYS */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -752,17 +747,6 @@
             color: var(--text-dark);
             overflow-y: auto;
             padding-right: 4px;
-        }
-        .modal-body h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-top: 16px;
-            margin-bottom: 6px;
-        }
-        .modal-body p {
-            margin-bottom: 12px;
         }
         .modal-close-btn {
             position: absolute;
@@ -808,36 +792,38 @@
 <div class="app-wrapper style-links" id="appWrapper">
     <div class="toast-notification" id="toast">📋 In Zwischenablage kopiert!</div>
     
+    <!-- 1. HEADER & TITEL BEREICH -->
     <div class="header-container">
         <div class="header-icon-deco" id="headerDeco">✨</div>
         <div class="app-title" id="appTitle">Termin <span>mit der Gemeinde</span></div>
-        
-        <div class="date-navigation">
-            <button class="nav-btn" onclick="navigateDay(-1)">❮</button>
-            <div class="date-wrapper">
-                <div class="date" id="currentDate">Lade Datum...</div>
-                <button class="today-anchor" id="todayAnchor" onclick="jumpToToday()" title="Zurück zu Heute">&#8226;</button>
-            </div>
-            <button class="nav-btn" id="nextDayBtn" onclick="navigateDay(1)">❯</button>
-        </div>
     </div>
-    
     <div class="app-subtitle" id="appSubtitle">Solingen-Merscheid</div>
 
+    <!-- 2. GEMEINDE BILD GANZ OBEN -->
     <div class="gemeinde-image-box" id="gemeindeImageBox">
         <img src="" id="gemeindeImg" alt="Kirchengemeinde">
     </div>
 
-    <div class="content-stage">
-        <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
-        <div class="meta-source-row" id="sourceRow">
-            <span class="source-tag" id="sourceTag" onclick="toggleCode()">Quelle laden...</span>
+    <!-- 3. DATUMSNAVI DIREKT UNTER DEM BILD -->
+    <div class="date-navigation">
+        <button class="nav-btn" onclick="navigateDay(-1)">❮</button>
+        <div class="date-wrapper">
+            <div class="date" id="currentDate">Lade Datum...</div>
+            <button class="today-anchor" id="todayAnchor" onclick="jumpToToday()" title="Zurück zu Heute">&#8226;</button>
         </div>
+        <button class="nav-btn" id="nextDayBtn" onclick="navigateDay(1)">❯</button>
     </div>
 
-    <div class="action-footer-row" id="actionFooterRow">
-        <button class="btn-premium" id="actionBtn" onclick="translateText()">Ins Jetzt übertragen</button>
-        <button class="btn-premium" id="shareBtn" onclick="shareContent()" title="Kopieren & teilen">Teilen</button>
+    <!-- 4. INHALTSBÜHNE MIT INTERNEN AKTIONEN -->
+    <div class="content-stage">
+        <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
+        <div class="box-action-row" id="boxActionRow">
+            <div class="meta-source-row" id="sourceRow">
+                <span class="source-tag" id="sourceTag" onclick="toggleCode()">Quelle laden...</span>
+            </div>
+            <button class="btn-premium" id="actionBtn" onclick="translateText()">Ins Jetzt übertragen</button>
+            <button class="btn-premium" id="shareBtn" onclick="shareContent()" title="Kopieren & teilen">Teilen</button>
+        </div>
     </div>
 
     <div class="code-box" id="codeBox">
@@ -847,6 +833,7 @@
     
     <div class="challenge-divider" id="challengeDivider">•••</div>
     
+    <!-- 5. TAGES CHALLENGE -->
     <div class="challenge-box" id="challengeBox">
         <button class="challenge-close-btn" id="challengeCloseBtn" onclick="resetChallengeBox()" title="Schließen">×</button>
         <span class="challenge-title">Tages-Challenge</span>
@@ -855,10 +842,15 @@
         <span class="challenge-actual-text" id="challengeText"></span>
     </div>
 
+    <!-- 6. GEMEINDE INFORMATIONEN (TERMINE UND ANGEBOTE) -->
     <div class="gemeinde-section" id="gemeindeSection">
+        <!-- Wöchentliche News -->
         <div class="gemeinde-card" id="newsCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('newsCard')">
-                <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuelles</h2>
+                <div class="title-wrapper">
+                    <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuelles</h2>
+                    <span class="news-badge-dot" id="newsBadge" style="display: none;"></span>
+                </div>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="collapsible-content">
@@ -866,6 +858,7 @@
             </div>
         </div>
 
+        <!-- SORGEFREIE TERMINE -->
         <div class="gemeinde-card" id="termineCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('termineCard')">
                 <h2 class="gemeinde-card-title">Anstehende Termine & Gottesdienste</h2>
@@ -876,9 +869,10 @@
             </div>
         </div>
 
+        <!-- KLAR GETRENNTE REGELMÄSSIGE ANGEBOTE & ANSPRECHPARTNER -->
         <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('dauerInfosCard')">
-                <h2 class="gemeinde-card-title">Gemeindebüro & Kontakte</h2>
+                <h2 class="gemeinde-card-title">Ansprechpartner & Angebote</h2>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="collapsible-content">
@@ -887,8 +881,21 @@
                 <ul class="termin-list" id="regelmaessigList"></ul>
             </div>
         </div>
+
+        <!-- PREMIUM BOX FÜR DIE KOLLEKTE MIT INTEGRATION DES GRAFIKBANNERS -->
+        <div class="kollekten-premium-box" id="kollektenBox" style="display: none;">
+            <div class="kollekten-image-banner">
+                <img src="images/kollekte.jpg" alt="Digitale Kollekte">
+            </div>
+            <div class="kollekten-title">Gemeinschaft unterstützen</div>
+            <div class="kollekten-text">Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte. Jede Gabe hilft, unsere Arbeit und Projekte lebendig zu halten.</div>
+            <a href="" target="_blank" rel="noopener" class="btn-kollekten-pay" id="kollektenLink">
+                🪙 Kollekte digital spendieren
+            </a>
+        </div>
     </div>
 
+    <!-- EINSTELLUNGS PANEL -->
     <div class="settings-panel" id="settingsPanel">
         <button class="settings-close-btn" onclick="toggleSettingsView()" title="Schließen">×</button>
         <span class="settings-title">Persönliche Einstellungen</span>
@@ -941,19 +948,11 @@
             <div class="modal-header">Impressum</div>
             <div class="modal-body">
                 <h4>Dienstanbieter & Verantwortlich</h4>
-                <p>
-                    Andreas Gehrmann<br>
-                    Olgastr. 39<br>
-                    42699 Solingen<br>
-                    Deutschland
-                </p>
+                <p>Andreas Gehrmann<br>Olgastr. 39<br>42699 Solingen<br>Deutschland</p>
                 <h4>Kontakt</h4>
                 <p>E-Mail: info@andreas-gehrmann.de</p>
                 <h4>Hoster</h4>
-                <p>
-                    Diese Anwendung wird auf Servern von Netlify gehostet.<br>
-                    Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA.
-                </p>
+                <p>Diese Anwendung wird auf Servern von Netlify gehostet.<br>Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA.</p>
             </div>
         </div>
     </div>
@@ -964,18 +963,14 @@
             <div class="modal-header">Datenschutzerklärung</div>
             <div class="modal-body">
                 <p>Diese meditative Web-App ist auf maximale Datensparsamkeit ausgelegt. Du kannst sie komplett ohne Angabe von persönlichen Daten nutzen.</p>
-                
                 <h4>1. Lokale Speicherung (LocalStorage)</h4>
-                <p>Sämtliche Einstellungen, die du in der App vornimmst (deine bevorzugte visuelle Stimmung und der Button-Stil), werden ausschließlich lokal in deinem eigenen Browser auf deinem Gerät gespeichert. Es findet keine Übertragung dieser Daten an uns oder sonstige Server statt.</p>
-                
+                <p>Sämtliche Einstellungen, die du in der App vornimmst, werden ausschließlich lokal in deinem eigenen Browser auf deinem Gerät gespeichert.</p>
                 <h4>2. Server-Logfiles & Hosting</h4>
-                <p>Die App wird über den Plattform-Dienst Netlify bereitgestellt. Beim Aufruf der App erfasst Netlify technisch bedingt automatisierte Protokolldaten (Verconnectionsdaten wie die IP-Adresse, Datum/Uhrzeit des Aufrufs und den genutzten Browsertyp). Dies ist für die fehlerfreie Auslieferung und Sicherheit der Anwendung zwingend erforderlich.</p>
-                
+                <p>Die App wird über den Plattform-Dienst Netlify bereitgestellt. Beim Aufruf der App erfasst Netlify technisch bedingt automatisierte Protokolldaten.</p>
                 <h4>3. Keine Analyse oder Tracking</h4>
-                <p>Wir verwenden keine Analyse-Tools (wie Google Analytics), setzen keine Tracking-Cookies ein und binden keine Werbenetzwerke ein. Dein Besuch bleibt privat.</p>
-                
+                <p>Wir verwenden keine Analyse-Tools, setzen keine Tracking-Cookies ein und binden keine Werbenetzwerke ein.</p>
                 <h4>4. Deine Rechte</h4>
-                <p>Da wir keine personenbezogenen Daten von dir auf Servern speichern, können wir dir gegenüber auch keine Daten ausgeben, korrigieren oder löschen. Wenn du die lokalen Einstellungen entfernen möchtest, kannst du dies jederzeit tun, indem du die App-Daten oder den Cache in den Einstellungen dein Webbrowsers löschst.</p>
+                <p>Da wir keine personenbezogenen Daten von dir auf Servern speichern, können wir dir gegenüber auch keine Daten ausgeben, korrigieren oder löschen.</p>
             </div>
         </div>
     </div>
@@ -1007,6 +1002,7 @@
         if (savedFont !== "default") document.documentElement.setAttribute('data-font', savedFont);
         const savedSize = localStorage.getItem('appSize') || "default";
         if (savedSize !== "default") document.documentElement.setAttribute('data-size', savedSize);
+        
         const savedBtnStyle = localStorage.getItem('appBtnStyle') || "links";
         document.getElementById('appWrapper').className = `app-wrapper style-${savedBtnStyle}`;
 
@@ -1052,7 +1048,14 @@
     function toggleCard(cardId) {
         const card = document.getElementById(cardId);
         if (card) {
+            const openBefore = card.classList.contains('is-open');
             card.classList.toggle('is-open');
+            
+            if (!openBefore) {
+                setTimeout(() => {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 180);
+            }
         }
     }
 
@@ -1071,16 +1074,16 @@
             const imgEl = document.getElementById('gemeindeImg');
             if (imgEl) imgEl.src = gemeindeConfig.kirchen_bild;
             imgBox.style.display = 'block';
-            if (document.getElementById('headerDeco')) document.getElementById('headerDeco').style.display = 'none';
         }
 
         const newsCard = document.getElementById('newsCard');
+        const newsBadge = document.getElementById('newsBadge');
         if (gemeindeConfig.wochen_news && gemeindeConfig.wochen_news.trim() !== "") {
             newsCard.style.display = 'block';
-            document.getElementById('gemeindeSection').style.display = 'flex';
-            document.getElementById('newsText').innerHTML = gemeindeConfig.wochen_news;
+            newsBadge.style.display = 'inline-block';
         } else {
             if (newsCard) newsCard.style.display = 'none';
+            if (newsBadge) newsBadge.style.display = 'none';
         }
     }
 
@@ -1107,6 +1110,15 @@
             li.innerHTML = `<div class="termin-titel"><strong>${r.titel}</strong></div><div style="font-size: 0.85rem; color: var(--text-muted);">${r.wann}</div>`;
             rList.appendChild(li);
         });
+
+        const kollektenBox = document.getElementById('kollektenBox');
+        const kollektenLink = document.getElementById('kollektenLink');
+        if (gemeindeConfig && gemeindeConfig.kollekten_link && gemeindeConfig.kollekten_link.trim() !== "") {
+            kollektenLink.href = gemeindeConfig.kollekten_link;
+            kollektenBox.style.display = 'block';
+        } else {
+            kollektenBox.style.display = 'none';
+        }
     }
 
     function getOstersonntag(jahr) {
@@ -1174,11 +1186,6 @@
         if (!allData) return;
         document.getElementById('currentDate').innerText = displayDate.toLocaleDateString('de-DE', options);
 
-        const today = new Date();
-        const isToday = displayDate.getDate() === today.getDate() && displayDate.getMonth() === today.getMonth();
-        if (document.getElementById('todayAnchor')) document.getElementById('todayAnchor').className = isToday ? 'today-anchor' : 'today-anchor active';
-        document.getElementById('nextDayBtn').disabled = !gemeindeConfig && isToday;
-
         const month = String(displayDate.getMonth() + 1).padStart(2, '0');
         const day = String(displayDate.getDate()).padStart(2, '0');
         const feiertagKey = getFeiertagKey(displayDate);
@@ -1188,13 +1195,13 @@
         document.getElementById('codeBox').style.display = 'none';
         document.getElementById('actionBtn').innerText = "Ins Jetzt übertragen";
         document.getElementById('mainText').classList.remove('translation-mode');
-        document.getElementById('sourceRow').style.display = 'flex';
+        document.getElementById('sourceRow').style.display = 'inline-flex';
 
         resetChallengeBox();
 
         if (currentData) {
             document.getElementById('shareBtn').style.display = 'inline-flex';
-            document.getElementById('actionBtn').style.display = 'inline-block';
+            document.getElementById('actionBtn').style.display = 'inline-flex';
             document.getElementById('challengeBox').style.display = 'block'; 
             document.getElementById('challengeDivider').style.display = 'block'; 
             document.getElementById('sourceTag').innerText = `${currentData.original} (Info)`;
@@ -1213,10 +1220,6 @@
 
     function navigateDay(dir) {
         if (!allData) return;
-        if (dir > 0 && !gemeindeConfig) {
-            const t = new Date(); const next = new Date(displayDate); next.setDate(next.getDate() + dir);
-            if (next > t && next.getDate() !== t.getDate()) return;
-        }
         animateTextChange(() => { displayDate.setDate(displayDate.getDate() + dir); updatePage(); });
     }
 
@@ -1259,7 +1262,7 @@
             } else {
                 txt.innerHTML = currentData.volltext; txt.classList.remove('translation-mode'); 
                 cBox.style.display = 'block'; cDiv.style.display = 'block';
-                document.getElementById('sourceRow').style.display = 'flex';
+                document.getElementById('sourceRow').style.display = 'inline-flex';
                 btn.innerText = "Ins Jetzt übertragen"; isOriginal = true;
             }
         });
@@ -1274,8 +1277,10 @@
         });
     }
 
+    // MODAL-STEUERUNG
     function openModal(id) { document.getElementById(id).style.display = 'flex'; }
     function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+    
     function toggleSettingsView() {
         const p = document.getElementById('settingsPanel');
         p.style.display = p.style.display === 'block' ? 'none' : 'block';
