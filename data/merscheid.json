@@ -3,7 +3,8 @@
     "app_titel": "Termin <span>mit der Gemeinde</span>",
     "gemeinde_name": "Solingen-Merscheid",
     "kirchen_bild": "images/kirche-merscheid.jpg",
-    "wochen_news": ""
+    "wochen_news": "",
+    "kollekten_link": "https://paypal.me/DeineGemeindeKonto"
   },
   "kommende_termine": [
     {"datum": "2026-06-07", "zeit": "10:00 Uhr", "titel": "1. So. n. Trinitatis: Gemeindegottesdienst – Pfarrerin Friederike Schmid (Ev. Kirche Merscheid)"},
