@@ -101,7 +101,6 @@
             padding: 24px 15px 20px 15px; 
             align-items: center;
             transition: background 0.4s ease;
-            scroll-behavior: smooth; /* Aktiviert natives sanftes Scrollen */
         }
 
         .app-wrapper {
@@ -126,7 +125,7 @@
         }
         .app-title {
             font-family: var(--font-title);
-            font-size: 1.6rem; 
+            font-size: 1.6rem; /* Auf 1.6rem angepasst, damit es sicher in eine Zeile passt */
             font-weight: 800;
             color: #2c3e50;
             letter-spacing: -0.01em;
@@ -184,7 +183,7 @@
         [data-font="modern"] .date {
             font-style: normal;
             font-weight: 400; 
-            font-size: 1.0rem;
+            font-size: 1.0 Geno;
         }
         .nav-btn {
             background: none;
@@ -286,7 +285,6 @@
             padding: 14px 20px; 
             box-shadow: var(--main-shadow);
             text-align: left;
-            scroll-margin-top: 20px; /* Erzeugt feinen Puffer beim automatischen Scrollen */
         }
 
         .collapsible-header {
@@ -296,15 +294,8 @@
             cursor: pointer;
             user-select: none;
             -webkit-tap-highlight-color: transparent;
-            position: relative;
         }
         
-        .title-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
         .gemeinde-card-title {
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
@@ -313,23 +304,6 @@
             letter-spacing: 0px;
             color: var(--text-challenge-title);
             margin-bottom: 0;
-        }
-
-        /* DER ELEGANTE NEWS-BADGE */
-        .news-badge-dot {
-            display: inline-block;
-            width: 7px;
-            height: 7px;
-            background-color: var(--color-blue);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--color-blue);
-            animation: pulseBadge 2s infinite ease-in-out;
-        }
-
-        @keyframes pulseBadge {
-            0% { transform: scale(0.9); opacity: 0.6; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.9); opacity: 0.6; }
         }
 
         .toggle-icon {
@@ -351,39 +325,6 @@
         
         .gemeinde-card.is-open .toggle-icon {
             transform: rotate(180deg);
-        }
-
-        /* SEKTION DIGITALER KLINGELBEUTEL */
-        .klingelbeutel-container {
-            margin-top: 16px;
-            border-top: 1px dashed var(--btn-outline-color);
-            padding-top: 14px;
-            text-align: center;
-        }
-
-        .btn-klingelbeutel {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background-color: rgba(41, 128, 185, 0.08);
-            border: 1px dashed var(--color-blue);
-            color: var(--color-blue);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 8px 18px;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .btn-klingelbeutel:hover {
-            background-color: var(--color-blue);
-            color: white;
-            border-style: solid;
         }
 
         .news-text {
@@ -917,10 +858,7 @@
     <div class="gemeinde-section" id="gemeindeSection">
         <div class="gemeinde-card" id="newsCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('newsCard')">
-                <div class="title-wrapper">
-                    <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuelles</h2>
-                    <span class="news-badge-dot" id="newsBadge" style="display: none;"></span>
-                </div>
+                <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuelles</h2>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="collapsible-content">
@@ -947,12 +885,6 @@
                 <ul class="termin-list" id="kontaktList" style="margin-bottom: 14px;"></ul>
                 <h2 class="gemeinde-card-title" style="margin-bottom: 12px; border-top: 1px dashed var(--btn-outline-color); padding-top: 12px; font-weight: 500; text-transform: none; letter-spacing: 0px;">Regelmäßige Angebote</h2>
                 <ul class="termin-list" id="regelmaessigList"></ul>
-                
-                <div class="klingelbeutel-container" id="kollektenBox" style="display: none;">
-                    <a href="" target="_blank" rel="noopener" class="btn-klingelbeutel" id="kollektenLink">
-                        🪙 Digitaler Klingelbeutel (Kollekte spenden)
-                    </a>
-                </div>
             </div>
         </div>
     </div>
@@ -1034,16 +966,16 @@
                 <p>Diese meditative Web-App ist auf maximale Datensparsamkeit ausgelegt. Du kannst sie komplett ohne Angabe von persönlichen Daten nutzen.</p>
                 
                 <h4>1. Lokale Speicherung (LocalStorage)</h4>
-                <p>Sämtliche Einstellungen, die du in der App vornimmst (deine bevorzugte visuelle Stimmung und der Button-Stil), werden ausschließlich lokal in deinem eigenen Browser auf deinem Gerät gespeichert.</p>
+                <p>Sämtliche Einstellungen, die du in der App vornimmst (deine bevorzugte visuelle Stimmung und der Button-Stil), werden ausschließlich lokal in deinem eigenen Browser auf deinem Gerät gespeichert. Es findet keine Übertragung dieser Daten an uns oder sonstige Server statt.</p>
                 
                 <h4>2. Server-Logfiles & Hosting</h4>
-                <p>Die App wird über den Plattform-Dienst Netlify bereitgestellt. Beim Aufruf der App erfasst Netlify technisch bedingt automatisierte Protokolldaten.</p>
+                <p>Die App wird über den Plattform-Dienst Netlify bereitgestellt. Beim Aufruf der App erfasst Netlify technisch bedingt automatisierte Protokolldaten (Verconnectionsdaten wie die IP-Adresse, Datum/Uhrzeit des Aufrufs und den genutzten Browsertyp). Dies ist für die fehlerfreie Auslieferung und Sicherheit der Anwendung zwingend erforderlich.</p>
                 
                 <h4>3. Keine Analyse oder Tracking</h4>
                 <p>Wir verwenden keine Analyse-Tools (wie Google Analytics), setzen keine Tracking-Cookies ein und binden keine Werbenetzwerke ein. Dein Besuch bleibt privat.</p>
                 
                 <h4>4. Deine Rechte</h4>
-                <p>Da wir keine personenbezogenen Daten von dir auf Servern speichern, können wir dir gegenüber auch keine Daten ausgeben, korrigieren oder löschen.</p>
+                <p>Da wir keine personenbezogenen Daten von dir auf Servern speichern, können wir dir gegenüber auch keine Daten ausgeben, korrigieren oder löschen. Wenn du die lokalen Einstellungen entfernen möchtest, kannst du dies jederzeit tun, indem du die App-Daten oder den Cache in den Einstellungen dein Webbrowsers löschst.</p>
             </div>
         </div>
     </div>
@@ -1117,19 +1049,10 @@
             });
     });
 
-    // INTEGRATION: SMOOTH SCROLL BEIM AUFKLAPPEN DER GEMEINDE-KARTEN
     function toggleCard(cardId) {
         const card = document.getElementById(cardId);
         if (card) {
-            const openBefore = card.classList.contains('is-open');
             card.classList.toggle('is-open');
-            
-            // Wenn die Karte geöffnet wurde, scrolle sanft dorthin
-            if (!openBefore) {
-                setTimeout(() => {
-                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 180); // Kurzer Delay, damit das CSS-Rendering der Box abgeschlossen ist
-            }
         }
     }
 
@@ -1152,15 +1075,12 @@
         }
 
         const newsCard = document.getElementById('newsCard');
-        const newsBadge = document.getElementById('newsBadge');
         if (gemeindeConfig.wochen_news && gemeindeConfig.wochen_news.trim() !== "") {
             newsCard.style.display = 'block';
-            newsBadge.style.display = 'inline-block'; // INTEGRATION: AKTIVIERUNG NEWS-BADGE
             document.getElementById('gemeindeSection').style.display = 'flex';
             document.getElementById('newsText').innerHTML = gemeindeConfig.wochen_news;
         } else {
             if (newsCard) newsCard.style.display = 'none';
-            if (newsBadge) newsBadge.style.display = 'none';
         }
     }
 
@@ -1187,16 +1107,6 @@
             li.innerHTML = `<div class="termin-titel"><strong>${r.titel}</strong></div><div style="font-size: 0.85rem; color: var(--text-muted);">${r.wann}</div>`;
             rList.appendChild(li);
         });
-
-        // INTEGRATION: DIGITALER KLINGELBEUTEL (KOLLEKTEN-LINK)
-        const kollektenBox = document.getElementById('kollektenBox');
-        const kollektenLink = document.getElementById('kollektenLink');
-        if (gemeindeConfig && gemeindeConfig.kollekten_link && gemeindeConfig.kollekten_link.trim() !== "") {
-            kollektenLink.href = gemeindeConfig.kollekten_link;
-            kollektenBox.style.display = 'block';
-        } else {
-            kollektenBox.style.display = 'none';
-        }
     }
 
     function getOstersonntag(jahr) {
