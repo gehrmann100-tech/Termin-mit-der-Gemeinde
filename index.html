@@ -178,7 +178,7 @@
         }
         [data-font="modern"] .date {
             font-style: normal;
-            font-weight: 400; /* AUF WUNSCH ENT-FETTET */
+            font-weight: 400; 
             font-size: 1.05rem;
         }
         .nav-btn {
@@ -362,7 +362,7 @@
         }
         [data-font="modern"] .text-display {
             font-style: normal;
-            font-weight: 400; /* AUF WUNSCH ENT-FETTET */
+            font-weight: 400; 
         }
         
         .text-display.translation-mode {
@@ -541,7 +541,6 @@
             padding: 0 10px;
         }
         
-        /* DURCHWEG AUF NORMALGEWICHT ENT-FETTET */
         .challenge-actual-text {
             font-family: var(--font-body); 
             font-style: italic;
@@ -549,7 +548,7 @@
             line-height: 1.6;
             color: #1a202c;
             display: none;
-            font-weight: 400; /* AUF WUNSCH ENT-FETTET */
+            font-weight: 400; 
             text-align: center;
             padding-bottom: 2px; 
             padding-left: 5px;
@@ -658,15 +657,6 @@
             width: 170px; 
         }
 
-        .coffee-link-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            border-bottom: 1px dashed transparent;
-            display: inline-block;
-        }
-        
         /* MEDITATIVE MODAL OVERLAYS */
         .modal-overlay {
             display: none;
@@ -770,26 +760,21 @@
     
     <div class="app-subtitle" id="appSubtitle">Ein Gedanke für heute</div>
 
-    <!-- OPTIONALES KIRCHENBILD -->
     <div class="gemeinde-image-box" id="gemeindeImageBox">
         <img src="" id="gemeindeImg" alt="Kirchengemeinde">
     </div>
 
-    <!-- GEMEINDE-SEKTION FÜR NEWS, ANSTEHENDE TERMINE UND FESTE INFOS -->
     <div class="gemeinde-section" id="gemeindeSection">
-        <!-- Wöchentliche News -->
         <div class="gemeinde-card" id="newsCard" style="display: none;">
             <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuelles</h2>
             <div class="news-text" id="newsText"></div>
         </div>
 
-        <!-- SORGEFREIE TERMINE (NÄCHSTE TERMINE IN FORTLAUFENDER LISTE) -->
         <div class="gemeinde-card" id="termineCard" style="display: none;">
             <h2 class="gemeinde-card-title">Anstehende Termine & Gottesdienste</h2>
             <ul class="termin-list" id="terminList"></ul>
         </div>
 
-        <!-- STATISCHE GEMEINDE-INFOS & REGELMÄSSIGE ANGEBOTE -->
         <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
             <h2 class="gemeinde-card-title">Gemeindebüro & Kontakte</h2>
             <ul class="termin-list" id="kontaktList" style="margin-bottom: 14px;"></ul>
@@ -798,7 +783,6 @@
         </div>
     </div>
 
-    <!-- INHALTSBÜHNE -->
     <div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         <div class="meta-source-row" id="sourceRow">
@@ -898,7 +882,6 @@
         const dateEl = document.getElementById('currentDate');
         if (dateEl) dateEl.innerText = displayDate.toLocaleDateString('de-DE', options);
 
-        // Einstellungen laden
         const savedTheme = localStorage.getItem('appTheme') || "default";
         if (savedTheme !== "default") document.documentElement.setAttribute('data-theme', savedTheme);
         const savedFont = localStorage.getItem('appFont') || "default";
@@ -954,22 +937,23 @@
         
         if (gemeindeConfig.kirchen_bild) {
             const imgBox = document.getElementById('gemeindeImageBox');
-            document.getElementById('gridImg' ? 'gridImg' : 'gemeindeImg').src = gemeindeConfig.kirchen_bild;
+            const imgEl = document.getElementById('gemeindeImg');
+            if (imgEl) imgEl.src = gemeindeConfig.kirchen_bild;
             imgBox.style.display = 'block';
             if (document.getElementById('headerDeco')) document.getElementById('headerDeco').style.display = 'none';
         }
 
-        // Wochen-News logic
         const newsCard = document.getElementById('newsCard');
         if (gemeindeConfig.wochen_news && gemeindeConfig.wochen_news.trim() !== "") {
             newsCard.style.display = 'block';
             document.getElementById('gemeindeSection').style.display = 'flex';
             document.getElementById('newsText').innerHTML = gemeindeConfig.wochen_news;
             if (gemeindeConfig.gemeinde_name) document.getElementById('newsTitle').innerText = `Aktuelles aus ${gemeindeConfig.gemeinde_name}`;
+        } else {
+            if (newsCard) newsCard.style.display = 'none';
         }
     }
 
-    // STATISCHE ANSPRECHPARTNER & ANGEBOTE RENDERN (EINMALIG BEIM START)
     function renderDauerInfos() {
         if (!allData || !allData.dauer_infos) return;
         const infos = allData.dauer_infos;
@@ -1021,7 +1005,6 @@
         return null;
     }
 
-    // DYNAMISCHER AUTOMATISCHER FILTER FÜR DIE KOMMENDEN TERMINE
     function renderKommendeTermine() {
         if (!allData || !allData.kommende_termine) return;
         
@@ -1029,7 +1012,6 @@
         const termCard = document.getElementById('termineCard');
         termList.innerHTML = '';
 
-        // Wir filtern alle Termine, die ab dem aktuell angezeigten Tag (0:00 Uhr) in der Zukunft liegen
         const vergleichsDatum = new Date(displayDate);
         vergleichsDatum.setHours(0, 0, 0, 0);
 
@@ -1039,7 +1021,6 @@
             return tDate >= vergleichsDatum;
         });
 
-        // Zeige maximal die nächsten 4 anstehenden Termine an
         const auswahl = zukuenftige.slice(0, 4);
 
         if (auswahl.length > 0) {
@@ -1092,7 +1073,6 @@
             document.getElementById('challengeText').innerText = currentData.challenge;
         }
 
-        // Rufe die automatische Sorglos-Terminfilterung auf
         if (gemeindeConfig) renderKommendeTermine();
     }
 
