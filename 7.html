@@ -34,7 +34,6 @@
             /* SCHRIFT-CHARAKTERE VARIABLES (STANDARD: BUCH-ÄSTHETIK) */
             --font-title: 'Playfair Display', serif;
             --font-body: 'Lora', serif;
-            --font-challenge: 'Lora', serif; /* Separates Handling für die Challenge-Box */
 
             /* SCHRIFTGRÖSSEN VARIABLES */
             --fs-main-text: 1.1rem;
@@ -64,14 +63,12 @@
         [data-font="modern"] {
             --font-title: 'Inter', sans-serif;
             --font-body: 'Inter', sans-serif;
-            --font-challenge: 'Inter', sans-serif;
         }
 
         /* SCHRIFT-CHARAKTER: KLASSISCHE ELEGANZ */
         [data-font="elegance"] {
             --font-title: 'Cormorant Garamond', serif;
             --font-body: 'Cormorant Garamond', serif;
-            --font-challenge: 'Cormorant Garamond', serif;
         }
 
         /* SCHRIFTGRÖSSE: WEITSICHT */
@@ -181,7 +178,7 @@
             align-items: center;
             position: relative;
             width: 100%;
-            margin-bottom: 0px;
+            margin-bottom: 12px;
         }
         .date {
             font-family: var(--font-title);
@@ -265,7 +262,7 @@
             z-index: 10;
         }
 
-        /* INHALTSBÜHNE - ABSTAND NACH OBEN JUSTIERT */
+        /* INHALTSBÜHNE */
         .content-stage {
             background: var(--bg-premium-white);
             border-radius: var(--radius-element);
@@ -274,7 +271,6 @@
             padding: 26px 22px 14px 22px; 
             display: flex;
             flex-direction: column;
-            margin-top: 14px; /* Fix 1: Schafft gesunden Platz unter dem Datum */
             margin-bottom: 14px; 
             text-align: center;
         }
@@ -306,11 +302,11 @@
             font-weight: 400;
         }
 
-        /* BEDIENZEILE INNERHALB DER BOX - VERTIKALE MITTE-ACHSE GARANTIERT */
+        /* PURE TEXTLINKS IN DER BOX (OHNE RAHMEN) */
         .box-action-row {
             display: flex;
             justify-content: center;
-            align-items: center; /* Fix 2: Richtet alle Elemente perfekt mittig aus */
+            align-items: center;
             gap: 24px; 
             margin-top: 8px;
             padding-top: 12px;
@@ -323,9 +319,7 @@
             align-items: center;
         }
         
-        /* ZWEI STIL-WELTEN (TEXTLINKS VS OUTLINE-BUTTONS) */
-        .app-wrapper.style-links .source-tag, 
-        .app-wrapper.style-links .btn-premium {
+        .source-tag, .btn-premium {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -346,38 +340,9 @@
             box-shadow: none !important;
         }
         
-        .app-wrapper.style-links .source-tag:hover, 
-        .app-wrapper.style-links .btn-premium:hover {
+        .source-tag:hover, .btn-premium:hover {
             color: #2c3e50 !important; 
             border-bottom: 1px dashed #2c3e50 !important;
-            opacity: 1;
-        }
-
-        /* Fix 3: Reaktivierung der Outline-Vorschau innerhalb der Zitat-Box */
-        .app-wrapper.style-buttons .source-tag, 
-        .app-wrapper.style-buttons .btn-premium {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--btn-outline-color) !important;
-            border-radius: 8px !important;
-            padding: 4px 12px !important;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
-            background-color: rgba(255, 255, 255, 0.4) !important;
-            color: var(--text-muted) !important;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            opacity: 0.9;
-            text-transform: none !important;
-            letter-spacing: 0 !important;
-        }
-        
-        .app-wrapper.style-buttons .source-tag:hover, 
-        .app-wrapper.style-buttons .btn-premium:hover {
-            color: #2c3e50 !important;
-            border-color: #2c3e50 !important;
-            background-color: rgba(255, 255, 255, 0.9) !important;
             opacity: 1;
         }
 
@@ -407,7 +372,7 @@
             opacity: 0.5;
         }
         
-        /* CHALLENGE-BEREICH - SCHRIFTSTIL-DYNAMIK FIX */
+        /* CHALLENGE-BEREICH */
         .challenge-box {
             background: var(--bg-challenge); 
             border-radius: var(--radius-element);
@@ -431,7 +396,7 @@
             margin-bottom: 6px; 
         }
         .challenge-instruction {
-            font-family: var(--font-challenge); /* Fix 4: Richtet sich nach den globalen Einstellungen */
+            font-family: var(--font-body); 
             font-size: 0.92rem;
             color: var(--text-muted);
             line-height: 1.5;
@@ -440,7 +405,7 @@
         }
         
         .challenge-actual-text {
-            font-family: var(--font-challenge); /* Fix 4: Folgt der ausgewählten Schrift-Klasse */
+            font-family: var(--font-body); 
             font-style: italic;
             font-size: var(--fs-challenge-text);
             line-height: 1.6;
@@ -448,11 +413,6 @@
             display: none;
             text-align: center;
         }
-        /* Wenn moderne Klarheit aktiv ist, wird das Kursive hier sauber ausgehebelt */
-        [data-font="modern"] .challenge-actual-text {
-            font-style: normal;
-        }
-
         .challenge-sub-btn {
             display: inline-block;
             background: transparent;
@@ -467,26 +427,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* GEMEINDE SECTION UNTEN */
-        .gemeinde-section {
-            display: none;
-            flex-direction: column;
-            gap: 12px; 
-            margin-top: 4px;
-            margin-bottom: 20px;
-        }
-
-        .gemeinde-card {
-            background: var(--bg-premium-white);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: var(--radius-element);
-            padding: 14px 20px; 
-            box-shadow: var(--main-shadow);
-            text-align: left;
-            scroll-margin-top: 20px;
-        }
-
-        /* EDLE BOX FÜR DEN DIGITALEN KLINGELBEUTEL (Ganz nach unten verschoben!) */
+        /* EDLE NEUE BOX FÜR DEN DIGITALEN KLINGELBEUTEL */
         .kollekten-premium-box {
             background: var(--bg-premium-white);
             border: 1px solid rgba(184, 134, 11, 0.2);
@@ -494,7 +435,7 @@
             padding: 20px;
             box-shadow: var(--main-shadow);
             text-align: center;
-            margin-bottom: 12px; /* Harmonischer Abstand in der unteren Liste */
+            margin-bottom: 16px;
             animation: blockSlideDown 0.3s ease-out;
         }
         .kollekten-title {
@@ -535,6 +476,25 @@
             box-shadow: 0 6px 16px rgba(41, 128, 185, 0.25);
         }
 
+        /* GEMEINDE SECTION UNTEN */
+        .gemeinde-section {
+            display: none;
+            flex-direction: column;
+            gap: 12px; 
+            margin-top: 4px;
+            margin-bottom: 20px;
+        }
+
+        .gemeinde-card {
+            background: var(--bg-premium-white);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius-element);
+            padding: 14px 20px; 
+            box-shadow: var(--main-shadow);
+            text-align: left;
+            scroll-margin-top: 20px;
+        }
+
         .collapsible-header {
             display: flex;
             justify-content: space-between;
@@ -556,6 +516,22 @@
             font-weight: 500;
             color: var(--text-challenge-title);
             margin-bottom: 0;
+        }
+
+        .news-badge-dot {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background-color: var(--color-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--color-blue);
+            animation: pulseBadge 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseBadge {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.6; }
         }
 
         .toggle-icon {
@@ -693,7 +669,7 @@
             border-bottom-color: #2c3e50;
         }
         
-        /* MEDITATIVE MODAL OVERLAYS */
+        /* MODAL OVERLAYS */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -737,8 +713,16 @@
             overflow-y: auto;
             padding-right: 4px;
         }
-        .modal-footer {
-            margin-top: 12px;
+        .modal-body h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-top: 16px;
+            margin-bottom: 6px;
+        }
+        .modal-body p {
+            margin-bottom: 12px;
         }
         .modal-close-btn {
             position: absolute;
@@ -784,7 +768,7 @@
 <div class="app-wrapper style-links" id="appWrapper">
     <div class="toast-notification" id="toast">📋 In Zwischenablage kopiert!</div>
     
-    <!-- 1. HEADER & TITEL BEREICH (Stern fixiert eingebaut!) -->
+    <!-- 1. HEADER & TITEL BEREICH -->
     <div class="header-container">
         <div class="header-icon-deco" id="headerDeco">✨</div>
         <div class="app-title" id="appTitle">Termin <span>mit der Gemeinde</span></div>
@@ -806,7 +790,7 @@
         <button class="nav-btn" id="nextDayBtn" onclick="navigateDay(1)">❯</button>
     </div>
 
-    <!-- 4. INHALTSBÜHNE MIT INTERNEN AKTIONEN -->
+    <!-- 4. INHALTSBÜHNE MIT MINIMALISTISCHEN TEXTLINKS -->
     <div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         <div class="box-action-row" id="boxActionRow">
@@ -834,7 +818,16 @@
         <span class="challenge-actual-text" id="challengeText"></span>
     </div>
 
-    <!-- 6. GEMEINDE INFORMATIONEN -->
+    <!-- 6. PREMIUM BOX FÜR DEN DIGITALEN KLINGELBEUTEL -->
+    <div class="kollekten-premium-box" id="kollektenBox" style="display: none;">
+        <div class="kollekten-title">Gemeinschaft unterstützen</div>
+        <div class="kollekten-text">Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte. Jede Gabe hilft, unsere Arbeit und Projekte lebendig zu halten.</div>
+        <a href="" target="_blank" rel="noopener" class="btn-kollekten-pay" id="kollektenLink">
+            🪙 Kollekte digital spendieren
+        </a>
+    </div>
+
+    <!-- 7. GEMEINDE INFORMATIONEN (TERMINE UND ANGEBOTE) -->
     <div class="gemeinde-section" id="gemeindeSection">
         <!-- Wöchentliche News -->
         <div class="gemeinde-card" id="newsCard" style="display: none;">
@@ -872,15 +865,6 @@
                 <h2 class="gemeinde-card-title" style="margin-bottom: 12px; border-top: 1px dashed var(--btn-outline-color); padding-top: 12px; font-weight: 500; text-transform: none; letter-spacing: 0px;">Regelmäßige Angebote</h2>
                 <ul class="termin-list" id="regelmaessigList"></ul>
             </div>
-        </div>
-
-        <!-- Fix 5: PREMIUM BOX FÜR DIE KOLLEKTE (Jetzt am absoluten Ende der Gemeinde-Liste!) -->
-        <div class="kollekten-premium-box" id="kollektenBox" style="display: none;">
-            <div class="kollekten-title">Gemeinschaft unterstützen</div>
-            <div class="kollekten-text">Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte. Jede Gabe hilft, unsere Arbeit und Projekte lebendig zu halten.</div>
-            <a href="" target="_blank" rel="noopener" class="btn-kollekten-pay" id="kollektenLink">
-                🪙 Kollekte digital spendieren
-            </a>
         </div>
     </div>
 
@@ -931,39 +915,6 @@
         </div>
     </div>
 
-    <div class="modal-overlay" id="impressumModal" onclick="closeModal('impressumModal')">
-        <div class="modal-card" onclick="event.stopPropagation()">
-            <button class="modal-close-btn" onclick="closeModal('impressumModal')">×</button>
-            <div class="modal-header">Impressum</div>
-            <div class="modal-body">
-                <h4>Dienstanbieter & Verantwortlich</h4>
-                <p>Andreas Gehrmann<br>Olgastr. 39<br>42699 Solingen<br>Deutschland</p>
-                <h4>Kontakt</h4>
-                <p>E-Mail: info@andreas-gehrmann.de</p>
-                <h4>Hoster</h4>
-                <p>Diese Anwendung wird auf Servern von Netlify gehostet.<br>Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="datenschutzModal" onclick="closeModal('datenschutzModal')">
-        <div class="modal-card" onclick="event.stopPropagation()">
-            <button class="modal-close-btn" onclick="closeModal('datenschutzModal')">×</button>
-            <div class="modal-header">Datenschutzerklärung</div>
-            <div class="modal-body">
-                <p>Diese meditative Web-App ist auf maximale Datensparsamkeit ausgelegt. Du kannst sie komplett ohne Angabe von persönlichen Daten nutzen.</p>
-                <h4>1. Lokale Speicherung (LocalStorage)</h4>
-                <p>Sämtliche Einstellungen, die du in der App vornimmst, werden ausschließlich lokal in deinem eigenen Browser auf deinem Gerät gespeichert.</p>
-                <h4>2. Server-Logfiles & Hosting</h4>
-                <p>Die App wird über den Plattform-Dienst Netlify bereitgestellt. Beim Aufruf der App erfasst Netlify technisch bedingt automatisierte Protokolldaten.</p>
-                <h4>3. Keine Analyse oder Tracking</h4>
-                <p>Wir verwenden keine Analyse-Tools, setzen keine Tracking-Cookies ein und binden keine Werbenetzwerke ein.</p>
-                <h4>4. Deine Rechte</h4>
-                <p>Da wir keine personenbezogenen Daten von dir auf Servern speichern, können wir dir gegenüber auch keine Daten ausgeben, korrigieren oder löschen.</p>
-            </div>
-        </div>
-    </div>
-
     <footer class="app-footer">
         <a href="#impressum" onclick="openModal('impressumModal')">Impressum</a>
         <a href="#datenschutz" onclick="openModal('datenschutzModal')">Datenschutz</a>
@@ -992,9 +943,8 @@
         const savedSize = localStorage.getItem('appSize') || "default";
         if (savedSize !== "default") document.documentElement.setAttribute('data-size', savedSize);
         
-        // Dynamische Initialisierung der Outline-Klasse statt statischer Verdrahtung
-        const savedBtnStyle = localStorage.getItem('appBtnStyle') || "links";
-        document.getElementById('appWrapper').className = `app-wrapper style-${savedBtnStyle}`;
+        // Zwingt die App-Box-Buttons intern auf pure Textlinks, überschreibt aber nicht die Einstellungen
+        document.getElementById('appWrapper').className = `app-wrapper style-links`;
 
         const urlParams = new URLSearchParams(window.location.search);
         const gemeindeParam = urlParams.get('gemeinde');
@@ -1064,7 +1014,7 @@
             const imgEl = document.getElementById('gemeindeImg');
             if (imgEl) imgEl.src = gemeindeConfig.kirchen_bild;
             imgBox.style.display = 'block';
-            // Fix: Der dekorative Stern bleibt jetzt dauerhaft sichtbar, anstatt auf display: none zu schalten!
+            if (document.getElementById('headerDeco')) document.getElementById('headerDeco').style.display = 'none';
         }
 
         const newsCard = document.getElementById('newsCard');
@@ -1102,6 +1052,7 @@
             rList.appendChild(li);
         });
 
+        // INTEGRATION: DYNAMISCHE PREMIUM-BOX FÜR KOLLEKTE
         const kollektenBox = document.getElementById('kollektenBox');
         const kollektenLink = document.getElementById('kollektenLink');
         if (gemeindeConfig && gemeindeConfig.kollekten_link && gemeindeConfig.kollekten_link.trim() !== "") {
@@ -1121,7 +1072,6 @@
         return tage > 31 ? new Date(jahr, 3, tage - 31) : new Date(jahr, 2, tage);
     }
 
-    // FEIERTAGSLOGIK FÜR BEWEGLICHE KIRCHLICHE FEIERTAGE
     function getFeiertagKey(date) {
         const jahr = date.getFullYear(), ostersonntag = getOstersonntag(jahr);
         const tageNachOstern = (anzahl) => {
@@ -1178,6 +1128,11 @@
         if (!allData) return;
         document.getElementById('currentDate').innerText = displayDate.toLocaleDateString('de-DE', options);
 
+        const today = new Date();
+        const isToday = displayDate.getDate() === today.getDate() && displayDate.getMonth() === today.getMonth();
+        if (document.getElementById('todayAnchor')) document.getElementById('todayAnchor').className = 'today-anchor active';
+        document.getElementById('nextDayBtn').disabled = false; // Gemeinde-Modus Zukunftssperre offen
+
         const month = String(displayDate.getMonth() + 1).padStart(2, '0');
         const day = String(displayDate.getDate()).padStart(2, '0');
         const feiertagKey = getFeiertagKey(displayDate);
@@ -1232,7 +1187,6 @@
         challengeRevealed = false;
     }
 
-    // REVEAL CHALLENGE FUNKTION MIT KORREKTEM DYNAMISCHEM SCHRIFTSTIL-FALLBACK
     function revealChallengeOnly() {
         document.getElementById('challengeInstruction').style.display = 'none';
         document.getElementById('challengeSubBtn').style.display = 'none';
@@ -1272,7 +1226,6 @@
 
     function openModal(id) { document.getElementById(id).style.display = 'flex'; }
     function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-    
     function toggleSettingsView() {
         const p = document.getElementById('settingsPanel');
         p.style.display = p.style.display === 'block' ? 'none' : 'block';
@@ -1280,16 +1233,12 @@
     function changeTheme() {
         const v = document.getElementById('themeSelect').value;
         localStorage.setItem('appTheme', v);
-        v === "default" ? document.documentElement.removeAttribute('data-theme') : document.documentElement.setAttribute('data-theme', v);
+        v === "default" ? document.documentElement.setAttribute('data-theme', v) : document.documentElement.setAttribute('data-theme', v);
     }
-    
-    // REAKTIVIERTER BEDIENELEMENT-SWITCHER (TEXT VS OUTLINE)
     function changeBtnStyle() {
         const v = document.getElementById('btnStyleSelect').value;
         localStorage.setItem('appBtnStyle', v);
-        document.getElementById('appWrapper').className = `app-wrapper style-${v}`;
     }
-    
     function changeFont() {
         const v = document.getElementById('fontSelect').value;
         localStorage.setItem('appFont', v);
