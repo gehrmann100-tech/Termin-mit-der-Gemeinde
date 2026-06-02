@@ -178,7 +178,7 @@
         }
         [data-font="modern"] .date {
             font-style: normal;
-            font-weight: 600;
+            font-weight: 400; 
             font-size: 1.05rem;
         }
         .nav-btn {
@@ -281,6 +281,16 @@
             text-align: left;
         }
 
+        /* STYLES FÜR KLAPPBARKEIT */
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
         .gemeinde-card-title {
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
@@ -288,13 +298,40 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-challenge-title);
-            margin-bottom: 10px;
+            margin-bottom: 0; /* Auf Null gesetzt wegen Flexbox-Header */
+        }
+
+        .toggle-icon {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: transform 0.3s ease;
+        }
+        
+        .collapsible-content {
+            display: none;
+            margin-top: 14px;
+            animation: blockSlideDown 0.25s ease-out;
+        }
+        
+        .gemeinde-card.is-open .collapsible-content {
+            display: block;
+        }
+        
+        .gemeinde-card.is-open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .news-text {
+            font-family: var(--font-body);
+            font-size: var(--fs-challenge-text);
+            line-height: 1.6;
+            color: var(--text-dark);
         }
 
         .termin-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
             padding: 0;
             margin: 0;
             list-style: none;
@@ -302,11 +339,12 @@
 
         .termin-item {
             display: flex;
-            gap: 12px;
+            flex-direction: column;
+            gap: 2px;
             font-family: var(--font-body);
             font-size: var(--fs-challenge-text);
             line-height: 1.4;
-            padding-bottom: 8px;
+            padding-bottom: 10px;
             border-bottom: 1px dashed var(--btn-outline-color);
         }
         .termin-item:last-child {
@@ -314,10 +352,18 @@
             padding-bottom: 0;
         }
 
-        .termin-zeit {
+        .termin-meta-row {
+            display: flex;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
             font-weight: 700;
+            text-transform: uppercase;
             color: #2980b9;
-            white-space: nowrap;
+        }
+
+        .termin-titel {
+            color: var(--text-dark);
         }
 
         /* INHALTSBÜHNE */
@@ -346,6 +392,7 @@
         }
         [data-font="modern"] .text-display {
             font-style: normal;
+            font-weight: 400; 
         }
         
         .text-display.translation-mode {
@@ -356,6 +403,7 @@
             color: #2c3e50 !important;
             text-align: center;
             margin-bottom: 0px;
+            font-weight: 400;
         }
         [data-font="modern"] .text-display.translation-mode {
             font-style: normal !important;
@@ -382,10 +430,6 @@
         [data-font="modern"] .source-tag {
             font-style: normal;
             font-weight: 500;
-        }
-        .source-tag:hover {
-            opacity: 1;
-            color: #2c3e50;
         }
 
         /* BEDIENZEILE & BUTTON-STILE */
@@ -416,7 +460,6 @@
             border-bottom: 1px dashed transparent; 
         }
         
-        /* LOOK 1: TEXTLINKS */
         .app-wrapper.style-links .btn-premium:hover {
             color: #2c3e50; 
             border-bottom: 1px dashed #2c3e50;
@@ -425,31 +468,25 @@
             border-bottom-color: #2c3e50;
         }
 
-        /* LOOK 2: OUTLINE-BUTTONS */
         .app-wrapper.style-buttons .action-footer-row {
             gap: 16px; 
         }
-        .app-wrapper.style-buttons .btn-premium {
+        .app-wrapper.style-buttons .btn-premium,
+        .app-wrapper.style-buttons .source-tag {
             border: 1px solid var(--btn-outline-color);
             border-radius: 12px;
             padding: 8px 20px;
             background-color: rgba(255, 255, 255, 0.3);
         }
-        .app-wrapper.style-buttons .btn-premium:hover {
-            color: #2c3e50;
-            border-color: #2c3e50;
-            background-color: rgba(255, 255, 255, 0.7);
-        }
         .app-wrapper.style-buttons .source-tag {
-            border: 1px solid var(--btn-outline-color);
+            padding: 4px 14px;
             border-radius: 10px;
-            padding: 4px 12px;
-            background-color: rgba(255, 255, 255, 0.2);
         }
+        .app-wrapper.style-buttons .btn-premium:hover,
         .app-wrapper.style-buttons .source-tag:hover {
             color: #2c3e50;
             border-color: #2c3e50;
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.7);
         }
 
         /* CODE-KNACKER BLOCK */
@@ -535,9 +572,7 @@
             display: block;
             padding: 0 10px;
         }
-        [data-font="modern"] .challenge-instruction {
-            font-style: normal;
-        }
+        
         .challenge-actual-text {
             font-family: var(--font-body); 
             font-style: italic;
@@ -545,7 +580,7 @@
             line-height: 1.6;
             color: #1a202c;
             display: none;
-            font-weight: 500;
+            font-weight: 400; 
             text-align: center;
             padding-bottom: 2px; 
             padding-left: 5px;
@@ -641,18 +676,6 @@
             align-items: center;
             margin-bottom: 14px;
         }
-        .settings-row:last-child {
-            margin-bottom: 0;
-        }
-        .settings-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.78rem; 
-            color: var(--text-dark);
-            font-weight: 500;
-            padding-right: 10px;
-            text-align: left;
-            flex: 1;
-        }
         .settings-select {
             font-family: 'Inter', sans-serif;
             font-size: 0.82rem;
@@ -663,24 +686,17 @@
             color: var(--text-dark);
             outline: none;
             cursor: pointer;
-            transition: border-color 0.2s ease;
             width: 170px; 
-            text-align: left;
-        }
-        .settings-select:focus {
-            border-color: #2980b9;
         }
 
-        /* DEZENTER KAFFEE LINK STYLE */
         .coffee-link-text {
             font-family: 'Inter', sans-serif;
             font-size: 0.78rem;
             color: var(--text-muted);
             text-decoration: none;
-            transition: color 0.2s ease, border-bottom-color 0.2s ease;
             border-bottom: 1px dashed transparent;
-            padding-bottom: 1px;
             display: inline-block;
+            transition: all 0.2s ease;
         }
         .coffee-link-text:hover {
             color: #2c3e50;
@@ -722,7 +738,6 @@
             font-weight: 700;
             color: #2c3e50;
             margin-bottom: 16px;
-            padding-right: 20px;
         }
         .modal-body {
             font-family: 'Inter', sans-serif;
@@ -752,11 +767,6 @@
             font-size: 1.6rem;
             color: #cbd5e0;
             cursor: pointer;
-            transition: color 0.2s ease;
-            line-height: 1;
-        }
-        .modal-close-btn:hover {
-            color: var(--text-muted);
         }
 
         /* MINIMALISTISCHER FOOTER */
@@ -774,23 +784,12 @@
             font-size: 0.72rem;
             color: var(--text-muted);
             text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: color 0.2s ease;
             cursor: pointer;
-        }
-        .app-footer a:hover {
-            color: #2c3e50;
         }
 
         @keyframes blockSlideDown {
-            from { 
-                opacity: 0; 
-                transform: translateY(-4px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes toastFadeIn {
             from { opacity: 0; transform: translate(-50%, 4px); }
@@ -824,20 +823,47 @@
         <img src="" id="gemeindeImg" alt="Kirchengemeinde">
     </div>
 
-    <!-- GEMEINDE-SEKTION FÜR TERMINE -->
+    <!-- GEMEINDE-SEKTION FÜR NEWS, ANSTEHENDE TERMINE UND FESTE INFOS -->
     <div class="gemeinde-section" id="gemeindeSection">
-        <div class="gemeinde-card" id="termineCard">
-            <h2 class="gemeinde-card-title">Termine heute</h2>
-            <ul class="termin-list" id="terminList"></ul>
+        <!-- Wöchentliche News -->
+        <div class="gemeinde-card" id="newsCard" style="display: none;">
+            <div class="collapsible-header" onclick="toggleCard('newsCard')">
+                <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuelles</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="news-text" id="newsText"></div>
+            </div>
+        </div>
+
+        <!-- SORGEFREIE TERMINE (AUSKLAPPBAR) -->
+        <div class="gemeinde-card" id="termineCard" style="display: none;">
+            <div class="collapsible-header" onclick="toggleCard('termineCard')">
+                <h2 class="gemeinde-card-title">Anstehende Termine & Gottesdienste</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <ul class="termin-list" id="terminList"></ul>
+            </div>
+        </div>
+
+        <!-- STATISCHE GEMEINDE-INFOS & REGELMÄSSIGE ANGEBOTE (AUSKLAPPBAR) -->
+        <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
+            <div class="collapsible-header" onclick="toggleCard('dauerInfosCard')">
+                <h2 class="gemeinde-card-title">Gemeindebüro & Kontakte</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <ul class="termin-list" id="kontaktList" style="margin-bottom: 14px;"></ul>
+                <h2 class="gemeinde-card-title" style="margin-bottom: 12px; border-top: 1px dashed var(--btn-outline-color); padding-top: 12px;">Regelmäßige Angebote</h2>
+                <ul class="termin-list" id="regelmaessigList"></ul>
+            </div>
         </div>
     </div>
 
     <!-- INHALTSBÜHNE -->
     <div class="content-stage">
-        <div class="text-display" id="mainText">
-            Lade heutigen Impuls...
-        </div>
-
+        <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         <div class="meta-source-row" id="sourceRow">
             <span class="source-tag" id="sourceTag" onclick="toggleCode()">Quelle laden...</span>
         </div>
@@ -909,6 +935,7 @@
         </div>
     </div>
 
+    <!-- RECHTSSICHERES IMPRESSUM MODAL -->
     <div class="modal-overlay" id="impressumModal" onclick="closeModal('impressumModal')">
         <div class="modal-card" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeModal('impressumModal')">×</button>
@@ -932,6 +959,7 @@
         </div>
     </div>
 
+    <!-- RECHTSSICHERE DATENSCHUTZ ERKLÄRUNG -->
     <div class="modal-overlay" id="datenschutzModal" onclick="closeModal('datenschutzModal')">
         <div class="modal-card" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeModal('datenschutzModal')">×</button>
@@ -973,50 +1001,33 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         const dateEl = document.getElementById('currentDate');
-        if (dateEl) {
-            dateEl.innerText = displayDate.toLocaleDateString('de-DE', options);
-        }
+        if (dateEl) dateEl.innerText = displayDate.toLocaleDateString('de-DE', options);
 
         const savedTheme = localStorage.getItem('appTheme') || "default";
-        const themeSelectEl = document.getElementById('themeSelect');
-        if (themeSelectEl) themeSelectEl.value = savedTheme;
         if (savedTheme !== "default") document.documentElement.setAttribute('data-theme', savedTheme);
-
         const savedFont = localStorage.getItem('appFont') || "default";
-        const fontSelectEl = document.getElementById('fontSelect');
-        if (fontSelectEl) fontSelectEl.value = savedFont;
         if (savedFont !== "default") document.documentElement.setAttribute('data-font', savedFont);
-
         const savedSize = localStorage.getItem('appSize') || "default";
-        const sizeSelectEl = document.getElementById('sizeSelect');
-        if (sizeSelectEl) sizeSelectEl.value = savedSize;
         if (savedSize !== "default") document.documentElement.setAttribute('data-size', savedSize);
-
         const savedBtnStyle = localStorage.getItem('appBtnStyle') || "links";
-        const btnStyleSelectEl = document.getElementById('btnStyleSelect');
-        if (btnStyleSelectEl) btnStyleSelectEl.value = savedBtnStyle;
-        const wrapperEl = document.getElementById('appWrapper');
-        if (wrapperEl) wrapperEl.className = `app-wrapper style-${savedBtnStyle}`;
+        document.getElementById('appWrapper').className = `app-wrapper style-${savedBtnStyle}`;
 
-        // URL-PARAMETER AUSLESEN (?gemeinde=...)
         const urlParams = new URLSearchParams(window.location.search);
         const gemeindeParam = urlParams.get('gemeinde');
 
         let jsonPfad = 'data/sprueche.json';
-        if (gemeindeParam) {
-            jsonPfad = `data/${gemeindeParam.toLowerCase()}.json`;
-        }
+        if (gemeindeParam) jsonPfad = `data/${gemeindeParam.toLowerCase()}.json`;
 
         fetch(jsonPfad)
             .then(response => response.json())
             .then(data => {
+                allData = data;
                 if (data.gemeinde_konfiguration) {
                     gemeindeConfig = data.gemeinde_konfiguration;
                     applyGemeindeHeader();
+                    renderDauerInfos();
                 }
-                allData = data;
 
-                // AUTOMATISCHES FALLBACK-SYSTEM FÜR DEINE ORIGINALEN ZITATE
                 if (gemeindeParam) {
                     fetch('data/sprueche.json')
                         .then(res => res.json())
@@ -1037,403 +1048,257 @@
                 } else {
                     updatePage();
                 }
-            })
-            .catch(error => {
-                console.error('Fehler beim Laden:', error);
-                const textDisplay = document.getElementById('mainText');
-                if (textDisplay) textDisplay.innerText = "Fehler beim Laden der Tagesdaten.";
             });
     });
 
+    // NEUE TOGGLE-FUNKTION FÜR DIE BOXEN
+    function toggleCard(cardId) {
+        const card = document.getElementById(cardId);
+        if (card) {
+            card.classList.toggle('is-open');
+        }
+    }
+
     function applyGemeindeHeader() {
         if (!gemeindeConfig) return;
-        
-        if (gemeindeConfig.app_titel) {
-            document.getElementById('appTitle').innerHTML = gemeindeConfig.app_titel;
-        }
-        if (gemeindeConfig.gemeinde_name) {
-            document.getElementById('appSubtitle').innerText = gemeindeConfig.gemeinde_name;
-        }
+        if (gemeindeConfig.app_titel) document.getElementById('appTitle').innerHTML = gemeindeConfig.app_titel;
+        if (gemeindeConfig.gemeinde_name) document.getElementById('appSubtitle').innerText = gemeindeConfig.gemeinde_name;
         
         if (gemeindeConfig.kirchen_bild) {
             const imgBox = document.getElementById('gemeindeImageBox');
             const imgEl = document.getElementById('gemeindeImg');
-            imgEl.src = gemeindeConfig.kirchen_bild;
+            if (imgEl) imgEl.src = gemeindeConfig.kirchen_bild;
             imgBox.style.display = 'block';
             if (document.getElementById('headerDeco')) document.getElementById('headerDeco').style.display = 'none';
         }
+
+        const newsCard = document.getElementById('newsCard');
+        if (gemeindeConfig.wochen_news && gemeindeConfig.wochen_news.trim() !== "") {
+            newsCard.style.display = 'block';
+            document.getElementById('gemeindeSection').style.display = 'flex';
+            document.getElementById('newsText').innerHTML = gemeindeConfig.wochen_news;
+            if (gemeindeConfig.gemeinde_name) document.getElementById('newsTitle').innerText = `Aktuelles aus ${gemeindeConfig.gemeinde_name}`;
+        } else {
+            if (newsCard) newsCard.style.display = 'none';
+        }
+    }
+
+    function renderDauerInfos() {
+        if (!allData || !allData.dauer_infos) return;
+        const infos = allData.dauer_infos;
+        document.getElementById('gemeindeSection').style.display = 'flex';
+        document.getElementById('dauerInfosCard').style.display = 'block';
+
+        const kList = document.getElementById('kontaktList');
+        kList.innerHTML = '';
+        infos.ansprechpartner.forEach(p => {
+            const li = document.createElement('li');
+            li.className = 'termin-item';
+            li.innerHTML = `<div class="termin-meta-row"><span>${p.rolle}</span></div><div class="termin-titel"><strong>${p.name}:</strong> ${p.kontakt}</div>`;
+            kList.appendChild(li);
+        });
+
+        const rList = document.getElementById('regelmaessigList');
+        rList.innerHTML = '';
+        infos.regelmaessig.forEach(r => {
+            const li = document.createElement('li');
+            li.className = 'termin-item';
+            li.innerHTML = `<div class="termin-titel"><strong>${r.titel}</strong></div><div style="font-size: 0.85rem; color: var(--text-muted);">${r.wann}</div>`;
+            rList.appendChild(li);
+        });
     }
 
     function getOstersonntag(jahr) {
-        const a = jahr % 19;
-        const b = jahr % 4;
-        const c = jahr % 7;
-        const k = Math.floor(jahr / 100);
-        const p = Math.floor((13 + 8 * k) / 25);
-        const q = Math.floor(k / 4);
-        const m = (15 - p + k - q) % 30;
-        const n = (4 + k - q) % 7;
-        const d = (19 * a + m) % 30;
-        const e = (2 * b + 4 * c + 6 * d + n) % 7;
+        const a = jahr % 19, b = jahr % 4, c = jahr % 7, k = Math.floor(jahr / 100);
+        const p = Math.floor((13 + 8 * k) / 25), q = Math.floor(k / 4);
+        const m = (15 - p + k - q) % 30, n = (4 + k - q) % 7;
+        const d = (19 * a + m) % 30, e = (2 * b + 4 * c + 6 * d + n) % 7;
         const tage = 22 + d + e;
-
-        if (tage > 31) {
-            return new Date(jahr, 3, tage - 31);
-        } else {
-            return new Date(jahr, 2, tage);
-        }
+        return tage > 31 ? new Date(jahr, 3, tage - 31) : new Date(jahr, 2, tage);
     }
 
     function getFeiertagKey(date) {
-        const jahr = date.getFullYear();
-        const ostersonntag = getOstersonntag(jahr);
-
-        function tageNachOstern(anzahlTage) {
-            const zielDatum = new Date(ostersonntag);
-            zielDatum.setDate(ostersonntag.getDate() + anzahlTage);
-            return date.getDate() === zielDatum.getDate() &&
-                   date.getMonth() === zielDatum.getMonth() &&
-                   date.getFullYear() === zielDatum.getFullYear();
-        }
-
-        if (tageNachOstern(-2))  return "FEIERTAG-KARFREITAG";
-        if (tageNachOstern(0))   return "FEIERTAG-OSTERSONNTAG";
-        if (tageNachOstern(1))   return "FEIERTAG-OSTERMONTAG";
-        if (tageNachOstern(39))  return "FEIERTAG-CHRISTI-HIMMELFAHRT";
-        if (tageNachOstern(49))  return "FEIERTAG-PFINGSTSONNTAG";
-        if (tageNachOstern(50))  return "FEIERTAG-PFINGSTMONTAG";
-        if (tageNachOstern(60))  return "FEIERTAG-FRONLEICHNAM";
-
-        const monat = date.getMonth() + 1;
-        const tag = date.getDate();
-        if (monat === 11 && tag === 1) return "FEIERTAG-ALLERHEILIGEN";
-
+        const jahr = date.getFullYear(), ostersonntag = getOstersonntag(jahr);
+        const tageNachOstern = (anzahl) => {
+            const d = new Date(ostersonntag); d.setDate(ostersonntag.getDate() + anzahl);
+            return date.getDate() === d.getDate() && date.getMonth() === d.getMonth();
+        };
+        if (tageNachOstern(-2)) return "FEIERTAG-KARFREITAG";
+        if (tageNachOstern(0))  return "FEIERTAG-OSTERSONNTAG";
+        if (tageNachOstern(1))  return "FEIERTAG-OSTERMONTAG";
+        if (tageNachOstern(39)) return "FEIERTAG-CHRISTI-HIMMELFAHRT";
+        if (tageNachOstern(49)) return "FEIERTAG-PFINGSTSONNTAG";
+        if (tageNachOstern(50)) return "FEIERTAG-PFINGSTMONTAG";
+        if (tageNachOstern(60)) return "FEIERTAG-FRONLEICHNAM";
+        if (date.getMonth() === 10 && date.getDate() === 1) return "FEIERTAG-ALLERHEILIGEN";
         return null;
+    }
+
+    function renderKommendeTermine() {
+        if (!allData || !allData.kommende_termine) return;
+        
+        const termList = document.getElementById('terminList');
+        const termCard = document.getElementById('termineCard');
+        termList.innerHTML = '';
+
+        const vergleichsDatum = new Date(displayDate);
+        vergleichsDatum.setHours(0, 0, 0, 0);
+
+        const zukuenftige = allData.kommende_termine.filter(t => {
+            const tDate = new Date(t.datum);
+            tDate.setHours(0, 0, 0, 0);
+            return tDate >= vergleichsDatum;
+        });
+
+        const auswahl = zukuenftige.slice(0, 4);
+
+        if (auswahl.length > 0) {
+            termCard.style.display = 'block';
+            document.getElementById('gemeindeSection').style.display = 'flex';
+            auswahl.forEach(t => {
+                const dObj = new Date(t.datum);
+                const dStr = dObj.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit' });
+                
+                const li = document.createElement('li');
+                li.className = 'termin-item';
+                li.innerHTML = `<div class="termin-meta-row"><span>${dStr}</span> &bull; <span>${t.zeit}</span></div><div class="termin-titel">${t.titel}</div>`;
+                termList.appendChild(li);
+            });
+        } else {
+            termCard.style.display = 'none';
+        }
     }
 
     function updatePage() {
         if (!allData) return;
-
-        const dateEl = document.getElementById('currentDate');
-        if (dateEl) {
-            dateEl.innerText = displayDate.toLocaleDateString('de-DE', options);
-        }
+        document.getElementById('currentDate').innerText = displayDate.toLocaleDateString('de-DE', options);
 
         const today = new Date();
-        const isToday = displayDate.getDate() === today.getDate() && 
-                        displayDate.getMonth() === today.getMonth() && 
-                        displayDate.getFullYear() === today.getFullYear();
-        
-        const anchor = document.getElementById('todayAnchor');
-        if (anchor) {
-            if (isToday) {
-                anchor.classList.remove('active');
-            } else {
-                anchor.classList.add('active'); 
-            }
-        }
-
-        const nextBtn = document.getElementById('nextDayBtn');
-        if (nextBtn) {
-            // IM GEMEINDE-MODUS DARF DER BUTTON NICHT DEAKTIVIERT WERDEN
-            nextBtn.disabled = !gemeindeConfig && isToday;
-        }
+        const isToday = displayDate.getDate() === today.getDate() && displayDate.getMonth() === today.getMonth();
+        if (document.getElementById('todayAnchor')) document.getElementById('todayAnchor').className = isToday ? 'today-anchor' : 'today-anchor active';
+        document.getElementById('nextDayBtn').disabled = !gemeindeConfig && isToday;
 
         const month = String(displayDate.getMonth() + 1).padStart(2, '0');
         const day = String(displayDate.getDate()).padStart(2, '0');
-        const dateKey = `${month}-${day}`;
-
         const feiertagKey = getFeiertagKey(displayDate);
-        currentData = feiertagKey ? allData[feiertagKey] : allData[dateKey];
+        currentData = feiertagKey ? allData[feiertagKey] : allData[`${month}-${day}`];
         
-        isOriginal = true;
-        challengeRevealed = false;
-        
-        if (document.getElementById('codeBox')) document.getElementById('codeBox').style.display = 'none';
-        if (document.getElementById('actionBtn')) document.getElementById('actionBtn').innerText = "Ins Jetzt übertragen";
-        
-        const textDisplay = document.getElementById('mainText');
-        if (textDisplay) textDisplay.classList.remove('translation-mode');
-        
-        if (document.getElementById('sourceRow')) {
-            document.getElementById('sourceRow').style.opacity = '1';
-            document.getElementById('sourceRow').style.pointerEvents = 'auto';
-            document.getElementById('sourceRow').style.display = 'flex'; 
-        }
+        isOriginal = true; challengeRevealed = false;
+        document.getElementById('codeBox').style.display = 'none';
+        document.getElementById('actionBtn').innerText = "Ins Jetzt übertragen";
+        document.getElementById('mainText').classList.remove('translation-mode');
+        document.getElementById('sourceRow').style.display = 'flex';
 
-        if (document.getElementById('challengeInstruction')) document.getElementById('challengeInstruction').style.display = 'block';
-        if (document.getElementById('challengeSubBtn')) document.getElementById('challengeSubBtn').style.display = 'inline-block';
-        if (document.getElementById('challengeText')) document.getElementById('challengeText').style.display = 'none';
-        if (document.getElementById('challengeCloseBtn')) document.getElementById('challengeCloseBtn').style.display = 'none';
+        resetChallengeBox();
 
         if (currentData) {
-            if (document.getElementById('shareBtn')) document.getElementById('shareBtn').style.display = 'inline-flex';
-            if (document.getElementById('actionBtn')) document.getElementById('actionBtn').style.display = 'inline-block';
-            if (document.getElementById('challengeBox')) document.getElementById('challengeBox').style.display = 'block'; 
-            if (document.getElementById('challengeDivider')) document.getElementById('challengeDivider').style.display = 'block'; 
-            if (document.getElementById('sourceTag')) document.getElementById('sourceTag').innerText = `${currentData.original} (Info)`;
-            
-            if (textDisplay) textDisplay.innerHTML = currentData.volltext;
-            if (document.getElementById('codeBoxContent')) document.getElementById('codeBoxContent').innerHTML = currentData.code_knacker;
-            if (document.getElementById('challengeText')) document.getElementById('challengeText').innerText = currentData.challenge;
-
-            // KIRCHENTERMINE RENDERN
-            const termList = document.getElementById('terminList');
-            const termCard = document.getElementById('termineCard');
-            const gemSection = document.getElementById('gemeindeSection');
-            
-            if (termList) termList.innerHTML = '';
-
-            if (currentData.termine && currentData.termine.length > 0) {
-                if (termCard) termCard.style.display = 'block';
-                if (gemSection) gemSection.style.display = 'flex';
-                currentData.termine.forEach(term => {
-                    const li = document.createElement('li');
-                    li.className = 'termin-item';
-                    li.innerHTML = `<span class="termin-zeit">${term.zeit}</span><span class="termin-titel">${term.titel}</span>`;
-                    termList.appendChild(li);
-                });
-            } else {
-                if (termCard) termCard.style.display = 'none';
-                if (gemSection) gemSection.style.display = 'none';
-            }
-        } else {
-            if (textDisplay) textDisplay.innerText = "Für diesen Tag ist noch kein Impuls eingetragen. Genieße die Zeit!";
-            if (document.getElementById('actionBtn')) document.getElementById('actionBtn').style.display = 'none';
-            if (document.getElementById('sourceRow')) document.getElementById('sourceRow').style.display = 'none';
-            if (document.getElementById('shareBtn')) document.getElementById('shareBtn').style.display = 'none';
-            if (document.getElementById('challengeBox')) document.getElementById('challengeBox').style.display = 'none';
-            if (document.getElementById('challengeDivider')) document.getElementById('challengeDivider').style.display = 'none'; 
-            if (document.getElementById('termineCard')) document.getElementById('termineCard').style.display = 'none';
+            document.getElementById('shareBtn').style.display = 'inline-flex';
+            document.getElementById('actionBtn').style.display = 'inline-block';
+            document.getElementById('challengeBox').style.display = 'block'; 
+            document.getElementById('challengeDivider').style.display = 'block'; 
+            document.getElementById('sourceTag').innerText = `${currentData.original} (Info)`;
+            document.getElementById('mainText').innerHTML = currentData.volltext;
+            document.getElementById('codeBoxContent').innerHTML = currentData.code_knacker;
+            document.getElementById('challengeText').innerText = currentData.challenge;
         }
+
+        if (gemeindeConfig) renderKommendeTermine();
     }
 
     function animateTextChange(callback) {
-        const textDisplay = document.getElementById('mainText');
-        if (!textDisplay) {
-            callback();
-            return;
-        }
-        textDisplay.style.opacity = 0; 
-        setTimeout(() => {
-            callback();
-            textDisplay.style.opacity = 1; 
-        }, 150);
+        const t = document.getElementById('mainText');
+        t.style.opacity = 0; setTimeout(() => { callback(); t.style.opacity = 1; }, 150);
     }
 
-    function navigateDay(direction) {
+    function navigateDay(dir) {
         if (!allData) return;
-        
-        if (direction > 0) {
-            const today = new Date();
-            const tempDate = new Date(displayDate);
-            tempDate.setDate(tempDate.getDate() + direction);
-            
-            // IM GEMEINDE-MODUS DARF MAN UNBEGRENZT VORSCHALTEN
-            if (!gemeindeConfig) {
-                if (tempDate > today && tempDate.getDate() !== today.getDate()) return;
-            }
+        if (dir > 0 && !gemeindeConfig) {
+            const t = new Date(); const next = new Date(displayDate); next.setDate(next.getDate() + dir);
+            if (next > t && next.getDate() !== t.getDate()) return;
         }
-
-        animateTextChange(() => {
-            displayDate.setDate(displayDate.getDate() + direction);
-            updatePage();
-        });
+        animateTextChange(() => { displayDate.setDate(displayDate.getDate() + dir); updatePage(); });
     }
 
     function jumpToToday() {
-        if (!allData) return;
-        const today = new Date();
-        if (displayDate.getDate() !== today.getDate() || 
-            displayDate.getMonth() !== today.getMonth() || 
-            displayDate.getFullYear() !== today.getFullYear()) {
-            
-            animateTextChange(() => {
-                displayDate = new Date();
-                updatePage();
-            });
-        }
+        animateTextChange(() => { displayDate = new Date(); updatePage(); });
     }
 
     function toggleCode() {
-        const box = document.getElementById('codeBox');
-        if (box && currentData && currentData.code_knacker && currentData.code_knacker.trim() !== "") {
-            box.style.display = box.style.display === 'block' ? 'none' : 'block';
-        }
+        const b = document.getElementById('codeBox');
+        if (b && currentData?.code_knacker) b.style.display = b.style.display === 'block' ? 'none' : 'block';
     }
 
     function resetChallengeBox() {
-        if (document.getElementById('challengeInstruction')) document.getElementById('challengeInstruction').style.display = 'block';
-        if (document.getElementById('challengeSubBtn')) document.getElementById('challengeSubBtn').style.display = 'inline-block';
-        if (document.getElementById('challengeText')) document.getElementById('challengeText').style.display = 'none';
-        if (document.getElementById('challengeCloseBtn')) document.getElementById('challengeCloseBtn').style.display = 'none'; 
+        document.getElementById('challengeInstruction').style.display = 'block';
+        document.getElementById('challengeSubBtn').style.display = 'inline-block';
+        document.getElementById('challengeText').style.display = 'none';
+        document.getElementById('challengeCloseBtn').style.display = 'none';
         challengeRevealed = false;
     }
 
     function revealChallengeOnly() {
-        if (document.getElementById('challengeInstruction')) document.getElementById('challengeInstruction').style.display = 'none';
-        if (document.getElementById('challengeSubBtn')) document.getElementById('challengeSubBtn').style.display = 'none';
-        if (document.getElementById('challengeText')) document.getElementById('challengeText').style.display = 'block';
-        if (document.getElementById('challengeCloseBtn')) document.getElementById('challengeCloseBtn').style.display = 'block'; 
+        document.getElementById('challengeInstruction').style.display = 'none';
+        document.getElementById('challengeSubBtn').style.display = 'none';
+        document.getElementById('challengeText').style.display = 'block';
+        document.getElementById('challengeCloseBtn').style.display = 'block';
         challengeRevealed = true;
     }
 
     function translateText() {
         if (!currentData) return;
-        const btn = document.getElementById('actionBtn');
-        const cBox = document.getElementById('challengeBox');
-        const cDiv = document.getElementById('challengeDivider');
-        const textDisplay = document.getElementById('mainText');
-        const sourceRow = document.getElementById('sourceRow');
+        const btn = document.getElementById('actionBtn'), cBox = document.getElementById('challengeBox');
+        const cDiv = document.getElementById('challengeDivider'), txt = document.getElementById('mainText');
         
         animateTextChange(() => {
             if (isOriginal) {
-                if (textDisplay) {
-                    textDisplay.innerText = currentData.uebersetzung;
-                    textDisplay.classList.add('translation-mode'); 
-                }
-                if (cBox) cBox.style.display = 'none';
-                if (cDiv) cDiv.style.display = 'none';
-                if (document.getElementById('codeBox')) document.getElementById('codeBox').style.display = 'none';
-                
-                if (sourceRow) {
-                    sourceRow.style.opacity = '0';
-                    sourceRow.style.pointerEvents = 'none';
-                    sourceRow.style.display = 'none'; 
-                }
-                if (btn) btn.innerText = "Original anzeigen";
-                isOriginal = false;
+                txt.innerText = currentData.uebersetzung; txt.classList.add('translation-mode'); 
+                cBox.style.display = 'none'; cDiv.style.display = 'none';
+                document.getElementById('sourceRow').style.display = 'none';
+                btn.innerText = "Original anzeigen"; isOriginal = false;
             } else {
-                if (textDisplay) {
-                    textDisplay.innerHTML = currentData.volltext;
-                    textDisplay.classList.remove('translation-mode'); 
-                }
-                if (cBox) cBox.style.display = 'block';
-                if (cDiv) cDiv.style.display = 'block';
-                if (sourceRow) {
-                    sourceRow.style.display = 'flex';
-                    setTimeout(() => {
-                        sourceRow.style.opacity = '1';
-                        sourceRow.style.pointerEvents = 'auto';
-                    }, 10);
-                }
-                
-                if (challengeRevealed) {
-                    if (document.getElementById('challengeInstruction')) document.getElementById('challengeInstruction').style.display = 'none';
-                    if (document.getElementById('challengeSubBtn')) document.getElementById('challengeSubBtn').style.display = 'none';
-                    if (document.getElementById('challengeText')) document.getElementById('challengeText').style.display = 'block';
-                    if (document.getElementById('challengeCloseBtn')) document.getElementById('challengeCloseBtn').style.display = 'block'; 
-                } else {
-                    if (document.getElementById('challengeInstruction')) document.getElementById('challengeInstruction').style.display = 'block';
-                    if (document.getElementById('challengeSubBtn')) document.getElementById('challengeSubBtn').style.display = 'inline-block';
-                    if (document.getElementById('challengeText')) document.getElementById('challengeText').style.display = 'none';
-                    if (document.getElementById('challengeCloseBtn')) document.getElementById('challengeCloseBtn').style.display = 'none'; 
-                }
-                
-                if (btn) btn.innerText = "Ins Jetzt übertragen";
-                isOriginal = true;
+                txt.innerHTML = currentData.volltext; txt.classList.remove('translation-mode'); 
+                cBox.style.display = 'block'; cDiv.style.display = 'block';
+                document.getElementById('sourceRow').style.display = 'flex';
+                btn.innerText = "Ins Jetzt übertragen"; isOriginal = true;
             }
         });
     }
 
     function shareContent() {
         if (!currentData) return;
-        const activeDateStr = document.getElementById('currentDate') ? document.getElementById('currentDate').innerText : '';
         const cleanVolltext = currentData.volltext.replace(/^[„"']|[“"']$/g, '');
-        
-        const textToCopy = `*Termin mit dem Leben* 🌟\n_${activeDateStr}_\n\n📌 *Quellen-Info:* ${currentData.original}\n\n📜 *Das Original:*\n„${cleanVolltext}“\n\n──────────────────\n\n💡 *Ins Jetzt übertragen:*\n${currentData.uebersetzung}\n\n🎯 *Deine Tages-Challenge:*\n${currentData.challenge}\n\n📱 *Jetzt selbst ausprobieren:*\nhttps://gemeinde.netlify.app/`;
-        
+        const textToCopy = `*Termin mit dem Leben* 🌟\n\n📜 *Das Original:*\n„${cleanVolltext}“\n\n💡 *Ins Jetzt übertragen:*\n${currentData.uebersetzung}\n\n🎯 *Deine Tages-Challenge:*\n${currentData.challenge}`;
         navigator.clipboard.writeText(textToCopy).then(() => {
-            const toast = document.getElementById('toast');
-            if (toast) {
-                toast.style.display = 'block';
-                setTimeout(() => {
-                    toast.style.display = 'none';
-                }, 2000);
-            }
-        }).catch(err => {
-            console.error('Fehler beim Kopieren: ', err);
+            const t = document.getElementById('toast'); t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2000);
         });
     }
 
-    function openModal(id) {
-        if (document.getElementById('settingsPanel')) document.getElementById('settingsPanel').style.display = 'none';
-        
-        const modal = document.getElementById(id);
-        if (modal) modal.style.display = 'flex';
-    }
-
-    function closeModal(id) {
-        const modal = document.getElementById(id);
-        if (modal) modal.style.display = 'none';
-    }
-
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
     function toggleSettingsView() {
-        const panel = document.getElementById('settingsPanel');
-        if (panel) {
-            const isVisible = panel.style.display === 'block';
-            panel.style.display = isVisible ? 'none' : 'block';
-            if (!isVisible) {
-                panel.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+        const p = document.getElementById('settingsPanel');
+        p.style.display = p.style.display === 'block' ? 'none' : 'block';
     }
-
     function changeTheme() {
-        const selectEl = document.getElementById('themeSelect');
-        if (selectEl) {
-            const selectedTheme = selectEl.value;
-            localStorage.setItem('appTheme', selectedTheme);
-            
-            if (selectedTheme === "default") {
-                document.documentElement.removeAttribute('data-theme');
-            } else {
-                document.documentElement.setAttribute('data-theme', selectedTheme);
-            }
-        }
+        const v = document.getElementById('themeSelect').value;
+        localStorage.setItem('appTheme', v);
+        v === "default" ? document.documentElement.removeAttribute('data-theme') : document.documentElement.setAttribute('data-theme', v);
     }
-
     function changeBtnStyle() {
-        const selectEl = document.getElementById('btnStyleSelect');
-        if (selectEl) {
-            const selectedStyle = selectEl.value;
-            localStorage.setItem('appBtnStyle', selectedStyle);
-            
-            const wrapperEl = document.getElementById('appWrapper');
-            if (wrapperEl) {
-                wrapperEl.className = `app-wrapper style-${selectedStyle}`;
-            }
-        }
+        const v = document.getElementById('btnStyleSelect').value;
+        localStorage.setItem('appBtnStyle', v);
+        document.getElementById('appWrapper').className = `app-wrapper style-${v}`;
     }
-
     function changeFont() {
-        const selectEl = document.getElementById('fontSelect');
-        if (selectEl) {
-            const selectedFont = selectEl.value;
-            localStorage.setItem('appFont', selectedFont);
-            
-            if (selectedFont === "default") {
-                document.documentElement.removeAttribute('data-font');
-            } else {
-                document.documentElement.setAttribute('data-font', selectedFont);
-            }
-        }
+        const v = document.getElementById('fontSelect').value;
+        localStorage.setItem('appFont', v);
+        v === "default" ? document.documentElement.removeAttribute('data-font') : document.documentElement.setAttribute('data-font', v);
     }
-
     function changeSize() {
-        const selectEl = document.getElementById('sizeSelect');
-        if (selectEl) {
-            const selectedSize = selectEl.value;
-            localStorage.setItem('appSize', selectedSize);
-            
-            if (selectedSize === "default") {
-                document.documentElement.removeAttribute('data-size');
-            } else {
-                document.documentElement.setAttribute('data-size', selectedSize);
-            }
-        }
+        const v = document.getElementById('sizeSelect').value;
+        localStorage.setItem('appSize', v);
+        v === "default" ? document.documentElement.removeAttribute('data-size') : document.documentElement.setAttribute('data-size', v);
     }
 </script>
-
 </body>
 </html>
