@@ -675,7 +675,7 @@
         }
         .settings-row {
             display: flex;
-            justify-space-between: space-between;
+            justify-content: space-between;
             align-items: center;
             margin-bottom: 14px;
         }
@@ -821,7 +821,12 @@
     
     <div class="app-subtitle" id="appSubtitle">Ein Gedanke für heute</div>
 
-    <!-- INHALTSBÜHNE (Jetzt prominent ganz oben platziert!) -->
+    <!-- OPTIONALES KIRCHENBILD (Bleibt stolz ganz oben als atmosphärischer Einstieg) -->
+    <div class="gemeinde-image-box" id="gemeindeImageBox">
+        <img src="" id="gemeindeImg" alt="Kirchengemeinde">
+    </div>
+
+    <!-- INHALTSBÜHNE (Folgt jetzt direkt nach dem Bild: Fokus perfekt gerichtet) -->
     <div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         <div class="meta-source-row" id="sourceRow">
@@ -850,12 +855,7 @@
         <span class="challenge-actual-text" id="challengeText"></span>
     </div>
 
-    <!-- OPTIONALES KIRCHENBILD (Sanft nach unten verlagert) -->
-    <div class="gemeinde-image-box" id="gemeindeImageBox">
-        <img src="" id="gemeindeImg" alt="Kirchengemeinde">
-    </div>
-
-    <!-- GEMEINDE-SEKTION (Als stilvolles, sekundäres Modul im unteren Bereich) -->
+    <!-- GEMEINDE-SEKTION (Als stilvolles, sekundäres Modul unter der Kern-App platziert) -->
     <div class="gemeinde-section" id="gemeindeSection">
         <!-- Wöchentliche News -->
         <div class="gemeinde-card" id="newsCard" style="display: none;">
@@ -982,7 +982,7 @@
                 <p>Wir verwenden keine Analyse-Tools (wie Google Analytics), setzen keine Tracking-Cookies ein und binden keine Werbenetzwerke ein. Dein Besuch bleibt privat.</p>
                 
                 <h4>4. Deine Rechte</h4>
-                <p>Da wir keine personenbezogenen Daten von dir auf Servern speichern, können wir dir gegenüber auch keine Daten ausgeben, korrigieren oder löschen. Wenn du die lokalen Einstellungen entfernen möchtest, kannst du dies jederzeit tun, indem du die App-Daten oder den Cache in den Einstellungen deines Webbrowsers löschst.</p>
+                <p>Da wir keine personenbezogenen Daten von dir auf Servern speichern, können wir dir gegenüber auch keine Daten ausgeben, korrigieren oder löschen. Wenn du die lokalen Einstellungen entfernen möchtest, kannst du dies jederzeit tun, indem du die App-Daten oder den Cache in den Einstellungen dein Webbrowsers löschst.</p>
             </div>
         </div>
     </div>
