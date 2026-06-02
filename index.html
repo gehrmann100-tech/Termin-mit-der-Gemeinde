@@ -401,10 +401,6 @@
             font-style: normal;
             font-weight: 500;
         }
-        .source-tag:hover {
-            opacity: 1;
-            color: #2c3e50;
-        }
 
         /* BEDIENZEILE & BUTTON-STILE */
         .action-footer-row {
@@ -434,6 +430,7 @@
             border-bottom: 1px dashed transparent; 
         }
         
+        /* LOOK 1: TEXTLINKS (STANDARD) */
         .app-wrapper.style-links .btn-premium:hover {
             color: #2c3e50; 
             border-bottom: 1px dashed #2c3e50;
@@ -442,16 +439,23 @@
             border-bottom-color: #2c3e50;
         }
 
+        /* LOOK 2: OUTLINE-BUTTONS (WIRKT JETZT AUF ALLE RELEVANTEN BUTTONS & LINKS) */
         .app-wrapper.style-buttons .action-footer-row {
             gap: 16px; 
         }
-        .app-wrapper.style-buttons .btn-premium {
+        .app-wrapper.style-buttons .btn-premium,
+        .app-wrapper.style-buttons .source-tag {
             border: 1px solid var(--btn-outline-color);
             border-radius: 12px;
             padding: 8px 20px;
             background-color: rgba(255, 255, 255, 0.3);
         }
-        .app-wrapper.style-buttons .btn-premium:hover {
+        .app-wrapper.style-buttons .source-tag {
+            padding: 4px 14px;
+            border-radius: 10px;
+        }
+        .app-wrapper.style-buttons .btn-premium:hover,
+        .app-wrapper.style-buttons .source-tag:hover {
             color: #2c3e50;
             border-color: #2c3e50;
             background-color: rgba(255, 255, 255, 0.7);
@@ -657,6 +661,20 @@
             width: 170px; 
         }
 
+        .coffee-link-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px dashed transparent;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+        .coffee-link-text:hover {
+            color: #2c3e50;
+            border-bottom-color: #2c3e50;
+        }
+        
         /* MEDITATIVE MODAL OVERLAYS */
         .modal-overlay {
             display: none;
@@ -699,6 +717,18 @@
             line-height: 1.6;
             color: var(--text-dark);
             overflow-y: auto;
+            padding-right: 4px;
+        }
+        .modal-body h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-top: 16px;
+            margin-bottom: 6px;
+        }
+        .modal-body p {
+            margin-bottom: 12px;
         }
         .modal-close-btn {
             position: absolute;
@@ -760,21 +790,26 @@
     
     <div class="app-subtitle" id="appSubtitle">Ein Gedanke für heute</div>
 
+    <!-- OPTIONALES KIRCHENBILD -->
     <div class="gemeinde-image-box" id="gemeindeImageBox">
         <img src="" id="gemeindeImg" alt="Kirchengemeinde">
     </div>
 
+    <!-- GEMEINDE-SEKTION FÜR NEWS, ANSTEHENDE TERMINE UND FESTE INFOS -->
     <div class="gemeinde-section" id="gemeindeSection">
+        <!-- Wöchentliche News -->
         <div class="gemeinde-card" id="newsCard" style="display: none;">
             <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuelles</h2>
             <div class="news-text" id="newsText"></div>
         </div>
 
+        <!-- SORGEFREIE TERMINE (NÄCHSTE TERMINE IN FORTLAUFENDER LISTE) -->
         <div class="gemeinde-card" id="termineCard" style="display: none;">
             <h2 class="gemeinde-card-title">Anstehende Termine & Gottesdienste</h2>
             <ul class="termin-list" id="terminList"></ul>
         </div>
 
+        <!-- STATISCHE GEMEINDE-INFOS & REGELMÄSSIGE ANGEBOTE -->
         <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
             <h2 class="gemeinde-card-title">Gemeindebüro & Kontakte</h2>
             <ul class="termin-list" id="kontaktList" style="margin-bottom: 14px;"></ul>
@@ -783,6 +818,7 @@
         </div>
     </div>
 
+    <!-- INHALTSBÜHNE -->
     <div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         <div class="meta-source-row" id="sourceRow">
@@ -848,22 +884,64 @@
                 <option value="buttons">Feine Outline-Buttons</option>
             </select>
         </div>
+
+        <div class="settings-row" style="margin-top: 18px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 14px; justify-content: center;">
+            <a href="https://paypal.me/medienandmore/2" target="_blank" rel="noopener" class="coffee-link-text">
+                ☕ Ein Tässchen Kaffee spendieren (2 €)
+            </a>
+        </div>
     </div>
 
+    <!-- RECHTSSICHERES IMPRESSUM MODAL -->
     <div class="modal-overlay" id="impressumModal" onclick="closeModal('impressumModal')">
         <div class="modal-card" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeModal('impressumModal')">×</button>
             <div class="modal-header">Impressum</div>
             <div class="modal-body">
                 <h4>Dienstanbieter & Verantwortlich</h4>
-                <p>Andreas Gehrmann<br>Olgastr. 39<br>42699 Solingen<br>Deutschland</p>
-                <h4>Kontakt</h4><p>E-Mail: info@andreas-gehrmann.de</p>
+                <p>
+                    Andreas Gehrmann<br>
+                    Olgastr. 39<br>
+                    42699 Solingen<br>
+                    Deutschland
+                </p>
+                <h4>Kontakt</h4>
+                <p>E-Mail: info@andreas-gehrmann.de</p>
+                <h4>Hoster</h4>
+                <p>
+                    Diese Anwendung wird auf Servern von Netlify gehostet.<br>
+                    Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- RECHTSSICHERE DATENSCHUTZ ERKLÄRUNG -->
+    <div class="modal-overlay" id="datenschutzModal" onclick="closeModal('datenschutzModal')">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <button class="modal-close-btn" onclick="closeModal('datenschutzModal')">×</button>
+            <div class="modal-header">Datenschutzerklärung</div>
+            <div class="modal-body">
+                <p>Diese meditative Web-App ist auf maximale Datensparsamkeit ausgelegt. Du kannst sie komplett ohne Angabe von persönlichen Daten nutzen.</p>
+                
+                <h4>1. Lokale Speicherung (LocalStorage)</h4>
+                <p>Sämtliche Einstellungen, die du in der App vornimmst (deine bevorzugte visuelle Stimmung und der Button-Stil), werden ausschließlich lokal in deinem eigenen Browser auf deinem Gerät gespeichert. Es findet keine Übertragung dieser Daten an uns oder sonstige Server statt.</p>
+                
+                <h4>2. Server-Logfiles & Hosting</h4>
+                <p>Die App wird über den Plattform-Dienst Netlify bereitgestellt. Beim Aufruf der App erfasst Netlify technisch bedingt automatisierte Protokolldaten (Verbindungsdaten wie die IP-Adresse, Datum/Uhrzeit des Aufrufs und den genutzten Browsertyp). Dies ist für die fehlerfreie Auslieferung und Sicherheit der Anwendung zwingend erforderlich.</p>
+                
+                <h4>3. Keine Analyse oder Tracking</h4>
+                <p>Wir verwenden keine Analyse-Tools (wie Google Analytics), setzen keine Tracking-Cookies ein und binden keine Werbenetzwerke ein. Dein Besuch bleibt privat.</p>
+                
+                <h4>4. Deine Rechte</h4>
+                <p>Da wir keine personenbezogenen Daten von dir auf Servern speichern, können wir dir gegenüber auch keine Daten ausgeben, korrigieren oder löschen. Wenn du die lokalen Einstellungen entfernen möchtest, kannst du dies jederzeit tun, indem du die App-Daten oder den Cache in den Einstellungen deines Webbrowsers löschst.</p>
             </div>
         </div>
     </div>
 
     <footer class="app-footer">
         <a href="#impressum" onclick="openModal('impressumModal')">Impressum</a>
+        <a href="#datenschutz" onclick="openModal('datenschutzModal')">Datenschutz</a>
         <a href="#settings" id="settingsLink" onclick="toggleSettingsView()">Einstellungen</a>
     </footer>
 </div>
