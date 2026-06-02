@@ -174,7 +174,7 @@
             object-fit: cover;
         }
 
-        /* DATUMSNAVI UNTER DEM BILD - JETZT STRICKT FETT */
+        /* DATUMSNAVI UNTER DEM BILD */
         .date-navigation {
             display: flex;
             justify-content: space-between;
@@ -185,15 +185,17 @@
         }
         .date {
             font-family: var(--font-title);
+            font-style: italic; 
             font-size: 1.1rem; 
             letter-spacing: 0.3px;
             color: #2c3e50; 
-            font-weight: 700; /* Präzise auf Fett gesetzt */
+            font-weight: 500;
             text-align: center;
             line-height: 1.3;
         }
         [data-font="modern"] .date {
-            font-weight: 700; 
+            font-style: normal;
+            font-weight: 400; 
             font-size: 1.0rem;
         }
         .nav-btn {
@@ -269,7 +271,7 @@
             border-radius: var(--radius-element);
             box-shadow: var(--main-shadow);
             border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 28px 24px 18px 24px; 
+            padding: 26px 22px 14px 22px; 
             display: flex;
             flex-direction: column;
             margin-top: 14px; 
@@ -286,79 +288,85 @@
             text-align: center;
             transition: opacity 0.2s ease-in-out, font-size 0.2s ease;
             opacity: 1;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
         [data-font="modern"] .text-display {
             font-style: normal;
             font-weight: 400; 
         }
 
-        /* FESTSTEHENDE QUELLEN-INFO DIREKT UNTER DEM ZITAT */
-        .static-source-display {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            opacity: 0.8;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        /* DIE NEUE ULTRA-DEZENTE BEDIENZEILE GANZ UNTEN */
+        /* BEDIENZEILE INNERHALB DER BOX */
         .box-action-row {
             display: flex;
             justify-content: center;
             align-items: center; 
-            gap: 16px; 
-            margin-top: 4px;
-            padding-top: 14px;
-            border-top: 1px dashed rgba(0, 0, 0, 0.06);
+            gap: 24px; 
+            margin-top: 8px;
+            padding-top: 12px;
+            border-top: 1px dashed rgba(0, 0, 0, 0.05);
         }
 
-        /* EINHEITLICHER, GRAZILER LINK-STYLE FÜR DIE INTERAKTIONEN */
-        .box-action-link {
+        .meta-source-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* ZWEI STIL-WELTEN (TEXTLINKS VS OUTLINE-BUTTONS) */
+        .app-wrapper.style-links .source-tag, 
+        .app-wrapper.style-links .btn-premium {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
-            background: transparent;
-            border: none;
+            background: transparent !important;
+            border: none !important;
+            border-radius: 0 !important;
+            padding: 2px 0 !important;
             font-family: 'Inter', sans-serif;
-            font-size: 0.76rem;
+            font-size: 0.8rem;
             font-weight: 500;
             color: var(--text-muted);
             cursor: pointer;
             transition: all 0.2s ease;
             opacity: 0.75;
-            text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
+            border-bottom: 1px dashed transparent !important;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
+            box-shadow: none !important;
         }
         
-        .box-action-link:hover {
-            color: #2c3e50;
+        .app-wrapper.style-links .source-tag:hover, 
+        .app-wrapper.style-links .btn-premium:hover {
+            color: #2c3e50 !important; 
+            border-bottom: 1px dashed #2c3e50 !important;
             opacity: 1;
         }
 
-        .action-link-divider {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            opacity: 0.25;
-            user-select: none;
+        .app-wrapper.style-buttons .source-tag, 
+        .app-wrapper.style-buttons .btn-premium {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--btn-outline-color) !important;
+            border-radius: 8px !important;
+            padding: 4px 12px !important;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            background-color: rgba(255, 255, 255, 0.4) !important;
+            color: var(--text-muted) !important;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            opacity: 0.9;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
         }
-
-        /* HAUCHDÜNNE SVG-IKONEN, DIE DIE TEXTFARBE ERBEN */
-        .action-icon-svg {
-            width: 14px;
-            height: 14px;
-            stroke: currentColor;
-            stroke-width: 1.75;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            transition: transform 0.2s ease;
-        }
-        .box-action-link:hover .action-icon-svg {
-            transform: translateY(-0.5px);
+        
+        .app-wrapper.style-buttons .source-tag:hover, 
+        .app-wrapper.style-buttons .btn-premium:hover {
+            color: #2c3e50 !important;
+            border-color: #2c3e50 !important;
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            opacity: 1;
         }
 
         /* CODE-KNACKER & ÜBERSETZUNGS-BOXEN */
@@ -801,7 +809,7 @@
 </head>
 <body>
 
-<div class="app-wrapper" id="appWrapper">
+<div class="app-wrapper style-links" id="appWrapper">
     <div class="toast-notification" id="toast">📋 In Zwischenablage kopiert!</div>
     
     <!-- 1. HEADER & TITEL BEREICH -->
@@ -826,42 +834,20 @@
         <button class="nav-btn" id="nextDayBtn" onclick="navigateDay(1)">❯</button>
     </div>
 
-    <!-- 4. INHALTSBÜHNE (Bühne für das Originalzitat und grazilen Transferlinks) -->
+    <!-- 4. INHALTSBÜHNE (Zeigt dauerhaft das Originalzitat) -->
     <div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
-        
-        <!-- Fester, unanklickbarer Quellenanker direkt unter dem Zitat -->
-        <span class="static-source-display" id="staticSource">Ursprung</span>
-
-        <!-- Die neue, tiefenberuhigte Bedienzeile ganz unten in der Box -->
         <div class="box-action-row" id="boxActionRow">
-            
-            <!-- Link 1: Info (Code-Knacker) -->
-            <button class="box-action-link" id="infoActionBtn" onclick="toggleCode()">
-                <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20M4 19.5V3.5A2.5 2.5 0 0 1 6.5 1V20M20 1v21M6.5 6H20M6.5 11H20"/></svg>
-                <span>Info</span>
-            </button>
-            
-            <span class="action-link-divider">|</span>
-
-            <!-- Link 2: Zeitgeist (Heutige Übersetzung) -->
-            <button class="box-action-link" id="zeitgeistActionBtn" onclick="toggleTranslationBox()">
-                <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
-                <span>Zeitgeist</span>
-            </button>
-            
-            <span class="action-link-divider">|</span>
-
-            <!-- Link 3: Teilen -->
-            <button class="box-action-link" id="shareActionBtn" onclick="shareContent()">
-                <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-                <span>Teilen</span>
-            </button>
-
+            <div class="meta-source-row" id="sourceRow">
+                <span class="source-tag" id="sourceTag" onclick="toggleCode()">Quelle laden...</span>
+            </div>
+            <!-- Der Button steuert jetzt das meditative Aufklappen der separaten Box -->
+            <button class="btn-premium" id="actionBtn" onclick="toggleTranslationBox()">Ins Jetzt übertragen</button>
+            <button class="btn-premium" id="shareBtn" onclick="shareContent()" title="Kopieren & teilen">Teilen</button>
         </div>
     </div>
 
-    <!-- DIE MEDITATIVE DIALOG-BOX FÜR DIE GEGENWARTS-ÜBERTRAGUNG (ZEITGEIST) -->
+    <!-- DIE NEUE DIALOG-BOX FÜR DIE GEGENWARTS-ÜBERTRAGUNG -->
     <div class="translation-box" id="translationBox">
         <button class="box-close-btn" onclick="toggleTranslationBox()" title="Schließen">×</button>
         <div id="translationBoxContent"></div>
@@ -878,7 +864,7 @@
     <div class="challenge-box" id="challengeBox">
         <button class="challenge-close-btn" id="challengeCloseBtn" onclick="resetChallengeBox()" title="Schließen">×</button>
         <span class="challenge-title">Tages-Challenge</span>
-        <span class="challenge-instruction" id="challengeInstruction">Lies erst den Zeitgeist und schalte danach die Aufgabe frei.</span>
+        <span class="challenge-instruction" id="challengeInstruction">Lies erst die Übersetzung und schalte danach die Aufgabe frei.</span>
         <button class="challenge-sub-btn" id="challengeSubBtn" onclick="revealChallengeOnly()">Aufgabe ansehen ➔</button>
         <span class="challenge-actual-text" id="challengeText"></span>
     </div>
@@ -968,6 +954,14 @@
             </select>
         </div>
 
+        <div class="settings-row">
+            <span class="settings-label">Stil der Bedienelemente:</span>
+            <select class="settings-select" id="btnStyleSelect" onchange="changeBtnStyle()">
+                <option value="links">Elegante Textlinks</option>
+                <option value="buttons">Feine Outline-Buttons</option>
+            </select>
+        </div>
+
         <div class="settings-row" style="margin-top: 18px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 14px; justify-content: center;">
             <a href="https://paypal.me/medienandmore/2" target="_blank" rel="noopener" class="coffee-link-text">
                 ☕ Ein Tässchen Kaffee spendieren (2 €)
@@ -1001,6 +995,9 @@
         if (savedFont !== "default") document.documentElement.setAttribute('data-font', savedFont);
         const savedSize = localStorage.getItem('appSize') || "default";
         if (savedSize !== "default") document.documentElement.setAttribute('data-size', savedSize);
+        
+        const savedBtnStyle = localStorage.getItem('appBtnStyle') || "links";
+        document.getElementById('appWrapper').className = `app-wrapper style-${savedBtnStyle}`;
 
         const urlParams = new URLSearchParams(window.location.search);
         const gemeindeParam = urlParams.get('gemeinde');
@@ -1189,16 +1186,18 @@
         
         challengeRevealed = false;
         document.getElementById('codeBox').style.display = 'none';
-        document.getElementById('translationBox').style.display = 'none'; 
-        
-        // Zurücksetzen des Zeitgeist-Linktexts
-        const zgBtnSpan = document.querySelector('#zeitgeistActionBtn span');
-        if (zgBtnSpan) zgBtnSpan.innerText = "Zeitgeist";
+        document.getElementById('translationBox').style.display = 'none'; // Schließt Box bei Datumswechsel
+        document.getElementById('actionBtn').innerText = "Ins Jetzt übertragen";
+        document.getElementById('sourceRow').style.display = 'inline-flex';
 
         resetChallengeBox();
 
         if (currentData) {
-            document.getElementById('staticSource').innerText = currentData.original;
+            document.getElementById('shareBtn').style.display = 'inline-flex';
+            document.getElementById('actionBtn').style.display = 'inline-flex';
+            document.getElementById('challengeBox').style.display = 'block'; 
+            document.getElementById('challengeDivider').style.display = 'block'; 
+            document.getElementById('sourceTag').innerText = `${currentData.original} (Info)`;
             document.getElementById('mainText').innerHTML = currentData.volltext;
             document.getElementById('codeBoxContent').innerHTML = currentData.code_knacker;
             document.getElementById('translationBoxContent').innerHTML = currentData.uebersetzung;
@@ -1230,24 +1229,25 @@
                 b.style.display = 'none';
             } else {
                 b.style.display = 'block';
-                tBox.style.display = 'none'; 
+                tBox.style.display = 'none'; // Schließt die jeweils andere Box für sauberen Fokus
             }
         }
     }
 
+    // DIE NEUE STEUERUNGSFUNKTION FÜR DIE SEPARATE ÜBERTRAGUNGS-BOX
     function toggleTranslationBox() {
         const tBox = document.getElementById('translationBox');
         const b = document.getElementById('codeBox');
-        const btnSpan = document.querySelector('#zeitgeistActionBtn span');
+        const btn = document.getElementById('actionBtn');
         
         if (tBox && currentData?.uebersetzung) {
             if (tBox.style.display === 'block') {
                 tBox.style.display = 'none';
-                if (btnSpan) btnSpan.innerText = "Zeitgeist";
+                btn.innerText = "Ins Jetzt übertragen";
             } else {
                 tBox.style.display = 'block';
-                b.style.display = 'none'; 
-                if (btnSpan) btnSpan.innerText = "Schließen";
+                b.style.display = 'none'; // Schließt Code-Knacker
+                btn.innerText = "Übertragung schließen";
                 setTimeout(() => {
                     tBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }, 100);
@@ -1257,7 +1257,6 @@
 
     function resetChallengeBox() {
         document.getElementById('challengeInstruction').style.display = 'block';
-        document.getElementById('challengeInstruction').innerText = "Lies erst den Zeitgeist und schalte danach die Aufgabe frei.";
         document.getElementById('challengeSubBtn').style.display = 'inline-block';
         document.getElementById('challengeText').style.display = 'none';
         document.getElementById('challengeCloseBtn').style.display = 'none';
@@ -1275,7 +1274,7 @@
     function shareContent() {
         if (!currentData) return;
         const cleanVolltext = currentData.volltext.replace(/^[„"']|[“"']$/g, '');
-        const textToCopy = `*Termin mit dem Leben* 🌟\n\n📜 *Das Original:*\n„${cleanVolltext}“\n\n💡 *Zeitgeist:*\n${currentData.uebersetzung}\n\n🎯 *Deine Tages-Challenge:*\n${currentData.challenge}`;
+        const textToCopy = `*Termin mit dem Leben* 🌟\n\n📜 *Das Original:*\n„${cleanVolltext}“\n\n💡 *Ins Jetzt übertragen:*\n${currentData.uebersetzung}\n\n🎯 *Deine Tages-Challenge:*\n${currentData.challenge}`;
         navigator.clipboard.writeText(textToCopy).then(() => {
             const t = document.getElementById('toast'); t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2000);
         });
@@ -1291,7 +1290,12 @@
     function changeTheme() {
         const v = document.getElementById('themeSelect').value;
         localStorage.setItem('appTheme', v);
-        document.documentElement.setAttribute('data-theme', v);
+        v === "default" ? document.documentElement.setAttribute('data-theme', v) : document.documentElement.setAttribute('data-theme', v);
+    }
+    function changeBtnStyle() {
+        const v = document.getElementById('btnStyleSelect').value;
+        localStorage.setItem('appBtnStyle', v);
+        document.getElementById('appWrapper').className = `app-wrapper style-${v}`;
     }
     function changeFont() {
         const v = document.getElementById('fontSelect').value;
