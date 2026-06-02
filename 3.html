@@ -248,7 +248,7 @@
             z-index: 10;
         }
 
-        /* NEUE GEMEINDE STYLE SECTIONEN */
+        /* GEMEINDE STYLE SECTIONEN */
         .gemeinde-image-box {
             display: none;
             width: 100%;
@@ -289,6 +289,13 @@
             letter-spacing: 1px;
             color: var(--text-challenge-title);
             margin-bottom: 10px;
+        }
+
+        .news-text {
+            font-family: var(--font-body);
+            font-size: var(--fs-challenge-text);
+            line-height: 1.6;
+            color: var(--text-dark);
         }
 
         .termin-list {
@@ -538,6 +545,8 @@
         [data-font="modern"] .challenge-instruction {
             font-style: normal;
         }
+        
+        /* AUF WUNSCH: WURDE VON NUN AN ENT-FETTET (NORMALGEWICHT) */
         .challenge-actual-text {
             font-family: var(--font-body); 
             font-style: italic;
@@ -545,7 +554,7 @@
             line-height: 1.6;
             color: #1a202c;
             display: none;
-            font-weight: 500;
+            font-weight: 400; /* Standard, nicht fett */
             text-align: center;
             padding-bottom: 2px; 
             padding-left: 5px;
@@ -824,10 +833,16 @@
         <img src="" id="gemeindeImg" alt="Kirchengemeinde">
     </div>
 
-    <!-- GEMEINDE-SEKTION FÜR TERMINE -->
+    <!-- GEMEINDE-SEKTION FÜR NEWS UND TERMINE -->
     <div class="gemeinde-section" id="gemeindeSection">
-        <!-- Tagesaktuelle Termine starten direkt hier -->
-        <div class="gemeinde-card" id="termineCard">
+        <!-- Wöchentliche News (Erscheint nur, wenn gefüllt) -->
+        <div class="gemeinde-card" id="newsCard" style="display: none;">
+            <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuell</h2>
+            <div class="news-text" id="newsText"></div>
+        </div>
+
+        <!-- Tagesaktuelle Termine -->
+        <div class="gemeinde-card" id="termineCard" style="display: none;">
             <h2 class="gemeinde-card-title">Termine heute</h2>
             <ul class="termin-list" id="terminList"></ul>
         </div>
@@ -1017,7 +1032,7 @@
                 }
                 allData = data;
 
-                // INTELLIGENTES ZITAT-FALLBACK BEI AKTIVEM PARAMETER
+                // AUTOMATISCHES FALLBACK-SYSTEM FÜR DEINE ORIGINALEN ZITATE
                 if (gemeindeParam) {
                     fetch('data/sprueche.json')
                         .then(res => res.json())
@@ -1042,7 +1057,7 @@
             .catch(error => {
                 console.error('Fehler beim Laden:', error);
                 const textDisplay = document.getElementById('mainText');
-                if (textDisplay) textDisplay.innerText = "Fehler beim Laden des Tagesimpulses.";
+                if (textDisplay) textDisplay.innerText = "Fehler beim Laden der Tagesdaten.";
             });
     });
 
@@ -1062,6 +1077,19 @@
             imgEl.src = gemeindeConfig.kirchen_bild;
             imgBox.style.display = 'block';
             if (document.getElementById('headerDeco')) document.getElementById('headerDeco').style.display = 'none';
+        }
+
+        // INTELLIGENTE NEWS-BOX: BLENDET SICH NUR EIN WENN TEXT IN DER JSON STEHT
+        const newsCard = document.getElementById('newsCard');
+        if (gemeindeConfig.wochen_news && gemeindeConfig.wochen_news.trim() !== "") {
+            if (newsCard) newsCard.style.display = 'block';
+            if (document.getElementById('gemeindeSection')) document.getElementById('gemeindeSection').style.style.display = 'flex';
+            document.getElementById('newsText').innerHTML = gemeindeConfig.wochen_news;
+            if (gemeindeConfig.gemeinde_name) {
+                document.getElementById('newsTitle').innerText = `Aktuelles aus ${gemeindeConfig.gemeinde_name}`;
+            }
+        } else {
+            if (newsCard) newsCard.style.display = 'none';
         }
     }
 
@@ -1136,7 +1164,7 @@
 
         const nextBtn = document.getElementById('nextDayBtn');
         if (nextBtn) {
-            nextBtn.disabled = isToday;
+            nextBtn.disabled = !gemeindeConfig && isToday;
         }
 
         const month = String(displayDate.getMonth() + 1).padStart(2, '0');
@@ -1177,10 +1205,11 @@
             if (document.getElementById('codeBoxContent')) document.getElementById('codeBoxContent').innerHTML = currentData.code_knacker;
             if (document.getElementById('challengeText')) document.getElementById('challengeText').innerText = currentData.challenge;
 
-            // KIRCHENTERMINE FÜR DEN JEWEILIGEN TAG RENDERN
+            // KIRCHENTERMINE RENDERN
             const termList = document.getElementById('terminList');
             const termCard = document.getElementById('termineCard');
             const gemSection = document.getElementById('gemeindeSection');
+            const newsCard = document.getElementById('newsCard');
             
             if (termList) termList.innerHTML = '';
 
@@ -1195,7 +1224,10 @@
                 });
             } else {
                 if (termCard) termCard.style.display = 'none';
-                if (gemSection && (!gemeindeConfig || !gemeindeConfig.wochen_news)) {
+                
+                // Falls weder Termine noch Wochen-News aktiv sind, die Sektion ganz schließen
+                const newsSichtbar = newsCard && newsCard.style.display === 'block';
+                if (gemSection && !newsSichtbar) {
                     gemSection.style.display = 'none';
                 }
             }
@@ -1231,7 +1263,9 @@
             const tempDate = new Date(displayDate);
             tempDate.setDate(tempDate.getDate() + direction);
             
-            if (tempDate > today && tempDate.getDate() !== today.getDate()) return;
+            if (!gemeindeConfig) {
+                if (tempDate > today && tempDate.getDate() !== today.getDate()) return;
+            }
         }
 
         animateTextChange(() => {
@@ -1367,6 +1401,7 @@
         if (modal) modal.style.display = 'none';
     }
 
+    // TOGGLE FÜR EINSTELLUNGEN
     function toggleSettingsView() {
         const panel = document.getElementById('settingsPanel');
         if (panel) {
@@ -1392,7 +1427,6 @@
         }
     }
 
-    // LOOK 2: OUTLINE-BUTTONS
     function changeBtnStyle() {
         const selectEl = document.getElementById('btnStyleSelect');
         if (selectEl) {

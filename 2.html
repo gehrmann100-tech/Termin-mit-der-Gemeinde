@@ -11,7 +11,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="apple-touch-icon" href="images/icon-192.png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=Lora:ital,wght=0,500;1,400;1,500&display=swap" rel="stylesheet"/>
     <style>
         /* DESIGN-SYSTEM MIT DYNAMISCHEN VARIABLEN */
         :root {
@@ -248,7 +248,7 @@
             z-index: 10;
         }
 
-        /* NEUE GEMEINDE STYLE SECTIONEN */
+        /* GEMEINDE STYLE SECTIONEN */
         .gemeinde-image-box {
             display: none;
             width: 100%;
@@ -289,13 +289,6 @@
             letter-spacing: 1px;
             color: var(--text-challenge-title);
             margin-bottom: 10px;
-        }
-
-        .news-text {
-            font-family: var(--font-body);
-            font-size: var(--fs-challenge-text);
-            line-height: 1.6;
-            color: var(--text-dark);
         }
 
         .termin-list {
@@ -831,22 +824,15 @@
         <img src="" id="gemeindeImg" alt="Kirchengemeinde">
     </div>
 
-    <!-- NEU: GEMEINDE-SEKTION FÜR PROTOTYP -->
+    <!-- GEMEINDE-SEKTION FÜR TERMINE -->
     <div class="gemeinde-section" id="gemeindeSection">
-        <!-- Wöchentliche News -->
-        <div class="gemeinde-card" id="newsCard">
-            <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuell</h2>
-            <div class="news-text" id="newsText"></div>
-        </div>
-
-        <!-- Tagesaktuelle Termine -->
         <div class="gemeinde-card" id="termineCard">
             <h2 class="gemeinde-card-title">Termine heute</h2>
             <ul class="termin-list" id="terminList"></ul>
         </div>
     </div>
 
-    <!-- MAIN BÜHNE -->
+    <!-- INHALTSBÜHNE -->
     <div class="content-stage">
         <div class="text-display" id="mainText">
             Lade heutigen Impuls...
@@ -916,7 +902,6 @@
             </select>
         </div>
 
-        <!-- KAFFEEKASSE TEXTLINK -->
         <div class="settings-row" style="margin-top: 18px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 14px; justify-content: center;">
             <a href="https://paypal.me/medienandmore/2" target="_blank" rel="noopener" class="coffee-link-text">
                 ☕ Ein Tässchen Kaffee spendieren (2 €)
@@ -1013,7 +998,7 @@
         const wrapperEl = document.getElementById('appWrapper');
         if (wrapperEl) wrapperEl.className = `app-wrapper style-${savedBtnStyle}`;
 
-        // DYNAMISCHE PARAMETER-ABFRAGE FÜR B2B-KUNDEN
+        // URL-PARAMETER AUSLESEN (?gemeinde=...)
         const urlParams = new URLSearchParams(window.location.search);
         const gemeindeParam = urlParams.get('gemeinde');
 
@@ -1027,10 +1012,31 @@
             .then(data => {
                 if (data.gemeinde_konfiguration) {
                     gemeindeConfig = data.gemeinde_konfiguration;
-                    applyGemeindeHeaderAndNews();
+                    applyGemeindeHeader();
                 }
                 allData = data;
-                updatePage();
+
+                // AUTOMATISCHES FALLBACK-SYSTEM FÜR DEINE ORIGINALEN ZITATE
+                if (gemeindeParam) {
+                    fetch('data/sprueche.json')
+                        .then(res => res.json())
+                        .then(spruecheData => {
+                            Object.keys(spruecheData).forEach(key => {
+                                if (!allData[key]) {
+                                    allData[key] = spruecheData[key];
+                                } else if (!allData[key].volltext) {
+                                    allData[key].original = spruecheData[key].original;
+                                    allData[key].volltext = spruecheData[key].volltext;
+                                    allData[key].code_knacker = spruecheData[key].code_knacker;
+                                    allData[key].uebersetzung = spruecheData[key].uebersetzung;
+                                    allData[key].challenge = spruecheData[key].challenge;
+                                }
+                            });
+                            updatePage();
+                        }).catch(() => updatePage());
+                } else {
+                    updatePage();
+                }
             })
             .catch(error => {
                 console.error('Fehler beim Laden:', error);
@@ -1039,10 +1045,9 @@
             });
     });
 
-    function applyGemeindeHeaderAndNews() {
+    function applyGemeindeHeader() {
         if (!gemeindeConfig) return;
         
-        // Dynamische Titelwahl
         if (gemeindeConfig.app_titel) {
             document.getElementById('appTitle').innerHTML = gemeindeConfig.app_titel;
         }
@@ -1050,22 +1055,12 @@
             document.getElementById('appSubtitle').innerText = gemeindeConfig.gemeinde_name;
         }
         
-        // Atmosphärisches Kirchenbild
         if (gemeindeConfig.kirchen_bild) {
             const imgBox = document.getElementById('gemeindeImageBox');
             const imgEl = document.getElementById('gemeindeImg');
             imgEl.src = gemeindeConfig.kirchen_bild;
             imgBox.style.display = 'block';
             if (document.getElementById('headerDeco')) document.getElementById('headerDeco').style.display = 'none';
-        }
-
-        // Wochen-News direkt als sauberer Fließtext einblenden
-        if (gemeindeConfig.wochen_news) {
-            document.getElementById('gemeindeSection').style.display = 'flex';
-            document.getElementById('newsText').innerHTML = gemeindeConfig.wochen_news;
-            if (gemeindeConfig.gemeinde_name) {
-                document.getElementById('newsTitle').innerText = `Aktuelles aus ${gemeindeConfig.gemeinde_name}`;
-            }
         }
     }
 
@@ -1140,7 +1135,8 @@
 
         const nextBtn = document.getElementById('nextDayBtn');
         if (nextBtn) {
-            nextBtn.disabled = isToday;
+            // IM GEMEINDE-MODUS DARF DER BUTTON NICHT DEAKTIVIERT WERDEN
+            nextBtn.disabled = !gemeindeConfig && isToday;
         }
 
         const month = String(displayDate.getMonth() + 1).padStart(2, '0');
@@ -1181,14 +1177,16 @@
             if (document.getElementById('codeBoxContent')) document.getElementById('codeBoxContent').innerHTML = currentData.code_knacker;
             if (document.getElementById('challengeText')) document.getElementById('challengeText').innerText = currentData.challenge;
 
-            // DYNAMISCHES AUSLESEN DER KIRCHENTERMINE FÜR DIESEN TAG
+            // KIRCHENTERMINE RENDERN
             const termList = document.getElementById('terminList');
             const termCard = document.getElementById('termineCard');
+            const gemSection = document.getElementById('gemeindeSection');
+            
             if (termList) termList.innerHTML = '';
 
             if (currentData.termine && currentData.termine.length > 0) {
                 if (termCard) termCard.style.display = 'block';
-                if (document.getElementById('gemeindeSection')) document.getElementById('gemeindeSection').style.display = 'flex';
+                if (gemSection) gemSection.style.display = 'flex';
                 currentData.termine.forEach(term => {
                     const li = document.createElement('li');
                     li.className = 'termin-item';
@@ -1197,6 +1195,7 @@
                 });
             } else {
                 if (termCard) termCard.style.display = 'none';
+                if (gemSection) gemSection.style.display = 'none';
             }
         } else {
             if (textDisplay) textDisplay.innerText = "Für diesen Tag ist noch kein Impuls eingetragen. Genieße die Zeit!";
@@ -1230,7 +1229,10 @@
             const tempDate = new Date(displayDate);
             tempDate.setDate(tempDate.getDate() + direction);
             
-            if (tempDate > today && tempDate.getDate() !== today.getDate()) return;
+            // IM GEMEINDE-MODUS DARF MAN UNBEGRENZT VORSCHALTEN
+            if (!gemeindeConfig) {
+                if (tempDate > today && tempDate.getDate() !== today.getDate()) return;
+            }
         }
 
         animateTextChange(() => {
@@ -1253,7 +1255,6 @@
         }
     }
 
-    // [Deine restlichen unberührten JavaScript-Funktionen wie toggleCode, translateText etc. bleiben 1:1 aktiv]
     function toggleCode() {
         const box = document.getElementById('codeBox');
         if (box && currentData && currentData.code_knacker && currentData.code_knacker.trim() !== "") {
@@ -1340,7 +1341,7 @@
         const activeDateStr = document.getElementById('currentDate') ? document.getElementById('currentDate').innerText : '';
         const cleanVolltext = currentData.volltext.replace(/^[„"']|[“"']$/g, '');
         
-        const textToCopy = `*Termin mit dem Leben* 🌟\n_${activeDateStr}_\n\n📌 *Quellen-Info:* ${currentData.original}\n\n📜 *Das Original:*\n„${cleanVolltext}“\n\n──────────────────\n\n💡 *Ins Jetzt übertragen:*\n${currentData.uebersetzung}\n\n🎯 *Deine Tages-Challenge:*\n${currentData.challenge}\n\n📱 *Jetzt selbst ausprobieren:*\nhttps://termin-mit-dem-leben.netlify.app/`;
+        const textToCopy = `*Termin mit dem Leben* 🌟\n_${activeDateStr}_\n\n📌 *Quellen-Info:* ${currentData.original}\n\n📜 *Das Original:*\n„${cleanVolltext}“\n\n──────────────────\n\n💡 *Ins Jetzt übertragen:*\n${currentData.uebersetzung}\n\n🎯 *Deine Tages-Challenge:*\n${currentData.challenge}\n\n📱 *Jetzt selbst ausprobieren:*\nhttps://gemeinde.netlify.app/`;
         
         navigator.clipboard.writeText(textToCopy).then(() => {
             const toast = document.getElementById('toast');
@@ -1357,6 +1358,7 @@
 
     function openModal(id) {
         if (document.getElementById('settingsPanel')) document.getElementById('settingsPanel').style.display = 'none';
+        
         const modal = document.getElementById(id);
         if (modal) modal.style.display = 'flex';
     }
@@ -1382,6 +1384,7 @@
         if (selectEl) {
             const selectedTheme = selectEl.value;
             localStorage.setItem('appTheme', selectedTheme);
+            
             if (selectedTheme === "default") {
                 document.documentElement.removeAttribute('data-theme');
             } else {
@@ -1395,6 +1398,7 @@
         if (selectEl) {
             const selectedStyle = selectEl.value;
             localStorage.setItem('appBtnStyle', selectedStyle);
+            
             const wrapperEl = document.getElementById('appWrapper');
             if (wrapperEl) {
                 wrapperEl.className = `app-wrapper style-${selectedStyle}`;
@@ -1407,6 +1411,7 @@
         if (selectEl) {
             const selectedFont = selectEl.value;
             localStorage.setItem('appFont', selectedFont);
+            
             if (selectedFont === "default") {
                 document.documentElement.removeAttribute('data-font');
             } else {
@@ -1420,6 +1425,7 @@
         if (selectEl) {
             const selectedSize = selectEl.value;
             localStorage.setItem('appSize', selectedSize);
+            
             if (selectedSize === "default") {
                 document.documentElement.removeAttribute('data-size');
             } else {
