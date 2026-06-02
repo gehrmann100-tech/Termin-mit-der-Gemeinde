@@ -281,16 +281,6 @@
             text-align: left;
         }
 
-        /* STYLES FÜR KLAPPBARKEIT */
-        .collapsible-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
         .gemeinde-card-title {
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
@@ -298,27 +288,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-challenge-title);
-            margin-bottom: 0; /* Auf Null gesetzt wegen Flexbox-Header */
-        }
-
-        .toggle-icon {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            transition: transform 0.3s ease;
-        }
-        
-        .collapsible-content {
-            display: none;
-            margin-top: 14px;
-            animation: blockSlideDown 0.25s ease-out;
-        }
-        
-        .gemeinde-card.is-open .collapsible-content {
-            display: block;
-        }
-        
-        .gemeinde-card.is-open .toggle-icon {
-            transform: rotate(180deg);
+            margin-bottom: 12px;
         }
 
         .news-text {
@@ -460,6 +430,7 @@
             border-bottom: 1px dashed transparent; 
         }
         
+        /* LOOK 1: TEXTLINKS (STANDARD) */
         .app-wrapper.style-links .btn-premium:hover {
             color: #2c3e50; 
             border-bottom: 1px dashed #2c3e50;
@@ -468,6 +439,7 @@
             border-bottom-color: #2c3e50;
         }
 
+        /* LOOK 2: OUTLINE-BUTTONS (WIRKT JETZT AUF ALLE RELEVANTEN BUTTONS & LINKS) */
         .app-wrapper.style-buttons .action-footer-row {
             gap: 16px; 
         }
@@ -827,37 +799,22 @@
     <div class="gemeinde-section" id="gemeindeSection">
         <!-- Wöchentliche News -->
         <div class="gemeinde-card" id="newsCard" style="display: none;">
-            <div class="collapsible-header" onclick="toggleCard('newsCard')">
-                <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuelles</h2>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="collapsible-content">
-                <div class="news-text" id="newsText"></div>
-            </div>
+            <h2 class="gemeinde-card-title" id="newsTitle">Gemeinde-Aktuelles</h2>
+            <div class="news-text" id="newsText"></div>
         </div>
 
-        <!-- SORGEFREIE TERMINE (AUSKLAPPBAR) -->
+        <!-- SORGEFREIE TERMINE (NÄCHSTE TERMINE IN FORTLAUFENDER LISTE) -->
         <div class="gemeinde-card" id="termineCard" style="display: none;">
-            <div class="collapsible-header" onclick="toggleCard('termineCard')">
-                <h2 class="gemeinde-card-title">Anstehende Termine & Gottesdienste</h2>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="collapsible-content">
-                <ul class="termin-list" id="terminList"></ul>
-            </div>
+            <h2 class="gemeinde-card-title">Anstehende Termine & Gottesdienste</h2>
+            <ul class="termin-list" id="terminList"></ul>
         </div>
 
-        <!-- STATISCHE GEMEINDE-INFOS & REGELMÄSSIGE ANGEBOTE (AUSKLAPPBAR) -->
+        <!-- STATISCHE GEMEINDE-INFOS & REGELMÄSSIGE ANGEBOTE -->
         <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
-            <div class="collapsible-header" onclick="toggleCard('dauerInfosCard')">
-                <h2 class="gemeinde-card-title">Gemeindebüro & Kontakte</h2>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="collapsible-content">
-                <ul class="termin-list" id="kontaktList" style="margin-bottom: 14px;"></ul>
-                <h2 class="gemeinde-card-title" style="margin-bottom: 12px; border-top: 1px dashed var(--btn-outline-color); padding-top: 12px;">Regelmäßige Angebote</h2>
-                <ul class="termin-list" id="regelmaessigList"></ul>
-            </div>
+            <h2 class="gemeinde-card-title">Gemeindebüro & Kontakte</h2>
+            <ul class="termin-list" id="kontaktList" style="margin-bottom: 14px;"></ul>
+            <h2 class="gemeinde-card-title">Regelmäßige Angebote</h2>
+            <ul class="termin-list" id="regelmaessigList"></ul>
         </div>
     </div>
 
@@ -1050,14 +1007,6 @@
                 }
             });
     });
-
-    // NEUE TOGGLE-FUNKTION FÜR DIE BOXEN
-    function toggleCard(cardId) {
-        const card = document.getElementById(cardId);
-        if (card) {
-            card.classList.toggle('is-open');
-        }
-    }
 
     function applyGemeindeHeader() {
         if (!gemeindeConfig) return;
