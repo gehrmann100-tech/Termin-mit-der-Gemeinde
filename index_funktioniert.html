@@ -164,7 +164,7 @@
             height: 140px;
             border-radius: var(--radius-element);
             overflow: hidden;
-            margin-bottom: 12px; 
+            margin-bottom: 14px; 
             box-shadow: var(--main-shadow);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
@@ -174,7 +174,7 @@
             object-fit: cover;
         }
 
-        /* DATUMSNAVI UNTER DEM BILD - JETZT STRICKT FETT */
+        /* DATUMSNAVI UNTER DEM BILD */
         .date-navigation {
             display: flex;
             justify-content: space-between;
@@ -293,7 +293,6 @@
             font-weight: 400; 
         }
 
-        /* FESTSTEHENDE QUELLEN-INFO DIREKT UNTER DEM ZITAT */
         .static-source-display {
             font-family: 'Inter', sans-serif;
             font-size: 0.8rem;
@@ -304,7 +303,6 @@
             display: block;
         }
 
-        /* BEDIENZEILE GANZ UNTEN IN DER BOX */
         .box-action-row {
             display: flex;
             justify-content: center;
@@ -315,7 +313,6 @@
             border-top: 1px dashed rgba(0, 0, 0, 0.06);
         }
 
-        /* EINHEITLICHER LINK-STYLE */
         .box-action-link {
             display: inline-flex;
             align-items: center;
@@ -360,11 +357,11 @@
             transform: translateY(-0.5px);
         }
 
-        /* CODE-KNACKER & ÜBERSETZUNGS-BOXEN */
+        /* CODE-KNACKER & ÜBERSETZUNGS-BOXEN MIT HARMONISCHEM ABSTAND NACH OBEN */
         .code-box, .translation-box {
             display: none;
             background: var(--bg-premium-white);
-            padding: 20px;
+            padding: 38px 20px 20px 20px;
             border-radius: var(--radius-element);
             font-family: var(--font-body); 
             font-size: 0.95rem;
@@ -390,19 +387,21 @@
             font-style: normal;
         }
 
+        /* EINHEITLICHES SCHLIESSEN-KREUZ FÜR ALLE BOXEN */
         .box-close-btn {
             position: absolute;
             top: 10px;
             right: 12px;
             background: none;
             border: none;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 400;
             color: #cbd5e0;
             cursor: pointer;
             line-height: 1;
-            padding: 2px 6px;
+            padding: 4px 8px;
             transition: color 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
         }
         .box-close-btn:hover {
             color: var(--text-muted);
@@ -576,11 +575,11 @@
             color: var(--text-dark);
         }
 
-        /* EINSTELLUNGS PANEL */
+        /* EINSTELLUNGS PANEL WURDE ANGEGLICHEN */
         .settings-panel {
             display: none;
             background: var(--bg-premium-white);
-            padding: 26px 20px 22px 20px;
+            padding: 38px 20px 22px 20px;
             border-radius: var(--radius-element);
             margin-top: 0;
             margin-bottom: 14px;
@@ -588,23 +587,6 @@
             box-shadow: var(--main-shadow);
             animation: blockSlideDown 0.3s ease-out;
             position: relative;
-        }
-        .settings-close-btn {
-            position: absolute;
-            top: 10px;
-            right: 12px;
-            background: none;
-            border: none;
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: #cbd5e0;
-            cursor: pointer;
-            line-height: 1;
-            padding: 2px 6px;
-            transition: color 0.2s ease;
-        }
-        .settings-close-btn:hover {
-            color: var(--text-muted);
         }
         .settings-title {
             display: block;
@@ -650,11 +632,11 @@
             border-bottom-color: #2c3e50;
         }
 
-        /* CHALLENGE-BEREICH GANZ UNTEN */
+        /* CHALLENGE-BEREICH WURDE ANGEGLICHEN */
         .challenge-box {
             background: var(--bg-challenge); 
             border-radius: var(--radius-element);
-            padding: 16px 20px; 
+            padding: 38px 20px 20px 20px; 
             box-shadow: var(--main-shadow);
             border: 1px solid rgba(255, 255, 255, 0.4);
             color: var(--text-dark); 
@@ -665,12 +647,14 @@
         }
         .challenge-title {
             color: var(--text-challenge-title);
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: 'Inter', sans-serif; 
             font-size: 0.95rem;
             font-weight: 800;
             letter-spacing: 1px;
-            margin-bottom: 6px; 
+            margin-bottom: 8px; 
         }
         .challenge-instruction {
             font-family: var(--font-challenge); 
@@ -902,7 +886,7 @@
     </div>
 
     <div class="settings-panel" id="settingsPanel">
-        <button class="settings-close-btn" onclick="toggleSettingsView()" title="Schließen">×</button>
+        <button class="box-close-btn" onclick="toggleSettingsView()" title="Schließen">×</button>
         <span class="settings-title">Persönliche Einstellungen</span>
 
         <div class="settings-row">
@@ -940,8 +924,11 @@
     </div>
 
     <div class="challenge-box" id="challengeBox">
-        <button class="challenge-close-btn" id="challengeCloseBtn" onclick="resetChallengeBox()" title="Schließen">×</button>
-        <span class="challenge-title">Tages-Challenge</span>
+        <button class="box-close-btn" id="challengeCloseBtn" onclick="resetChallengeBox()" title="Schließen" style="display: none;">×</button>
+        <span class="challenge-title">
+            <svg class="action-icon-svg" viewBox="0 0 24 24" style="width: 15px; height: 15px; margin-right: 6px;"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+            Tages-Challenge
+        </span>
         <span class="challenge-instruction" id="challengeInstruction">Lies erst den Zeitgeist und schalte danach die Aufgabe frei.</span>
         <button class="challenge-sub-btn" id="challengeSubBtn" onclick="revealChallengeOnly()">Aufgabe ansehen ➔</button>
         <span class="challenge-actual-text" id="challengeText"></span>
