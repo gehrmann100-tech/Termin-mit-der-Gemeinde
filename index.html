@@ -671,6 +671,10 @@
             cursor: pointer;
             line-height: 1;
             padding: 2px 6px;
+            transition: color 0.2s ease;
+        }
+        .settings-close-btn:hover {
+            color: var(--text-muted);
         }
         .settings-title {
             display: block;
@@ -826,7 +830,7 @@
         <button class="nav-btn" id="nextDayBtn" onclick="navigateDay(1)">❯</button>
     </div>
 
-    <!-- 4. INHALTSBÜHNE (Bühne für das Originalzitat und grazilen Transferlinks) -->
+    <!-- 4. INHALTSBÜHNE -->
     <div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         
@@ -972,6 +976,47 @@
             <a href="https://paypal.me/medienandmore/2" target="_blank" rel="noopener" class="coffee-link-text">
                 ☕ Ein Tässchen Kaffee spendieren (2 €)
             </a>
+        </div>
+    </div>
+
+    <!-- IMPRESSUM MODAL OVERLAY -->
+    <div class="modal-overlay" id="impressumModal" onclick="closeModal('impressumModal')">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <button class="modal-close-btn" onclick="closeModal('impressumModal')">×</button>
+            <div class="modal-header">Impressum</div>
+            <div class="modal-body">
+                <h4>Dienstanbieter & Verantwortlich</h4>
+                <p>Andreas Gehrmann<br>Olgastr. 39<br>42699 Solingen<br>Deutschland</p>
+                <br>
+                <h4>Kontakt</h4>
+                <p>E-Mail: info@andreas-gehrmann.de</p>
+                <br>
+                <h4>Hoster</h4>
+                <p>Diese Anwendung wird auf Servern von Netlify gehostet.<br>Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DATENSCHUTZ MODAL OVERLAY -->
+    <div class="modal-overlay" id="datenschutzModal" onclick="closeModal('datenschutzModal')">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <button class="modal-close-btn" onclick="closeModal('datenschutzModal')">×</button>
+            <div class="modal-header">Datenschutzerklärung</div>
+            <div class="modal-body">
+                <p>Diese meditative Web-App ist auf maximale Datensparsamkeit ausgelegt. Du kannst sie komplett ohne Angabe von persönlichen Daten nutzen.</p>
+                <br>
+                <h4>1. Lokale Speicherung (LocalStorage)</h4>
+                <p>Sämtliche Einstellungen, die du in der App vornimmst, werden ausschließlich lokal in deinem eigenen Browser auf deinem Gerät gespeichert.</p>
+                <br>
+                <h4>2. Server-Logfiles & Hosting</h4>
+                <p>Die App wird über den Plattform-Dienst Netlify bereitgestellt. Beim Aufruf der App erfasst Netlify technisch bedingt automatisierte Protokolldaten.</p>
+                <br>
+                <h4>3. Keine Analyse oder Tracking</h4>
+                <p>Wir verwenden keine Analyse-Tools, setzen keine Tracking-Cookies ein und binden keine Werbenetzwerke ein. Dein Besuch bleibt privat.</p>
+                <br>
+                <h4>4. Deine Rechte</h4>
+                <p>Da wir keine personenbezogenen Daten von dir auf Servern speichern, können wir dir gegenüber auch keine Daten ausgeben, korrigieren oder löschen.</p>
+            </div>
         </div>
     </div>
 
@@ -1192,8 +1237,8 @@
         document.getElementById('translationBox').style.display = 'none'; 
         
         // Zurücksetzen des Zeitgeist-Linktexts
-        const zgBtnSpan = document.querySelector('#zeitgeistActionBtn span');
-        if (zgBtnSpan) zgBtnSpan.innerText = "Zeitgeist";
+        const btnSpan = document.querySelector('#zeitgeistActionBtn span');
+        if (btnSpan) btnSpan.innerText = "Zeitgeist";
 
         resetChallengeBox();
 
