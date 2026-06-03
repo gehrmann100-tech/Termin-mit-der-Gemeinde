@@ -387,7 +387,7 @@
         }
 
         .translation-box {
-            font-size: var(--fs-translation-text); 
+            font-size: var(--fs-translation-text); /* Dynamische Skalierung reaktiviert! */
             font-family: var(--font-body);
             font-style: italic;
             color: #2c3e50;
@@ -395,7 +395,7 @@
         }
 
         .code-box {
-            font-size: var(--fs-challenge-text); 
+            font-size: var(--fs-challenge-text); /* Skaliert sauber mit */
         }
 
         [data-font="modern"] .code-box, 
@@ -736,7 +736,7 @@
             border-bottom-color: #2c3e50;
         }
         
-        /* MINIMALISTISCHER FOOTER */
+        /* MINIMALISTISCHER FOOTER - KICK-REPARATUR */
         .app-footer {
             display: flex;
             justify-content: center;
@@ -823,16 +823,19 @@
 <div class="app-wrapper style-links" id="appWrapper">
     <div class="toast-notification" id="toast">📋 In Zwischenablage kopiert!</div>
     
+    <!-- 1. HEADER & TITEL BEREICH -->
     <div class="header-container">
         <div class="header-icon-deco" id="headerDeco">✨</div>
         <div class="app-title" id="appTitle">Termin <span>mit der Gemeinde</span></div>
     </div>
     <div class="app-subtitle" id="appSubtitle">Solingen-Merscheid</div>
 
+    <!-- 2. GEMEINDE BILD GANZ OBEN -->
     <div class="gemeinde-image-box" id="gemeindeImageBox">
         <img src="" id="gemeindeImg" alt="Kirchengemeinde">
     </div>
 
+    <!-- 3. DATUMSNAVI DIREKT UNTER DEM BILD -->
     <div class="date-navigation">
         <button class="nav-btn" onclick="navigateDay(-1)">❮</button>
         <div class="date-wrapper">
@@ -842,26 +845,28 @@
         <button class="nav-btn" id="nextDayBtn" onclick="navigateDay(1)">❯</button>
     </div>
 
-    <div class="content-stage">
+    <!-- 4. INHALTSBÜHNE MIT HISTORISCH EXAKTEN TEXTLINKS -->
+<div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         <div class="box-action-row" id="boxActionRow">
             <div class="meta-source-row" id="sourceRow">
                 <span class="source-tag" id="sourceTag" onclick="toggleCode()" style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20M4 19.5V3.5A2.5 2.5 0 0 1 6.5 1V20M20 1v21M6.5 6H20M6.5 11H20"/></svg>
-                    <span id="sourceTagText">Info</span>
+                    <span>Info</span>
                 </span>
             </div>
             <button class="btn-premium" id="actionBtn" onclick="toggleTranslationBox()" style="display: inline-flex; align-items: center; gap: 6px;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
-                <span id="actionBtnText">Zeitgeist</span>
+                <span>Zeitgeist</span>
             </button>
             <button class="btn-premium" id="shareBtn" onclick="shareContent()" title="Kopieren & teilen" style="display: inline-flex; align-items: center; gap: 6px;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-                <span id="shareBtnText">Teilen</span>
+                <span>Teilen</span>
             </button>
         </div>
     </div>
 
+    <!-- DIE SEPARATE ÜBERSETZUNGS-BOX -->
     <div class="translation-box" id="translationBox">
         <button class="box-close-btn" onclick="toggleTranslationBox()" title="Schließen">×</button>
         <div id="translationBoxContent"></div>
@@ -874,6 +879,7 @@
     
     <div class="challenge-divider" id="challengeDivider">•••</div>
     
+    <!-- 5. TAGES CHALLENGE -->
     <div class="challenge-box" id="challengeBox">
         <button class="challenge-close-btn" id="challengeCloseBtn" onclick="resetChallengeBox()" title="Schließen">×</button>
         <span class="challenge-title">Tages-Challenge</span>
@@ -882,7 +888,9 @@
         <span class="challenge-actual-text" id="challengeText"></span>
     </div>
 
+    <!-- 6. GEMEINDE INFORMATIONEN (TERMINE UND ANGEBOTE) -->
     <div class="gemeinde-section" id="gemeindeSection">
+        <!-- Wöchentliche News -->
         <div class="gemeinde-card" id="newsCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('newsCard')">
                 <div class="title-wrapper">
@@ -896,6 +904,7 @@
             </div>
         </div>
 
+        <!-- SORGEFREIE TERMINE -->
         <div class="gemeinde-card" id="termineCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('termineCard')">
                 <h2 class="gemeinde-card-title">Anstehende Termine & Gottesdienste</h2>
@@ -906,6 +915,7 @@
             </div>
         </div>
 
+        <!-- KLAR GETRENNTE REGELMÄSSIGE ANGEBOTE & ANSPRECHPARTNER -->
         <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('dauerInfosCard')">
                 <h2 class="gemeinde-card-title">Ansprechpartner & Angebote</h2>
@@ -918,18 +928,20 @@
             </div>
         </div>
 
+        <!-- PREMIUM BOX FÜR DIE KOLLEKTE -->
         <div class="kollekten-premium-box" id="kollektenBox" style="display: none;">
             <div class="kollekten-image-banner">
                 <img src="images/kollekte.jpg" alt="Digitale Kollekte">
             </div>
             <div class="kollekten-title">Gemeinschaft unterstützen</div>
-            <div class="kollekten-text">Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte. Jede Gabe hilft, unsere Arbeit und Projekte lebendig to halten.</div>
+            <div class="kollekten-text">Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte. Jede Gabe hilft, unsere Arbeit und Projekte lebendig zu halten.</div>
             <a href="" target="_blank" rel="noopener" class="btn-kollekten-pay" id="kollektenLink">
                 🪙 Kollekte digital spendieren
             </a>
         </div>
     </div>
 
+    <!-- EINSTELLUNGS PANEL -->
     <div class="settings-panel" id="settingsPanel">
         <button class="settings-close-btn" onclick="toggleSettingsView()" title="Schließen">×</button>
         <span class="settings-title">Persönliche Einstellungen</span>
@@ -976,6 +988,7 @@
         </div>
     </div>
 
+    <!-- IMPRESSUM MODAL -->
     <div class="modal-overlay" id="impressumModal" onclick="closeModal('impressumModal')">
         <div class="modal-card" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeModal('impressumModal')">×</button>
@@ -991,6 +1004,7 @@
         </div>
     </div>
 
+    <!-- DATENSCHUTZERKLÄRUNG -->
     <div class="modal-overlay" id="datenschutzModal" onclick="closeModal('datenschutzModal')">
         <div class="modal-card" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeModal('datenschutzModal')">×</button>
@@ -1009,6 +1023,7 @@
         </div>
     </div>
 
+    <!-- RECHTSSICHERER FOOTER -->
     <footer class="app-footer">
         <a href="#impressum" onclick="openModal('impressumModal')">Impressum</a>
         <a href="#datenschutz" onclick="openModal('datenschutzModal')">Datenschutz</a>
@@ -1229,10 +1244,10 @@
         document.getElementById('codeBox').style.display = 'none';
         document.getElementById('translationBox').style.display = 'none'; 
         
-        // Exakter Erhalt der originalen Texte im Skript unter Berücksichtigung der ID-Anker
-        if(document.getElementById('sourceTagText')) document.getElementById('sourceTagText').innerText = "Info";
-        if(document.getElementById('actionBtnText')) document.getElementById('actionBtnText').innerText = "Zeitgeist";
-        if(document.getElementById('shareBtnText')) document.getElementById('shareBtnText').innerText = "Teilen";
+        // Exakter Erhalt der originalen Texte & Icons im Skript
+        document.getElementById('sourceTag').querySelector('span').innerText = "Info";
+        document.getElementById('actionBtn').querySelector('span').innerText = "Zeitgeist";
+        document.getElementById('shareBtn').querySelector('span').innerText = "Teilen";
         document.getElementById('sourceRow').style.display = 'inline-flex';
 
         resetChallengeBox();
@@ -1281,9 +1296,10 @@
    function toggleTranslationBox() {
         const tBox = document.getElementById('translationBox');
         const b = document.getElementById('codeBox');
-        const btnText = document.getElementById('actionBtnText');
+        const btn = document.getElementById('actionBtn');
         
         if (tBox && currentData?.uebersetzung) {
+            const btnText = btn.querySelector('span');
             if (tBox.style.display === 'block') {
                 tBox.style.display = 'none';
                 if (btnText) btnText.innerText = "Zeitgeist";
