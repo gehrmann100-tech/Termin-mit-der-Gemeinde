@@ -416,11 +416,11 @@
             opacity: 0.5;
         }
         
-        /* CHALLENGE-BEREICH GANZ UNTEN - JETZT UX-OPTIMIERT */
+        /* CHALLENGE-BEREICH GANZ UNTEN */
         .challenge-box {
             background: var(--bg-challenge); 
             border-radius: var(--radius-element);
-            padding: 18px 20px; 
+            padding: 16px 20px; 
             box-shadow: var(--main-shadow);
             border: 1px solid rgba(255, 255, 255, 0.4);
             color: var(--text-dark); 
@@ -430,49 +430,16 @@
             margin-top: 4px;
             margin-bottom: 16px;
         }
-        
-        .challenge-header-group {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            margin-bottom: 8px;
-        }
-        
         .challenge-title {
             color: var(--text-challenge-title);
+            display: block;
             font-family: 'Inter', sans-serif; 
             font-size: 0.95rem;
-            font-weight: 700; /* Beruhigt: Keine erzwungene harte Großschrift mehr */
-            letter-spacing: 0.2px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px; 
         }
-
-        .challenge-header-icon {
-            width: 14px;
-            height: 14px;
-            stroke: var(--text-challenge-title);
-            stroke-width: 2;
-            fill: none;
-        }
-        
-        /* Das Kreuz sitzt nun absolut perfekt oben rechts */
-        .challenge-close-btn {
-            position: absolute;
-            top: 12px;
-            right: 14px;
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            color: #cbd5e0;
-            cursor: pointer;
-            line-height: 1;
-            padding: 2px;
-            transition: color 0.2s ease;
-        }
-        .challenge-close-btn:hover {
-            color: var(--text-muted);
-        }
-
         .challenge-instruction {
             font-family: var(--font-challenge); 
             font-size: 0.92rem;
@@ -733,6 +700,102 @@
             cursor: pointer;
             width: 170px; 
         }
+
+        .coffee-link-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px dashed transparent;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+        .coffee-link-text:hover {
+            color: #2c3e50;
+            border-bottom-color: #2c3e50;
+        }
+        
+        /* MODAL OVERLAYS */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-card {
+            background: var(--bg-premium-white);
+            max-width: 420px;
+            width: 100%;
+            max-height: 80vh;
+            border-radius: var(--radius-element);
+            padding: 28px 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            animation: blockSlideDown 0.3s ease-out;
+        }
+        .modal-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 16px;
+        }
+        .modal-body {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            color: #cbd5e0;
+            cursor: pointer;
+        }
+
+        /* MINIMALISTISCHER FOOTER */
+        .app-footer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 24px; 
+            margin-bottom: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .app-footer a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @keyframes blockSlideDown {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes toastFadeIn {
+            from { opacity: 0; transform: translate(-50%, 4px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
     </style>
 </head>
 <body>
@@ -771,20 +834,29 @@
 
         <!-- Bedienzeile unten in der Zitat-Box -->
         <div class="box-action-row" id="boxActionRow">
+            
+            <!-- Link 1: Info (Code-Knacker) -->
             <button class="box-action-link" id="infoActionBtn" onclick="toggleCode()">
                 <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20M4 19.5V3.5A2.5 2.5 0 0 1 6.5 1V20M20 1v21M6.5 6H20M6.5 11H20"/></svg>
                 <span>Info</span>
             </button>
+            
             <span class="action-link-divider">|</span>
+
+            <!-- Link 2: Zeitgeist (Heutige Übersetzung) -->
             <button class="box-action-link" id="zeitgeistActionBtn" onclick="toggleTranslationBox()">
                 <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
                 <span>Zeitgeist</span>
             </button>
+            
             <span class="action-link-divider">|</span>
+
+            <!-- Link 3: Teilen -->
             <button class="box-action-link" id="shareActionBtn" onclick="shareContent()">
                 <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
                 <span>Teilen</span>
             </button>
+
         </div>
     </div>
 
@@ -799,7 +871,7 @@
         <span id="codeBoxContent"></span>
     </div>
     
-    <!-- ZONE 2: GEMEINDE INFORMATIONEN -->
+    <!-- ZONE 2: GEMEINDE INFORMATIONEN (Jetzt direkt nach dem Zitat geschaltet) -->
     <div class="gemeinde-section" id="gemeindeSection">
         <!-- Wöchentliche News -->
         <div class="gemeinde-card" id="newsCard" style="display: none;">
@@ -842,17 +914,10 @@
 
     <div class="challenge-divider" id="challengeDivider">•••</div>
     
-    <!-- 5. TAGES CHALLENGE - JETZT VISUELL KOMPLETT FEINJUSTIERT -->
+    <!-- 5. TAGES CHALLENGE - JETZT ELEGANT ALS ABSCHLUSS NACH UNTEN VERLAGERT -->
     <div class="challenge-box" id="challengeBox">
-        <!-- Das Schließen-Kreuz sitzt jetzt absolut sauber auf der rechten Seite -->
         <button class="challenge-close-btn" id="challengeCloseBtn" onclick="resetChallengeBox()" title="Schließen">×</button>
-        
-        <!-- Header-Gruppe mit sanfter Schreibweise und hauchdünnem Fokus-Icon -->
-        <div class="challenge-header-group">
-            <svg class="challenge-header-icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-            <span class="challenge-title">Tages-Challenge</span>
-        </div>
-
+        <span class="challenge-title">Tages-Challenge</span>
         <span class="challenge-instruction" id="challengeInstruction">Bereit für einen kleinen Impuls im Alltag? Entdecke deine heutige Aufgabe.</span>
         <button class="challenge-sub-btn" id="challengeSubBtn" onclick="revealChallengeOnly()">Aufgabe ansehen ➔</button>
         <span class="challenge-actual-text" id="challengeText"></span>
@@ -1162,6 +1227,7 @@
         }
     }
 
+    // DIE STEUERUNGSFUNKTION FÜR DIE SEPARATE ÜBERTRAGUNGS-BOX (ZEITGEIST)
     function toggleTranslationBox() {
         const tBox = document.getElementById('translationBox');
         const b = document.getElementById('codeBox');
@@ -1199,7 +1265,6 @@
         challengeRevealed = true;
     }
 
-    // FEINE ANPASSUNG DER SHARE-LOGIK AUF DAS NEUE WORDING
     function shareContent() {
         if (!currentData) return;
         const cleanVolltext = currentData.volltext.replace(/^[„"']|[“"']$/g, '');
