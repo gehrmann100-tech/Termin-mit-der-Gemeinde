@@ -550,7 +550,7 @@
         }
         .kollekten-text {
             font-family: var(--font-body);
-            font-size: 0.85rem; /* Fix 2: Schrift verkleinert für edlere Magazin-Optik */
+            font-size: 0.85rem; 
             line-height: 1.5;
             color: var(--text-muted);
             margin-bottom: 14px;
@@ -666,9 +666,9 @@
             color: var(--text-dark);
         }
         
-        /* PREMIUM EINSTELLUNGS PANEL */
+        /* PREMIUM EINSTELLUNGS PANEL - HARD-FIX FÜR SMARTHONES */
         .settings-panel {
-            display: none;
+            display: none; /* Steuert die Sichtbarkeit hart über display */
             background: var(--bg-premium-white);
             padding: 26px 20px 22px 20px;
             border-radius: var(--radius-element);
@@ -708,6 +708,13 @@
             justify-content: space-between; 
             align-items: center;
             margin-bottom: 14px;
+            gap: 10px;
+        }
+        .settings-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem; /* Fix: Text verkleinert, damit nichts mehr die Select-Boxen wegschiebt */
+            font-weight: 500;
+            color: var(--text-dark);
         }
         .settings-select {
             font-family: 'Inter', sans-serif;
@@ -719,7 +726,8 @@
             color: var(--text-dark);
             outline: none;
             cursor: pointer;
-            width: 190px; /* Fix 3: Erhöht auf 190px, damit alle Auswahlelemente identisch fluchten */
+            width: 160px; /* Fix: Einheitliches Maß für perfekte Smartphone-Flucht */
+            flex-shrink: 0;
         }
 
         .coffee-link-text {
@@ -736,7 +744,7 @@
             border-bottom-color: #2c3e50;
         }
         
-        /* MINIMALISTISCHER FOOTER - KICK-REPARATUR */
+        /* MINIMALISTISCHER FOOTER */
         .app-footer {
             display: flex;
             justify-content: center;
@@ -745,8 +753,8 @@
             margin-bottom: 12px;
             padding-top: 12px;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
-            position: relative; /* Fix 1: Macht die Links im Dokumentenstapel greifbar */
-            z-index: 10;        /* Fix 1: Schiebt den Footer über den unsichtbaren Panel-Überhang */
+            position: relative; 
+            z-index: 10;        
         }
         .app-footer a {
             font-family: 'Inter', sans-serif;
@@ -832,19 +840,16 @@
 <div class="app-wrapper style-links" id="appWrapper">
     <div class="toast-notification" id="toast">📋 In Zwischenablage kopiert!</div>
     
-    <!-- 1. HEADER & TITEL BEREICH -->
     <div class="header-container">
         <div class="header-icon-deco" id="headerDeco">✨</div>
         <div class="app-title" id="appTitle">Termin <span>mit der Gemeinde</span></div>
     </div>
     <div class="app-subtitle" id="appSubtitle">Solingen-Merscheid</div>
 
-    <!-- 2. GEMEINDE BILD GANZ OBEN -->
     <div class="gemeinde-image-box" id="gemeindeImageBox">
         <img src="" id="gemeindeImg" alt="Kirchengemeinde">
     </div>
 
-    <!-- 3. DATUMSNAVI DIREKT UNTER DEM BILD -->
     <div class="date-navigation">
         <button class="nav-btn" onclick="navigateDay(-1)">❮</button>
         <div class="date-wrapper">
@@ -854,7 +859,6 @@
         <button class="nav-btn" id="nextDayBtn" onclick="navigateDay(1)">❯</button>
     </div>
 
-    <!-- 4. INHALTSBÜHNE MIT INTERNEN AKTIONEN -->
     <div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         <div class="box-action-row" id="boxActionRow">
@@ -866,7 +870,6 @@
         </div>
     </div>
 
-    <!-- DIE SEPARATE ÜBERSETZUNGS-BOX -->
     <div class="translation-box" id="translationBox">
         <button class="box-close-btn" onclick="toggleTranslationBox()" title="Schließen">×</button>
         <div id="translationBoxContent"></div>
@@ -879,7 +882,6 @@
     
     <div class="challenge-divider" id="challengeDivider">•••</div>
     
-    <!-- 5. TAGES CHALLENGE -->
     <div class="challenge-box" id="challengeBox">
         <button class="challenge-close-btn" id="challengeCloseBtn" onclick="resetChallengeBox()" title="Schließen">×</button>
         <span class="challenge-title">Tages-Challenge</span>
@@ -888,9 +890,7 @@
         <span class="challenge-actual-text" id="challengeText"></span>
     </div>
 
-    <!-- 6. GEMEINDE INFORMATIONEN (TERMINE UND ANGEBOTE) -->
     <div class="gemeinde-section" id="gemeindeSection">
-        <!-- Wöchentliche News -->
         <div class="gemeinde-card" id="newsCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('newsCard')">
                 <div class="title-wrapper">
@@ -904,7 +904,6 @@
             </div>
         </div>
 
-        <!-- SORGEFREIE TERMINE -->
         <div class="gemeinde-card" id="termineCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('termineCard')">
                 <h2 class="gemeinde-card-title">Anstehende Termine & Gottesdienste</h2>
@@ -915,7 +914,6 @@
             </div>
         </div>
 
-        <!-- KLAR GETRENNTE REGELMÄSSIGE ANGEBOTE & ANSPRECHPARTNER -->
         <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('dauerInfosCard')">
                 <h2 class="gemeinde-card-title">Ansprechpartner & Angebote</h2>
@@ -928,7 +926,6 @@
             </div>
         </div>
 
-        <!-- PREMIUM BOX FÜR DIE KOLLEKTE MIT INTEGRATION DES GRAFIKBANNERS -->
         <div class="kollekten-premium-box" id="kollektenBox" style="display: none;">
             <div class="kollekten-image-banner">
                 <img src="images/kollekte.jpg" alt="Digitale Kollekte">
@@ -941,7 +938,6 @@
         </div>
     </div>
 
-    <!-- EINSTELLUNGS PANEL -->
     <div class="settings-panel" id="settingsPanel">
         <button class="settings-close-btn" onclick="toggleSettingsView()" title="Schließen">×</button>
         <span class="settings-title">Persönliche Einstellungen</span>
@@ -988,7 +984,6 @@
         </div>
     </div>
 
-    <!-- RECHTSSICHERER FOOTER -->
     <footer class="app-footer">
         <a href="#impressum" onclick="openModal('impressumModal')">Impressum</a>
         <a href="#datenschutz" onclick="openModal('datenschutzModal')">Datenschutz</a>
@@ -1290,7 +1285,6 @@
         challengeRevealed = true;
     }
 
-    // FORMALE DEUTSCHE SATZZEICHEN IM CLIPBOARD-TEXT BEIBEHALTEN
     function shareContent() {
         if (!currentData) return;
         const cleanVolltext = currentData.volltext.replace(/^[„"']|[“"']$/g, '');
@@ -1303,6 +1297,7 @@
     function openModal(id) { document.getElementById(id).style.display = 'flex'; }
     function closeModal(id) { document.getElementById(id).style.display = 'none'; }
     
+    // Fix 1 & 3: Panel schaltet display komplett auf block/none um Platzblockade im DOM aufzuheben
     function toggleSettingsView() {
         const p = document.getElementById('settingsPanel');
         p.style.display = p.style.display === 'block' ? 'none' : 'block';
@@ -1310,7 +1305,7 @@
     function changeTheme() {
         const v = document.getElementById('themeSelect').value;
         localStorage.setItem('appTheme', v);
-        v === "default" ? document.documentElement.setAttribute('data-theme', v) : document.documentElement.setAttribute('data-theme', v);
+        v === "default" ? document.documentElement.removeAttribute('data-theme') : document.documentElement.setAttribute('data-theme', v);
     }
     function changeBtnStyle() {
         const v = document.getElementById('btnStyleSelect').value;
