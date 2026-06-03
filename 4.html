@@ -550,7 +550,7 @@
         }
         .kollekten-text {
             font-family: var(--font-body);
-            font-size: 0.85rem; /* Fix 2: Schrift verkleinert für edlere Magazin-Optik */
+            font-size: 0.92rem;
             line-height: 1.5;
             color: var(--text-muted);
             margin-bottom: 14px;
@@ -666,7 +666,7 @@
             color: var(--text-dark);
         }
         
-        /* PREMIUM EINSTELLUNGS PANEL */
+        /* PREMIUM EINSTELLUNGS PANEL - FLEXBOX FIX & DYNAMISCHE HÖHE */
         .settings-panel {
             display: none;
             background: var(--bg-premium-white);
@@ -677,7 +677,7 @@
             box-shadow: var(--main-shadow);
             animation: blockSlideDown 0.3s ease-out;
             position: relative;
-            height: auto; 
+            height: auto; /* Garantiert dynamisches Mitwachsen */
         }
         .settings-close-btn {
             position: absolute;
@@ -705,7 +705,7 @@
         }
         .settings-row {
             display: flex;
-            justify-content: space-between; 
+            justify-content: space-between; /* Fix: Korrekte Flexbox-Ausrichtung reaktiviert */
             align-items: center;
             margin-bottom: 14px;
         }
@@ -719,7 +719,7 @@
             color: var(--text-dark);
             outline: none;
             cursor: pointer;
-            width: 190px; /* Fix 3: Erhöht auf 190px, damit alle Auswahlelemente identisch fluchten */
+            width: 170px; 
         }
 
         .coffee-link-text {
@@ -736,7 +736,7 @@
             border-bottom-color: #2c3e50;
         }
         
-        /* MINIMALISTISCHER FOOTER - KICK-REPARATUR */
+        /* MINIMALISTISCHER FOOTER - CLEAN EDITORIAL FIX */
         .app-footer {
             display: flex;
             justify-content: center;
@@ -745,14 +745,13 @@
             margin-bottom: 12px;
             padding-top: 12px;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
-            position: relative; /* Fix 1: Macht die Links im Dokumentenstapel greifbar */
-            z-index: 10;        /* Fix 1: Schiebt den Footer über den unsichtbaren Panel-Überhang */
+            z-index: 1;
         }
         .app-footer a {
             font-family: 'Inter', sans-serif;
             font-size: 0.72rem;
             color: var(--text-muted) !important;
-            text-decoration: none !important; 
+            text-decoration: none !important; /* Fix: Verhindert lila Browser-Standardunterstreichungen */
             cursor: pointer;
             border-bottom: 1px dashed transparent;
             transition: all 0.2s ease;
@@ -928,7 +927,7 @@
             </div>
         </div>
 
-        <!-- PREMIUM BOX FÜR DIE KOLLEKTE MIT INTEGRATION DES GRAFIKBANNERS -->
+        <!-- PREMIUM BOX FÜR DIE KOLLEKTE (Hier am bündigen Abschluss!) -->
         <div class="kollekten-premium-box" id="kollektenBox" style="display: none;">
             <div class="kollekten-image-banner">
                 <img src="images/kollekte.jpg" alt="Digitale Kollekte">
@@ -988,7 +987,6 @@
         </div>
     </div>
 
-    <!-- RECHTSSICHERER FOOTER -->
     <footer class="app-footer">
         <a href="#impressum" onclick="openModal('impressumModal')">Impressum</a>
         <a href="#datenschutz" onclick="openModal('datenschutzModal')">Datenschutz</a>
@@ -1095,7 +1093,7 @@
             newsCard.style.display = 'block';
             newsBadge.style.display = 'inline-block';
         } else {
-            if (newsCard) document.getElementById('newsCard').style.display = 'none';
+            if (newsCard) newsCard.style.display = 'none';
             if (newsBadge) newsBadge.style.display = 'none';
         }
     }
@@ -1290,7 +1288,6 @@
         challengeRevealed = true;
     }
 
-    // FORMALE DEUTSCHE SATZZEICHEN IM CLIPBOARD-TEXT BEIBEHALTEN
     function shareContent() {
         if (!currentData) return;
         const cleanVolltext = currentData.volltext.replace(/^[„"']|[“"']$/g, '');
