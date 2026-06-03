@@ -846,14 +846,23 @@
     </div>
 
     <!-- 4. INHALTSBÜHNE MIT HISTORISCH EXAKTEN TEXTLINKS -->
-    <div class="content-stage">
+<div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         <div class="box-action-row" id="boxActionRow">
             <div class="meta-source-row" id="sourceRow">
-                <span class="source-tag" id="sourceTag" onclick="toggleCode()">📋 Info</span>
+                <span class="source-tag" id="sourceTag" onclick="toggleCode()" style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20M4 19.5V3.5A2.5 2.5 0 0 1 6.5 1V20M20 1v21M6.5 6H20M6.5 11H20"/></svg>
+                    <span>Info</span>
+                </span>
             </div>
-            <button class="btn-premium" id="actionBtn" onclick="toggleTranslationBox()">🔆 Zeitgeist</button>
-            <button class="btn-premium" id="shareBtn" onclick="shareContent()" title="Kopieren & teilen">✈️ Teilen</button>
+            <button class="btn-premium" id="actionBtn" onclick="toggleTranslationBox()" style="display: inline-flex; align-items: center; gap: 6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
+                <span>Zeitgeist</span>
+            </button>
+            <button class="btn-premium" id="shareBtn" onclick="shareContent()" title="Kopieren & teilen" style="display: inline-flex; align-items: center; gap: 6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                <span>Teilen</span>
+            </button>
         </div>
     </div>
 
@@ -1236,9 +1245,9 @@
         document.getElementById('translationBox').style.display = 'none'; 
         
         // Exakter Erhalt der originalen Texte & Icons im Skript
-        document.getElementById('sourceTag').innerHTML = "📋 Info";
-        document.getElementById('actionBtn').innerHTML = "🔆 Zeitgeist";
-        document.getElementById('shareBtn').innerHTML = "✈️ Teilen";
+        document.getElementById('sourceTag').querySelector('span').innerText = "Info";
+        document.getElementById('actionBtn').querySelector('span').innerText = "Zeitgeist";
+        document.getElementById('shareBtn').querySelector('span').innerText = "Teilen";
         document.getElementById('sourceRow').style.display = 'inline-flex';
 
         resetChallengeBox();
