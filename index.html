@@ -174,7 +174,7 @@
             object-fit: cover;
         }
 
-        /* DATUMSNAVI */
+        /* DATUMSNAVI UNTER DEM BILD - JETZT STRICKT FETT */
         .date-navigation {
             display: flex;
             justify-content: space-between;
@@ -188,7 +188,7 @@
             font-size: 1.1rem; 
             letter-spacing: 0.3px;
             color: #2c3e50; 
-            font-weight: 700; 
+            font-weight: 700; /* Präzise auf Fett gesetzt */
             text-align: center;
             line-height: 1.3;
         }
@@ -304,7 +304,7 @@
             display: block;
         }
 
-        /* BEDIENZEILE GANZ UNTEN */
+        /* DIE NEUE ULTRA-DEZENTE BEDIENZEILE GANZ UNTEN */
         .box-action-row {
             display: flex;
             justify-content: center;
@@ -315,6 +315,7 @@
             border-top: 1px dashed rgba(0, 0, 0, 0.06);
         }
 
+        /* EINHEITLICHER, GRAZILER LINK-STYLE FÜR DIE INTERAKTIONEN */
         .box-action-link {
             display: inline-flex;
             align-items: center;
@@ -345,6 +346,7 @@
             user-select: none;
         }
 
+        /* HAUCHDÜNNE SVG-IKONEN, DIE DIE TEXTFARBE ERBEN */
         .action-icon-svg {
             width: 14px;
             height: 14px;
@@ -416,7 +418,7 @@
             opacity: 0.5;
         }
         
-        /* CHALLENGE-BEREICH GANZ UNTEN */
+        /* CHALLENGE-BEREICH */
         .challenge-box {
             background: var(--bg-challenge); 
             border-radius: var(--radius-element);
@@ -427,7 +429,6 @@
             animation: blockSlideDown 0.3s ease-out;
             text-align: center;
             position: relative; 
-            margin-top: 4px;
             margin-bottom: 16px;
         }
         .challenge-title {
@@ -482,7 +483,7 @@
             flex-direction: column;
             gap: 12px; 
             margin-top: 4px;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
         }
 
         .gemeinde-card {
@@ -495,7 +496,7 @@
             scroll-margin-top: 20px;
         }
 
-        /* PREMIUM BOX FÜR DIE DIGITALE KOLLEKTE */
+        /* HIGH-END PREMIUM BOX FÜR DIE DIGITALE KOLLEKTE */
         .kollekten-premium-box {
             background: var(--bg-premium-white);
             border: 1px solid rgba(184, 134, 11, 0.15);
@@ -815,7 +816,7 @@
         <img src="" id="gemeindeImg" alt="Kirchengemeinde">
     </div>
 
-    <!-- 3. DATUMSNAVI -->
+    <!-- 3. DATUMSNAVI DIREKT UNTER DEM BILD -->
     <div class="date-navigation">
         <button class="nav-btn" onclick="navigateDay(-1)">❮</button>
         <div class="date-wrapper">
@@ -825,14 +826,14 @@
         <button class="nav-btn" id="nextDayBtn" onclick="navigateDay(1)">❯</button>
     </div>
 
-    <!-- 4. INHALTSBÜHNE (Originalzitat und Transferlinks) -->
+    <!-- 4. INHALTSBÜHNE (Bühne für das Originalzitat und grazilen Transferlinks) -->
     <div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         
-        <!-- Fester Quellenanker direkt unter dem Zitat -->
+        <!-- Fester, unanklickbarer Quellenanker direkt unter dem Zitat -->
         <span class="static-source-display" id="staticSource">Ursprung</span>
 
-        <!-- Bedienzeile unten in der Zitat-Box -->
+        <!-- Die neue, tiefenberuhigte Bedienzeile ganz unten in der Box -->
         <div class="box-action-row" id="boxActionRow">
             
             <!-- Link 1: Info (Code-Knacker) -->
@@ -860,7 +861,7 @@
         </div>
     </div>
 
-    <!-- ÜBERSETZUNGS-BOXEN -->
+    <!-- DIE MEDITATIVE DIALOG-BOX FÜR DIE GEGENWARTS-ÜBERTRAGUNG (ZEITGEIST) -->
     <div class="translation-box" id="translationBox">
         <button class="box-close-btn" onclick="toggleTranslationBox()" title="Schließen">×</button>
         <div id="translationBoxContent"></div>
@@ -871,7 +872,18 @@
         <span id="codeBoxContent"></span>
     </div>
     
-    <!-- ZONE 2: GEMEINDE INFORMATIONEN (Jetzt direkt nach dem Zitat geschaltet) -->
+    <div class="challenge-divider" id="challengeDivider">•••</div>
+    
+    <!-- 5. TAGES CHALLENGE -->
+    <div class="challenge-box" id="challengeBox">
+        <button class="challenge-close-btn" id="challengeCloseBtn" onclick="resetChallengeBox()" title="Schließen">×</button>
+        <span class="challenge-title">Tages-Challenge</span>
+        <span class="challenge-instruction" id="challengeInstruction">Lies erst den Zeitgeist und schalte danach die Aufgabe frei.</span>
+        <button class="challenge-sub-btn" id="challengeSubBtn" onclick="revealChallengeOnly()">Aufgabe ansehen ➔</button>
+        <span class="challenge-actual-text" id="challengeText"></span>
+    </div>
+
+    <!-- 6. GEMEINDE INFORMATIONEN -->
     <div class="gemeinde-section" id="gemeindeSection">
         <!-- Wöchentliche News -->
         <div class="gemeinde-card" id="newsCard" style="display: none;">
@@ -887,7 +899,7 @@
             </div>
         </div>
 
-        <!-- TERMINE -->
+        <!-- SORGEFREIE TERMINE -->
         <div class="gemeinde-card" id="termineCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('termineCard')">
                 <h2 class="gemeinde-card-title">Anstehende Termine & Gottesdienste</h2>
@@ -898,7 +910,7 @@
             </div>
         </div>
 
-        <!-- ANSPRECHPARTNER -->
+        <!-- KLAR GETRENNTE REGELMÄSSIGE ANGEBOTE & ANSPRECHPARTNER -->
         <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('dauerInfosCard')">
                 <h2 class="gemeinde-card-title">Ansprechpartner & Angebote</h2>
@@ -910,29 +922,18 @@
                 <ul class="termin-list" id="regelmaessigList"></ul>
             </div>
         </div>
-    </div>
 
-    <div class="challenge-divider" id="challengeDivider">•••</div>
-    
-    <!-- 5. TAGES CHALLENGE - JETZT ELEGANT ALS ABSCHLUSS NACH UNTEN VERLAGERT -->
-    <div class="challenge-box" id="challengeBox">
-        <button class="challenge-close-btn" id="challengeCloseBtn" onclick="resetChallengeBox()" title="Schließen">×</button>
-        <span class="challenge-title">Tages-Challenge</span>
-        <span class="challenge-instruction" id="challengeInstruction">Bereit für einen kleinen Impuls im Alltag? Entdecke deine heutige Aufgabe.</span>
-        <button class="challenge-sub-btn" id="challengeSubBtn" onclick="revealChallengeOnly()">Aufgabe ansehen ➔</button>
-        <span class="challenge-actual-text" id="challengeText"></span>
-    </div>
-
-    <!-- PREMIUM BOX FÜR DIE KOLLEKTE GANZ UNTEN -->
-    <div class="kollekten-premium-box" id="kollektenBox" style="display: none;">
-        <div class="kollekten-image-banner">
-            <img src="images/kollekte.jpg" alt="Digitale Kollekte">
+        <!-- PREMIUM BOX FÜR DIE KOLLEKTE -->
+        <div class="kollekten-premium-box" id="kollektenBox" style="display: none;">
+            <div class="kollekten-image-banner">
+                <img src="images/kollekte.jpg" alt="Digitale Kollekte">
+            </div>
+            <div class="kollekten-title">Gemeinschaft unterstützen</div>
+            <div class="kollekten-text">Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte. Jede Gabe hilft, unsere Arbeit und Projekte lebendig zu halten.</div>
+            <a href="" target="_blank" rel="noopener" class="btn-kollekten-pay" id="kollektenLink">
+                🪙 Kollekte digital spendieren
+            </a>
         </div>
-        <div class="kollekten-title">Gemeinschaft unterstützen</div>
-        <div class="kollekten-text">Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte. Jede Gabe hilft, unsere Arbeit und Projekte lebendig zu halten.</div>
-        <a href="" target="_blank" rel="noopener" class="btn-kollekten-pay" id="kollektenLink">
-            🪙 Kollekte digital spendieren
-        </a>
     </div>
 
     <!-- EINSTELLUNGS PANEL -->
@@ -965,6 +966,12 @@
                 <option value="large">Weitsicht</option>
                 <option value="xlarge">Morgenblick</option>
             </select>
+        </div>
+
+        <div class="settings-row" style="margin-top: 18px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 14px; justify-content: center;">
+            <a href="https://paypal.me/medienandmore/2" target="_blank" rel="noopener" class="coffee-link-text">
+                ☕ Ein Tässchen Kaffee spendieren (2 €)
+            </a>
         </div>
     </div>
 
@@ -1184,6 +1191,7 @@
         document.getElementById('codeBox').style.display = 'none';
         document.getElementById('translationBox').style.display = 'none'; 
         
+        // Zurücksetzen des Zeitgeist-Linktexts
         const zgBtnSpan = document.querySelector('#zeitgeistActionBtn span');
         if (zgBtnSpan) zgBtnSpan.innerText = "Zeitgeist";
 
@@ -1227,7 +1235,6 @@
         }
     }
 
-    // DIE STEUERUNGSFUNKTION FÜR DIE SEPARATE ÜBERTRAGUNGS-BOX (ZEITGEIST)
     function toggleTranslationBox() {
         const tBox = document.getElementById('translationBox');
         const b = document.getElementById('codeBox');
@@ -1250,7 +1257,7 @@
 
     function resetChallengeBox() {
         document.getElementById('challengeInstruction').style.display = 'block';
-        document.getElementById('challengeInstruction').innerText = "Bereit für einen kleinen Impuls im Alltag? Entdecke deine heutige Aufgabe.";
+        document.getElementById('challengeInstruction').innerText = "Lies erst den Zeitgeist und schalte danach die Aufgabe frei.";
         document.getElementById('challengeSubBtn').style.display = 'inline-block';
         document.getElementById('challengeText').style.display = 'none';
         document.getElementById('challengeCloseBtn').style.display = 'none';
