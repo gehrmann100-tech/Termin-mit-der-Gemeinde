@@ -867,10 +867,11 @@
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         <div class="box-action-row" id="boxActionRow">
             <div class="meta-source-row" id="sourceRow">
-                <span class="source-tag" id="sourceTag" onclick="toggleCode()">Quelle laden...</span>
+                <!-- Die Emojis sind jetzt fest im HTML vorinstalliert -->
+                <span class="source-tag" id="sourceTag" onclick="toggleCode()">📖 Quelle laden...</span>
             </div>
-            <button class="btn-premium" id="actionBtn" onclick="toggleTranslationBox()">Ins Jetzt übertragen</button>
-            <button class="btn-premium" id="shareBtn" onclick="shareContent()" title="Kopieren & teilen">Teilen</button>
+            <button class="btn-premium" id="actionBtn" onclick="toggleTranslationBox()">🔄 Ins Jetzt übertragen</button>
+            <button class="btn-premium" id="shareBtn" onclick="shareContent()" title="Kopieren & teilen">📤 Teilen</button>
         </div>
     </div>
 
@@ -1250,7 +1251,8 @@
         challengeRevealed = false;
         document.getElementById('codeBox').style.display = 'none';
         document.getElementById('translationBox').style.display = 'none'; 
-        document.getElementById('actionBtn').innerText = "Ins Jetzt übertragen";
+        // Fix 4: Integriert das Icon direkt beim harten Zurücksetzen des Textes im JavaScript
+        document.getElementById('actionBtn').innerText = "🔄 Ins Jetzt übertragen";
         document.getElementById('sourceRow').style.display = 'inline-flex';
 
         resetChallengeBox();
@@ -1260,7 +1262,8 @@
             document.getElementById('actionBtn').style.display = 'inline-flex';
             document.getElementById('challengeBox').style.display = 'block'; 
             document.getElementById('challengeDivider').style.display = 'block'; 
-            document.getElementById('sourceTag').innerText = `${currentData.original} (Info)`;
+            // Fix 4: Verankert das Icon dynamisch vor der geladenen Quelle im Skript
+            document.getElementById('sourceTag').innerText = `📖 ${currentData.original} (Info)`;
             document.getElementById('mainText').innerHTML = currentData.volltext;
             document.getElementById('codeBoxContent').innerHTML = currentData.code_knacker;
             document.getElementById('translationBoxContent').innerHTML = currentData.uebersetzung;
@@ -1305,11 +1308,13 @@
         if (tBox && currentData?.uebersetzung) {
             if (tBox.style.display === 'block') {
                 tBox.style.display = 'none';
-                btn.innerText = "Ins Jetzt übertragen";
+                // Fix 4: Hält das Icon im geschlossenen Zustand am Leben
+                btn.innerText = "🔄 Ins Jetzt übertragen";
             } else {
                 tBox.style.display = 'block';
                 b.style.display = 'none'; 
-                btn.innerText = "Übertragung schließen";
+                // Fix 4: Setzt das Icon für den Schließen-Status
+                btn.innerText = "🔽 Übertragung schließen";
                 setTimeout(() => {
                     tBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }, 100);
