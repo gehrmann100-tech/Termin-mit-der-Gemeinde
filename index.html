@@ -1293,19 +1293,20 @@
         }
     }
 
-    function toggleTranslationBox() {
+   function toggleTranslationBox() {
         const tBox = document.getElementById('translationBox');
         const b = document.getElementById('codeBox');
         const btn = document.getElementById('actionBtn');
         
         if (tBox && currentData?.uebersetzung) {
+            const btnText = btn.querySelector('span');
             if (tBox.style.display === 'block') {
                 tBox.style.display = 'none';
-                btn.innerHTML = "🔆 Zeitgeist";
+                if (btnText) btnText.innerText = "Zeitgeist";
             } else {
                 tBox.style.display = 'block';
                 b.style.display = 'none'; 
-                btn.innerHTML = "🔽 Zeitgeist schließen";
+                if (btnText) btnText.innerText = "Schließen";
                 setTimeout(() => {
                     tBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }, 100);
