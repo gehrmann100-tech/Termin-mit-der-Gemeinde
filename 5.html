@@ -294,8 +294,19 @@
             font-style: normal;
             font-weight: 400; 
         }
+        
+        .text-display.translation-mode {
+            font-family: var(--font-body) !important; 
+            font-style: italic !important;
+            font-size: var(--fs-translation-text) !important;
+            line-height: 1.6 !important;
+            color: #2c3e50 !important;
+            text-align: center;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
 
-        /* BEDIENZEILE INNERHALB DER BOX - MITTELACHSE GARANTIERT */
+        /* BEDIENZEILE INNERHALB DER BOX */
         .box-action-row {
             display: flex;
             justify-content: center;
@@ -312,7 +323,7 @@
             align-items: center;
         }
         
-        /* AUSWAHL-STYLES (TEXTLINKS VS OUTLINE-BUTTONS) */
+        /* ZWEI STIL-WELTEN (TEXTLINKS VS OUTLINE-BUTTONS) */
         .app-wrapper.style-links .source-tag, 
         .app-wrapper.style-links .btn-premium {
             display: inline-flex;
@@ -369,13 +380,14 @@
             opacity: 1;
         }
 
-        /* CODE-KNACKER & ÜBERSETZUNGS-BOXEN (FLUIDE SCHRIFTGRÖSSE DURCH VARIABLES) */
+        /* CODE-KNACKER & ÜBERSETZUNGS-BOXEN */
         .code-box, .translation-box {
             display: none;
             background: var(--bg-premium-white);
             padding: 20px;
             border-radius: var(--radius-element);
             font-family: var(--font-body); 
+            font-size: 0.95rem;
             line-height: 1.6;
             margin-bottom: 16px;
             border: 1px solid rgba(255, 255, 255, 0.5);
@@ -387,15 +399,10 @@
         }
 
         .translation-box {
-            font-size: var(--fs-translation-text); /* Dynamische Skalierung reaktiviert! */
             font-family: var(--font-body);
             font-style: italic;
             color: #2c3e50;
             border-color: rgba(41, 128, 185, 0.3);
-        }
-
-        .code-box {
-            font-size: var(--fs-challenge-text); /* Skaliert sauber mit */
         }
 
         [data-font="modern"] .code-box, 
@@ -659,7 +666,7 @@
             color: var(--text-dark);
         }
         
-        /* PREMIUM EINSTELLUNGS PANEL - SMARTPHONE FLUCHT GARANTIERT */
+        /* PREMIUM EINSTELLUNGS PANEL */
         .settings-panel {
             display: none; 
             background: var(--bg-premium-white);
@@ -668,6 +675,7 @@
             margin-top: 20px;
             border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: var(--main-shadow);
+            animation: blockSlideDown 0.3s ease-out;
             position: relative;
             height: auto; 
         }
@@ -736,7 +744,7 @@
             border-bottom-color: #2c3e50;
         }
         
-        /* MINIMALISTISCHER FOOTER - KICK-REPARATUR */
+        /* MINIMALISTISCHER FOOTER */
         .app-footer {
             display: flex;
             justify-content: center;
@@ -816,6 +824,15 @@
             color: #cbd5e0;
             cursor: pointer;
         }
+
+        @keyframes blockSlideDown {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes toastFadeIn {
+            from { opacity: 0; transform: translate(-50%, 4px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
     </style>
 </head>
 <body>
@@ -845,15 +862,16 @@
         <button class="nav-btn" id="nextDayBtn" onclick="navigateDay(1)">❯</button>
     </div>
 
-    <!-- 4. INHALTSBÜHNE MIT HISTORISCH EXAKTEN TEXTLINKS -->
+    <!-- 4. INHALTSBÜHNE MIT INTERNEN AKTIONEN -->
     <div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         <div class="box-action-row" id="boxActionRow">
             <div class="meta-source-row" id="sourceRow">
-                <span class="source-tag" id="sourceTag" onclick="toggleCode()">📋 Info</span>
+                <!-- Die Emojis sind jetzt fest im HTML vorinstalliert -->
+                <span class="source-tag" id="sourceTag" onclick="toggleCode()">📖 Quelle laden...</span>
             </div>
-            <button class="btn-premium" id="actionBtn" onclick="toggleTranslationBox()">🔆 Zeitgeist</button>
-            <button class="btn-premium" id="shareBtn" onclick="shareContent()" title="Kopieren & teilen">✈️ Teilen</button>
+            <button class="btn-premium" id="actionBtn" onclick="toggleTranslationBox()">🔄 Ins Jetzt übertragen</button>
+            <button class="btn-premium" id="shareBtn" onclick="shareContent()" title="Kopieren & teilen">📤 Teilen</button>
         </div>
     </div>
 
@@ -979,7 +997,7 @@
         </div>
     </div>
 
-    <!-- IMPRESSUM MODAL -->
+    <!-- WIEDERHERGESTELLT: RECHTSSICHERES IMPRESSUM MODAL -->
     <div class="modal-overlay" id="impressumModal" onclick="closeModal('impressumModal')">
         <div class="modal-card" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeModal('impressumModal')">×</button>
@@ -995,7 +1013,7 @@
         </div>
     </div>
 
-    <!-- DATENSCHUTZERKLÄRUNG -->
+    <!-- WIEDERHERGESTELLT: RECHTSSICHERE DATENSCHUTZERKLÄRUNG -->
     <div class="modal-overlay" id="datenschutzModal" onclick="closeModal('datenschutzModal')">
         <div class="modal-card" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeModal('datenschutzModal')">×</button>
@@ -1044,7 +1062,6 @@
         
         const savedBtnStyle = localStorage.getItem('appBtnStyle') || "links";
         document.getElementById('appWrapper').className = `app-wrapper style-${savedBtnStyle}`;
-        document.getElementById('btnStyleSelect').value = savedBtnStyle;
 
         const urlParams = new URLSearchParams(window.location.search);
         const gemeindeParam = urlParams.get('gemeinde');
@@ -1234,11 +1251,8 @@
         challengeRevealed = false;
         document.getElementById('codeBox').style.display = 'none';
         document.getElementById('translationBox').style.display = 'none'; 
-        
-        // Exakter Erhalt der originalen Texte & Icons im Skript
-        document.getElementById('sourceTag').innerHTML = "📋 Info";
-        document.getElementById('actionBtn').innerHTML = "🔆 Zeitgeist";
-        document.getElementById('shareBtn').innerHTML = "✈️ Teilen";
+        // Fix 4: Integriert das Icon direkt beim harten Zurücksetzen des Textes im JavaScript
+        document.getElementById('actionBtn').innerText = "🔄 Ins Jetzt übertragen";
         document.getElementById('sourceRow').style.display = 'inline-flex';
 
         resetChallengeBox();
@@ -1248,6 +1262,8 @@
             document.getElementById('actionBtn').style.display = 'inline-flex';
             document.getElementById('challengeBox').style.display = 'block'; 
             document.getElementById('challengeDivider').style.display = 'block'; 
+            // Fix 4: Verankert das Icon dynamisch vor der geladenen Quelle im Skript
+            document.getElementById('sourceTag').innerText = `📖 ${currentData.original} (Info)`;
             document.getElementById('mainText').innerHTML = currentData.volltext;
             document.getElementById('codeBoxContent').innerHTML = currentData.code_knacker;
             document.getElementById('translationBoxContent').innerHTML = currentData.uebersetzung;
@@ -1292,11 +1308,13 @@
         if (tBox && currentData?.uebersetzung) {
             if (tBox.style.display === 'block') {
                 tBox.style.display = 'none';
-                btn.innerHTML = "🔆 Zeitgeist";
+                // Fix 4: Hält das Icon im geschlossenen Zustand am Leben
+                btn.innerText = "🔄 Ins Jetzt übertragen";
             } else {
                 tBox.style.display = 'block';
                 b.style.display = 'none'; 
-                btn.innerHTML = "🔽 Zeitgeist schließen";
+                // Fix 4: Setzt das Icon für den Schließen-Status
+                btn.innerText = "🔽 Übertragung schließen";
                 setTimeout(() => {
                     tBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }, 100);
