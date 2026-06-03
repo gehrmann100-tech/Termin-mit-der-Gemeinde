@@ -34,7 +34,7 @@
             /* SCHRIFT-CHARAKTERE VARIABLES (STANDARD: BUCH-ÄSTHETIK) */
             --font-title: 'Playfair Display', serif;
             --font-body: 'Lora', serif;
-            --font-challenge: 'Lora', serif; /* Separates Handling für die Challenge-Box */
+            --font-challenge: 'Lora', serif;
 
             /* SCHRIFTGRÖSSEN VARIABLES */
             --fs-main-text: 1.1rem;
@@ -265,7 +265,7 @@
             z-index: 10;
         }
 
-        /* INHALTSBÜHNE - ABSTAND NACH OBEN JUSTIERT */
+        /* INHALTSBÜHNE */
         .content-stage {
             background: var(--bg-premium-white);
             border-radius: var(--radius-element);
@@ -274,7 +274,7 @@
             padding: 26px 22px 14px 22px; 
             display: flex;
             flex-direction: column;
-            margin-top: 14px; /* Fix 1: Schafft gesunden Platz unter dem Datum */
+            margin-top: 14px; 
             margin-bottom: 14px; 
             text-align: center;
         }
@@ -294,23 +294,12 @@
             font-style: normal;
             font-weight: 400; 
         }
-        
-        .text-display.translation-mode {
-            font-family: var(--font-body) !important; 
-            font-style: italic !important;
-            font-size: var(--fs-translation-text) !important;
-            line-height: 1.6 !important;
-            color: #2c3e50 !important;
-            text-align: center;
-            margin-bottom: 12px;
-            font-weight: 400;
-        }
 
-        /* BEDIENZEILE INNERHALB DER BOX - VERTIKALE MITTE-ACHSE GARANTIERT */
+        /* BEDIENZEILE INNERHALB DER BOX */
         .box-action-row {
             display: flex;
             justify-content: center;
-            align-items: center; /* Fix 2: Richtet alle Elemente perfekt mittig aus */
+            align-items: center; 
             gap: 24px; 
             margin-top: 8px;
             padding-top: 12px;
@@ -353,7 +342,6 @@
             opacity: 1;
         }
 
-        /* Fix 3: Reaktivierung der Outline-Vorschau innerhalb der Zitat-Box */
         .app-wrapper.style-buttons .source-tag, 
         .app-wrapper.style-buttons .btn-premium {
             display: inline-flex;
@@ -381,8 +369,8 @@
             opacity: 1;
         }
 
-        /* CODE-KNACKER BLOCK */
-        .code-box {
+        /* CODE-KNACKER & ÜBERSETZUNGS-BOXEN */
+        .code-box, .translation-box {
             display: none;
             background: var(--bg-premium-white);
             padding: 20px;
@@ -396,6 +384,37 @@
             animation: blockSlideDown 0.3s ease-out;
             box-shadow: var(--main-shadow);
             position: relative;
+            text-align: center;
+        }
+
+        .translation-box {
+            font-family: var(--font-body);
+            font-style: italic;
+            color: #2c3e50;
+            border-color: rgba(41, 128, 185, 0.3);
+        }
+
+        [data-font="modern"] .code-box, 
+        [data-font="modern"] .translation-box {
+            font-style: normal;
+        }
+
+        .box-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #cbd5e0;
+            cursor: pointer;
+            line-height: 1;
+            padding: 2px 6px;
+            transition: color 0.2s ease;
+        }
+        .box-close-btn:hover {
+            color: var(--text-muted);
         }
 
         .challenge-divider {
@@ -407,7 +426,7 @@
             opacity: 0.5;
         }
         
-        /* CHALLENGE-BEREICH - SCHRIFTSTIL-DYNAMIK FIX */
+        /* CHALLENGE-BEREICH */
         .challenge-box {
             background: var(--bg-challenge); 
             border-radius: var(--radius-element);
@@ -431,7 +450,7 @@
             margin-bottom: 6px; 
         }
         .challenge-instruction {
-            font-family: var(--font-challenge); /* Fix 4: Richtet sich nach den globalen Einstellungen */
+            font-family: var(--font-challenge); 
             font-size: 0.92rem;
             color: var(--text-muted);
             line-height: 1.5;
@@ -440,7 +459,7 @@
         }
         
         .challenge-actual-text {
-            font-family: var(--font-challenge); /* Fix 4: Folgt der ausgewählten Schrift-Klasse */
+            font-family: var(--font-challenge); 
             font-style: italic;
             font-size: var(--fs-challenge-text);
             line-height: 1.6;
@@ -448,7 +467,6 @@
             display: none;
             text-align: center;
         }
-        /* Wenn moderne Klarheit aktiv ist, wird das Kursive hier sauber ausgehebelt */
         [data-font="modern"] .challenge-actual-text {
             font-style: normal;
         }
@@ -486,16 +504,29 @@
             scroll-margin-top: 20px;
         }
 
-        /* EDLE BOX FÜR DEN DIGITALEN KLINGELBEUTEL (Ganz nach unten verschoben!) */
+        /* HIGH-END PREMIUM BOX FÜR DIE DIGITALE KOLLEKTE */
         .kollekten-premium-box {
             background: var(--bg-premium-white);
-            border: 1px solid rgba(184, 134, 11, 0.2);
+            border: 1px solid rgba(184, 134, 11, 0.15);
             border-radius: var(--radius-element);
-            padding: 20px;
+            padding: 0 0 20px 0; 
+            overflow: hidden; 
             box-shadow: var(--main-shadow);
             text-align: center;
-            margin-bottom: 12px; /* Harmonischer Abstand in der unteren Liste */
+            margin-bottom: 12px; 
             animation: blockSlideDown 0.3s ease-out;
+        }
+        .kollekten-image-banner {
+            width: 100%;
+            height: 130px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(184, 134, 11, 0.1);
+        }
+        .kollekten-image-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .kollekten-title {
             font-family: 'Inter', sans-serif;
@@ -512,7 +543,7 @@
             line-height: 1.5;
             color: var(--text-muted);
             margin-bottom: 14px;
-            padding: 0 10px;
+            padding: 0 16px;
         }
         .btn-kollekten-pay {
             display: inline-flex;
@@ -693,7 +724,7 @@
             border-bottom-color: #2c3e50;
         }
         
-        /* MEDITATIVE MODAL OVERLAYS */
+        /* MODAL OVERLAYS */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -736,9 +767,6 @@
             color: var(--text-dark);
             overflow-y: auto;
             padding-right: 4px;
-        }
-        .modal-footer {
-            margin-top: 12px;
         }
         .modal-close-btn {
             position: absolute;
@@ -784,7 +812,7 @@
 <div class="app-wrapper style-links" id="appWrapper">
     <div class="toast-notification" id="toast">📋 In Zwischenablage kopiert!</div>
     
-    <!-- 1. HEADER & TITEL BEREICH (Stern fixiert eingebaut!) -->
+    <!-- 1. HEADER & TITEL BEREICH -->
     <div class="header-container">
         <div class="header-icon-deco" id="headerDeco">✨</div>
         <div class="app-title" id="appTitle">Termin <span>mit der Gemeinde</span></div>
@@ -806,20 +834,27 @@
         <button class="nav-btn" id="nextDayBtn" onclick="navigateDay(1)">❯</button>
     </div>
 
-    <!-- 4. INHALTSBÜHNE MIT INTERNEN AKTIONEN -->
+    <!-- 4. INHALTSBÜHNE (Zeigt dauerhaft das Originalzitat) -->
     <div class="content-stage">
         <div class="text-display" id="mainText">Lade heutigen Impuls...</div>
         <div class="box-action-row" id="boxActionRow">
             <div class="meta-source-row" id="sourceRow">
                 <span class="source-tag" id="sourceTag" onclick="toggleCode()">Quelle laden...</span>
             </div>
-            <button class="btn-premium" id="actionBtn" onclick="translateText()">Ins Jetzt übertragen</button>
+            <!-- Der Button steuert jetzt das meditative Aufklappen der separaten Box -->
+            <button class="btn-premium" id="actionBtn" onclick="toggleTranslationBox()">Ins Jetzt übertragen</button>
             <button class="btn-premium" id="shareBtn" onclick="shareContent()" title="Kopieren & teilen">Teilen</button>
         </div>
     </div>
 
+    <!-- DIE NEUE DIALOG-BOX FÜR DIE GEGENWARTS-ÜBERTRAGUNG -->
+    <div class="translation-box" id="translationBox">
+        <button class="box-close-btn" onclick="toggleTranslationBox()" title="Schließen">×</button>
+        <div id="translationBoxContent"></div>
+    </div>
+
     <div class="code-box" id="codeBox">
-        <button class="code-close-btn" onclick="toggleCode()" title="Schließen">×</button>
+        <button class="box-close-btn" onclick="toggleCode()" title="Schließen">×</button>
         <span id="codeBoxContent"></span>
     </div>
     
@@ -850,7 +885,7 @@
             </div>
         </div>
 
-        <!-- SORGEFREIE TERMINE (4 NÄCHSTE DATEN) -->
+        <!-- SORGEFREIE TERMINE -->
         <div class="gemeinde-card" id="termineCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('termineCard')">
                 <h2 class="gemeinde-card-title">Anstehende Termine & Gottesdienste</h2>
@@ -874,8 +909,11 @@
             </div>
         </div>
 
-        <!-- Fix 5: PREMIUM BOX FÜR DIE KOLLEKTE (Jetzt am absoluten Ende der Gemeinde-Liste!) -->
+        <!-- PREMIUM BOX FÜR DIE KOLLEKTE -->
         <div class="kollekten-premium-box" id="kollektenBox" style="display: none;">
+            <div class="kollekten-image-banner">
+                <img src="images/kollekte.jpg" alt="Digitale Kollekte">
+            </div>
             <div class="kollekten-title">Gemeinschaft unterstützen</div>
             <div class="kollekten-text">Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte. Jede Gabe hilft, unsere Arbeit und Projekte lebendig zu halten.</div>
             <a href="" target="_blank" rel="noopener" class="btn-kollekten-pay" id="kollektenLink">
@@ -931,39 +969,6 @@
         </div>
     </div>
 
-    <div class="modal-overlay" id="impressumModal" onclick="closeModal('impressumModal')">
-        <div class="modal-card" onclick="event.stopPropagation()">
-            <button class="modal-close-btn" onclick="closeModal('impressumModal')">×</button>
-            <div class="modal-header">Impressum</div>
-            <div class="modal-body">
-                <h4>Dienstanbieter & Verantwortlich</h4>
-                <p>Andreas Gehrmann<br>Olgastr. 39<br>42699 Solingen<br>Deutschland</p>
-                <h4>Kontakt</h4>
-                <p>E-Mail: info@andreas-gehrmann.de</p>
-                <h4>Hoster</h4>
-                <p>Diese Anwendung wird auf Servern von Netlify gehostet.<br>Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="datenschutzModal" onclick="closeModal('datenschutzModal')">
-        <div class="modal-card" onclick="event.stopPropagation()">
-            <button class="modal-close-btn" onclick="closeModal('datenschutzModal')">×</button>
-            <div class="modal-header">Datenschutzerklärung</div>
-            <div class="modal-body">
-                <p>Diese meditative Web-App ist auf maximale Datensparsamkeit ausgelegt. Du kannst sie komplett ohne Angabe von persönlichen Daten nutzen.</p>
-                <h4>1. Lokale Speicherung (LocalStorage)</h4>
-                <p>Sämtliche Einstellungen, die du in der App vornimmst, werden ausschließlich lokal in deinem eigenen Browser auf deinem Gerät gespeichert.</p>
-                <h4>2. Server-Logfiles & Hosting</h4>
-                <p>Die App wird über den Plattform-Dienst Netlify bereitgestellt. Beim Aufruf der App erfasst Netlify technisch bedingt automatisierte Protokolldaten.</p>
-                <h4>3. Keine Analyse oder Tracking</h4>
-                <p>Wir verwenden keine Analyse-Tools, setzen keine Tracking-Cookies ein und binden keine Werbenetzwerke ein.</p>
-                <h4>4. Deine Rechte</h4>
-                <p>Da wir keine personenbezogenen Daten von dir auf Servern speichern, können wir dir gegenüber auch keine Daten ausgeben, korrigieren oder löschen.</p>
-            </div>
-        </div>
-    </div>
-
     <footer class="app-footer">
         <a href="#impressum" onclick="openModal('impressumModal')">Impressum</a>
         <a href="#datenschutz" onclick="openModal('datenschutzModal')">Datenschutz</a>
@@ -975,7 +980,6 @@
     let allData = null;
     let currentData = null;
     let gemeindeConfig = null;
-    let isOriginal = true;
     let challengeRevealed = false;
     
     let displayDate = new Date();
@@ -992,7 +996,6 @@
         const savedSize = localStorage.getItem('appSize') || "default";
         if (savedSize !== "default") document.documentElement.setAttribute('data-size', savedSize);
         
-        // Dynamische Initialisierung der Outline-Klasse statt statischer Verdrahtung
         const savedBtnStyle = localStorage.getItem('appBtnStyle') || "links";
         document.getElementById('appWrapper').className = `app-wrapper style-${savedBtnStyle}`;
 
@@ -1064,7 +1067,6 @@
             const imgEl = document.getElementById('gemeindeImg');
             if (imgEl) imgEl.src = gemeindeConfig.kirchen_bild;
             imgBox.style.display = 'block';
-            // Fix: Der dekorative Stern bleibt jetzt dauerhaft sichtbar, anstatt auf display: none zu schalten!
         }
 
         const newsCard = document.getElementById('newsCard');
@@ -1121,7 +1123,6 @@
         return tage > 31 ? new Date(jahr, 3, tage - 31) : new Date(jahr, 2, tage);
     }
 
-    // FEIERTAGSLOGIK FÜR BEWEGLICHE KIRCHLICHE FEIERTAGE
     function getFeiertagKey(date) {
         const jahr = date.getFullYear(), ostersonntag = getOstersonntag(jahr);
         const tageNachOstern = (anzahl) => {
@@ -1183,10 +1184,10 @@
         const feiertagKey = getFeiertagKey(displayDate);
         currentData = feiertagKey ? allData[feiertagKey] : allData[`${month}-${day}`];
         
-        isOriginal = true; challengeRevealed = false;
+        challengeRevealed = false;
         document.getElementById('codeBox').style.display = 'none';
+        document.getElementById('translationBox').style.display = 'none'; // Schließt Box bei Datumswechsel
         document.getElementById('actionBtn').innerText = "Ins Jetzt übertragen";
-        document.getElementById('mainText').classList.remove('translation-mode');
         document.getElementById('sourceRow').style.display = 'inline-flex';
 
         resetChallengeBox();
@@ -1199,6 +1200,7 @@
             document.getElementById('sourceTag').innerText = `${currentData.original} (Info)`;
             document.getElementById('mainText').innerHTML = currentData.volltext;
             document.getElementById('codeBoxContent').innerHTML = currentData.code_knacker;
+            document.getElementById('translationBoxContent').innerHTML = currentData.uebersetzung;
             document.getElementById('challengeText').innerText = currentData.challenge;
         }
 
@@ -1221,7 +1223,36 @@
 
     function toggleCode() {
         const b = document.getElementById('codeBox');
-        if (b && currentData?.code_knacker) b.style.display = b.style.display === 'block' ? 'none' : 'block';
+        const tBox = document.getElementById('translationBox');
+        if (b && currentData?.code_knacker) {
+            if (b.style.display === 'block') {
+                b.style.display = 'none';
+            } else {
+                b.style.display = 'block';
+                tBox.style.display = 'none'; // Schließt die jeweils andere Box für sauberen Fokus
+            }
+        }
+    }
+
+    // DIE NEUE STEUERUNGSFUNKTION FÜR DIE SEPARATE ÜBERTRAGUNGS-BOX
+    function toggleTranslationBox() {
+        const tBox = document.getElementById('translationBox');
+        const b = document.getElementById('codeBox');
+        const btn = document.getElementById('actionBtn');
+        
+        if (tBox && currentData?.uebersetzung) {
+            if (tBox.style.display === 'block') {
+                tBox.style.display = 'none';
+                btn.innerText = "Ins Jetzt übertragen";
+            } else {
+                tBox.style.display = 'block';
+                b.style.display = 'none'; // Schließt Code-Knacker
+                btn.innerText = "Übertragung schließen";
+                setTimeout(() => {
+                    tBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
     }
 
     function resetChallengeBox() {
@@ -1232,33 +1263,12 @@
         challengeRevealed = false;
     }
 
-    // REVEAL CHALLENGE FUNKTION MIT KORREKTEM DYNAMISCHEM SCHRIFTSTIL-FALLBACK
     function revealChallengeOnly() {
         document.getElementById('challengeInstruction').style.display = 'none';
         document.getElementById('challengeSubBtn').style.display = 'none';
         document.getElementById('challengeText').style.display = 'block';
         document.getElementById('challengeCloseBtn').style.display = 'block';
         challengeRevealed = true;
-    }
-
-    function translateText() {
-        if (!currentData) return;
-        const btn = document.getElementById('actionBtn'), cBox = document.getElementById('challengeBox');
-        const cDiv = document.getElementById('challengeDivider'), txt = document.getElementById('mainText');
-        
-        animateTextChange(() => {
-            if (isOriginal) {
-                txt.innerText = currentData.uebersetzung; txt.classList.add('translation-mode'); 
-                cBox.style.display = 'none'; cDiv.style.display = 'none';
-                document.getElementById('sourceRow').style.display = 'none';
-                btn.innerText = "Original anzeigen"; isOriginal = false;
-            } else {
-                txt.innerHTML = currentData.volltext; txt.classList.remove('translation-mode'); 
-                cBox.style.display = 'block'; cDiv.style.display = 'block';
-                document.getElementById('sourceRow').style.display = 'inline-flex';
-                btn.innerText = "Ins Jetzt übertragen"; isOriginal = true;
-            }
-        });
     }
 
     function shareContent() {
@@ -1280,16 +1290,13 @@
     function changeTheme() {
         const v = document.getElementById('themeSelect').value;
         localStorage.setItem('appTheme', v);
-        v === "default" ? document.documentElement.removeAttribute('data-theme') : document.documentElement.setAttribute('data-theme', v);
+        v === "default" ? document.documentElement.setAttribute('data-theme', v) : document.documentElement.setAttribute('data-theme', v);
     }
-    
-    // REAKTIVIERTER BEDIENELEMENT-SWITCHER (TEXT VS OUTLINE)
     function changeBtnStyle() {
         const v = document.getElementById('btnStyleSelect').value;
         localStorage.setItem('appBtnStyle', v);
         document.getElementById('appWrapper').className = `app-wrapper style-${v}`;
     }
-    
     function changeFont() {
         const v = document.getElementById('fontSelect').value;
         localStorage.setItem('appFont', v);
