@@ -585,6 +585,7 @@
             font-size: var(--fs-challenge-text);
             line-height: 1.6;
             color: var(--text-dark);
+            white-space: pre-wrap; /* NEU: Saubere Zeilenumbrüche */
         }
 
         .termin-list {
@@ -1189,6 +1190,7 @@
             if (gemeindeConfig.wochen_news && gemeindeConfig.wochen_news.trim() !== "") {
                 newsCard.style.display = 'block';
                 newsBadge.style.display = 'inline-block';
+                document.getElementById('newsText').innerText = gemeindeConfig.wochen_news; // NEU: Text wird nun in die Kachel geladen
             } else {
                 if (newsCard) newsCard.style.display = 'none';
                 if (newsBadge) newsBadge.style.display = 'none';
@@ -1212,7 +1214,8 @@
             infos.ansprechpartner.forEach(p => {
                 const li = document.createElement('li');
                 li.className = 'termin-item';
-                li.innerHTML = `<div class="termin-meta-row"><span>${p.rolle}</span></div><div class="termin-titel"><strong>${p.name}:</strong> ${p.kontakt}</div>`;
+                // NEU: Name fett und mit Zeilenumbruch für die Kontaktdaten
+                li.innerHTML = `<div class="termin-meta-row"><span>${p.rolle}</span></div><div class="termin-titel"><strong>${p.name}</strong><br>${p.kontakt}</div>`;
                 kList.appendChild(li);
             });
         }
