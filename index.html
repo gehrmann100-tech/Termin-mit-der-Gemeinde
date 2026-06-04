@@ -621,10 +621,10 @@
             color: #2980b9;
         }
 
-     .termin-titel {
-    color: var(--text-dark);
-    white-space: pre-wrap; /* Das aktiviert die echten Zeilenumbrüche */
-}
+        .termin-titel {
+            color: var(--text-dark);
+            white-space: pre-wrap; /* Das aktiviert die echten Zeilenumbrüche */
+        }
 
         /* EINSTELLUNGS PANEL */
         .settings-panel {
@@ -650,7 +650,7 @@
             margin-bottom: 18px;
             text-align: center;
         }
-     .settings-row {
+        .settings-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1096,34 +1096,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const gemeindeParam = urlParams.get('gemeinde');
 
-        let jsonPfad = 'data/sprueche.json';
-        if (gemeindeParam) jsonPfad = `data/${gemeindeParam.toLowerCase()}.json`;
-
-        fetch(jsonPfad)
-            .then(response => response.json())
-            .then(data => {
-                allData = data;
-                if (data.gemeinde_konfiguration) {
-                    gemeindeConfig = data.gemeinde_konfiguration;
-                    renderDauerInfos();
-                }
-
-                initHeader();
-
-                if (gemeindeParam) {
-                    fetch('data/sprueche.json')
-                        .then(res => res.json())
-                        .then(spruecheData => {
-                            Object.keys(spruecheData).forEach(key => {
-                                if (!allData[key]) {
-                                    allData[key] = spruecheData[key];
-                                } else if (!allData[key].volltext) {
-                                    allData[key].original = spruecheData[key].original;
-                                    allData[key].volltext = spruecheData[key].volltext;
-                               const urlParams = new URLSearchParams(window.location.search);
-        const gemeindeParam = urlParams.get('gemeinde');
-
-        // HIER DIE ECHTE BACKEND URL VON NETLIFY EINTRAGEN (OHNE Schrägstrich am Ende)
+        // HIER DIE ECHTE BACKEND URL VON NETLIFY
         const backendUrl = 'https://sandboxgemeinde.netlify.app';
 
         // Standard Pfad für lokale App Sprüche
@@ -1171,8 +1144,12 @@
             })
             .catch(error => {
                 console.error("Fehler beim Laden der JSON Daten:", error);
-                document.getElementById('mainText').innerText = "Fehler beim Laden der Gemeinde Daten. Bitte überprüfe die Verbindung.";
+                const mainTextEl = document.getElementById('mainText');
+                if (mainTextEl) {
+                    mainTextEl.innerText = "Fehler beim Laden der Gemeinde Daten. Bitte überprüfe die Verbindung.";
+                }
             });
+    });
 
     function toggleCard(cardId) {
         const card = document.getElementById(cardId);
@@ -1231,21 +1208,25 @@
 
         const kList = document.getElementById('kontaktList');
         kList.innerHTML = '';
-        infos.ansprechpartner.forEach(p => {
-            const li = document.createElement('li');
-            li.className = 'termin-item';
-            li.innerHTML = `<div class="termin-meta-row"><span>${p.rolle}</span></div><div class="termin-titel"><strong>${p.name}:</strong> ${p.kontakt}</div>`;
-            kList.appendChild(li);
-        });
+        if (infos.ansprechpartner) {
+            infos.ansprechpartner.forEach(p => {
+                const li = document.createElement('li');
+                li.className = 'termin-item';
+                li.innerHTML = `<div class="termin-meta-row"><span>${p.rolle}</span></div><div class="termin-titel"><strong>${p.name}:</strong> ${p.kontakt}</div>`;
+                kList.appendChild(li);
+            });
+        }
 
         const rList = document.getElementById('regelmaessigList');
         rList.innerHTML = '';
-        infos.regelmaessig.forEach(r => {
-            const li = document.createElement('li');
-            li.className = 'termin-item';
-            li.innerHTML = `<div class="termin-titel"><strong>${r.titel}</strong></div><div style="font-size: 0.85rem; color: var(--text-muted);">${r.wann}</div>`;
-            rList.appendChild(li);
-        });
+        if (infos.regelmaessig) {
+            infos.regelmaessig.forEach(r => {
+                const li = document.createElement('li');
+                li.className = 'termin-item';
+                li.innerHTML = `<div class="termin-titel"><strong>${r.titel}</strong></div><div style="font-size: 0.85rem; color: var(--text-muted);">${r.wann}</div>`;
+                rList.appendChild(li);
+            });
+        }
 
         const kollektenBox = document.getElementById('kollektenBox');
         const kollektenLink = document.getElementById('kollektenLink');
@@ -1351,11 +1332,11 @@
         resetChallengeBox();
 
         if (currentData) {
-            document.getElementById('staticSource').innerText = currentData.original;
-            document.getElementById('mainText').innerHTML = currentData.volltext;
-            document.getElementById('codeBoxContent').innerHTML = currentData.code_knacker;
-            document.getElementById('translationBoxContent').innerHTML = currentData.uebersetzung;
-            document.getElementById('challengeText').innerText = currentData.challenge;
+            document.getElementById('staticSource').innerText = currentData.original || "Ursprung";
+            document.getElementById('mainText').innerHTML = currentData.volltext || "";
+            document.getElementById('codeBoxContent').innerHTML = currentData.code_knacker || "";
+            document.getElementById('translationBoxContent').innerHTML = currentData.uebersetzung || "";
+            document.getElementById('challengeText').innerText = currentData.challenge || "";
         }
 
         if (gemeindeConfig) renderKommendeTermine();
@@ -1427,8 +1408,8 @@
 
     function shareContent() {
         if (!currentData) return;
-        const cleanVolltext = currentData.volltext.replace(/^[„"']|[“"']$/g, '');
-        const textToCopy = `*Termin mit dem Leben* 🌟\n\n📜 *Das Original:*\n„${cleanVolltext}“\n\n💡 *Zeitgeist:*\n${currentData.uebersetzung}\n\n🎯 *Deine Tages-Challenge:*\n${currentData.challenge}`;
+        const cleanVolltext = (currentData.volltext || '').replace(/^[„"']|[“"']$/g, '');
+        const textToCopy = `*Termin mit dem Leben* 🌟\n\n📜 *Das Original:*\n„${cleanVolltext}“\n\n💡 *Zeitgeist:*\n${currentData.uebersetzung || ''}\n\n🎯 *Deine Tages-Challenge:*\n${currentData.challenge || ''}`;
         navigator.clipboard.writeText(textToCopy).then(() => {
             const t = document.getElementById('toast'); t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2000);
         });
