@@ -181,7 +181,7 @@
             align-items: center;
             position: relative;
             width: 100%;
-            margin-bottom: 0px;
+            margin-bottom: 12px; /* Angepasst für den Heute-Link */
         }
         .date {
             font-family: var(--font-title);
@@ -219,7 +219,7 @@
         
         .today-anchor {
             position: absolute;
-            bottom: -18px; 
+            bottom: -20px; 
             left: 50%;
             transform: translateX(-50%); 
             background: none;
@@ -242,8 +242,8 @@
             opacity: 0.8;
             pointer-events: auto;
         }
-        .today-anchor::before {
-            content: '• Heute zurück'; 
+        .today-anchor:hover {
+            opacity: 1;
         }
 
         .toast-notification {
@@ -265,13 +265,13 @@
 
         /* INHALTSBÜHNE (STAR-ZITAT) */
         .content-stage {
-            background: #fffcf8; /* Ein warmer, edler Elfenbein-Ton */
-            border-top: 3px solid rgba(184, 134, 11, 0.3); /* Zarter Goldstrich als Krone */
+            background: #fffcf8;
+            border-top: 3px solid rgba(184, 134, 11, 0.3);
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             border-left: 1px solid rgba(255, 255, 255, 0.5);
             border-right: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: var(--radius-element);
-            box-shadow: 0 15px 40px rgba(184, 134, 11, 0.08); /* Eigener, sanfter Schatten */
+            box-shadow: 0 15px 40px rgba(184, 134, 11, 0.08); 
             padding: 24px 24px 18px 24px; 
             display: flex;
             flex-direction: column;
@@ -280,13 +280,12 @@
             text-align: center;
         }
 
-        /* DAS NEUE IMPULS-LABEL MIT MEHR ABSTAND */
         .impuls-label-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 32px; /* Deutlich vergrößerter Abstand zum Zitat */
+            margin-bottom: 32px; 
             opacity: 0.85;
         }
         .impuls-line {
@@ -384,7 +383,6 @@
             transform: translateY(-0.5px);
         }
 
-        /* CODE-KNACKER & ÜBERSETZUNGS-BOXEN MIT HARMONISCHEM ABSTAND NACH OBEN */
         .code-box, .translation-box {
             display: none;
             background: var(--bg-premium-white);
@@ -414,7 +412,6 @@
             font-style: normal;
         }
 
-        /* EINHEITLICHES SCHLIESSEN-KREUZ FÜR ALLE BOXEN */
         .box-close-btn {
             position: absolute;
             top: 10px;
@@ -434,7 +431,6 @@
             color: var(--text-muted);
         }
 
-        /* GEMEINDE SECTION */
         .gemeinde-section {
             display: none;
             flex-direction: column;
@@ -453,7 +449,6 @@
             scroll-margin-top: 20px;
         }
 
-        /* PREMIUM BOX FÜR DIE DIGITALE KOLLEKTE */
         .kollekten-premium-box {
             background: var(--bg-premium-white);
             border: 1px solid rgba(184, 134, 11, 0.15);
@@ -493,7 +488,6 @@
             padding: 0 16px;
         }
         
-        /* DER NEUE ELEGANTE GHOST-BUTTON FÜR DIE KOLLEKTE */
         .btn-kollekten-pay {
             display: inline-flex;
             align-items: center;
@@ -826,7 +820,7 @@
         <button class="nav-btn" onclick="navigateDay(-1)">❮</button>
         <div class="date-wrapper">
             <div class="date" id="currentDate">Lade Datum...</div>
-            <button class="today-anchor" id="todayAnchor" onclick="jumpToToday()" title="Zurück zu Heute">&#8226;</button>
+            <button class="today-anchor" id="todayAnchor" onclick="jumpToToday()">Zurück zu Heute</button>
         </div>
         <button class="nav-btn" id="nextDayBtn" onclick="navigateDay(1)">❯</button>
     </div>
@@ -924,6 +918,17 @@
         </div>
     </div>
 
+    <div class="challenge-box" id="challengeBox">
+        <button class="box-close-btn" id="challengeCloseBtn" onclick="resetChallengeBox()" title="Schließen" style="display: none;">×</button>
+        <span class="challenge-title">
+            <svg class="action-icon-svg" viewBox="0 0 24 24" style="width: 15px; height: 15px; margin-right: 6px;"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+            Tages-Challenge
+        </span>
+        <span class="challenge-instruction" id="challengeInstruction">Lies erst den Zeitgeist und schalte danach die Aufgabe frei.</span>
+        <button class="challenge-sub-btn" id="challengeSubBtn" onclick="revealChallengeOnly()">Aufgabe ansehen ➔</button>
+        <span class="challenge-actual-text" id="challengeText"></span>
+    </div>
+
     <div class="settings-panel" id="settingsPanel">
         <button class="box-close-btn" onclick="toggleSettingsView()" title="Schließen">×</button>
         <span class="settings-title">Persönliche Einstellungen</span>
@@ -960,17 +965,6 @@
                 ☕ Ein Tässchen Kaffee spendieren (2 €)
             </a>
         </div>
-    </div>
-
-    <div class="challenge-box" id="challengeBox">
-        <button class="box-close-btn" id="challengeCloseBtn" onclick="resetChallengeBox()" title="Schließen" style="display: none;">×</button>
-        <span class="challenge-title">
-            <svg class="action-icon-svg" viewBox="0 0 24 24" style="width: 15px; height: 15px; margin-right: 6px;"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-            Tages-Challenge
-        </span>
-        <span class="challenge-instruction" id="challengeInstruction">Lies erst den Zeitgeist und schalte danach die Aufgabe frei.</span>
-        <button class="challenge-sub-btn" id="challengeSubBtn" onclick="revealChallengeOnly()">Aufgabe ansehen ➔</button>
-        <span class="challenge-actual-text" id="challengeText"></span>
     </div>
 
     <div class="modal-overlay" id="impressumModal" onclick="closeModal('impressumModal')">
@@ -1219,6 +1213,21 @@
         if (!allData) return;
         document.getElementById('currentDate').innerText = displayDate.toLocaleDateString('de-DE', options);
 
+        // PRÜFUNG: Ist das angezeigte Datum heute?
+        const todayObj = new Date();
+        const isToday = displayDate.getDate() === todayObj.getDate() && 
+                        displayDate.getMonth() === todayObj.getMonth() && 
+                        displayDate.getFullYear() === todayObj.getFullYear();
+        
+        const anchor = document.getElementById('todayAnchor');
+        if (anchor) {
+            if (isToday) {
+                anchor.classList.remove('active');
+            } else {
+                anchor.classList.add('active');
+            }
+        }
+
         const month = String(displayDate.getMonth() + 1).padStart(2, '0');
         const day = String(displayDate.getDate()).padStart(2, '0');
         const feiertagKey = getFeiertagKey(displayDate);
@@ -1323,6 +1332,11 @@
     function toggleSettingsView() {
         const p = document.getElementById('settingsPanel');
         p.style.display = p.style.display === 'block' ? 'none' : 'block';
+        if (p.style.display === 'block') {
+            setTimeout(() => {
+                p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
     }
     function changeTheme() {
         const v = document.getElementById('themeSelect').value;
