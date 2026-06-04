@@ -1120,6 +1120,44 @@
                                 } else if (!allData[key].volltext) {
                                     allData[key].original = spruecheData[key].original;
                                     allData[key].volltext = spruecheData[key].volltext;
+                               const urlParams = new URLSearchParams(window.location.search);
+        const gemeindeParam = urlParams.get('gemeinde');
+
+        // HIER DIE ECHTE BACKEND URL VON NETLIFY EINTRAGEN (OHNE Schrägstrich am Ende)
+        const backendUrl = 'https://sandboxgemeinde.netlify.app';
+
+        // Standard Pfad für lokale App Sprüche
+        let jsonPfad = 'data/sprueche.json';
+        
+        if (gemeindeParam) {
+            // Holt die dynamischen Gemeinde Daten direkt aus dem Unterordner des CMS Backends
+            jsonPfad = `${backendUrl}/data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
+        }
+
+        fetch(jsonPfad)
+            .then(response => {
+                if (!response.ok) throw new Error("Gemeinde Daten konnten nicht geladen werden.");
+                return response.json();
+            })
+            .then(data => {
+                allData = data;
+                if (data.gemeinde_konfiguration) {
+                    gemeindeConfig = data.gemeinde_konfiguration;
+                    renderDauerInfos();
+                }
+
+                initHeader();
+
+                if (gemeindeParam) {
+                    fetch('data/sprueche.json')
+                        .then(res => res.json())
+                        .then(spruecheData => {
+                            Object.keys(spruecheData).forEach(key => {
+                                if (!allData[key]) {
+                                    allData[key] = spruecheData[key];
+                                } else if (!allData[key].volltext) {
+                                    allData[key].original = spruecheData[key].original;
+                                    allData[key].volltext = spruecheData[key].volltext;
                                     allData[key].code_knacker = spruecheData[key].code_knacker;
                                     allData[key].uebersetzung = spruecheData[key].uebersetzung;
                                     allData[key].challenge = spruecheData[key].challenge;
@@ -1130,8 +1168,11 @@
                 } else {
                     updatePage();
                 }
+            })
+            .catch(error => {
+                console.error("Fehler beim Laden der JSON Daten:", error);
+                document.getElementById('mainText').innerText = "Fehler beim Laden der Gemeinde Daten. Bitte überprüfe die Verbindung.";
             });
-    });
 
     function toggleCard(cardId) {
         const card = document.getElementById(cardId);
