@@ -181,7 +181,7 @@
             align-items: center;
             position: relative;
             width: 100%;
-            margin-bottom: 12px;
+            margin-bottom: 12px; /* Angepasst für den Heute-Link */
         }
         .date {
             font-family: var(--font-title);
@@ -329,13 +329,11 @@
             display: block;
         }
 
-        /* BUTTON LOGIK: OUTLINE (STANDARD) VS MINIMALISTISCH */
         .box-action-row {
             display: flex;
             justify-content: center;
             align-items: center; 
-            gap: 10px; 
-            flex-wrap: wrap; 
+            gap: 16px; 
             margin-top: 4px;
             padding-top: 14px;
             border-top: 1px dashed rgba(0, 0, 0, 0.06);
@@ -345,53 +343,30 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            background-color: rgba(44, 62, 80, 0.03); 
-            color: #2c3e50;
-            border: 1px solid rgba(44, 62, 80, 0.3);
+            gap: 5px;
+            background: transparent;
+            border: none;
             font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 12px;
+            font-size: 0.76rem;
+            font-weight: 500;
+            color: var(--text-muted);
             cursor: pointer;
             transition: all 0.2s ease;
+            opacity: 0.75;
             text-decoration: none;
             -webkit-tap-highlight-color: transparent;
         }
+        
         .box-action-link:hover {
-            background-color: #2c3e50;
-            color: white;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(44, 62, 80, 0.15);
+            color: #2c3e50;
+            opacity: 1;
         }
 
         .action-link-divider {
-            display: none; /* Im Standard (Outline) unsichtbar */
             font-size: 0.75rem;
             color: var(--text-muted);
             opacity: 0.25;
             user-select: none;
-        }
-
-        /* MODIFIER FÜR MINIMALISTISCHEN STIL */
-        [data-button-style="minimal"] .box-action-link {
-            background-color: transparent;
-            border: none;
-            padding: 4px 8px;
-            color: var(--text-muted);
-            font-weight: 500;
-            opacity: 0.75;
-        }
-        [data-button-style="minimal"] .box-action-link:hover {
-            background-color: transparent;
-            color: #2c3e50;
-            opacity: 1;
-            box-shadow: none;
-            transform: translateY(-0.5px);
-        }
-        [data-button-style="minimal"] .action-link-divider {
-            display: inline-block; /* Im Minimal-Modus sichtbar */
         }
 
         .action-icon-svg {
@@ -625,7 +600,7 @@
             color: var(--text-dark);
         }
 
-        /* EINSTELLUNGS PANEL */
+        /* EINSTELLUNGS PANEL WURDE ANGEGLICHEN */
         .settings-panel {
             display: none;
             background: var(--bg-premium-white);
@@ -682,7 +657,7 @@
             border-bottom-color: #2c3e50;
         }
 
-        /* CHALLENGE-BEREICH */
+        /* CHALLENGE-BEREICH WURDE ANGEGLICHEN */
         .challenge-box {
             background: var(--bg-challenge); 
             border-radius: var(--radius-element);
@@ -866,14 +841,14 @@
                 <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20M4 19.5V3.5A2.5 2.5 0 0 1 6.5 1V20M20 1v21M6.5 6H20M6.5 11H20"/></svg>
                 <span>Info</span>
             </button>
-
+            
             <span class="action-link-divider">|</span>
 
             <button class="box-action-link" id="zeitgeistActionBtn" onclick="toggleTranslationBox()">
                 <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
                 <span>Zeitgeist</span>
             </button>
-
+            
             <span class="action-link-divider">|</span>
 
             <button class="box-action-link" id="shareActionBtn" onclick="shareContent()">
@@ -985,14 +960,6 @@
             </select>
         </div>
 
-        <div class="settings-row">
-            <span class="settings-label">Button-Stil:</span>
-            <select class="settings-select" id="buttonStyleSelect" onchange="changeButtonStyle()">
-                <option value="default">Outline</option>
-                <option value="minimal">Minimalistisch</option>
-            </select>
-        </div>
-
         <div class="settings-row" style="margin-top: 18px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 14px; justify-content: center;">
             <a href="https://paypal.me/medienandmore/2" target="_blank" rel="noopener" class="coffee-link-text">
                 ☕ Ein Tässchen Kaffee spendieren (2 €)
@@ -1059,26 +1026,12 @@
         const dateEl = document.getElementById('currentDate');
         if (dateEl) dateEl.innerText = displayDate.toLocaleDateString('de-DE', options);
 
-        // Einstellungen laden und im Dropdown setzen
         const savedTheme = localStorage.getItem('appTheme') || "default";
         if (savedTheme !== "default") document.documentElement.setAttribute('data-theme', savedTheme);
-        const themeSelect = document.getElementById('themeSelect');
-        if (themeSelect) themeSelect.value = savedTheme;
-
         const savedFont = localStorage.getItem('appFont') || "default";
         if (savedFont !== "default") document.documentElement.setAttribute('data-font', savedFont);
-        const fontSelect = document.getElementById('fontSelect');
-        if (fontSelect) fontSelect.value = savedFont;
-
         const savedSize = localStorage.getItem('appSize') || "default";
         if (savedSize !== "default") document.documentElement.setAttribute('data-size', savedSize);
-        const sizeSelect = document.getElementById('sizeSelect');
-        if (sizeSelect) sizeSelect.value = savedSize;
-
-        const savedButtonStyle = localStorage.getItem('appButtonStyle') || "default";
-        if (savedButtonStyle !== "default") document.documentElement.setAttribute('data-button-style', savedButtonStyle);
-        const buttonSelect = document.getElementById('buttonStyleSelect');
-        if (buttonSelect) buttonSelect.value = savedButtonStyle;
 
         const urlParams = new URLSearchParams(window.location.search);
         const gemeindeParam = urlParams.get('gemeinde');
@@ -1092,10 +1045,9 @@
                 allData = data;
                 if (data.gemeinde_konfiguration) {
                     gemeindeConfig = data.gemeinde_konfiguration;
+                    applyGemeindeHeader();
                     renderDauerInfos();
                 }
-
-                initHeader();
 
                 if (gemeindeParam) {
                     fetch('data/sprueche.json')
@@ -1134,38 +1086,31 @@
         }
     }
 
-    function initHeader() {
-        const imgBox = document.getElementById('gemeindeImageBox');
-        const imgEl = document.getElementById('gemeindeImg');
-        const subtitleEl = document.getElementById('appSubtitle');
+    function applyGemeindeHeader() {
+        if (!gemeindeConfig) return;
+        if (gemeindeConfig.app_titel) document.getElementById('appTitle').innerHTML = gemeindeConfig.app_titel;
         
-        if (gemeindeConfig) {
-            if (gemeindeConfig.app_titel) document.getElementById('appTitle').innerHTML = gemeindeConfig.app_titel;
-            
-            if (gemeindeConfig.gemeinde_name) {
-                subtitleEl.innerText = gemeindeConfig.gemeinde_name;
-            } else {
-                subtitleEl.innerText = "Solingen-Merscheid";
-            }
-            
-            if (gemeindeConfig.kirchen_bild) {
-                if (imgEl) imgEl.src = gemeindeConfig.kirchen_bild;
-                imgBox.style.display = 'block';
-            }
-
-            const newsCard = document.getElementById('newsCard');
-            const newsBadge = document.getElementById('newsBadge');
-            if (gemeindeConfig.wochen_news && gemeindeConfig.wochen_news.trim() !== "") {
-                newsCard.style.display = 'block';
-                newsBadge.style.display = 'inline-block';
-            } else {
-                if (newsCard) newsCard.style.display = 'none';
-                if (newsBadge) newsBadge.style.display = 'none';
-            }
+        if (gemeindeConfig.gemeinde_name) {
+            document.getElementById('appSubtitle').innerText = gemeindeConfig.gemeinde_name;
         } else {
-            subtitleEl.innerText = "Dein täglicher Impuls";
-            if (imgEl) imgEl.src = "images/kirche-leben.jpg";
+            document.getElementById('appSubtitle').innerText = "Solingen-Merscheid";
+        }
+        
+        if (gemeindeConfig.kirchen_bild) {
+            const imgBox = document.getElementById('gemeindeImageBox');
+            const imgEl = document.getElementById('gemeindeImg');
+            if (imgEl) imgEl.src = gemeindeConfig.kirchen_bild;
             imgBox.style.display = 'block';
+        }
+
+        const newsCard = document.getElementById('newsCard');
+        const newsBadge = document.getElementById('newsBadge');
+        if (gemeindeConfig.wochen_news && gemeindeConfig.wochen_news.trim() !== "") {
+            newsCard.style.display = 'block';
+            newsBadge.style.display = 'inline-block';
+        } else {
+            if (newsCard) newsCard.style.display = 'none';
+            if (newsBadge) newsBadge.style.display = 'none';
         }
     }
 
@@ -1268,6 +1213,7 @@
         if (!allData) return;
         document.getElementById('currentDate').innerText = displayDate.toLocaleDateString('de-DE', options);
 
+        // PRÜFUNG: Ist das angezeigte Datum heute?
         const todayObj = new Date();
         const isToday = displayDate.getDate() === todayObj.getDate() && 
                         displayDate.getMonth() === todayObj.getMonth() && 
@@ -1406,11 +1352,6 @@
         const v = document.getElementById('sizeSelect').value;
         localStorage.setItem('appSize', v);
         v === "default" ? document.documentElement.removeAttribute('data-size') : document.documentElement.setAttribute('data-size', v);
-    }
-    function changeButtonStyle() {
-        const v = document.getElementById('buttonStyleSelect').value;
-        localStorage.setItem('appButtonStyle', v);
-        v === "default" ? document.documentElement.removeAttribute('data-button-style') : document.documentElement.setAttribute('data-button-style', v);
     }
 </script>
 </body>

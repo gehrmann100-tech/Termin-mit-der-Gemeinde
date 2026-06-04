@@ -181,7 +181,7 @@
             align-items: center;
             position: relative;
             width: 100%;
-            margin-bottom: 12px; /* Angepasst für den Heute-Link */
+            margin-bottom: 12px;
         }
         .date {
             font-family: var(--font-title);
@@ -333,7 +333,8 @@
             display: flex;
             justify-content: center;
             align-items: center; 
-            gap: 16px; 
+            gap: 10px; 
+            flex-wrap: wrap; 
             margin-top: 4px;
             padding-top: 14px;
             border-top: 1px dashed rgba(0, 0, 0, 0.06);
@@ -343,30 +344,26 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
-            background: transparent;
-            border: none;
+            gap: 6px;
+            background-color: rgba(44, 62, 80, 0.03); 
+            color: #2c3e50;
+            border: 1px solid rgba(44, 62, 80, 0.3);
             font-family: 'Inter', sans-serif;
-            font-size: 0.76rem;
-            font-weight: 500;
-            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
-            opacity: 0.75;
             text-decoration: none;
             -webkit-tap-highlight-color: transparent;
         }
         
         .box-action-link:hover {
-            color: #2c3e50;
-            opacity: 1;
-        }
-
-        .action-link-divider {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            opacity: 0.25;
-            user-select: none;
+            background-color: #2c3e50;
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(44, 62, 80, 0.15);
         }
 
         .action-icon-svg {
@@ -841,15 +838,11 @@
                 <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20M4 19.5V3.5A2.5 2.5 0 0 1 6.5 1V20M20 1v21M6.5 6H20M6.5 11H20"/></svg>
                 <span>Info</span>
             </button>
-            
-            <span class="action-link-divider">|</span>
 
             <button class="box-action-link" id="zeitgeistActionBtn" onclick="toggleTranslationBox()">
                 <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
                 <span>Zeitgeist</span>
             </button>
-            
-            <span class="action-link-divider">|</span>
 
             <button class="box-action-link" id="shareActionBtn" onclick="shareContent()">
                 <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -1045,9 +1038,11 @@
                 allData = data;
                 if (data.gemeinde_konfiguration) {
                     gemeindeConfig = data.gemeinde_konfiguration;
-                    applyGemeindeHeader();
                     renderDauerInfos();
                 }
+
+                // HEADER IMMER INITIALISIEREN (Gemeinde oder Fallback)
+                initHeader();
 
                 if (gemeindeParam) {
                     fetch('data/sprueche.json')
@@ -1086,31 +1081,39 @@
         }
     }
 
-    function applyGemeindeHeader() {
-        if (!gemeindeConfig) return;
-        if (gemeindeConfig.app_titel) document.getElementById('appTitle').innerHTML = gemeindeConfig.app_titel;
+    function initHeader() {
+        const imgBox = document.getElementById('gemeindeImageBox');
+        const imgEl = document.getElementById('gemeindeImg');
+        const subtitleEl = document.getElementById('appSubtitle');
         
-        if (gemeindeConfig.gemeinde_name) {
-            document.getElementById('appSubtitle').innerText = gemeindeConfig.gemeinde_name;
-        } else {
-            document.getElementById('appSubtitle').innerText = "Solingen-Merscheid";
-        }
-        
-        if (gemeindeConfig.kirchen_bild) {
-            const imgBox = document.getElementById('gemeindeImageBox');
-            const imgEl = document.getElementById('gemeindeImg');
-            if (imgEl) imgEl.src = gemeindeConfig.kirchen_bild;
-            imgBox.style.display = 'block';
-        }
+        if (gemeindeConfig) {
+            if (gemeindeConfig.app_titel) document.getElementById('appTitle').innerHTML = gemeindeConfig.app_titel;
+            
+            if (gemeindeConfig.gemeinde_name) {
+                subtitleEl.innerText = gemeindeConfig.gemeinde_name;
+            } else {
+                subtitleEl.innerText = "Solingen-Merscheid";
+            }
+            
+            if (gemeindeConfig.kirchen_bild) {
+                if (imgEl) imgEl.src = gemeindeConfig.kirchen_bild;
+                imgBox.style.display = 'block';
+            }
 
-        const newsCard = document.getElementById('newsCard');
-        const newsBadge = document.getElementById('newsBadge');
-        if (gemeindeConfig.wochen_news && gemeindeConfig.wochen_news.trim() !== "") {
-            newsCard.style.display = 'block';
-            newsBadge.style.display = 'inline-block';
+            const newsCard = document.getElementById('newsCard');
+            const newsBadge = document.getElementById('newsBadge');
+            if (gemeindeConfig.wochen_news && gemeindeConfig.wochen_news.trim() !== "") {
+                newsCard.style.display = 'block';
+                newsBadge.style.display = 'inline-block';
+            } else {
+                if (newsCard) newsCard.style.display = 'none';
+                if (newsBadge) newsBadge.style.display = 'none';
+            }
         } else {
-            if (newsCard) newsCard.style.display = 'none';
-            if (newsBadge) newsBadge.style.display = 'none';
+            // FALLBACK FÜR DEN STANDARD-MODUS
+            subtitleEl.innerText = "Dein täglicher Impuls";
+            if (imgEl) imgEl.src = "images/kirche-leben.jpg";
+            imgBox.style.display = 'block';
         }
     }
 
@@ -1213,7 +1216,6 @@
         if (!allData) return;
         document.getElementById('currentDate').innerText = displayDate.toLocaleDateString('de-DE', options);
 
-        // PRÜFUNG: Ist das angezeigte Datum heute?
         const todayObj = new Date();
         const isToday = displayDate.getDate() === todayObj.getDate() && 
                         displayDate.getMonth() === todayObj.getMonth() && 
