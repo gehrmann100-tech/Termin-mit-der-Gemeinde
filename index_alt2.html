@@ -585,7 +585,7 @@
             font-size: var(--fs-challenge-text);
             line-height: 1.6;
             color: var(--text-dark);
-            white-space: pre-wrap; 
+            white-space: pre-wrap; /* NEU: Saubere Zeilenumbrüche */
         }
 
         .termin-list {
@@ -624,7 +624,7 @@
 
         .termin-titel {
             color: var(--text-dark);
-            white-space: pre-wrap; 
+            white-space: pre-wrap; /* Das aktiviert die echten Zeilenumbrüche */
         }
 
         /* EINSTELLUNGS PANEL */
@@ -917,7 +917,6 @@
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="collapsible-content">
-                <div class="termin-meta-row" style="margin-bottom: 4px;"><span id="newsUeberschrift"></span></div>
                 <div class="news-text" id="newsText"></div>
             </div>
         </div>
@@ -1074,7 +1073,7 @@
         const dateEl = document.getElementById('currentDate');
         if (dateEl) dateEl.innerText = displayDate.toLocaleDateString('de-DE', options);
 
-        // Einstellungen laden
+        // Einstellungen laden und im Dropdown setzen
         const savedTheme = localStorage.getItem('appTheme') || "default";
         if (savedTheme !== "default") document.documentElement.setAttribute('data-theme', savedTheme);
         const themeSelect = document.getElementById('themeSelect');
@@ -1098,10 +1097,14 @@
         const urlParams = new URLSearchParams(window.location.search);
         const gemeindeParam = urlParams.get('gemeinde');
 
+        // HIER DIE ECHTE BACKEND URL VON NETLIFY
         const backendUrl = 'https://sandboxgemeinde.netlify.app';
+
+        // Standard Pfad für lokale App Sprüche
         let jsonPfad = 'data/sprueche.json';
         
         if (gemeindeParam) {
+            // Holt die dynamischen Gemeinde Daten direkt aus dem Unterordner des CMS Backends
             jsonPfad = `${backendUrl}/data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
         }
 
@@ -1169,17 +1172,7 @@
         const subtitleEl = document.getElementById('appSubtitle');
         
         if (gemeindeConfig) {
-            // AUTOMATISCHER SPAN-TRICK FÜR DEN TITEL im Frontend
-            if (gemeindeConfig.app_titel) {
-                let titelText = gemeindeConfig.app_titel.trim();
-                if (titelText.toLowerCase().startsWith("termin mit der ") && !titelText.includes("<span>")) {
-                    document.getElementById('appTitle').innerHTML = `Termin <span>${titelText.substring(7)}</span>`;
-                } else if (titelText.toLowerCase().startsWith("termin mit dem ") && !titelText.includes("<span>")) {
-                    document.getElementById('appTitle').innerHTML = `Termin <span>${titelText.substring(7)}</span>`;
-                } else {
-                    document.getElementById('appTitle').innerHTML = titelText;
-                }
-            }
+            if (gemeindeConfig.app_titel) document.getElementById('appTitle').innerHTML = gemeindeConfig.app_titel;
             
             if (gemeindeConfig.gemeinde_name) {
                 subtitleEl.innerText = gemeindeConfig.gemeinde_name;
@@ -1194,18 +1187,15 @@
 
             const newsCard = document.getElementById('newsCard');
             const newsBadge = document.getElementById('newsBadge');
-            if (gemeindeConfig.news_text && gemeindeConfig.news_text.trim() !== "") {
+            if (gemeindeConfig.wochen_news && gemeindeConfig.wochen_news.trim() !== "") {
                 newsCard.style.display = 'block';
                 newsBadge.style.display = 'inline-block';
-                document.getElementById('newsUeberschrift').innerText = gemeindeConfig.news_ueberschrift || "Mitteilung der Gemeinde";
-                document.getElementById('newsText').innerText = gemeindeConfig.news_text; 
+                document.getElementById('newsText').innerText = gemeindeConfig.wochen_news; // NEU: Text wird nun in die Kachel geladen
             } else {
                 if (newsCard) newsCard.style.display = 'none';
                 if (newsBadge) newsBadge.style.display = 'none';
             }
         } else {
-            // NEU: Auch hier im Standard-Modus den Span-Trick setzen, falls zurückgesetzt wird
-            document.getElementById('appTitle').innerHTML = `Termin <span>mit dem Leben</span>`;
             subtitleEl.innerText = "Dein täglicher Impuls";
             if (imgEl) imgEl.src = "images/kirche-leben.jpg";
             imgBox.style.display = 'block';
@@ -1224,6 +1214,7 @@
             infos.ansprechpartner.forEach(p => {
                 const li = document.createElement('li');
                 li.className = 'termin-item';
+                // NEU: Name fett und mit Zeilenumbruch für die Kontaktdaten
                 li.innerHTML = `<div class="termin-meta-row"><span>${p.rolle}</span></div><div class="termin-titel"><strong>${p.name}</strong><br>${p.kontakt}</div>`;
                 kList.appendChild(li);
             });
