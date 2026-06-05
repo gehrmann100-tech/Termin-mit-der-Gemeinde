@@ -11,7 +11,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="apple-touch-icon" href="images/icon-192.png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=Lora:ital,wght=0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,500;0,600;1,400;1,500&family=Inter:wght=400;500;600;700&family=Lora:ital,wght=0,500;1,400;1,500&display=swap" rel="stylesheet"/>
     <style>
         /* DESIGN-SYSTEM MIT DYNAMISCHEN VARIABLEN */
         :root {
@@ -627,6 +627,35 @@
             white-space: pre-wrap; 
         }
 
+        /* SOCIAL MEDIA AREA IN CONTACTS */
+        .social-media-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--btn-outline-color);
+            justify-content: flex-start;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #2980b9;
+            text-decoration: none;
+            background: rgba(41, 128, 185, 0.05);
+            padding: 4px 10px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .social-link:hover {
+            background: #2980b9;
+            color: white;
+        }
+
         /* EINSTELLUNGS PANEL */
         .settings-panel {
             display: none;
@@ -934,13 +963,14 @@
 
         <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('dauerInfosCard')">
-                <h2 class="gemeinde-card-title">Ansprechpartner & Angebote</h2>
+                <h2 class="gemeinde-card-title">Kontakt, Angebote & Social Media</h2>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="collapsible-content">
                 <ul class="termin-list" id="kontaktList" style="margin-bottom: 14px;"></ul>
                 <h2 class="gemeinde-card-title" style="margin-bottom: 12px; border-top: 1px dashed var(--btn-outline-color); padding-top: 12px; font-weight: 500; text-transform: none; letter-spacing: 0px;">Regelmäßige Angebote</h2>
                 <ul class="termin-list" id="regelmaessigList"></ul>
+                <div class="social-media-row" id="socialMediaRow" style="display: none;"></div>
             </div>
         </div>
 
@@ -949,7 +979,7 @@
                 <img src="images/kollekte.jpg" alt="Digitale Kollekte">
             </div>
             <div class="kollekten-title">Gemeinschaft unterstützen</div>
-            <div class="kollekten-text">Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte. Jede Gabe hilft, unsere Arbeit und Projekte lebendig zu halten.</div>
+            <div class="kollekten-text" id="kollektenText">Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte.</div>
             
             <a href="" target="_blank" rel="noopener" class="btn-kollekten-pay" id="kollektenLink">
                 <svg class="action-icon-svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
@@ -1169,7 +1199,6 @@
         const subtitleEl = document.getElementById('appSubtitle');
         
         if (gemeindeConfig) {
-            // AUTOMATISCHER SPAN-TRICK FÜR DEN TITEL im Frontend
             if (gemeindeConfig.app_titel) {
                 let titelText = gemeindeConfig.app_titel.trim();
                 if (titelText.toLowerCase().startsWith("termin mit der ") && !titelText.includes("<span>")) {
@@ -1204,7 +1233,6 @@
                 if (newsBadge) newsBadge.style.display = 'none';
             }
         } else {
-            // NEU: Auch hier im Standard-Modus den Span-Trick setzen, falls zurückgesetzt wird
             document.getElementById('appTitle').innerHTML = `Termin <span>mit dem Leben</span>`;
             subtitleEl.innerText = "Dein täglicher Impuls";
             if (imgEl) imgEl.src = "images/kirche-leben.jpg";
@@ -1240,11 +1268,40 @@
             });
         }
 
+        // DYNAMISCHE SOCIAL MEDIA LINKS GENERIEREN
+        const sRow = document.getElementById('socialMediaRow');
+        sRow.innerHTML = '';
+        let hasSocial = false;
+
+        if (infos.instagram_link && infos.instagram_link.trim() !== "") {
+            sRow.innerHTML += `<a href="${infos.instagram_link}" target="_blank" rel="noopener" class="social-link">📸 Instagram</a>`;
+            hasSocial = true;
+        }
+        if (infos.facebook_link && infos.facebook_link.trim() !== "") {
+            sRow.innerHTML += `<a href="${infos.facebook_link}" target="_blank" rel="noopener" class="social-link">👥 Facebook</a>`;
+            hasSocial = true;
+        }
+        if (infos.youtube_link && infos.youtube_link.trim() !== "") {
+            sRow.innerHTML += `<a href="${infos.youtube_link}" target="_blank" rel="noopener" class="social-link">📺 YouTube</a>`;
+            hasSocial = true;
+        }
+
+        sRow.style.display = hasSocial ? 'flex' : 'none';
+
+        // DYNAMISCHER KOLLEKTENZWECK
         const kollektenBox = document.getElementById('kollektenBox');
         const kollektenLink = document.getElementById('kollektenLink');
+        const kollektenTextEl = document.getElementById('kollektenText');
+
         if (gemeindeConfig && gemeindeConfig.kollekten_link && gemeindeConfig.kollekten_link.trim() !== "") {
             kollektenLink.href = gemeindeConfig.kollekten_link;
             kollektenBox.style.display = 'block';
+
+            if (gemeindeConfig.kollekten_zweck && gemeindeConfig.kollekten_zweck.trim() !== "") {
+                kollektenTextEl.innerText = `Mit deiner digitalen Spende unterstützt du heute gezielt das Projekt: ${gemeindeConfig.kollekten_zweck}.`;
+            } else {
+                kollektenTextEl.innerText = "Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte.";
+            }
         } else {
             kollektenBox.style.display = 'none';
         }
