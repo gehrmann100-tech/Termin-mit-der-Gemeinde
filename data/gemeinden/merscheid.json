@@ -4,25 +4,54 @@
     "gemeinde_name": "Solingen-Merscheid",
     "kirchen_bild": "images/kirche-merscheid.jpg",
     "wochen_news": "",
-    "kollekten_link": "https://paypal.me/DeineGemeindeKonto",
-    "kollekten_zweck": "die Sanierung unserer historischen Kirchenfenster"
+    "kollekten_link": "https://paypal.me/DeineGemeindeKonto"
   },
   "kommende_termine": [
     {"datum": "2026-06-07", "zeit": "10:00 Uhr", "titel": "1. So. n. Trinitatis: Gemeindegottesdienst – Pfarrerin Friederike Schmid (Ev. Kirche Merscheid)"},
     {"datum": "2026-06-14", "zeit": "09:00 Uhr", "titel": "2. So. n. Trinitatis: „Früh“: Andacht und Frühstück – Pfarrer Dirk Stark (Ev. Kirche Merscheid)"},
-    {"datum": "2026-06-21", "zeit": "10:00 Uhr", "titel": "3. So. n. Trinitatis: Gemeindegottesdienst – Pfarrer Dirk Stark (Ev. Kirche Merscheid)"}
+    {"datum": "2026-06-21", "zeit": "10:00 Uhr", "titel": "3. So. n. Trinitatis: Gemeindegottesdienst – Pfarrer Dirk Stark (Ev. Kirche Merscheid)"},
+    {"datum": "2026-06-28", "zeit": "10:00 Uhr", "titel": "4. So. n. Trinitatis: Abendmahlsgottesdienst – Pfarrer Dirk Stark (Ev. Kirche Merscheid)"},
+    {"datum": "2026-07-05", "zeit": "10:00 Uhr", "titel": "5. So. n. Trinitatis: Konfirmation – Pfarrer Dirk Stark (Ev. Kirche Merscheid)"},
+    {"datum": "2026-07-12", "zeit": "10:00 Uhr", "titel": "6. So. n. Trinitatis: Gemeindegottesdienst – Prädikantin Iris Borlinghaus-Neumann (Ev. Kirche Merscheid)"},
+    {"datum": "2026-07-19", "zeit": "10:00 Uhr", "titel": "7. So. n. Trinitatis: Abendmahlsgottesdienst – Pfarrer Dirk Stark (Ev. Kirche Merscheid)"},
+    {"datum": "2026-07-26", "zeit": "10:00 Uhr", "titel": "8. So. n. Trinitatis: Sommerandacht mit Taufe – Pfarrer Dirk Stark (Ev. Kirche Merscheid)"},
+    {"datum": "2026-08-02", "zeit": "10:00 Uhr", "titel": "9. So. n. Trinitatis: Gemeindegottesdienst – Prädikantin Petra Heidelberg (Ev. Kirche Merscheid)"},
+    {"datum": "2026-08-09", "zeit": "10:00 Uhr", "titel": "10. So. n. Trinitatis: Andacht und offenes Kirchencafé – Küster Paul Girardi (Ev. Kirche Merscheid)"},
+    {"datum": "2026-08-16", "zeit": "10:00 Uhr", "titel": "11. So. n. Trinitatis: Gemeindegottesdienst – Pfarrer i.R. Karin Ebbinghaus (Ev. Kirche Merscheid)"},
+    {"datum": "2026-08-23", "zeit": "10:00 Uhr", "titel": "12. So. n. Trinitatis: Sommerandacht / offene Kirche bis 12:00 – Pfarrer Dirk Stark (Ev. Kirche Merscheid)"},
+    {"datum": "2026-08-30", "zeit": "10:00 Uhr", "titel": "13. So. n. Trinitatis: Gottesdienst mit Taufe – Pfarrer Dirk Stark (Ev. Kirche Merscheid)"},
+    {"datum": "2026-09-06", "zeit": "10:00 Uhr", "titel": "14. So. n. Trinitatis: Gemeindegottesdienst (Ev. Kirche Merscheid)"},
+    {"datum": "2026-09-13", "zeit": "11:00 Uhr", "titel": "15. So. n. Trinitatis: Open-Air-Familiengottesdienst zum Gemeindefest (neben der Kirche)"},
+    {"datum": "2026-09-20", "zeit": "09:00 Uhr", "titel": "16. So. n. Trinitatis: „FRÜH“ - Andacht und Frühstück (Ev. Kirche Merscheid)"},
+    {"datum": "2026-09-27", "zeit": "10:00 Uhr", "titel": "17. So. n. Trinitatis: Abendmahlsgottesdienst (Ev. Kirche Merscheid)"},
+    {"datum": "2026-10-04", "zeit": "11:00 Uhr", "titel": "Erntedank: Erntedankgottesdienst mit Tischkreis (Ev. Gemeindehaus Merscheid) – Pfarrer Dirk Stark"},
+    {"datum": "2026-10-11", "zeit": "10:00 Uhr", "titel": "19. So. n. Trinitatis: Gemeindegottesdienst mit Taufe – Pfarrer Dirk Stark (Ev. Kirche Merscheid)"},
+    {"datum": "2026-10-18", "zeit": "10:00 Uhr", "titel": "20. So. n. Trinitatis: Jubelkonfirmation / Region R.O.M. – Pfarrer Dirk Stark (Ev. Kirche Merscheid)"},
+    {"datum": "2026-10-25", "zeit": "10:00 Uhr", "titel": "21. So. n. Trinitatis: Abendmahlsgottesdienst – Prädikantin Petra Heidelberg (Ev. Gemeindehaus)"},
+    {"datum": "2026-10-31", "zeit": "18:00 Uhr", "titel": "Reformationsfest: Solinger Reformationsgottesdienst (Ev. Kirche Ketzberg)"},
+    {"datum": "2026-11-01", "zeit": "10:00 Uhr", "titel": "22. So. n. Trinitatis: Gemeindegottesdienst – Pfarrerin Ailish Eickhorn (Ev. Gemeindehaus)"},
+    {"datum": "2026-11-08", "zeit": "11:00 Uhr", "titel": "Drittl.S.d.Kj.: Gospelgottesdienst – Pfarrer Dirk Stark & GOOD NEWS (Ev. Kirche Merscheid)"},
+    {"datum": "2026-11-15", "zeit": "18:00 Uhr", "titel": "Vorletzter Sonntag d. Kj.: Abendgottesdienst „Brot und Wein“ – Pfarrer Dirk Stark (Ev. Gemeindehaus)"},
+    {"datum": "2026-11-18", "zeit": "19:30 Uhr", "titel": "Buß- und Bettag: Ökumen. Gottesdienst (FeG Merscheid)"},
+    {"datum": "2026-11-22", "zeit": "10:00 Uhr", "titel": "Ewigkeitssonntag: Gottesdienst mit Verlesung der Verstorbenen (Friedhofskapelle) – Pfarrer Dirk Stark"},
+    {"datum": "2026-11-29", "zeit": "11:00 Uhr", "titel": "1. Advent: Gottesdienst zum Ersten Advent – Pfr. Stark & Ev. Frauenhilfe (Ev. Gemeindehaus)"},
+    {"datum": "2026-12-06", "zeit": "10:00 Uhr", "titel": "2. Advent/Nikolaustag: Gemeindegottesdienst (Ev. Gemeindehaus)"},
+    {"datum": "2026-12-13", "zeit": "10:00 Uhr", "titel": "3. Advent: Gemeindegottesdienst (Ev. Gemeindehaus)"},
+    {"datum": "2026-12-20", "zeit": "10:00 Uhr", "titel": "4. Advent: Gemeindegottesdienst – Prädikantin Bärbel Albers (Ev. Gemeindehaus)"},
+    {"datum": "2026-12-24", "zeit": "15:00 Uhr", "titel": "Heiligabend: Familiengottesdienst am Heiligen Abend – Pfr. Dirk Stark & Team (Ev. Kirche)"},
+    {"datum": "2026-12-24", "zeit": "17:00 Uhr", "titel": "Heiligabend: Christvesper mit dem Gospelchor – Pfarrer Dirk Stark & GOOD NEWS (Ev. Kirche)"},
+    {"datum": "2026-12-27", "zeit": "10:00 Uhr", "titel": "1. So. n. Christfest: Abendmahlsgottesdienst – Pfarrerin Claudia Stark (Ev. Kirche)"}
   ],
   "dauer_infos": {
     "ansprechpartner": [
       {"rolle": "Pfarrer", "name": "Dirk Stark", "kontakt": "Tel. 0212/33 11 82 | Pfarrer@merscheid.de"},
-      {"rolle": "Küster", "name": "Paul Girardi", "kontakt": "Tel. 0212/33 02 09 | kuester@merscheid.de"}
+      {"rolle": "Küster", "name": "Paul Girardi", "kontakt": "Tel. 0212/33 02 09 | kuester@merscheid.de"},
+      {"rolle": "Jugend", "name": "Lorena Bäcker", "kontakt": "baecker@merscheid.de"},
+      {"rolle": "Musik", "name": "Oliver Richters", "kontakt": "Organist@merscheid.de"}
     ],
     "regelmaessig": [
       {"titel": "Jugendtreff Café BOND", "wann": "Dienstags 18:00 - 20:00 Uhr (ab 12 J., Hofstraße 10)"},
       {"titel": "Ev. Frauenhilfe", "wann": "Jeden 1. & 3. Donnerstag im Monat, 15:00 - 17:00 Uhr"}
-    ],
-    "instagram_link": "https://instagram.com/ev_kirche_merscheid",
-    "facebook_link": "https://facebook.com/ev_kirche_merscheid",
-    "youtube_link": "https://youtube.com/@ev_kirche_merscheid"
+    ]
   }
 }
