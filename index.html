@@ -1266,13 +1266,13 @@
         }
     }
 
-   function renderDauerInfos() {
+  function renderDauerInfos() {
         if (!allData || !allData.dauer_infos) return;
         const infos = allData.dauer_infos;
         document.getElementById('gemeindeSection').style.display = 'flex';
         document.getElementById('dauerInfosCard').style.display = 'block';
 
-        // 1. REGELMÄSSIGE ANGEBOTE (JETZT STARK GEPOSTET GANZ OBEN IN DER BOX)
+        // 1. REGELMÄSSIGE ANGEBOTE (GANZ OBEN)
         const rList = document.getElementById('regelmaessigList');
         rList.innerHTML = '';
         if (infos.regelmaessig) {
@@ -1284,10 +1284,10 @@
             });
         }
 
-        // Die Überschrift für regelmäßige Angebote optisch verstärken & nach oben schieben
+        // Überschrift für Angebote formatieren und nach ganz oben setzen
         const rTitle = document.getElementById('regelmaessigTitle');
         if (rTitle) {
-            rTitle.style.order = "-2"; // Schiebt es visuell ganz nach oben
+            rTitle.style.order = "-2";
             rTitle.style.fontWeight = "800";
             rTitle.style.color = "#b7870a";
             rTitle.style.fontSize = "0.95rem";
@@ -1296,14 +1296,14 @@
             rTitle.style.paddingTop = "0";
             rTitle.style.marginBottom = "12px";
         }
-        rList.style.order = "-1"; // Schiebt die Liste der Angebote direkt unter die Überschrift
+        rList.style.order = "-1";
 
-        // 2. ANSPRECHPARTNER & KONTAKTE (NUN DARUNTER PLATZIERT)
+        // 2. ANSPRECHPARTNER & KONTAKTE (MIT KLARER TRENNLINIE ALS THEMEN-TRENNER)
         const kList = document.getElementById('kontaktList');
         kList.innerHTML = '';
         if (infos.ansprechpartner) {
-            // Eine kleine visuelle Trennlinie über den Kontakten einfügen, da sie jetzt unten stehen
-            const separatorHtml = `<h4 style="margin-top: 18px; margin-bottom: 12px; font-weight: 700; font-size: 0.95rem; opacity: 0.9; border-top: 1px dashed var(--btn-outline-color); padding-top: 12px;">Ansprechpartner & Kontakte</h4>`;
+            // Der visuelle Trenner: Gestrichelte Linie und neue Zwischenüberschrift
+            const separatorHtml = `<h4 style="margin-top: 24px; margin-bottom: 12px; font-weight: 700; font-size: 0.95rem; opacity: 0.9; border-top: 1px dashed var(--btn-outline-color); padding-top: 16px;">Ansprechpartner & Kontakte</h4>`;
             
             const liTitle = document.createElement('li');
             liTitle.innerHTML = separatorHtml;
@@ -1318,28 +1318,47 @@
         }
         kList.style.order = "0";
 
-        // 3. SOCIAL MEDIA LINKS (BLEIBEN ALS ABSCHLUSS GANZ UNTEN)
+        // 3. SOCIAL MEDIA LINKS (ALS ABSCHLUSS UNTEN MIT TRENNER UND ÜBERSCHRIFT)
         const sRow = document.getElementById('socialMediaRow');
         sRow.innerHTML = '';
         sRow.style.order = "1";
+        
+        // Flex-Direction auf Column ändern, damit Überschrift und Icons sauber untereinander stehen
+        sRow.style.flexDirection = "column";
+        sRow.style.alignItems = "center";
+        sRow.style.gap = "12px";
+        
         let hasSocial = false;
 
+        // Der visuelle Trenner und die neue Überschrift für Social Media
+        let socialContentHtml = `
+            <h4 style="width: 100%; text-align: center; margin-top: 16px; margin-bottom: 4px; font-weight: 700; font-size: 0.95rem; opacity: 0.9; border-top: 1px dashed var(--btn-outline-color); padding-top: 16px;">Social Media</h4>
+            <div style="display: flex; gap: 14px; justify-content: center; width: 100%;">
+        `;
+
         if (infos.instagram_link && infos.instagram_link.trim() !== "") {
-            sRow.innerHTML += `<a href="${infos.instagram_link}" target="_blank" rel="noopener" class="social-link">📸 Instagram</a>`;
+            socialContentHtml += `<a href="${infos.instagram_link}" target="_blank" rel="noopener" class="social-link">📸 Instagram</a>`;
             hasSocial = true;
         }
         if (infos.facebook_link && infos.facebook_link.trim() !== "") {
-            sRow.innerHTML += `<a href="${infos.facebook_link}" target="_blank" rel="noopener" class="social-link">👥 Facebook</a>`;
+            socialContentHtml += `<a href="${infos.facebook_link}" target="_blank" rel="noopener" class="social-link">👥 Facebook</a>`;
             hasSocial = true;
         }
         if (infos.youtube_link && infos.youtube_link.trim() !== "") {
-            sRow.innerHTML += `<a href="${infos.youtube_link}" target="_blank" rel="noopener" class="social-link">📺 YouTube</a>`;
+            socialContentHtml += `<a href="${infos.youtube_link}" target="_blank" rel="noopener" class="social-link">📺 YouTube</a>`;
             hasSocial = true;
         }
 
-        sRow.style.display = hasSocial ? 'flex' : 'none';
+        socialContentHtml += `</div>`;
 
-        // DYNAMISCHER KOLLEKTENZWECK
+        if (hasSocial) {
+            sRow.innerHTML = socialContentHtml;
+            sRow.style.display = 'flex';
+        } else {
+            sRow.style.display = 'none';
+        }
+
+        // DYNAMISCHER KOLLEKTENZWECK (Bleibt unverändert stabil)
         const kollektenBox = document.getElementById('kollektenBox');
         const kollektenLink = document.getElementById('kollektenLink');
         const kollektenTextEl = document.getElementById('kollektenText');
