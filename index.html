@@ -736,13 +736,21 @@
             border-bottom-color: #2c3e50;
         }
 
-        /* CHALLENGE-BEREICH */
+ /* CHALLENGE-BEREICH */
         .challenge-box {
-            background: var(--bg-challenge); 
+            /* HIER GEÄNDERT: Edler, dezenter Farbverlauf von warmem Sand zu weichem Weiß */
+            background: linear-gradient(145deg, var(--bg-challenge) 0%, rgba(255, 255, 255, 0.6) 100%); 
+            
             border-radius: var(--radius-element);
-            padding: 38px 20px 20px 20px; 
+            padding: 24px 20px 20px 20px; /* Oben etwas kompakter gesetzt */
             box-shadow: var(--main-shadow);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            
+            /* HIER GEÄNDERT: Die goldene Akzentlinie auf der Oberseite, analog zur Content-Stage */
+            border-top: 3px solid rgba(184, 134, 11, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            border-right: 1px solid rgba(255, 255, 255, 0.5);
+            
             color: var(--text-dark); 
             animation: blockSlideDown 0.3s ease-out;
             text-align: center;
