@@ -737,16 +737,17 @@
         }
 
  /* CHALLENGE-BEREICH */
+       /* CHALLENGE-BEREICH */
         .challenge-box {
-            /* HIER GEÄNDERT: Edler, dezenter Farbverlauf von warmem Sand zu weichem Weiß */
-            background: linear-gradient(145deg, var(--bg-challenge) 0%, rgba(255, 255, 255, 0.6) 100%); 
+            /* HIER GEÄNDERT: Stärkerer, satterer Farbverlauf von einem warmen Gold-Sand-Ton zu weichem Weiß */
+            background: linear-gradient(135deg, rgba(224, 182, 100, 0.25) 0%, var(--bg-challenge) 50%, rgba(255, 255, 255, 0.8) 100%); 
             
             border-radius: var(--radius-element);
-            padding: 24px 20px 20px 20px; /* Oben etwas kompakter gesetzt */
+            padding: 24px 20px 20px 20px;
             box-shadow: var(--main-shadow);
             
-            /* HIER GEÄNDERT: Die goldene Akzentlinie auf der Oberseite, analog zur Content-Stage */
-            border-top: 3px solid rgba(184, 134, 11, 0.3);
+            /* Goldene Akzentlinie auf der Oberseite bleibt stabil */
+            border-top: 3px solid rgba(184, 134, 11, 0.4); /* Deckkraft leicht erhöht */
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             border-left: 1px solid rgba(255, 255, 255, 0.5);
             border-right: 1px solid rgba(255, 255, 255, 0.5);
@@ -757,8 +758,11 @@
             position: relative; 
             margin-bottom: 14px;
         }
+
         .challenge-title {
-            color: var(--text-challenge-title);
+            /* HIER GEÄNDERT: Textfarbe jetzt im passenden, edlen Goldton */
+            color: #b7870a; 
+            
             display: flex;
             justify-content: center;
             align-items: center;
