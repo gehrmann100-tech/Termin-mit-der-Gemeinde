@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Termin mit der Gemeinde</title>
+    <title>Termin mit dem Leben</title>
     
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e3f5f">
@@ -264,6 +264,7 @@
         }
 
         /* INHALTSBÜHNE (STAR-ZITAT) */
+       /* INHALTSBÜHNE (STAR-ZITAT) */
         .content-stage {
             background: #fffcf8;
             border-top: 3px solid rgba(184, 134, 11, 0.3);
@@ -272,19 +273,24 @@
             border-right: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: var(--radius-element);
             box-shadow: 0 15px 40px rgba(184, 134, 11, 0.08); 
+            
+            /* HIER GEÄNDERT: Innenabstand oben/unten von 24px auf 16px verringert */
             padding: 16px 24px 14px 24px; 
             display: flex;
             flex-direction: column;
-            margin-top: 6px; 
-            margin-bottom: 6px; 
+            
+            /* HIER GEÄNDERT: Außenabstand über und unter der Box von 14px auf 6px reduziert */
+            margin-top: 14px; 
+            margin-bottom: 14px; 
             text-align: center;
         }
 
-        .impuls-label-wrapper {
+     .impuls-label-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
+            /* HIER GEÄNDERT: Von 32px auf 18px reduziert für einen kompakteren Look */
             margin-bottom: 18px; 
             opacity: 0.85;
         }
@@ -319,25 +325,30 @@
             font-weight: 400; 
         }
 
-        .static-source-display {
+       .static-source-display {
             font-family: 'Inter', sans-serif;
             font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-muted);
             opacity: 0.8;
+            
+            /* HIER GEÄNDERT: Von 20px auf 8px reduziert */
             margin-bottom: 8px;
+            
             display: block;
         }
 
-        /* BUTTON LOGIK: OUTLINE (STANDARD) VS MINIMALISTISCH */
-        .box-action-row {
+  .box-action-row {
             display: flex;
             justify-content: center;
             align-items: center; 
             gap: 10px; 
             flex-wrap: wrap; 
+            
+            /* HIER GEÄNDERT: Abstand zur Quellenangabe verringert */
             margin-top: 2px;
-            padding-top: 8px;
+            padding-top: 6px; /* Innenabstand über den Buttons zur Linie */
+            
             border-top: 1px dashed rgba(0, 0, 0, 0.06);
         }
 
@@ -367,7 +378,7 @@
         }
 
         .action-link-divider {
-            display: none; 
+            display: none; /* Im Standard (Outline) unsichtbar */
             font-size: 0.75rem;
             color: var(--text-muted);
             opacity: 0.25;
@@ -391,7 +402,7 @@
             transform: translateY(-0.5px);
         }
         [data-button-style="minimal"] .action-link-divider {
-            display: inline-block; 
+            display: inline-block; /* Im Minimal-Modus sichtbar */
         }
 
         .action-icon-svg {
@@ -630,10 +641,12 @@
         /* SOCIAL MEDIA AREA IN CONTACTS */
         .social-media-row {
             display: flex;
+            flex-wrap: wrap;
             gap: 8px;
             margin-top: 14px;
             padding-top: 12px;
-            justify-content: center;
+            border-top: 1px dashed var(--btn-outline-color);
+            justify-content: flex-start;
         }
         .social-link {
             display: inline-flex;
@@ -723,24 +736,33 @@
             border-bottom-color: #2c3e50;
         }
 
-        /* CHALLENGE-BEREICH */
+ /* CHALLENGE-BEREICH */
+       /* CHALLENGE-BEREICH */
         .challenge-box {
+            /* HIER GEÄNDERT: Stärkerer, satterer Farbverlauf von einem warmen Gold-Sand-Ton zu weichem Weiß */
             background: linear-gradient(135deg, rgba(224, 182, 100, 0.25) 0%, var(--bg-challenge) 50%, rgba(255, 255, 255, 0.8) 100%); 
+            
             border-radius: var(--radius-element);
-            padding: 24px 20px 20px 20px; 
+            padding: 24px 20px 20px 20px;
             box-shadow: var(--main-shadow);
-            border-top: 3px solid rgba(184, 134, 11, 0.4);
+            
+            /* Goldene Akzentlinie auf der Oberseite bleibt stabil */
+            border-top: 3px solid rgba(184, 134, 11, 0.4); /* Deckkraft leicht erhöht */
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             border-left: 1px solid rgba(255, 255, 255, 0.5);
             border-right: 1px solid rgba(255, 255, 255, 0.5);
+            
             color: var(--text-dark); 
             animation: blockSlideDown 0.3s ease-out;
             text-align: center;
             position: relative; 
             margin-bottom: 14px;
         }
+
         .challenge-title {
+            /* HIER GEÄNDERT: Textfarbe jetzt im passenden, edlen Goldton */
             color: #b7870a; 
+            
             display: flex;
             justify-content: center;
             align-items: center;
@@ -964,16 +986,14 @@
 
         <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('dauerInfosCard')">
-                <h2 class="gemeinde-card-title">Angebote, Kontakte & Social Media</h2>
+                <h2 class="gemeinde-card-title">Kontakt, Angebote & Social Media</h2>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="collapsible-content">
-                <h2 class="gemeinde-card-title" id="regelmaessigTitle" style="margin-top: 0; margin-bottom: 12px; font-weight: 800; color: #b7870a; font-size: 0.95rem; letter-spacing: 0.5px;">Regelmäßige Angebote</h2>
-                <ul class="termin-list" id="regelmaessigList" style="margin-bottom: 0;"></ul>
-                
-                <ul class="termin-list" id="kontaktList" style="margin-bottom: 0;"></ul>
-                
-                <div class="social-media-row" id="socialMediaRow" style="display: none; flex-direction: column; align-items: center; gap: 12px; margin-top: 0;"></div>
+                <ul class="termin-list" id="kontaktList" style="margin-bottom: 14px;"></ul>
+                <h2 class="gemeinde-card-title" style="margin-bottom: 12px; border-top: 1px dashed var(--btn-outline-color); padding-top: 12px; font-weight: 500; text-transform: none; letter-spacing: 0px;">Regelmäßige Angebote</h2>
+                <ul class="termin-list" id="regelmaessigList"></ul>
+                <div class="social-media-row" id="socialMediaRow" style="display: none;"></div>
             </div>
         </div>
 
@@ -1103,7 +1123,7 @@
     let displayDate = new Date();
     const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
 
-  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const dateEl = document.getElementById('currentDate');
         if (dateEl) dateEl.innerText = displayDate.toLocaleDateString('de-DE', options);
 
@@ -1128,31 +1148,32 @@
         const buttonSelect = document.getElementById('buttonStyleSelect');
         if (buttonSelect) buttonSelect.value = savedButtonStyle;
 
-        // URL-PARAMETER AUSLESEN (OHNE den Merscheid-Zwang!)
         const urlParams = new URLSearchParams(window.location.search);
         const gemeindeParam = urlParams.get('gemeinde');
 
-        const spruechePfad = 'data/sprueche.json';
-
+        const backendUrl = 'https://sandboxgemeinde.netlify.app';
+        let jsonPfad = 'data/sprueche.json';
+        
         if (gemeindeParam) {
-            // GEMEINDE-MODUS: Lade Gemeinde-Daten (z.B. ?gemeinde=merscheid)
-            const jsonPfad = `data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
-            fetch(jsonPfad)
-                .then(response => {
-                    if (!response.ok) throw new Error("Gemeinde Daten konnten nicht geladen werden.");
-                    return response.json();
-                })
-                .then(data => {
-                    allData = data;
-                    if (data.gemeinde_konfiguration) {
-                        gemeindeConfig = data.gemeinde_konfiguration;
-                        renderDauerInfos();
-                    }
+            jsonPfad = `${backendUrl}/data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
+        }
 
-                    initHeader();
+        fetch(jsonPfad)
+            .then(response => {
+                if (!response.ok) throw new Error("Gemeinde Daten konnten nicht geladen werden.");
+                return response.json();
+            })
+            .then(data => {
+                allData = data;
+                if (data.gemeinde_konfiguration) {
+                    gemeindeConfig = data.gemeinde_konfiguration;
+                    renderDauerInfos();
+                }
 
-                    // Sprüche dazuladen
-                    fetch(spruechePfad)
+                initHeader();
+
+                if (gemeindeParam) {
+                    fetch('data/sprueche.json')
                         .then(res => res.json())
                         .then(spruecheData => {
                             Object.keys(spruecheData).forEach(key => {
@@ -1168,26 +1189,32 @@
                             });
                             updatePage();
                         }).catch(() => updatePage());
-                })
-                .catch(error => {
-                    console.error("Fehler beim Laden:", error);
-                    const mainTextEl = document.getElementById('mainText');
-                    if (mainTextEl) mainTextEl.innerText = "Fehler beim Laden der Gemeinde Daten.";
-                });
-        } else {
-            // STANDARD-MODUS: Ohne Parameter ist es die Basis-App "Termin mit dem Leben"
-            fetch(spruechePfad)
-                .then(res => res.json())
-                .then(spruecheData => {
-                    allData = spruecheData;
-                    initHeader(); // Setzt alles auf "Leben"
+                } else {
                     updatePage();
-                })
-                .catch(error => {
-                    console.error("Fehler beim Laden der Sprüche:", error);
-                });
-        }
+                }
+            })
+            .catch(error => {
+                console.error("Fehler beim Laden der JSON Daten:", error);
+                const mainTextEl = document.getElementById('mainText');
+                if (mainTextEl) {
+                    mainTextEl.innerText = "Fehler beim Laden der Gemeinde Daten. Bitte überprüfe die Verbindung.";
+                }
+            });
     });
+
+    function toggleCard(cardId) {
+        const card = document.getElementById(cardId);
+        if (card) {
+            const openBefore = card.classList.contains('is-open');
+            card.classList.toggle('is-open');
+            
+            if (!openBefore) {
+                setTimeout(() => {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 180);
+            }
+        }
+    }
 
     function initHeader() {
         const imgBox = document.getElementById('gemeindeImageBox');
@@ -1219,21 +1246,16 @@
 
             const newsCard = document.getElementById('newsCard');
             const newsBadge = document.getElementById('newsBadge');
-            
-            // HIER GELOEST: Akzeptiert das CMS-Feld "news_text" ODER die alte JSON "wochen_news"
-            const newsText = gemeindeConfig.news_text || gemeindeConfig.wochen_news;
-            
-            if (newsText && newsText.trim() !== "") {
+            if (gemeindeConfig.news_text && gemeindeConfig.news_text.trim() !== "") {
                 newsCard.style.display = 'block';
                 newsBadge.style.display = 'inline-block';
                 document.getElementById('newsUeberschrift').innerText = gemeindeConfig.news_ueberschrift || "Mitteilung der Gemeinde";
-                document.getElementById('newsText').innerText = newsText; 
+                document.getElementById('newsText').innerText = gemeindeConfig.news_text; 
             } else {
                 if (newsCard) newsCard.style.display = 'none';
                 if (newsBadge) newsBadge.style.display = 'none';
             }
         } else {
-            // BASIS-APP EINSTELLUNGEN
             document.getElementById('appTitle').innerHTML = `Termin <span>mit dem Leben</span>`;
             subtitleEl.innerText = "Dein täglicher Impuls";
             if (imgEl) imgEl.src = "images/kirche-leben.jpg";
@@ -1247,7 +1269,17 @@
         document.getElementById('gemeindeSection').style.display = 'flex';
         document.getElementById('dauerInfosCard').style.display = 'block';
 
-        // 1. REGELMÄSSIGE ANGEBOTE
+        const kList = document.getElementById('kontaktList');
+        kList.innerHTML = '';
+        if (infos.ansprechpartner) {
+            infos.ansprechpartner.forEach(p => {
+                const li = document.createElement('li');
+                li.className = 'termin-item';
+                li.innerHTML = `<div class="termin-meta-row"><span>${p.rolle}</span></div><div class="termin-titel"><strong>${p.name}</strong><br>${p.kontakt}</div>`;
+                kList.appendChild(li);
+            });
+        }
+
         const rList = document.getElementById('regelmaessigList');
         rList.innerHTML = '';
         if (infos.regelmaessig) {
@@ -1259,71 +1291,37 @@
             });
         }
 
-        // 2. ANSPRECHPARTNER & KONTAKTE (MIT EDLEM TRENNER UND GOLD-TITEL)
-        const kList = document.getElementById('kontaktList');
-        kList.innerHTML = '';
-        if (infos.ansprechpartner) {
-            const separatorHtml = `
-                <div style="margin-top: 24px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
-                <h4 style="margin-top: 0; margin-bottom: 14px; font-weight: 800; color: #b7870a; font-size: 0.95rem; letter-spacing: 0.5px;">Ansprechpartner & Kontakte</h4>
-            `;
-            
-            const liTitle = document.createElement('li');
-            liTitle.innerHTML = separatorHtml;
-            kList.appendChild(liTitle);
-
-            infos.ansprechpartner.forEach(p => {
-                const li = document.createElement('li');
-                li.className = 'termin-item';
-                li.innerHTML = `<div class="termin-meta-row"><span>${p.rolle}</span></div><div class="termin-titel"><strong>${p.name}</strong><br>${p.kontakt}</div>`;
-                kList.appendChild(li);
-            });
-        }
-
-        // 3. SOCIAL MEDIA LINKS (MIT EDLEM TRENNER UND GOLD-TITEL)
+        // DYNAMISCHE SOCIAL MEDIA LINKS GENERIEREN
         const sRow = document.getElementById('socialMediaRow');
         sRow.innerHTML = '';
         let hasSocial = false;
 
-        let socialContentHtml = `
-            <div style="margin-top: 24px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
-            <h4 style="width: 100%; text-align: center; margin-top: 0; margin-bottom: 12px; font-weight: 800; color: #b7870a; font-size: 0.95rem; letter-spacing: 0.5px;">Social Media</h4>
-            <div style="display: flex; gap: 14px; justify-content: center; width: 100%;">
-        `;
-
         if (infos.instagram_link && infos.instagram_link.trim() !== "") {
-            socialContentHtml += `<a href="${infos.instagram_link}" target="_blank" rel="noopener" class="social-link">📸 Instagram</a>`;
+            sRow.innerHTML += `<a href="${infos.instagram_link}" target="_blank" rel="noopener" class="social-link">📸 Instagram</a>`;
             hasSocial = true;
         }
         if (infos.facebook_link && infos.facebook_link.trim() !== "") {
-            socialContentHtml += `<a href="${infos.facebook_link}" target="_blank" rel="noopener" class="social-link">👥 Facebook</a>`;
+            sRow.innerHTML += `<a href="${infos.facebook_link}" target="_blank" rel="noopener" class="social-link">👥 Facebook</a>`;
             hasSocial = true;
         }
         if (infos.youtube_link && infos.youtube_link.trim() !== "") {
-            socialContentHtml += `<a href="${infos.youtube_link}" target="_blank" rel="noopener" class="social-link">📺 YouTube</a>`;
+            sRow.innerHTML += `<a href="${infos.youtube_link}" target="_blank" rel="noopener" class="social-link">📺 YouTube</a>`;
             hasSocial = true;
         }
 
-        socialContentHtml += `</div>`;
-
-        if (hasSocial) {
-            sRow.innerHTML = socialContentHtml;
-            sRow.style.display = 'flex';
-        } else {
-            sRow.style.display = 'none';
-        }
+        sRow.style.display = hasSocial ? 'flex' : 'none';
 
         // DYNAMISCHER KOLLEKTENZWECK
         const kollektenBox = document.getElementById('kollektenBox');
         const kollektenLink = document.getElementById('kollektenLink');
         const kollektenTextEl = document.getElementById('kollektenText');
 
-        if (allData.gemeinde_konfiguration && allData.gemeinde_konfiguration.kollekten_link && allData.gemeinde_konfiguration.kollekten_link.trim() !== "") {
-            kollektenLink.href = allData.gemeinde_konfiguration.kollekten_link;
+        if (gemeindeConfig && gemeindeConfig.kollekten_link && gemeindeConfig.kollekten_link.trim() !== "") {
+            kollektenLink.href = gemeindeConfig.kollekten_link;
             kollektenBox.style.display = 'block';
 
-            if (allData.gemeinde_konfiguration.kollekten_zweck && allData.gemeinde_konfiguration.kollekten_zweck.trim() !== "") {
-                kollektenTextEl.innerText = `Mit deiner digitalen Spende unterstützt du heute gezielt das Projekt: ${allData.gemeinde_konfiguration.kollekten_zweck}.`;
+            if (gemeindeConfig.kollekten_zweck && gemeindeConfig.kollekten_zweck.trim() !== "") {
+                kollektenTextEl.innerText = `Mit deiner digitalen Spende unterstützt du heute gezielt das Projekt: ${gemeindeConfig.kollekten_zweck}.`;
             } else {
                 kollektenTextEl.innerText = "Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte.";
             }
@@ -1363,19 +1361,15 @@
         
         const termList = document.getElementById('terminList');
         const termCard = document.getElementById('termineCard');
-        if (!termList || !termCard) return;
-
         termList.innerHTML = '';
 
-        const vonHeute = new Date();
-        vonHeute.setHours(0, 0, 0, 0);
+        const vergleichsDatum = new Date(displayDate);
+        vergleichsDatum.setHours(0, 0, 0, 0);
 
-        // Sicherer Datumsvergleich ohne Zeitzonenfehler
         const zukuenftige = allData.kommende_termine.filter(t => {
-            const parts = t.datum.split('-');
-            const tDate = new Date(parts[0], parts[1] - 1, parts[2]);
+            const tDate = new Date(t.datum);
             tDate.setHours(0, 0, 0, 0);
-            return tDate >= vonHeute;
+            return tDate >= vergleichsDatum;
         });
 
         const auswahl = zukuenftige.slice(0, 4);
@@ -1384,8 +1378,7 @@
             termCard.style.display = 'block';
             document.getElementById('gemeindeSection').style.display = 'flex';
             auswahl.forEach(t => {
-                const parts = t.datum.split('-');
-                const dObj = new Date(parts[0], parts[1] - 1, parts[2]);
+                const dObj = new Date(t.datum);
                 const dStr = dObj.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit' });
                 
                 const li = document.createElement('li');
