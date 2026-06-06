@@ -264,7 +264,6 @@
         }
 
         /* INHALTSBÜHNE (STAR-ZITAT) */
-       /* INHALTSBÜHNE (STAR-ZITAT) */
         .content-stage {
             background: #fffcf8;
             border-top: 3px solid rgba(184, 134, 11, 0.3);
@@ -273,24 +272,19 @@
             border-right: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: var(--radius-element);
             box-shadow: 0 15px 40px rgba(184, 134, 11, 0.08); 
-            
-            /* HIER GEÄNDERT: Innenabstand oben/unten von 24px auf 16px verringert */
             padding: 16px 24px 14px 24px; 
             display: flex;
             flex-direction: column;
-            
-            /* HIER GEÄNDERT: Außenabstand über und unter der Box von 14px auf 6px reduziert */
             margin-top: 14px; 
             margin-bottom: 14px; 
             text-align: center;
         }
 
-     .impuls-label-wrapper {
+        .impuls-label-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            /* HIER GEÄNDERT: Von 32px auf 18px reduziert für einen kompakteren Look */
             margin-bottom: 18px; 
             opacity: 0.85;
         }
@@ -325,30 +319,24 @@
             font-weight: 400; 
         }
 
-       .static-source-display {
+        .static-source-display {
             font-family: 'Inter', sans-serif;
             font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-muted);
             opacity: 0.8;
-            
-            /* HIER GEÄNDERT: Von 20px auf 8px reduziert */
             margin-bottom: 8px;
-            
             display: block;
         }
 
-  .box-action-row {
+        .box-action-row {
             display: flex;
             justify-content: center;
             align-items: center; 
             gap: 10px; 
             flex-wrap: wrap; 
-            
-            /* HIER GEÄNDERT: Abstand zur Quellenangabe verringert */
             margin-top: 2px;
-            padding-top: 6px; /* Innenabstand über den Buttons zur Linie */
-            
+            padding-top: 6px;
             border-top: 1px dashed rgba(0, 0, 0, 0.06);
         }
 
@@ -378,7 +366,7 @@
         }
 
         .action-link-divider {
-            display: none; /* Im Standard (Outline) unsichtbar */
+            display: none;
             font-size: 0.75rem;
             color: var(--text-muted);
             opacity: 0.25;
@@ -402,7 +390,7 @@
             transform: translateY(-0.5px);
         }
         [data-button-style="minimal"] .action-link-divider {
-            display: inline-block; /* Im Minimal-Modus sichtbar */
+            display: inline-block;
         }
 
         .action-icon-svg {
@@ -638,14 +626,32 @@
             white-space: pre-wrap; 
         }
 
+        /* NEUE KLASSEN FÜR EDLE ZWISCHENÜBERSCHRIFTEN UND TRENNER */
+        .gold-subheading {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #b7870a;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .gold-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.4), transparent);
+            margin: 18px 0;
+            border: none;
+        }
+
         /* SOCIAL MEDIA AREA IN CONTACTS */
         .social-media-row {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 14px;
-            padding-top: 12px;
-            border-top: 1px dashed var(--btn-outline-color);
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(184, 134, 11, 0.3);
             justify-content: flex-start;
         }
         .social-link {
@@ -736,41 +742,33 @@
             border-bottom-color: #2c3e50;
         }
 
- /* CHALLENGE-BEREICH */
-       /* CHALLENGE-BEREICH */
+        /* CHALLENGE-BEREICH */
         .challenge-box {
-            /* HIER GEÄNDERT: Stärkerer, satterer Farbverlauf von einem warmen Gold-Sand-Ton zu weichem Weiß */
-            background: linear-gradient(135deg, rgba(224, 182, 100, 0.25) 0%, var(--bg-challenge) 50%, rgba(255, 255, 255, 0.8) 100%); 
-            
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(245, 237, 224, 0.6) 50%, rgba(255, 255, 255, 0.9) 100%);
             border-radius: var(--radius-element);
             padding: 24px 20px 20px 20px;
             box-shadow: var(--main-shadow);
-            
-            /* Goldene Akzentlinie auf der Oberseite bleibt stabil */
-            border-top: 3px solid rgba(184, 134, 11, 0.4); /* Deckkraft leicht erhöht */
+            border-top: 3px solid rgba(212, 175, 55, 0.7);
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             border-left: 1px solid rgba(255, 255, 255, 0.5);
             border-right: 1px solid rgba(255, 255, 255, 0.5);
-            
-            color: var(--text-dark); 
+            color: var(--text-dark);
             animation: blockSlideDown 0.3s ease-out;
             text-align: center;
-            position: relative; 
+            position: relative;
             margin-bottom: 14px;
         }
 
         .challenge-title {
-            /* HIER GEÄNDERT: Textfarbe jetzt im passenden, edlen Goldton */
-            color: #b7870a; 
-            
+            color: #b7870a;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
             font-weight: 800;
             letter-spacing: 1px;
-            margin-bottom: 8px; 
+            margin-bottom: 8px;
         }
         .challenge-instruction {
             font-family: var(--font-challenge); 
@@ -986,14 +984,21 @@
 
         <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('dauerInfosCard')">
-                <h2 class="gemeinde-card-title">Kontakt, Angebote & Social Media</h2>
+                <h2 class="gemeinde-card-title">Angebote, Kontakte & Social Media</h2>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="collapsible-content">
-                <ul class="termin-list" id="kontaktList" style="margin-bottom: 14px;"></ul>
-                <h2 class="gemeinde-card-title" style="margin-bottom: 12px; border-top: 1px dashed var(--btn-outline-color); padding-top: 12px; font-weight: 500; text-transform: none; letter-spacing: 0px;">Regelmäßige Angebote</h2>
+                
+                <h2 class="gold-subheading">Regelmäßige Angebote</h2>
                 <ul class="termin-list" id="regelmaessigList"></ul>
+
+                <hr class="gold-divider">
+
+                <h2 class="gold-subheading">Kontakt & Ansprechpartner</h2>
+                <ul class="termin-list" id="kontaktList"></ul>
+
                 <div class="social-media-row" id="socialMediaRow" style="display: none;"></div>
+                
             </div>
         </div>
 

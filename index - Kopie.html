@@ -577,31 +577,18 @@
             transition: transform 0.3s ease;
         }
         
-     .collapsible-content {
-            display: none;
-            margin-top: 14px;
-            animation: blockSlideDown 0.25s ease-out;
-            
-            /* NEU: Macht den Inhalt zum Flex-Container, WENN die Karte geöffnet wird */
-            flex-direction: column;
-        }
-        
-   /* NACHHER: Sauber getrennt, damit die Termine wieder normal arbeiten */
         .collapsible-content {
             display: none;
             margin-top: 14px;
             animation: blockSlideDown 0.25s ease-out;
         }
         
-        /* Die normale Klapp-Logik für Standard-Karten (wie Termine) */
         .gemeinde-card.is-open .collapsible-content {
             display: block;
         }
-
-        /* NUR für die Angebote/Kontakte-Kachel aktivieren wir die Flex-Spalte im geöffneten Zustand */
-        #dauerInfosCard.is-open .collapsible-content {
-            display: flex;
-            flex-direction: column;
+        
+        .gemeinde-card.is-open .toggle-icon {
+            transform: rotate(180deg);
         }
 
         .news-text {
@@ -987,16 +974,13 @@
             </div>
         </div>
 
-    <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
-            <div class="collapsible-header" onclick="toggleCard('dauerInfosCard')">
-                <h2 class="gemeinde-card-title">Angebote, Kontakte & Social Media</h2>
+        <div class="gemeinde-card" id="termineCard" style="display: none;">
+            <div class="collapsible-header" onclick="toggleCard('termineCard')">
+                <h2 class="gemeinde-card-title">Anstehende Termine & Gottesdienste</h2>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="collapsible-content">
-                <ul class="termin-list" id="kontaktList" style="margin-bottom: 14px;"></ul>
-                <h2 class="gemeinde-card-title" id="regelmaessigTitle" style="margin-bottom: 12px; border-top: 1px dashed var(--btn-outline-color); padding-top: 12px; font-weight: 500; text-transform: none; letter-spacing: 0px;">Regelmäßige Angebote</h2>
-                <ul class="termin-list" id="regelmaessigList"></ul>
-                <div class="social-media-row" id="socialMediaRow" style="display: none;"></div>
+                <ul class="termin-list" id="terminList"></ul>
             </div>
         </div>
 
@@ -1279,13 +1263,23 @@
         }
     }
 
- function renderDauerInfos() {
+    function renderDauerInfos() {
         if (!allData || !allData.dauer_infos) return;
         const infos = allData.dauer_infos;
         document.getElementById('gemeindeSection').style.display = 'flex';
         document.getElementById('dauerInfosCard').style.display = 'block';
 
-        // 1. REGELMÄSSIGE ANGEBOTE (GANZ OBEN)
+        const kList = document.getElementById('kontaktList');
+        kList.innerHTML = '';
+        if (infos.ansprechpartner) {
+            infos.ansprechpartner.forEach(p => {
+                const li = document.createElement('li');
+                li.className = 'termin-item';
+                li.innerHTML = `<div class="termin-meta-row"><span>${p.rolle}</span></div><div class="termin-titel"><strong>${p.name}</strong><br>${p.kontakt}</div>`;
+                kList.appendChild(li);
+            });
+        }
+
         const rList = document.getElementById('regelmaessigList');
         rList.innerHTML = '';
         if (infos.regelmaessig) {
@@ -1297,96 +1291,37 @@
             });
         }
 
-        // Überschrift für Angebote formatieren
-        const rTitle = document.getElementById('regelmaessigTitle');
-        if (rTitle) {
-            rTitle.style.order = "1";
-            rTitle.style.fontWeight = "800";
-            rTitle.style.color = "#b7870a";
-            rTitle.style.fontSize = "0.95rem";
-            rTitle.style.letterSpacing = "0.5px";
-            rTitle.style.borderTop = "none";
-            rTitle.style.paddingTop = "0";
-            rTitle.style.marginTop = "0";
-            rTitle.style.marginBottom = "12px";
-        }
-        rList.style.order = "2";
-        rList.style.marginBottom = "0";
-
-        // 2. ANSPRECHPARTNER & KONTAKTE (DARUNTER MIT LINIEN-TRENNER)
-        const kList = document.getElementById('kontaktList');
-        kList.innerHTML = '';
-        if (infos.ansprechpartner) {
-            const separatorHtml = `
-                <div style="margin-top: 20px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
-                <h4 style="margin-top: 0; margin-bottom: 14px; font-weight: 800; color: #b7870a; font-size: 0.95rem; letter-spacing: 0.5px;">Ansprechpartner & Kontakte</h4>
-            `;
-            
-            const liTitle = document.createElement('li');
-            liTitle.innerHTML = separatorHtml;
-            kList.appendChild(liTitle);
-
-            infos.ansprechpartner.forEach(p => {
-                const li = document.createElement('li');
-                li.className = 'termin-item';
-                li.innerHTML = `<div class="termin-meta-row"><span>${p.rolle}</span></div><div class="termin-titel"><strong>${p.name}</strong><br>${p.kontakt}</div>`;
-                kList.appendChild(li);
-            });
-        }
-        kList.style.order = "3";
-        kList.style.marginBottom = "0";
-
-        // 3. SOCIAL MEDIA LINKS (GANZ UNTEN)
+        // DYNAMISCHE SOCIAL MEDIA LINKS GENERIEREN
         const sRow = document.getElementById('socialMediaRow');
         sRow.innerHTML = '';
-        sRow.style.order = "4";
-        
-        sRow.style.flexDirection = "column";
-        sRow.style.alignItems = "center";
-        sRow.style.gap = "12px";
-        sRow.style.marginTop = "0";
-        
         let hasSocial = false;
 
-        let socialContentHtml = `
-            <div style="margin-top: 20px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
-            <h4 style="width: 100%; text-align: center; margin-top: 0; margin-bottom: 12px; font-weight: 800; color: #b7870a; font-size: 0.95rem; letter-spacing: 0.5px;">Social Media</h4>
-            <div style="display: flex; gap: 14px; justify-content: center; width: 100%;">
-        `;
-
         if (infos.instagram_link && infos.instagram_link.trim() !== "") {
-            socialContentHtml += `<a href="${infos.instagram_link}" target="_blank" rel="noopener" class="social-link">📸 Instagram</a>`;
+            sRow.innerHTML += `<a href="${infos.instagram_link}" target="_blank" rel="noopener" class="social-link">📸 Instagram</a>`;
             hasSocial = true;
         }
         if (infos.facebook_link && infos.facebook_link.trim() !== "") {
-            socialContentHtml += `<a href="${infos.facebook_link}" target="_blank" rel="noopener" class="social-link">👥 Facebook</a>`;
+            sRow.innerHTML += `<a href="${infos.facebook_link}" target="_blank" rel="noopener" class="social-link">👥 Facebook</a>`;
             hasSocial = true;
         }
         if (infos.youtube_link && infos.youtube_link.trim() !== "") {
-            socialContentHtml += `<a href="${infos.youtube_link}" target="_blank" rel="noopener" class="social-link">📺 YouTube</a>`;
+            sRow.innerHTML += `<a href="${infos.youtube_link}" target="_blank" rel="noopener" class="social-link">📺 YouTube</a>`;
             hasSocial = true;
         }
 
-        socialContentHtml += `</div>`;
-
-        if (hasSocial) {
-            sRow.innerHTML = socialContentHtml;
-            sRow.style.display = 'flex';
-        } else {
-            sRow.style.display = 'none';
-        }
+        sRow.style.display = hasSocial ? 'flex' : 'none';
 
         // DYNAMISCHER KOLLEKTENZWECK
         const kollektenBox = document.getElementById('kollektenBox');
         const kollektenLink = document.getElementById('kollektenLink');
         const kollektenTextEl = document.getElementById('kollektenText');
 
-        if (allData.gemeinde_konfiguration && allData.gemeinde_konfiguration.kollekten_link && allData.gemeinde_konfiguration.kollekten_link.trim() !== "") {
-            kollektenLink.href = allData.gemeinde_konfiguration.kollekten_link;
+        if (gemeindeConfig && gemeindeConfig.kollekten_link && gemeindeConfig.kollekten_link.trim() !== "") {
+            kollektenLink.href = gemeindeConfig.kollekten_link;
             kollektenBox.style.display = 'block';
 
-            if (allData.gemeinde_konfiguration.kollekten_zweck && allData.gemeinde_konfiguration.kollekten_zweck.trim() !== "") {
-                kollektenTextEl.innerText = `Mit deiner digitalen Spende unterstützt du heute gezielt das Projekt: ${allData.gemeinde_konfiguration.kollekten_zweck}.`;
+            if (gemeindeConfig.kollekten_zweck && gemeindeConfig.kollekten_zweck.trim() !== "") {
+                kollektenTextEl.innerText = `Mit deiner digitalen Spende unterstützt du heute gezielt das Projekt: ${gemeindeConfig.kollekten_zweck}.`;
             } else {
                 kollektenTextEl.innerText = "Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte.";
             }
@@ -1394,6 +1329,7 @@
             kollektenBox.style.display = 'none';
         }
     }
+
     function getOstersonntag(jahr) {
         const a = jahr % 19, b = jahr % 4, c = jahr % 7, k = Math.floor(jahr / 100);
         const p = Math.floor((13 + 8 * k) / 25), q = Math.floor(k / 4);
