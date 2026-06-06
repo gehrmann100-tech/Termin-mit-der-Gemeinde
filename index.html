@@ -577,14 +577,18 @@
             transition: transform 0.3s ease;
         }
         
-        .collapsible-content {
+     .collapsible-content {
             display: none;
             margin-top: 14px;
             animation: blockSlideDown 0.25s ease-out;
+            
+            /* NEU: Macht den Inhalt zum Flex-Container, WENN die Karte geöffnet wird */
+            flex-direction: column;
         }
         
+        /* NEU: Wenn die Karte die Klasse 'is-open' hat, aktivieren wir Flex */
         .gemeinde-card.is-open .collapsible-content {
-            display: block;
+            display: flex;
         }
         
         .gemeinde-card.is-open .toggle-icon {
@@ -1272,13 +1276,6 @@
         document.getElementById('gemeindeSection').style.display = 'flex';
         document.getElementById('dauerInfosCard').style.display = 'block';
 
-        // Container holen und auf Flexbox-Spalte umstellen
-        const cardContent = document.querySelector('#dauerInfosCard .collapsible-content');
-        if (cardContent) {
-            cardContent.style.display = 'flex';
-            cardContent.style.flexDirection = 'column';
-        }
-
         // 1. REGELMÄSSIGE ANGEBOTE (GANZ OBEN)
         const rList = document.getElementById('regelmaessigList');
         rList.innerHTML = '';
@@ -1296,7 +1293,7 @@
         if (rTitle) {
             rTitle.style.order = "1";
             rTitle.style.fontWeight = "800";
-            rTitle.style.color = "#b7870a"; /* Gold */
+            rTitle.style.color = "#b7870a";
             rTitle.style.fontSize = "0.95rem";
             rTitle.style.letterSpacing = "0.5px";
             rTitle.style.borderTop = "none";
@@ -1307,13 +1304,12 @@
         rList.style.order = "2";
         rList.style.marginBottom = "0";
 
-        // 2. ANSPRECHPARTNER & KONTAKTE (DARUNTER MIT EDLEM TRENNER UND GOLD-TITEL)
+        // 2. ANSPRECHPARTNER & KONTAKTE (DARUNTER MIT LINIEN-TRENNER)
         const kList = document.getElementById('kontaktList');
         kList.innerHTML = '';
         if (infos.ansprechpartner) {
-            // HIER GEÄNDERT: Neuer, besserer Trenner (feine Linie mit mehr Abstand) und Titel in GOLD
             const separatorHtml = `
-                <div style="margin-top: 24px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
+                <div style="margin-top: 20px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
                 <h4 style="margin-top: 0; margin-bottom: 14px; font-weight: 800; color: #b7870a; font-size: 0.95rem; letter-spacing: 0.5px;">Ansprechpartner & Kontakte</h4>
             `;
             
@@ -1331,7 +1327,7 @@
         kList.style.order = "3";
         kList.style.marginBottom = "0";
 
-        // 3. SOCIAL MEDIA LINKS (ALS ABSCHLUSS GANZ UNTEN, EBENFALLS IN GOLD)
+        // 3. SOCIAL MEDIA LINKS (GANZ UNTEN)
         const sRow = document.getElementById('socialMediaRow');
         sRow.innerHTML = '';
         sRow.style.order = "4";
@@ -1343,9 +1339,8 @@
         
         let hasSocial = false;
 
-        // HIER GEÄNDERT: Trenner angepasst und die Überschrift "Social Media" erstrahlt nun auch in GOLD
         let socialContentHtml = `
-            <div style="margin-top: 24px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
+            <div style="margin-top: 20px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
             <h4 style="width: 100%; text-align: center; margin-top: 0; margin-bottom: 12px; font-weight: 800; color: #b7870a; font-size: 0.95rem; letter-spacing: 0.5px;">Social Media</h4>
             <div style="display: flex; gap: 14px; justify-content: center; width: 100%;">
         `;
