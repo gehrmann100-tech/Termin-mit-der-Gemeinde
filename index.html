@@ -1296,7 +1296,7 @@
             });
         }
 
-        // DYNAMISCHE SOCIAL MEDIA LINKS GENERIEREN
+       // DYNAMISCHE SOCIAL MEDIA LINKS GENERIEREN
         const sRow = document.getElementById('socialMediaRow');
         sRow.innerHTML = '';
         let hasSocial = false;
@@ -1312,6 +1312,11 @@
         if (infos.youtube_link && infos.youtube_link.trim() !== "") {
             sRow.innerHTML += `<a href="${infos.youtube_link}" target="_blank" rel="noopener" class="social-link">📺 YouTube</a>`;
             hasSocial = true;
+        }
+
+        // --- NEU: Überschrift dynamisch einfügen, falls Links vorhanden sind ---
+        if (hasSocial) {
+            sRow.insertAdjacentHTML('afterbegin', '<div style="flex-basis: 100%;"><h2 class="gold-subheading" style="margin-bottom: 12px;">Social Media</h2></div>');
         }
 
         sRow.style.display = hasSocial ? 'flex' : 'none';
