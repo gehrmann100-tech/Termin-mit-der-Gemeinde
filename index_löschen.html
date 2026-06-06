@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Termin mit der Gemeinde</title>
+    <title>Termin mit dem Leben</title>
     
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e3f5f">
@@ -264,6 +264,7 @@
         }
 
         /* INHALTSBÜHNE (STAR-ZITAT) */
+       /* INHALTSBÜHNE (STAR-ZITAT) */
         .content-stage {
             background: #fffcf8;
             border-top: 3px solid rgba(184, 134, 11, 0.3);
@@ -272,19 +273,24 @@
             border-right: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: var(--radius-element);
             box-shadow: 0 15px 40px rgba(184, 134, 11, 0.08); 
+            
+            /* HIER GEÄNDERT: Innenabstand oben/unten von 24px auf 16px verringert */
             padding: 16px 24px 14px 24px; 
             display: flex;
             flex-direction: column;
-            margin-top: 6px; 
-            margin-bottom: 6px; 
+            
+            /* HIER GEÄNDERT: Außenabstand über und unter der Box von 14px auf 6px reduziert */
+            margin-top: 14px; 
+            margin-bottom: 14px; 
             text-align: center;
         }
 
-        .impuls-label-wrapper {
+     .impuls-label-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
+            /* HIER GEÄNDERT: Von 32px auf 18px reduziert für einen kompakteren Look */
             margin-bottom: 18px; 
             opacity: 0.85;
         }
@@ -319,25 +325,30 @@
             font-weight: 400; 
         }
 
-        .static-source-display {
+       .static-source-display {
             font-family: 'Inter', sans-serif;
             font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-muted);
             opacity: 0.8;
+            
+            /* HIER GEÄNDERT: Von 20px auf 8px reduziert */
             margin-bottom: 8px;
+            
             display: block;
         }
 
-        /* BUTTON LOGIK: OUTLINE (STANDARD) VS MINIMALISTISCH */
-        .box-action-row {
+  .box-action-row {
             display: flex;
             justify-content: center;
             align-items: center; 
             gap: 10px; 
             flex-wrap: wrap; 
+            
+            /* HIER GEÄNDERT: Abstand zur Quellenangabe verringert */
             margin-top: 2px;
-            padding-top: 8px;
+            padding-top: 6px; /* Innenabstand über den Buttons zur Linie */
+            
             border-top: 1px dashed rgba(0, 0, 0, 0.06);
         }
 
@@ -367,7 +378,7 @@
         }
 
         .action-link-divider {
-            display: none; 
+            display: none; /* Im Standard (Outline) unsichtbar */
             font-size: 0.75rem;
             color: var(--text-muted);
             opacity: 0.25;
@@ -391,7 +402,7 @@
             transform: translateY(-0.5px);
         }
         [data-button-style="minimal"] .action-link-divider {
-            display: inline-block; 
+            display: inline-block; /* Im Minimal-Modus sichtbar */
         }
 
         .action-icon-svg {
@@ -566,18 +577,31 @@
             transition: transform 0.3s ease;
         }
         
+     .collapsible-content {
+            display: none;
+            margin-top: 14px;
+            animation: blockSlideDown 0.25s ease-out;
+            
+            /* NEU: Macht den Inhalt zum Flex-Container, WENN die Karte geöffnet wird */
+            flex-direction: column;
+        }
+        
+   /* NACHHER: Sauber getrennt, damit die Termine wieder normal arbeiten */
         .collapsible-content {
             display: none;
             margin-top: 14px;
             animation: blockSlideDown 0.25s ease-out;
         }
         
+        /* Die normale Klapp-Logik für Standard-Karten (wie Termine) */
         .gemeinde-card.is-open .collapsible-content {
             display: block;
         }
-        
-        .gemeinde-card.is-open .toggle-icon {
-            transform: rotate(180deg);
+
+        /* NUR für die Angebote/Kontakte-Kachel aktivieren wir die Flex-Spalte im geöffneten Zustand */
+        #dauerInfosCard.is-open .collapsible-content {
+            display: flex;
+            flex-direction: column;
         }
 
         .news-text {
@@ -630,10 +654,12 @@
         /* SOCIAL MEDIA AREA IN CONTACTS */
         .social-media-row {
             display: flex;
+            flex-wrap: wrap;
             gap: 8px;
             margin-top: 14px;
             padding-top: 12px;
-            justify-content: center;
+            border-top: 1px dashed var(--btn-outline-color);
+            justify-content: flex-start;
         }
         .social-link {
             display: inline-flex;
@@ -723,24 +749,33 @@
             border-bottom-color: #2c3e50;
         }
 
-        /* CHALLENGE-BEREICH */
+ /* CHALLENGE-BEREICH */
+       /* CHALLENGE-BEREICH */
         .challenge-box {
+            /* HIER GEÄNDERT: Stärkerer, satterer Farbverlauf von einem warmen Gold-Sand-Ton zu weichem Weiß */
             background: linear-gradient(135deg, rgba(224, 182, 100, 0.25) 0%, var(--bg-challenge) 50%, rgba(255, 255, 255, 0.8) 100%); 
+            
             border-radius: var(--radius-element);
-            padding: 24px 20px 20px 20px; 
+            padding: 24px 20px 20px 20px;
             box-shadow: var(--main-shadow);
-            border-top: 3px solid rgba(184, 134, 11, 0.4);
+            
+            /* Goldene Akzentlinie auf der Oberseite bleibt stabil */
+            border-top: 3px solid rgba(184, 134, 11, 0.4); /* Deckkraft leicht erhöht */
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             border-left: 1px solid rgba(255, 255, 255, 0.5);
             border-right: 1px solid rgba(255, 255, 255, 0.5);
+            
             color: var(--text-dark); 
             animation: blockSlideDown 0.3s ease-out;
             text-align: center;
             position: relative; 
             margin-bottom: 14px;
         }
+
         .challenge-title {
+            /* HIER GEÄNDERT: Textfarbe jetzt im passenden, edlen Goldton */
             color: #b7870a; 
+            
             display: flex;
             justify-content: center;
             align-items: center;
@@ -952,28 +987,29 @@
             </div>
         </div>
 
-        <div class="gemeinde-card" id="termineCard" style="display: none;">
-            <div class="collapsible-header" onclick="toggleCard('termineCard')">
-                <h2 class="gemeinde-card-title">Anstehende Termine & Gottesdienste</h2>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="collapsible-content">
-                <ul class="termin-list" id="terminList"></ul>
-            </div>
-        </div>
-
-        <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
+    <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
             <div class="collapsible-header" onclick="toggleCard('dauerInfosCard')">
                 <h2 class="gemeinde-card-title">Angebote, Kontakte & Social Media</h2>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="collapsible-content">
-                <h2 class="gemeinde-card-title" id="regelmaessigTitle" style="margin-top: 0; margin-bottom: 12px; font-weight: 800; color: #b7870a; font-size: 0.95rem; letter-spacing: 0.5px;">Regelmäßige Angebote</h2>
-                <ul class="termin-list" id="regelmaessigList" style="margin-bottom: 0;"></ul>
-                
-                <ul class="termin-list" id="kontaktList" style="margin-bottom: 0;"></ul>
-                
-                <div class="social-media-row" id="socialMediaRow" style="display: none; flex-direction: column; align-items: center; gap: 12px; margin-top: 0;"></div>
+                <ul class="termin-list" id="kontaktList" style="margin-bottom: 14px;"></ul>
+                <h2 class="gemeinde-card-title" id="regelmaessigTitle" style="margin-bottom: 12px; border-top: 1px dashed var(--btn-outline-color); padding-top: 12px; font-weight: 500; text-transform: none; letter-spacing: 0px;">Regelmäßige Angebote</h2>
+                <ul class="termin-list" id="regelmaessigList"></ul>
+                <div class="social-media-row" id="socialMediaRow" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div class="gemeinde-card" id="dauerInfosCard" style="display: none;">
+            <div class="collapsible-header" onclick="toggleCard('dauerInfosCard')">
+                <h2 class="gemeinde-card-title">Kontakt, Angebote & Social Media</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <ul class="termin-list" id="kontaktList" style="margin-bottom: 14px;"></ul>
+                <h2 class="gemeinde-card-title" style="margin-bottom: 12px; border-top: 1px dashed var(--btn-outline-color); padding-top: 12px; font-weight: 500; text-transform: none; letter-spacing: 0px;">Regelmäßige Angebote</h2>
+                <ul class="termin-list" id="regelmaessigList"></ul>
+                <div class="social-media-row" id="socialMediaRow" style="display: none;"></div>
             </div>
         </div>
 
@@ -1129,11 +1165,14 @@
         if (buttonSelect) buttonSelect.value = savedButtonStyle;
 
         const urlParams = new URLSearchParams(window.location.search);
-        const gemeindeParam = urlParams.get('gemeinde') || "merscheid";
+        const gemeindeParam = urlParams.get('gemeinde');
 
-        // Saubere relative Pfade
-        const jsonPfad = `data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
-        const spruechePfad = 'data/sprueche.json';
+        const backendUrl = 'https://sandboxgemeinde.netlify.app';
+        let jsonPfad = 'data/sprueche.json';
+        
+        if (gemeindeParam) {
+            jsonPfad = `${backendUrl}/data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
+        }
 
         fetch(jsonPfad)
             .then(response => {
@@ -1149,22 +1188,26 @@
 
                 initHeader();
 
-                fetch(spruechePfad)
-                    .then(res => res.json())
-                    .then(spruecheData => {
-                        Object.keys(spruecheData).forEach(key => {
-                            if (!allData[key]) {
-                                allData[key] = spruecheData[key];
-                            } else if (!allData[key].volltext) {
-                                allData[key].original = spruecheData[key].original;
-                                allData[key].volltext = spruecheData[key].volltext;
-                                allData[key].code_knacker = spruecheData[key].code_knacker;
-                                allData[key].uebersetzung = spruecheData[key].uebersetzung;
-                                allData[key].challenge = spruecheData[key].challenge;
-                            }
-                        });
-                        updatePage();
-                    }).catch(() => updatePage());
+                if (gemeindeParam) {
+                    fetch('data/sprueche.json')
+                        .then(res => res.json())
+                        .then(spruecheData => {
+                            Object.keys(spruecheData).forEach(key => {
+                                if (!allData[key]) {
+                                    allData[key] = spruecheData[key];
+                                } else if (!allData[key].volltext) {
+                                    allData[key].original = spruecheData[key].original;
+                                    allData[key].volltext = spruecheData[key].volltext;
+                                    allData[key].code_knacker = spruecheData[key].code_knacker;
+                                    allData[key].uebersetzung = spruecheData[key].uebersetzung;
+                                    allData[key].challenge = spruecheData[key].challenge;
+                                }
+                            });
+                            updatePage();
+                        }).catch(() => updatePage());
+                } else {
+                    updatePage();
+                }
             })
             .catch(error => {
                 console.error("Fehler beim Laden der JSON Daten:", error);
@@ -1236,13 +1279,13 @@
         }
     }
 
-    function renderDauerInfos() {
+ function renderDauerInfos() {
         if (!allData || !allData.dauer_infos) return;
         const infos = allData.dauer_infos;
         document.getElementById('gemeindeSection').style.display = 'flex';
         document.getElementById('dauerInfosCard').style.display = 'block';
 
-        // 1. REGELMÄSSIGE ANGEBOTE
+        // 1. REGELMÄSSIGE ANGEBOTE (GANZ OBEN)
         const rList = document.getElementById('regelmaessigList');
         rList.innerHTML = '';
         if (infos.regelmaessig) {
@@ -1254,12 +1297,28 @@
             });
         }
 
-        // 2. ANSPRECHPARTNER & KONTAKTE (MIT EDLEM TRENNER UND GOLD-TITEL)
+        // Überschrift für Angebote formatieren
+        const rTitle = document.getElementById('regelmaessigTitle');
+        if (rTitle) {
+            rTitle.style.order = "1";
+            rTitle.style.fontWeight = "800";
+            rTitle.style.color = "#b7870a";
+            rTitle.style.fontSize = "0.95rem";
+            rTitle.style.letterSpacing = "0.5px";
+            rTitle.style.borderTop = "none";
+            rTitle.style.paddingTop = "0";
+            rTitle.style.marginTop = "0";
+            rTitle.style.marginBottom = "12px";
+        }
+        rList.style.order = "2";
+        rList.style.marginBottom = "0";
+
+        // 2. ANSPRECHPARTNER & KONTAKTE (DARUNTER MIT LINIEN-TRENNER)
         const kList = document.getElementById('kontaktList');
         kList.innerHTML = '';
         if (infos.ansprechpartner) {
             const separatorHtml = `
-                <div style="margin-top: 24px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
+                <div style="margin-top: 20px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
                 <h4 style="margin-top: 0; margin-bottom: 14px; font-weight: 800; color: #b7870a; font-size: 0.95rem; letter-spacing: 0.5px;">Ansprechpartner & Kontakte</h4>
             `;
             
@@ -1274,14 +1333,23 @@
                 kList.appendChild(li);
             });
         }
+        kList.style.order = "3";
+        kList.style.marginBottom = "0";
 
-        // 3. SOCIAL MEDIA LINKS (MIT EDLEM TRENNER UND GOLD-TITEL)
+        // 3. SOCIAL MEDIA LINKS (GANZ UNTEN)
         const sRow = document.getElementById('socialMediaRow');
         sRow.innerHTML = '';
+        sRow.style.order = "4";
+        
+        sRow.style.flexDirection = "column";
+        sRow.style.alignItems = "center";
+        sRow.style.gap = "12px";
+        sRow.style.marginTop = "0";
+        
         let hasSocial = false;
 
         let socialContentHtml = `
-            <div style="margin-top: 24px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
+            <div style="margin-top: 20px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
             <h4 style="width: 100%; text-align: center; margin-top: 0; margin-bottom: 12px; font-weight: 800; color: #b7870a; font-size: 0.95rem; letter-spacing: 0.5px;">Social Media</h4>
             <div style="display: flex; gap: 14px; justify-content: center; width: 100%;">
         `;
@@ -1326,7 +1394,6 @@
             kollektenBox.style.display = 'none';
         }
     }
-
     function getOstersonntag(jahr) {
         const a = jahr % 19, b = jahr % 4, c = jahr % 7, k = Math.floor(jahr / 100);
         const p = Math.floor((13 + 8 * k) / 25), q = Math.floor(k / 4);
@@ -1358,19 +1425,15 @@
         
         const termList = document.getElementById('terminList');
         const termCard = document.getElementById('termineCard');
-        if (!termList || !termCard) return;
-
         termList.innerHTML = '';
 
-        const vonHeute = new Date();
-        vonHeute.setHours(0, 0, 0, 0);
+        const vergleichsDatum = new Date(displayDate);
+        vergleichsDatum.setHours(0, 0, 0, 0);
 
-        // Sicherer Datumsvergleich ohne Zeitzonenfehler
         const zukuenftige = allData.kommende_termine.filter(t => {
-            const parts = t.datum.split('-');
-            const tDate = new Date(parts[0], parts[1] - 1, parts[2]);
+            const tDate = new Date(t.datum);
             tDate.setHours(0, 0, 0, 0);
-            return tDate >= vonHeute;
+            return tDate >= vergleichsDatum;
         });
 
         const auswahl = zukuenftige.slice(0, 4);
@@ -1379,8 +1442,7 @@
             termCard.style.display = 'block';
             document.getElementById('gemeindeSection').style.display = 'flex';
             auswahl.forEach(t => {
-                const parts = t.datum.split('-');
-                const dObj = new Date(parts[0], parts[1] - 1, parts[2]);
+                const dObj = new Date(t.datum);
                 const dStr = dObj.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit' });
                 
                 const li = document.createElement('li');
