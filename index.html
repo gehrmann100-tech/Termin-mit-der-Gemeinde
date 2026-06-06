@@ -1103,7 +1103,7 @@
     let displayDate = new Date();
     const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
 
-    document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
         const dateEl = document.getElementById('currentDate');
         if (dateEl) dateEl.innerText = displayDate.toLocaleDateString('de-DE', options);
 
@@ -1128,66 +1128,66 @@
         const buttonSelect = document.getElementById('buttonStyleSelect');
         if (buttonSelect) buttonSelect.value = savedButtonStyle;
 
+        // URL-PARAMETER AUSLESEN (OHNE den Merscheid-Zwang!)
         const urlParams = new URLSearchParams(window.location.search);
-        const gemeindeParam = urlParams.get('gemeinde') || "merscheid";
+        const gemeindeParam = urlParams.get('gemeinde');
 
-        // Saubere relative Pfade
-        const jsonPfad = `data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
         const spruechePfad = 'data/sprueche.json';
 
-        fetch(jsonPfad)
-            .then(response => {
-                if (!response.ok) throw new Error("Gemeinde Daten konnten nicht geladen werden.");
-                return response.json();
-            })
-            .then(data => {
-                allData = data;
-                if (data.gemeinde_konfiguration) {
-                    gemeindeConfig = data.gemeinde_konfiguration;
-                    renderDauerInfos();
-                }
+        if (gemeindeParam) {
+            // GEMEINDE-MODUS: Lade Gemeinde-Daten (z.B. ?gemeinde=merscheid)
+            const jsonPfad = `data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
+            fetch(jsonPfad)
+                .then(response => {
+                    if (!response.ok) throw new Error("Gemeinde Daten konnten nicht geladen werden.");
+                    return response.json();
+                })
+                .then(data => {
+                    allData = data;
+                    if (data.gemeinde_konfiguration) {
+                        gemeindeConfig = data.gemeinde_konfiguration;
+                        renderDauerInfos();
+                    }
 
-                initHeader();
+                    initHeader();
 
-                fetch(spruechePfad)
-                    .then(res => res.json())
-                    .then(spruecheData => {
-                        Object.keys(spruecheData).forEach(key => {
-                            if (!allData[key]) {
-                                allData[key] = spruecheData[key];
-                            } else if (!allData[key].volltext) {
-                                allData[key].original = spruecheData[key].original;
-                                allData[key].volltext = spruecheData[key].volltext;
-                                allData[key].code_knacker = spruecheData[key].code_knacker;
-                                allData[key].uebersetzung = spruecheData[key].uebersetzung;
-                                allData[key].challenge = spruecheData[key].challenge;
-                            }
-                        });
-                        updatePage();
-                    }).catch(() => updatePage());
-            })
-            .catch(error => {
-                console.error("Fehler beim Laden der JSON Daten:", error);
-                const mainTextEl = document.getElementById('mainText');
-                if (mainTextEl) {
-                    mainTextEl.innerText = "Fehler beim Laden der Gemeinde Daten. Bitte überprüfe die Verbindung.";
-                }
-            });
-    });
-
-    function toggleCard(cardId) {
-        const card = document.getElementById(cardId);
-        if (card) {
-            const openBefore = card.classList.contains('is-open');
-            card.classList.toggle('is-open');
-            
-            if (!openBefore) {
-                setTimeout(() => {
-                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 180);
-            }
+                    // Sprüche dazuladen
+                    fetch(spruechePfad)
+                        .then(res => res.json())
+                        .then(spruecheData => {
+                            Object.keys(spruecheData).forEach(key => {
+                                if (!allData[key]) {
+                                    allData[key] = spruecheData[key];
+                                } else if (!allData[key].volltext) {
+                                    allData[key].original = spruecheData[key].original;
+                                    allData[key].volltext = spruecheData[key].volltext;
+                                    allData[key].code_knacker = spruecheData[key].code_knacker;
+                                    allData[key].uebersetzung = spruecheData[key].uebersetzung;
+                                    allData[key].challenge = spruecheData[key].challenge;
+                                }
+                            });
+                            updatePage();
+                        }).catch(() => updatePage());
+                })
+                .catch(error => {
+                    console.error("Fehler beim Laden:", error);
+                    const mainTextEl = document.getElementById('mainText');
+                    if (mainTextEl) mainTextEl.innerText = "Fehler beim Laden der Gemeinde Daten.";
+                });
+        } else {
+            // STANDARD-MODUS: Ohne Parameter ist es die Basis-App "Termin mit dem Leben"
+            fetch(spruechePfad)
+                .then(res => res.json())
+                .then(spruecheData => {
+                    allData = spruecheData;
+                    initHeader(); // Setzt alles auf "Leben"
+                    updatePage();
+                })
+                .catch(error => {
+                    console.error("Fehler beim Laden der Sprüche:", error);
+                });
         }
-    }
+    });
 
     function initHeader() {
         const imgBox = document.getElementById('gemeindeImageBox');
@@ -1219,16 +1219,21 @@
 
             const newsCard = document.getElementById('newsCard');
             const newsBadge = document.getElementById('newsBadge');
-            if (gemeindeConfig.news_text && gemeindeConfig.news_text.trim() !== "") {
+            
+            // HIER GELOEST: Akzeptiert das CMS-Feld "news_text" ODER die alte JSON "wochen_news"
+            const newsText = gemeindeConfig.news_text || gemeindeConfig.wochen_news;
+            
+            if (newsText && newsText.trim() !== "") {
                 newsCard.style.display = 'block';
                 newsBadge.style.display = 'inline-block';
                 document.getElementById('newsUeberschrift').innerText = gemeindeConfig.news_ueberschrift || "Mitteilung der Gemeinde";
-                document.getElementById('newsText').innerText = gemeindeConfig.news_text; 
+                document.getElementById('newsText').innerText = newsText; 
             } else {
                 if (newsCard) newsCard.style.display = 'none';
                 if (newsBadge) newsBadge.style.display = 'none';
             }
         } else {
+            // BASIS-APP EINSTELLUNGEN
             document.getElementById('appTitle').innerHTML = `Termin <span>mit dem Leben</span>`;
             subtitleEl.innerText = "Dein täglicher Impuls";
             if (imgEl) imgEl.src = "images/kirche-leben.jpg";
