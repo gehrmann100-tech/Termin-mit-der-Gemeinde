@@ -1266,13 +1266,13 @@
         }
     }
 
-  function renderDauerInfos() {
+ function renderDauerInfos() {
         if (!allData || !allData.dauer_infos) return;
         const infos = allData.dauer_infos;
         document.getElementById('gemeindeSection').style.display = 'flex';
         document.getElementById('dauerInfosCard').style.display = 'block';
 
-        // Container holen und auf Flexbox-Spalte umstellen, um die Reihenfolge frei zu steuern
+        // Container holen und auf Flexbox-Spalte umstellen
         const cardContent = document.querySelector('#dauerInfosCard .collapsible-content');
         if (cardContent) {
             cardContent.style.display = 'flex';
@@ -1291,12 +1291,12 @@
             });
         }
 
-        // Überschrift für Angebote formatieren und nach ganz oben setzen
+        // Überschrift für Angebote formatieren
         const rTitle = document.getElementById('regelmaessigTitle');
         if (rTitle) {
             rTitle.style.order = "1";
             rTitle.style.fontWeight = "800";
-            rTitle.style.color = "#b7870a";
+            rTitle.style.color = "#b7870a"; /* Gold */
             rTitle.style.fontSize = "0.95rem";
             rTitle.style.letterSpacing = "0.5px";
             rTitle.style.borderTop = "none";
@@ -1307,12 +1307,15 @@
         rList.style.order = "2";
         rList.style.marginBottom = "0";
 
-        // 2. ANSPRECHPARTNER & KONTAKTE (NUN DARUNTER MIT EIGENEM TRENNER)
+        // 2. ANSPRECHPARTNER & KONTAKTE (DARUNTER MIT EDLEM TRENNER UND GOLD-TITEL)
         const kList = document.getElementById('kontaktList');
         kList.innerHTML = '';
         if (infos.ansprechpartner) {
-            // Der visuelle Trenner: Gestrichelte Linie und neue Zwischenüberschrift
-            const separatorHtml = `<h4 style="margin-top: 20px; margin-bottom: 12px; font-weight: 700; font-size: 0.95rem; opacity: 0.9; border-top: 1px dashed var(--btn-outline-color); padding-top: 16px;">Ansprechpartner & Kontakte</h4>`;
+            // HIER GEÄNDERT: Neuer, besserer Trenner (feine Linie mit mehr Abstand) und Titel in GOLD
+            const separatorHtml = `
+                <div style="margin-top: 24px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
+                <h4 style="margin-top: 0; margin-bottom: 14px; font-weight: 800; color: #b7870a; font-size: 0.95rem; letter-spacing: 0.5px;">Ansprechpartner & Kontakte</h4>
+            `;
             
             const liTitle = document.createElement('li');
             liTitle.innerHTML = separatorHtml;
@@ -1328,12 +1331,11 @@
         kList.style.order = "3";
         kList.style.marginBottom = "0";
 
-        // 3. SOCIAL MEDIA LINKS (ALS ABSCHLUSS GANZ UNTEN)
+        // 3. SOCIAL MEDIA LINKS (ALS ABSCHLUSS GANZ UNTEN, EBENFALLS IN GOLD)
         const sRow = document.getElementById('socialMediaRow');
         sRow.innerHTML = '';
         sRow.style.order = "4";
         
-        // Layout für Social Media reinigen
         sRow.style.flexDirection = "column";
         sRow.style.alignItems = "center";
         sRow.style.gap = "12px";
@@ -1341,9 +1343,10 @@
         
         let hasSocial = false;
 
-        // Der visuelle Trenner und die Überschrift für Social Media
+        // HIER GEÄNDERT: Trenner angepasst und die Überschrift "Social Media" erstrahlt nun auch in GOLD
         let socialContentHtml = `
-            <h4 style="width: 100%; text-align: center; margin-top: 20px; margin-bottom: 4px; font-weight: 700; font-size: 0.95rem; opacity: 0.9; border-top: 1px dashed var(--btn-outline-color); padding-top: 16px;">Social Media</h4>
+            <div style="margin-top: 24px; margin-bottom: 16px; border-top: 1px solid rgba(184, 134, 11, 0.2); width: 100%;"></div>
+            <h4 style="width: 100%; text-align: center; margin-top: 0; margin-bottom: 12px; font-weight: 800; color: #b7870a; font-size: 0.95rem; letter-spacing: 0.5px;">Social Media</h4>
             <div style="display: flex; gap: 14px; justify-content: center; width: 100%;">
         `;
 
