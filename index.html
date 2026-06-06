@@ -586,13 +586,22 @@
             flex-direction: column;
         }
         
-        /* NEU: Wenn die Karte die Klasse 'is-open' hat, aktivieren wir Flex */
-        .gemeinde-card.is-open .collapsible-content {
-            display: flex;
+   /* NACHHER: Sauber getrennt, damit die Termine wieder normal arbeiten */
+        .collapsible-content {
+            display: none;
+            margin-top: 14px;
+            animation: blockSlideDown 0.25s ease-out;
         }
         
-        .gemeinde-card.is-open .toggle-icon {
-            transform: rotate(180deg);
+        /* Die normale Klapp-Logik für Standard-Karten (wie Termine) */
+        .gemeinde-card.is-open .collapsible-content {
+            display: block;
+        }
+
+        /* NUR für die Angebote/Kontakte-Kachel aktivieren wir die Flex-Spalte im geöffneten Zustand */
+        #dauerInfosCard.is-open .collapsible-content {
+            display: flex;
+            flex-direction: column;
         }
 
         .news-text {
