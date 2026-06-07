@@ -246,10 +246,11 @@
             opacity: 1;
         }
 
+        /* FIX: TOAST POSITION FIXED STATT ABSOLUTE */
         .toast-notification {
             display: none;
-            position: absolute;
-            top: -20px;
+            position: fixed;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
             background: #2d3748;
@@ -260,7 +261,7 @@
             font-weight: 600;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             animation: toastFadeIn 0.3s ease;
-            z-index: 10;
+            z-index: 9999; /* Schwebend über allem */
         }
 
         /* INHALTSBÜHNE (STAR-ZITAT) */
@@ -1088,7 +1089,8 @@
             </div>
 
             <div id="anlassSpruchBox" style="display: none; background: #ffffff; border-left: 3px solid #b7870a; padding: 16px; border-radius: 0 14px 14px 0; box-shadow: inset 0 0 8px rgba(0,0,0,0.02); position: relative; margin-bottom: 10px; text-align: left; animation: blockSlideDown 0.25s ease-out;">
-                <p id="anlassSpruchText" style="font-family: var(--font-body); font-size: var(--fs-challenge-text); color: var(--text-dark); font-style: italic; line-height: 1.5; margin-bottom: 8px;"></p>
+                <button class="box-close-btn" onclick="closeAnlassSpruch()" title="Schließen" style="top: 6px; right: 8px;">×</button>
+                <p id="anlassSpruchText" style="font-family: var(--font-body); font-size: var(--fs-challenge-text); color: var(--text-dark); font-style: italic; line-height: 1.5; margin-bottom: 8px; padding-right: 22px;"></p>
                 <p id="anlassSpruchAutor" style="font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #b7870a; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;"></p>
                 
                 <button onclick="shareAnlassSpruch()" class="box-action-link" style="padding: 6px 12px; font-size: 0.75rem; border-radius: 8px;">
@@ -1623,7 +1625,8 @@
             event.currentTarget.classList.add('active');
         }
 
-      fetch('data/anlass_sprueche.json')
+        // FIX: KORREKTER ORDNER-PFAD HINZUGEFÜGT
+        fetch('data/anlass_sprueche.json')
             .then(response => {
                 if (!response.ok) throw new Error("Sprüche-JSON konnte nicht geladen werden.");
                 return response.json();
@@ -1647,6 +1650,18 @@
                 }
             })
             .catch(error => console.error('Fehler beim Laden der Anlass-Sprüche:', error));
+    }
+
+    // FIX: NEUE SCHLIESSEN-LOGIK FÜR DIE ANLASS-BOX
+    function closeAnlassSpruch() {
+        const box = document.getElementById('anlassSpruchBox');
+        if (box) {
+            box.style.display = 'none';
+        }
+        document.querySelectorAll('.btn-anlass').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        currentAnlassSpruch = "";
     }
 
     function shareAnlassSpruch() {
