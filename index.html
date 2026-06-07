@@ -994,8 +994,8 @@
    <div class="translation-box" id="translationBox">
         <button class="box-close-btn" onclick="toggleTranslationBox()" title="Schließen">×</button>
         
-      <h3 class="gold-subheading" style="font-size: 0.85rem; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 6px;">
-            ... (dein SVG-Icon) ...
+        <h3 style="font-family: 'Inter', sans-serif; color: #1e3f5f; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b7870a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
             Ins Heute übertragen
         </h3>
         
@@ -1601,7 +1601,7 @@
         if (tBox && currentData?.uebersetzung) {
             if (tBox.style.display === 'block') {
                 tBox.style.display = 'none';
-                if (btnSpan) btnSpan.innerText = "Zeitgeist";
+                if (btnSpan) btnSpan.innerText = "Ins Heute";
             } else {
                 tBox.style.display = 'block';
                 b.style.display = 'none'; 
