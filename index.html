@@ -1222,6 +1222,10 @@
 </div>
 
 <script>
+    // Verhindert, dass der Browser eigenmächtig Installations-Popups anzeigt
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+    });
     let allData = null;
     let currentData = null;
     let gemeindeConfig = null;
