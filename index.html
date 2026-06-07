@@ -381,8 +381,7 @@
             color: var(--text-muted);
             font-weight: 500;
             opacity: 0.75;
-        }
-        [data-button-style="minimal"] .box-action-link:hover {
+        } [data-button-style="minimal"] .box-action-link:hover {
             background-color: transparent;
             color: #2c3e50;
             opacity: 1;
@@ -1200,7 +1199,7 @@
                 <p>Die App wird über den Plattform-Dienst Netlify bereitgestellt. Beim Aufruf der App erfasst Netlify technisch bedingt automatisierte Protokolldaten.</p>
                 <br>
                 <h4>3. Keine Analyse oder Tracking</h4>
-                <p>Wir verwenden keine Analyse-Tools, setzen keine Tracking-Cookies ein und binden keine Werbenetzwerke ein. Dein Besuch bleibt privat.</p>
+                <p>We verwenden keine Analyse-Tools, setzen keine Tracking-Cookies ein und binden keine Werbenetzwerke ein. Dein Besuch bleibt privat.</p>
                 <br>
                 <h4>4. Deine Rechte</h4>
                 <p>Da wir keine personenbezogenen Daten von dir auf Servern speichern, können wir dir gegenüber auch keine Daten ausgeben, korrigieren oder löschen.</p>
@@ -1346,11 +1345,19 @@
                 imgBox.style.display = 'block';
             }
 
-            // FIX: Ehrenamt-Mailadresse dynamisch anpassen, falls im CMS eingetragen
+            // Ehrenamt-Mailadresse dynamisch anpassen, falls im CMS eingetragen
             if (gemeindeConfig.gemeinde_email && gemeindeConfig.gemeinde_email.trim() !== "") {
                 const ehrenamtLink = document.getElementById('ehrenamtEmailLink');
                 if (ehrenamtLink) {
                     ehrenamtLink.href = `mailto:${gemeindeConfig.gemeinde_email}?subject=Ich%20m%C3%B6chte%20helfen`;
+                }
+            }
+
+            // NEU: Ehrenamt-Gesuchstext dynamisch anpassen, falls im CMS eingetragen
+            if (gemeindeConfig.ehrenamt_text && gemeindeConfig.ehrenamt_text.trim() !== "") {
+                const ehrenamtTextEl = document.getElementById('ehrenamtText');
+                if (ehrenamtTextEl) {
+                    ehrenamtTextEl.innerText = gemeindeConfig.ehrenamt_text;
                 }
             }
 
@@ -1401,7 +1408,7 @@
             });
         }
 
-        // FIX: WEBSEITE HINZUGEFÜGT UND IN SOCIAL MEDIA ROW INTEGRIERT
+        // WEBSEITE IN SOCIAL MEDIA ROW INTEGRIERT
         const sRow = document.getElementById('socialMediaRow');
         sRow.innerHTML = '';
         let hasSocial = false;
@@ -1684,39 +1691,6 @@
                 }, 2000);
             }
         });
-    }
-
-    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-    
-    function toggleSettingsView() {
-        const p = document.getElementById('settingsPanel');
-        p.style.display = p.style.display === 'block' ? 'none' : 'block';
-        if (p.style.display === 'block') {
-            setTimeout(() => {
-                p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 100);
-        }
-    }
-    function changeTheme() {
-        const v = document.getElementById('themeSelect').value;
-        localStorage.setItem('appTheme', v);
-        document.documentElement.setAttribute('data-theme', v);
-    }
-    function changeFont() {
-        const v = document.getElementById('fontSelect').value;
-        localStorage.setItem('appFont', v);
-        v === "default" ? document.documentElement.removeAttribute('data-font') : document.documentElement.setAttribute('data-font', v);
-    }
-    function changeSize() {
-        const v = document.getElementById('sizeSelect').value;
-        localStorage.setItem('appSize', v);
-        v === "default" ? document.documentElement.removeAttribute('data-size') : document.documentElement.setAttribute('data-size', v);
-    }
-    function changeButtonStyle() {
-        const v = document.getElementById('buttonStyleSelect').value;
-        localStorage.setItem('appButtonStyle', v);
-        v === "default" ? document.documentElement.removeAttribute('data-button-style') : document.documentElement.setAttribute('data-button-style', v);
     }
 </script>
 </body>

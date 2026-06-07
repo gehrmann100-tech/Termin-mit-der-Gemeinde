@@ -246,7 +246,6 @@
             opacity: 1;
         }
 
-        /* FIX: TOAST POSITION FIXED STATT ABSOLUTE */
         .toast-notification {
             display: none;
             position: fixed;
@@ -261,7 +260,7 @@
             font-weight: 600;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             animation: toastFadeIn 0.3s ease;
-            z-index: 9999; /* Schwebend über allem */
+            z-index: 9999; 
         }
 
         /* INHALTSBÜHNE (STAR-ZITAT) */
@@ -627,7 +626,6 @@
             white-space: pre-wrap; 
         }
 
-        /* NEUE KLASSEN FÜR EDLE ZWISCHENÜBERSCHRIFTEN UND TRENNER */
         .gold-subheading {
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
@@ -1106,7 +1104,7 @@
                 <p style="font-family: var(--font-body); font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 14px;">
                     <strong style="color: #b7870a;">Helfende Hände gesucht:</strong> Wir suchen aktuell Unterstützung für das Kirchencafé am Sonntag sowie für die Technik bei den Gottesdiensten. Jede Hand zählt!
                 </p>
-                <a href="mailto:info@andreas-gehrmann.de?subject=Ich%20m%C3%B6chte%20helfen" class="box-action-link" style="background-color: #1e3f5f; color: white; border-color: #1e3f5f;">
+                <a id="ehrenamtEmailLink" href="mailto:info@andreas-gehrmann.de?subject=Ich%20m%C3%B6chte%20helfen" class="box-action-link" style="background-color: #1e3f5f; color: white; border-color: #1e3f5f;">
                     <svg class="action-icon-svg" viewBox="0 0 24 24" style="width: 12px; height: 12px; stroke: white;"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
                     <span>Ich möchte helfen</span>
                 </a>
@@ -1348,6 +1346,14 @@
                 imgBox.style.display = 'block';
             }
 
+            // FIX: Ehrenamt-Mailadresse dynamisch anpassen, falls im CMS eingetragen
+            if (gemeindeConfig.gemeinde_email && gemeindeConfig.gemeinde_email.trim() !== "") {
+                const ehrenamtLink = document.getElementById('ehrenamtEmailLink');
+                if (ehrenamtLink) {
+                    ehrenamtLink.href = `mailto:${gemeindeConfig.gemeinde_email}?subject=Ich%20m%C3%B6chte%20helfen`;
+                }
+            }
+
             const newsCard = document.getElementById('newsCard');
             const newsBadge = document.getElementById('newsBadge');
             if (gemeindeConfig.news_text && gemeindeConfig.news_text.trim() !== "") {
@@ -1395,11 +1401,15 @@
             });
         }
 
-        // DYNAMISCHE SOCIAL MEDIA LINKS GENERIEREN UND ÜBERSCHRIFT EINFÜGEN
+        // FIX: WEBSEITE HINZUGEFÜGT UND IN SOCIAL MEDIA ROW INTEGRIERT
         const sRow = document.getElementById('socialMediaRow');
         sRow.innerHTML = '';
         let hasSocial = false;
 
+        if (infos.webseite_link && infos.webseite_link.trim() !== "") {
+            sRow.innerHTML += `<a href="${infos.webseite_link}" target="_blank" rel="noopener" class="social-link">🌐 Webseite</a>`;
+            hasSocial = true;
+        }
         if (infos.instagram_link && infos.instagram_link.trim() !== "") {
             sRow.innerHTML += `<a href="${infos.instagram_link}" target="_blank" rel="noopener" class="social-link">📸 Instagram</a>`;
             hasSocial = true;
@@ -1414,7 +1424,7 @@
         }
 
         if (hasSocial) {
-            sRow.insertAdjacentHTML('afterbegin', '<div style="flex-basis: 100%;"><h2 class="gold-subheading" style="margin-bottom: 12px;">Social Media</h2></div>');
+            sRow.insertAdjacentHTML('afterbegin', '<div style="flex-basis: 100%;"><h2 class="gold-subheading" style="margin-bottom: 12px;">Social Media & Web</h2></div>');
         }
 
         sRow.style.display = hasSocial ? 'flex' : 'none';
@@ -1615,7 +1625,6 @@
         });
     }
 
-    /* NEUE FUNKTIONEN FÜR SERVICE & GEMEINSCHAFT (ANLASS-SPRÜCHE) */
     function loadAnlassSpruch(kategorie) {
         document.querySelectorAll('.btn-anlass').forEach(btn => {
             btn.classList.remove('active');
@@ -1625,7 +1634,6 @@
             event.currentTarget.classList.add('active');
         }
 
-        // FIX: KORREKTER ORDNER-PFAD HINZUGEFÜGT
         fetch('data/anlass_sprueche.json')
             .then(response => {
                 if (!response.ok) throw new Error("Sprüche-JSON konnte nicht geladen werden.");
@@ -1652,7 +1660,6 @@
             .catch(error => console.error('Fehler beim Laden der Anlass-Sprüche:', error));
     }
 
-    // FIX: NEUE SCHLIESSEN-LOGIK FÜR DIE ANLASS-BOX
     function closeAnlassSpruch() {
         const box = document.getElementById('anlassSpruchBox');
         if (box) {
