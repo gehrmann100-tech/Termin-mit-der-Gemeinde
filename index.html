@@ -977,9 +977,9 @@
 
             <span class="action-link-divider">|</span>
 
-            <button class="box-action-link" id="zeitgeistActionBtn" onclick="toggleTranslationBox()">
+           <button class="box-action-link" id="zeitgeistActionBtn" onclick="toggleTranslationBox()">
                 <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
-                <span>Zeitgeist</span>
+                <span>Ins Heute</span>
             </button>
 
             <span class="action-link-divider">|</span>
@@ -994,9 +994,9 @@
    <div class="translation-box" id="translationBox">
         <button class="box-close-btn" onclick="toggleTranslationBox()" title="Schließen">×</button>
         
-        <h3 class="gold-subheading" style="font-size: 0.85rem; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 6px;">
-            <svg class="action-icon-svg" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: #b7870a;"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
-            Zeitgeist-Gedanke
+      <h3 class="gold-subheading" style="font-size: 0.85rem; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            ... (dein SVG-Icon) ...
+            Ins Heute übertragen
         </h3>
         
         <div id="translationBoxContent"></div>
@@ -1550,8 +1550,8 @@
         document.getElementById('codeBox').style.display = 'none';
         document.getElementById('translationBox').style.display = 'none'; 
         
-        const btnSpan = document.querySelector('#zeitgeistActionBtn span');
-        if (btnSpan) btnSpan.innerText = "Zeitgeist";
+     const btnSpan = document.querySelector('#zeitgeistActionBtn span');
+        if (btnSpan) btnSpan.innerText = "Ins Heute";
 
         resetChallengeBox();
 
