@@ -1,0 +1,46 @@
+{
+  "trauer": [
+    {
+      "text": "Das Schönste, was ein Mensch hinterlassen kann, ist ein Lächeln im Gesicht derjenigen, die an ihn denken.",
+      "autor": "Anonym"
+    },
+    {
+      "text": "Die Liebe hört niemals auf.",
+      "autor": "1. Korinther 13,8"
+    },
+    {
+      "text": "Gott wischt alle Tränen von ihren Augen, und der Tod wird nicht mehr sein.",
+      "autor": "Offenbarung 21,4"
+    }
+  ],
+  "taufe": [
+    {
+      "text": "Siehe, ich bin mit dir und will dich behüten, wohin du auch ziehst.",
+      "autor": "1. Mose 28,15"
+    },
+    {
+      "text": "Niemals werde ich dir meine Hilfe entziehen, nie dich im Stich lassen.",
+      "autor": "Josua 1,5"
+    }
+  ],
+  "mut_trost": [
+    {
+      "text": "Fürchte dich nicht, denn ich bin mit dir; weiche nicht, denn ich bin dein Gott.",
+      "autor": "Jesaja 41,10"
+    },
+    {
+      "text": "Der Herr ist mein Hirte, mir wird nichts mangeln.",
+      "autor": "Psalm 23,1"
+    }
+  ],
+  "hochzeit": [
+    {
+      "text": "Lasst uns nicht lieben mit Worten, sondern mit der Tat und mit der Wahrheit.",
+      "autor": "1. Johannes 3,18"
+    },
+    {
+      "text": "Zwei sind besser als einer allein. Fällt einer von ihnen, so hilft ihm sein Gefährte auf.",
+      "autor": "Prediger 4,9-10"
+    }
+  ]
+}
