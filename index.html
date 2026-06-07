@@ -1623,7 +1623,7 @@
             event.currentTarget.classList.add('active');
         }
 
-        fetch('anlass_sprueche.json')
+      fetch('data/anlass_sprueche.json')
             .then(response => {
                 if (!response.ok) throw new Error("Sprüche-JSON konnte nicht geladen werden.");
                 return response.json();
