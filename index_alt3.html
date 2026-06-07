@@ -671,7 +671,7 @@
             color: white;
         }
 
-        /* STRUKTUR FÜR DIE NEUE SERVICE-KACHEL */
+        /* STRUKTUR FÜR DIE NEUE SERVICE & GEMEINSCHAFT KACHEL */
         .service-gemeinschaft-box {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(251, 251, 250, 0.95) 70%, rgba(255, 255, 255, 1) 100%);
             border-radius: var(--radius-element);
@@ -785,7 +785,8 @@
             border-bottom-color: #2c3e50;
         }
 
-        /* CHALLENGE-BEREICH */
+      
+     /* CHALLENGE-BEREICH */
         .challenge-box {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(251, 251, 250, 0.95) 70%, rgba(255, 255, 255, 1) 100%);
             border-radius: var(--radius-element);
@@ -803,6 +804,7 @@
         }
 
         .challenge-title {
+            color: #b7870a;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -975,7 +977,7 @@
 
             <span class="action-link-divider">|</span>
 
-            <button class="box-action-link" id="zeitgeistActionBtn" onclick="toggleTranslationBox()">
+           <button class="box-action-link" id="zeitgeistActionBtn" onclick="toggleTranslationBox()">
                 <svg class="action-icon-svg" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
                 <span>Ins Heute</span>
             </button>
@@ -989,12 +991,14 @@
         </div>
     </div>
 
-    <div class="translation-box" id="translationBox">
+   <div class="translation-box" id="translationBox">
         <button class="box-close-btn" onclick="toggleTranslationBox()" title="Schließen">×</button>
+        
         <h3 style="font-family: 'Inter', sans-serif; color: #1e3f5f; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 6px;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b7870a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
             Ins Heute übertragen
         </h3>
+        
         <div id="translationBoxContent"></div>
     </div>
 
@@ -1060,10 +1064,8 @@
                 Kollekte digital spendieren
             </a>
         </div>
-    </div> 
-    
-    <div class="service-gemeinschaft-box" id="serviceGemeinschaftCard">
-        <h2 style="font-family: 'Inter', sans-serif; color: #1e3f5f; font-size: 0.95rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+   </div> <div class="service-gemeinschaft-box" id="serviceGemeinschaftCard">
+      <h2 style="font-family: 'Inter', sans-serif; color: #1e3f5f; font-size: 0.95rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b7870a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
             Begleitung & Service
         </h2>
@@ -1102,10 +1104,10 @@
             </div>
         </div>
 
-        <div style="border-top: 1px dashed rgba(184, 134, 11, 0.2); padding-top: 20px; text-align: left;">
-            <h3 class="gold-subheading" style="font-size: 0.85rem; margin-bottom: 10px;">🤝 Mitwirken & Helfen</h3>
+      <div style="border-top: 1px dashed rgba(184, 134, 11, 0.2); padding-top: 20px; text-align: left;">
+            <h3 class="gold-subheading" style="font-size: 0.85rem; margin-bottom: 10px;">🤝 Gemeinschaft leben</h3>
             <div style="background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.03); padding: 16px; border-radius: var(--radius-element); box-shadow: inset 0 0 8px rgba(0,0,0,0.01);">
-                <p id="ehrenamtText" style="font-family: var(--font-body); font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 14px;">
+             <p id="ehrenamtText" style="font-family: var(--font-body); font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 14px;">
                     <strong style="color: #1e3f5f;">Helfende Hände gesucht:</strong> Wir suchen aktuell Unterstützung für das Kirchencafé am Sonntag sowie für die Technik bei den Gottesdiensten. Jede Hand zählt!
                 </p>
                 <a id="ehrenamtEmailLink" href="mailto:info@andreas-gehrmann.de?subject=Ich%20m%C3%B6chte%20helfen" class="box-action-link" style="background-color: #1e3f5f; color: white; border-color: #1e3f5f;">
@@ -1116,7 +1118,7 @@
         </div>
     </div>
 
-    <div class="challenge-box" id="challengeBox">
+<div class="challenge-box" id="challengeBox">
         <button class="box-close-btn" id="challengeCloseBtn" onclick="resetChallengeBox()" title="Schließen" style="display: none;">×</button>
         <span class="challenge-title" style="color: #1e3f5f;">
             <svg class="action-icon-svg" viewBox="0 0 24 24" style="width: 15px; height: 15px; margin-right: 6px; stroke: #b7870a;"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
@@ -1220,11 +1222,10 @@
 </div>
 
 <script>
-    // POPUP-BLOCKER: Verhindert, dass der Browser eigenmächtig Installations-Popups anzeigt
+    // Verhindert, dass der Browser eigenmächtig Installations-Popups anzeigt
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
     });
-
     let allData = null;
     let currentData = null;
     let gemeindeConfig = null;
@@ -1259,19 +1260,8 @@
         const buttonSelect = document.getElementById('buttonStyleSelect');
         if (buttonSelect) buttonSelect.value = savedButtonStyle;
 
-        // SMART-FIX: Merkt sich die Gemeinde für die installierte App
         const urlParams = new URLSearchParams(window.location.search);
-        let gemeindeParam = urlParams.get('gemeinde');
-
-        if (!gemeindeParam) {
-            const savedGemeinde = localStorage.getItem('lastGemeinde');
-            if (savedGemeinde) {
-                window.location.search = `?gemeinde=${savedGemeinde}`;
-                return;
-            }
-        } else {
-            localStorage.setItem('lastGemeinde', gemeindeParam);
-        }
+        const gemeindeParam = urlParams.get('gemeinde');
 
         const backendUrl = 'https://sandboxgemeinde.netlify.app';
         let jsonPfad = 'data/sprueche.json';
@@ -1342,11 +1332,8 @@
         const imgBox = document.getElementById('gemeindeImageBox');
         const imgEl = document.getElementById('gemeindeImg');
         const subtitleEl = document.getElementById('appSubtitle');
-        const serviceCard = document.getElementById('serviceGemeinschaftCard');
         
         if (gemeindeConfig) {
-            if (serviceCard) serviceCard.style.display = 'block';
-
             if (gemeindeConfig.app_titel) {
                 let titelText = gemeindeConfig.app_titel.trim();
                 if (titelText.toLowerCase().startsWith("termin mit der ") && !titelText.includes("<span>")) {
@@ -1369,6 +1356,7 @@
                 imgBox.style.display = 'block';
             }
 
+            // Ehrenamt-Mailadresse dynamisch anpassen, falls im CMS eingetragen
             if (gemeindeConfig.gemeinde_email && gemeindeConfig.gemeinde_email.trim() !== "") {
                 const ehrenamtLink = document.getElementById('ehrenamtEmailLink');
                 if (ehrenamtLink) {
@@ -1376,6 +1364,7 @@
                 }
             }
 
+            // NEU: Ehrenamt-Gesuchstext dynamisch anpassen, falls im CMS eingetragen
             if (gemeindeConfig.ehrenamt_text && gemeindeConfig.ehrenamt_text.trim() !== "") {
                 const ehrenamtTextEl = document.getElementById('ehrenamtText');
                 if (ehrenamtTextEl) {
@@ -1395,8 +1384,6 @@
                 if (newsBadge) newsBadge.style.display = 'none';
             }
         } else {
-            if (serviceCard) serviceCard.style.display = 'none';
-
             document.getElementById('appTitle').innerHTML = `Termin <span>mit dem Leben</span>`;
             subtitleEl.innerText = "Dein täglicher Impuls";
             if (imgEl) imgEl.src = "images/kirche-leben.jpg";
@@ -1432,6 +1419,7 @@
             });
         }
 
+        // WEBSEITE IN SOCIAL MEDIA ROW INTEGRIERT
         const sRow = document.getElementById('socialMediaRow');
         sRow.innerHTML = '';
         let hasSocial = false;
@@ -1459,6 +1447,7 @@
 
         sRow.style.display = hasSocial ? 'flex' : 'none';
 
+        // DYNAMISCHER KOLLEKTENZWECK
         const kollektenBox = document.getElementById('kollektenBox');
         const kollektenLink = document.getElementById('kollektenLink');
         const kollektenTextEl = document.getElementById('kollektenText');
@@ -1565,7 +1554,7 @@
         document.getElementById('codeBox').style.display = 'none';
         document.getElementById('translationBox').style.display = 'none'; 
         
-        const btnSpan = document.querySelector('#zeitgeistActionBtn span');
+     const btnSpan = document.querySelector('#zeitgeistActionBtn span');
         if (btnSpan) btnSpan.innerText = "Ins Heute";
 
         resetChallengeBox();
@@ -1648,7 +1637,7 @@
     function shareContent() {
         if (!currentData) return;
         const cleanVolltext = (currentData.volltext || '').replace(/^[„"']|[“"']$/g, '');
-        const textToCopy = `*Termin mit dem Leben* 🌟\n\n📜 *Das Original:*\n„${cleanVolltext}“\n\n💡 *Ins Heute übertragen:*\n${currentData.uebersetzung || ''}\n\n🎯 *Deine Tages-Challenge:*\n${currentData.challenge || ''}`;
+        const textToCopy = `*Termin mit dem Leben* 🌟\n\n📜 *Das Original:*\n„${cleanVolltext}“\n\n💡 *Zeitgeist:*\n${currentData.uebersetzung || ''}\n\n🎯 *Deine Tages-Challenge:*\n${currentData.challenge || ''}`;
         navigator.clipboard.writeText(textToCopy).then(() => {
             const t = document.getElementById('toast'); t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2000);
         });
@@ -1713,67 +1702,6 @@
                 }, 2000);
             }
         });
-    }
-
-    // FOOTER- & EINSTELLUNGS-LOGIKEN
-    function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) modal.style.display = 'flex';
-    }
-
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) modal.style.display = 'none';
-    }
-
-    function toggleSettingsView() {
-        const panel = document.getElementById('settingsPanel');
-        if (panel) {
-            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-            if (panel.style.display === 'block') {
-                panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-        }
-    }
-
-    function changeTheme() {
-        const val = document.getElementById('themeSelect').value;
-        if (val === "default") {
-            document.documentElement.removeAttribute('data-theme');
-        } else {
-            document.documentElement.setAttribute('data-theme', val);
-        }
-        localStorage.setItem('appTheme', val);
-    }
-
-    function changeFont() {
-        const val = document.getElementById('fontSelect').value;
-        if (val === "default") {
-            document.documentElement.removeAttribute('data-font');
-        } else {
-            document.documentElement.setAttribute('data-font', val);
-        }
-        localStorage.setItem('appFont', val);
-    }
-
-    function changeSize() {
-        const val = document.getElementById('sizeSelect').value;
-        if (val === "default") {
-            document.documentElement.removeAttribute('data-size');
-        } else {
-            document.documentElement.setAttribute('data-size', val);
-        }
-        localStorage.setItem('appSize', val);
-    }
-
-    function changeButtonStyle() {
-        const val = document.getElementById('buttonStyleSelect').value;
-        if (val === "default") {
-            document.documentElement.removeAttribute('data-button-style');
-        } else {
-            document.documentElement.setAttribute('data-button-style', val);
-        }
-        localStorage.setItem('appButtonStyle', val);
     }
 </script>
 </body>
