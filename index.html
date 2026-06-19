@@ -1273,13 +1273,17 @@
             localStorage.setItem('lastGemeinde', gemeindeParam);
         }
 
-    let jsonPfad = 'data/sprueche.json';
+        const backendUrl = 'https://sandboxgemeinde.netlify.app';
+        let jsonPfad = 'data/sprueche.json';
         
         if (gemeindeParam) {
             jsonPfad = `data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
         }
 
-        fetch(jsonPfad)
+        // Cache-Busting: Zwingt den Browser, die neueste Version zu laden
+        const fetchUrl = jsonPfad + '?t=' + new Date().getTime();
+
+        fetch(fetchUrl)
             .then(response => {
                 if (!response.ok) throw new Error("Gemeinde Daten konnten nicht geladen werden.");
                 return response.json();
@@ -1293,8 +1297,8 @@
 
                 initHeader();
 
-                if (gemeindeParam) {
-                    fetch('data/sprueche.json')
+               if (gemeindeParam) {
+                    fetch('data/sprueche.json?t=' + new Date().getTime())
                         .then(res => res.json())
                         .then(spruecheData => {
                             Object.keys(spruecheData).forEach(key => {
