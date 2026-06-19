@@ -1297,7 +1297,7 @@
                 initHeader();
 
                 if (gemeindeParam) {
-                   fetch('data/sprueche.json?t=' + new Date().getTime())
+                    fetch('data/sprueche.json')
                         .then(res => res.json())
                         .then(spruecheData => {
                             Object.keys(spruecheData).forEach(key => {
