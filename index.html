@@ -1273,16 +1273,13 @@
             localStorage.setItem('lastGemeinde', gemeindeParam);
         }
 
-   let jsonPfad = 'data/sprueche.json';
+    let jsonPfad = 'data/sprueche.json';
         
         if (gemeindeParam) {
             jsonPfad = `data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
         }
 
-        // SMART-FIX: Zeitstempel zwingt den Browser, immer die neusten CMS-Daten zu laden
-        const fetchUrl = jsonPfad + '?t=' + new Date().getTime();
-
-        fetch(fetchUrl)
+        fetch(jsonPfad)
             .then(response => {
                 if (!response.ok) throw new Error("Gemeinde Daten konnten nicht geladen werden.");
                 return response.json();
