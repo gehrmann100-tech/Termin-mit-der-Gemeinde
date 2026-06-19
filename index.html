@@ -1259,25 +1259,13 @@
         const buttonSelect = document.getElementById('buttonStyleSelect');
         if (buttonSelect) buttonSelect.value = savedButtonStyle;
 
-        // SMART-FIX: Merkt sich die Gemeinde für die installierte App
         const urlParams = new URLSearchParams(window.location.search);
         let gemeindeParam = urlParams.get('gemeinde');
 
-        if (!gemeindeParam) {
-            const savedGemeinde = localStorage.getItem('lastGemeinde');
-            if (savedGemeinde) {
-                window.location.search = `?gemeinde=${savedGemeinde}`;
-                return;
-            }
-        } else {
-            localStorage.setItem('lastGemeinde', gemeindeParam);
-        }
-
-        const timestamp = new Date().getTime();
-        let jsonPfad = `data/sprueche.json?t=${timestamp}`;
+        let jsonPfad = 'data/sprueche.json';
         
         if (gemeindeParam) {
-            jsonPfad = `data/gemeinden/${gemeindeParam.toLowerCase()}.json?t=${timestamp}`;
+            jsonPfad = `data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
         }
 
         fetch(jsonPfad)
@@ -1295,7 +1283,7 @@
                 initHeader();
 
                 if (gemeindeParam) {
-                    fetch(`data/sprueche.json?t=${timestamp}`)
+                    fetch('data/sprueche.json')
                         .then(res => res.json())
                         .then(spruecheData => {
                             Object.keys(spruecheData).forEach(key => {
@@ -1350,7 +1338,6 @@
 
             if (gemeindeConfig.app_titel) {
                 let titelText = gemeindeConfig.app_titel.trim();
-                // Filtert ungewollte "(optional)" Anhänge aus dem CMS heraus
                 titelText = titelText.replace(/\(optional\)/ig, '').trim();
 
                 if (titelText.toLowerCase().startsWith("termin mit der ") && !titelText.includes("<span>")) {
@@ -1380,7 +1367,6 @@
                 }
             }
 
-            // Prüft, ob ein Ehrenamtstext existiert – wenn nicht, fliegt die Box raus
             if (gemeindeConfig.ehrenamt_text && gemeindeConfig.ehrenamt_text.trim() !== "") {
                 if (ehrenamtSection) ehrenamtSection.style.display = 'block';
                 const ehrenamtTextEl = document.getElementById('ehrenamtText');
@@ -1394,6 +1380,7 @@
             const newsCard = document.getElementById('newsCard');
             const newsBadge = document.getElementById('newsBadge');
             if (gemeindeConfig.news_text && gemeindeConfig.news_text.trim() !== "") {
+                document.getElementById('gemeindeSection').style.display = 'flex';
                 newsCard.style.display = 'block';
                 newsBadge.style.display = 'inline-block';
                 document.getElementById('newsUeberschrift').innerText = gemeindeConfig.news_ueberschrift || "Mitteilung der Gemeinde";
