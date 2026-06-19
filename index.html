@@ -1273,11 +1273,10 @@
             localStorage.setItem('lastGemeinde', gemeindeParam);
         }
 
-        const backendUrl = 'https://sandboxgemeinde.netlify.app';
-        let jsonPfad = 'data/sprueche.json';
+    let jsonPfad = 'data/sprueche.json';
         
         if (gemeindeParam) {
-            jsonPfad = `${backendUrl}/data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
+            jsonPfad = `data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
         }
 
         fetch(jsonPfad)
