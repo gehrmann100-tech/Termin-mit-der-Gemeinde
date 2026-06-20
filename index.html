@@ -454,9 +454,9 @@
             color: var(--text-muted);
         }
 
-        /* B2B GEMEINDE SEKTION */
+        /* GEMEINDE SEKTION (ALLE KACHELN SICHTBAR) */
         .gemeinde-section {
-            display: none;
+            display: flex;
             flex-direction: column;
             gap: 14px; 
             margin-top: 0;
@@ -474,6 +474,7 @@
         }
 
         .kollekten-premium-box {
+            display: none;
             background: var(--bg-premium-white);
             border: 1px solid rgba(184, 134, 11, 0.15);
             border-radius: var(--radius-element);
@@ -643,7 +644,7 @@
             border: none;
         }
 
-        /* SOCIAL MEDIA AREA IN CONTACTS */
+        /* SOCIAL MEDIA IN CONTACTS */
         .social-media-row {
             display: flex;
             flex-wrap: wrap;
@@ -674,7 +675,6 @@
 
         /* SERVICE-KACHEL */
         .service-gemeinschaft-box {
-            display: none;
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(251, 251, 250, 0.95) 70%, rgba(255, 255, 255, 1) 100%);
             border-radius: var(--radius-element);
             padding: 24px 20px;
@@ -940,7 +940,7 @@
     
     <div class="header-container">
         <div class="header-icon-deco" id="headerDeco">✨</div>
-        <div class="app-title" id="appTitle">Termin mit der Gemeinde</div>
+        <div class="app-title" id="appTitle">Termin <span>mit der Gemeinde</span></div>
     </div>
     
     <div class="app-subtitle" id="appSubtitle">Lade Gemeinde...</div>
@@ -1048,7 +1048,7 @@
             </div>
         </div>
 
-        <div class="kollekten-premium-box" id="kollektenBox" style="display: none;">
+        <div class="kollekten-premium-box" id="kollektenBox">
             <div class="kollekten-image-banner">
                 <img src="images/kollekte.jpg" alt="Digitale Kollekte">
             </div>
@@ -1250,7 +1250,7 @@
         const buttonSelect = document.getElementById('buttonStyleSelect');
         if (buttonSelect) buttonSelect.value = savedButtonStyle;
 
-        // B2B-Routensteuerung über URL-Parameter (Fallback: solingen-merscheid)
+        // Routensteuerung über URL-Parameter (Standard-Fallback: solingen-merscheid)
         const urlParams = new URLSearchParams(window.location.search);
         let gemeindeParam = urlParams.get('gemeinde') || 'solingen-merscheid';
 
@@ -1270,7 +1270,7 @@
 
                 initHeader();
 
-                // Kernsprüche laden und asynchron mergen
+                // Globale Sprüche laden und asynchron einbinden
                 fetch('data/sprueche.json')
                     .then(res => res.json())
                     .then(spruecheData => {
@@ -1290,7 +1290,7 @@
             })
             .catch(error => {
                 console.error("Fehler beim Laden der JSON-Daten:", error);
-                document.getElementById('mainText').innerText = "Fehler beim Laden der Gemeindedaten. Bitte überprüfe den URL-Parameter.";
+                document.getElementById('mainText').innerText = "Fehler beim Laden der Gemeindedaten. Bitte überprüfe die Ordnerstruktur.";
             });
     });
 
@@ -1312,18 +1312,13 @@
         const imgBox = document.getElementById('gemeindeImageBox');
         const imgEl = document.getElementById('gemeindeImg');
         const subtitleEl = document.getElementById('appSubtitle');
-        const serviceCard = document.getElementById('serviceGemeinschaftCard');
         const ehrenamtSection = document.getElementById('ehrenamtSection');
         
         if (gemeindeConfig) {
-            if (serviceCard) serviceCard.style.display = 'block';
-
             if (gemeindeConfig.app_titel) {
                 let titelText = gemeindeConfig.app_titel.trim().replace(/\(optional\)/ig, '').trim();
 
-                if (titelText.toLowerCase().startsWith("termin mit der ") && !titelText.includes("<span>")) {
-                    document.getElementById('appTitle').innerHTML = `Termin <span>${titelText.substring(7)}</span>`;
-                } else if (titelText.toLowerCase().startsWith("termin mit dem ") && !titelText.includes("<span>")) {
+                if ((titelText.toLowerCase().startsWith("termin mit der ") || titelText.toLowerCase().startsWith("termin mit dem ")) && !titelText.includes("<span>")) {
                     document.getElementById('appTitle').innerHTML = `Termin <span>${titelText.substring(7)}</span>`;
                 } else {
                     document.getElementById('appTitle').innerHTML = titelText;
@@ -1354,7 +1349,6 @@
             const newsCard = document.getElementById('newsCard');
             const newsBadge = document.getElementById('newsBadge');
             if (gemeindeConfig.news_text && gemeindeConfig.news_text.trim() !== "") {
-                document.getElementById('gemeindeSection').style.display = 'flex';
                 newsCard.style.display = 'block';
                 newsBadge.style.display = 'inline-block';
                 document.getElementById('newsUeberschrift').innerText = gemeindeConfig.news_ueberschrift || "Mitteilung der Gemeinde";
@@ -1369,7 +1363,6 @@
     function renderDauerInfos() {
         if (!allData || !allData.dauer_infos) return;
         const infos = allData.dauer_infos;
-        document.getElementById('gemeindeSection').style.display = 'flex';
         document.getElementById('dauerInfosCard').style.display = 'block';
 
         const kList = document.getElementById('kontaktList');
@@ -1433,6 +1426,8 @@
             } else {
                 kollektenTextEl.innerText = "Da heute immer weniger Menschen Bargeld dabeihaben, bieten wir hier die Möglichkeit einer digitalen Kollekte.";
             }
+        } else {
+            kollektenBox.style.display = 'none';
         }
     }
 
@@ -1482,7 +1477,6 @@
 
         if (auswahl.length > 0) {
             termCard.style.display = 'block';
-            document.getElementById('gemeindeSection').style.display = 'flex';
             auswahl.forEach(t => {
                 const dObj = new Date(t.datum);
                 const dStr = dObj.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit' });
@@ -1514,7 +1508,6 @@
         const feiertagKey = getFeiertagKey(displayDate);
         currentData = feiertagKey && allData[feiertagKey] ? allData[feiertagKey] : allData[`${month}-${day}`];
         
-        challengeRevealed = false;
         document.getElementById('codeBox').style.display = 'none';
         document.getElementById('translationBox').style.display = 'none'; 
         
@@ -1609,7 +1602,7 @@
 
         fetch('data/anlass_sprueche.json')
             .then(response => {
-                if (!response.ok) throw new Error("Sprüche konnte nicht geladen werden.");
+                if (!response.ok) throw new Error("Sprüche konnten nicht geladen werden.");
                 return response.json();
             })
             .then(data => {
@@ -1666,6 +1659,7 @@
         }
     }
 
+    // VARIABLEN-STEUERUNG
     function changeTheme() {
         const val = document.getElementById('themeSelect').value;
         if (val === "default") document.documentElement.removeAttribute('data-theme');
