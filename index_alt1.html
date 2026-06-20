@@ -1102,7 +1102,7 @@
             </div>
         </div>
 
-<div id="ehrenamtSection" style="border-top: 1px dashed rgba(184, 134, 11, 0.2); padding-top: 20px; text-align: left;">
+        <div id="ehrenamtSection" style="border-top: 1px dashed rgba(184, 134, 11, 0.2); padding-top: 20px; text-align: left;">
             <h3 class="gold-subheading" style="font-size: 0.85rem; margin-bottom: 10px;">🤝 Mitwirken & Helfen</h3>
             <div style="background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.03); padding: 16px; border-radius: var(--radius-element); box-shadow: inset 0 0 8px rgba(0,0,0,0.01);">
                 <p id="ehrenamtText" style="font-family: var(--font-body); font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 14px;">
@@ -1259,31 +1259,16 @@
         const buttonSelect = document.getElementById('buttonStyleSelect');
         if (buttonSelect) buttonSelect.value = savedButtonStyle;
 
-        // SMART-FIX: Merkt sich die Gemeinde für die installierte App
         const urlParams = new URLSearchParams(window.location.search);
         let gemeindeParam = urlParams.get('gemeinde');
 
-        if (!gemeindeParam) {
-            const savedGemeinde = localStorage.getItem('lastGemeinde');
-            if (savedGemeinde) {
-                window.location.search = `?gemeinde=${savedGemeinde}`;
-                return;
-            }
-        } else {
-            localStorage.setItem('lastGemeinde', gemeindeParam);
-        }
-
-        const backendUrl = 'https://sandboxgemeinde.netlify.app';
         let jsonPfad = 'data/sprueche.json';
         
         if (gemeindeParam) {
             jsonPfad = `data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
         }
 
-        // Cache-Busting: Zwingt den Browser, die neueste Version zu laden
-        const fetchUrl = jsonPfad + '?t=' + new Date().getTime();
-
-        fetch(fetchUrl)
+        fetch(jsonPfad)
             .then(response => {
                 if (!response.ok) throw new Error("Gemeinde Daten konnten nicht geladen werden.");
                 return response.json();
@@ -1297,8 +1282,8 @@
 
                 initHeader();
 
-               if (gemeindeParam) {
-                    fetch('data/sprueche.json?t=' + new Date().getTime())
+                if (gemeindeParam) {
+                    fetch('data/sprueche.json')
                         .then(res => res.json())
                         .then(spruecheData => {
                             Object.keys(spruecheData).forEach(key => {
@@ -1341,7 +1326,7 @@
         }
     }
 
-   function initHeader() {
+    function initHeader() {
         const imgBox = document.getElementById('gemeindeImageBox');
         const imgEl = document.getElementById('gemeindeImg');
         const subtitleEl = document.getElementById('appSubtitle');
@@ -1353,7 +1338,6 @@
 
             if (gemeindeConfig.app_titel) {
                 let titelText = gemeindeConfig.app_titel.trim();
-                // Filtert ungewollte "(optional)" Anhänge aus dem CMS heraus
                 titelText = titelText.replace(/\(optional\)/ig, '').trim();
 
                 if (titelText.toLowerCase().startsWith("termin mit der ") && !titelText.includes("<span>")) {
@@ -1383,7 +1367,6 @@
                 }
             }
 
-            // Prüft, ob ein Ehrenamtstext existiert – wenn nicht, fliegt die Box raus
             if (gemeindeConfig.ehrenamt_text && gemeindeConfig.ehrenamt_text.trim() !== "") {
                 if (ehrenamtSection) ehrenamtSection.style.display = 'block';
                 const ehrenamtTextEl = document.getElementById('ehrenamtText');
@@ -1397,6 +1380,7 @@
             const newsCard = document.getElementById('newsCard');
             const newsBadge = document.getElementById('newsBadge');
             if (gemeindeConfig.news_text && gemeindeConfig.news_text.trim() !== "") {
+                document.getElementById('gemeindeSection').style.display = 'flex';
                 newsCard.style.display = 'block';
                 newsBadge.style.display = 'inline-block';
                 document.getElementById('newsUeberschrift').innerText = gemeindeConfig.news_ueberschrift || "Mitteilung der Gemeinde";
