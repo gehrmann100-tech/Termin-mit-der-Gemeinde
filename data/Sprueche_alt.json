@@ -412,12 +412,12 @@
     "zeitgeist": "Zum Monatsabschluss ein dicker, warmer Sonnenstrahl. Egal, wie nebelig oder unklar die Zukunft manchmal scheinen mag, und egal, welche Hürden gerade vor dir stehen: Es geht weiter. Da liegt eine gute Zukunft vor dir, und deine Hoffnung wird am Ende belohnt. Lass dir die Zuversicht auf keinen Fall nehmen.",
     "challenge": "Blicke heute Abend beim letzten Kaffee oder Tee bewusst dankbar auf den vergangenen Monat zurück und gehe mit dem festen Gedanken ins Bett: Die Zukunft wird gut."
   },
-"02-29": {
+  "02-29": {
     "original": "Prediger 3,11",
     "volltext": "„Er hat alles schön gemacht zu seiner Zeit, auch hat er die Ewigkeit in ihr Herz gelegt.“",
-    "code_knacker": "<strong>Buch des Predigers (Kapitel 3, Vers 11)</strong><br><br>Ein poetisches Highlight des Alten Testaments. Der Verfasser beschreibt, dass das Leben ein Gesamtkunstwerk aus unzähligen kleinen Momenten ist. Die „Einpflanzung der Ewigkeit“ meint diese tiefe Sehnsucht im Menschen nach etwas, das bleibt.",
+    "code_knacker": "<strong>Buch des Predigers (Kapitel 3, Vers 11)</strong><br><br>Ein poetisches Highlight des Alten Testaments. Der Verfasser beschreibt, dass das Leben ein Gesamtkunstwerk aus unzähligen kleinen Momenten ist. Die 'Einkunft der Ewigkeit' meint diese tiefe Sehnsucht im Menschen nach etwas, das bleibt.",
     "zeitgeist": "Der Schalttag ist ein geschenkter Tag – ein Tag außerhalb der Reihe, den es eigentlich gar nicht geben dürfte. Dieser Spruch passt perfekt dazu: Er lädt dich ein, das Leben mal aus der Vogelperspektive zu betrachten. Oft hetzen wir durch die Termine, aber heute darfst du kurz innehalten und spüren: Das Leben ist größer als die tägliche To-Do-Liste. Genieße diese extra Portion Zeit.",
-    "challenge": "Nutze diesen geschenkten Schalttag für etwas, das du sonst nie tust: Nimm dir heute Nachmittag eine halbe Stunde Zeit für dich und tue einfach mal absolut gar nichts."
+    "challenge": "Nutze diesen geschenkten Schalttag für etwas, das du sonst *nie* tust: Nimm dir heute Nachmittag eine halbe Stunde Zeit für dich und tue einfach mal absolut gar nichts."
   },
   "FEIERTAG-KARFREITAG": {
     "original": "Karfreitag (Gedenktag)",
@@ -468,10 +468,10 @@
     "zeitgeist": "Wenn wir den prunkvollen, kirchlichen Rahmen beiseite lassen, steckt ein wunderschöner Gedanke dahinter: Das Gute, Bleibende und Heilige gehört nicht weggeschlossen hinter dicke, kalte Kirchenmauern. Es gehört mitten hinein in unser echtes, pralles Leben – auf die Straßen, in unseren Alltag, dorthin, wo gelebt, gelacht und gearbeitet wird. Es feiert die spürbare Gegenwart des Guten im Hier und Jetzt.",
     "challenge": "Geh heute ganz bewusst vor die Tür. Such dir auf der Straße, im Park oder beim Bäcker eine kleine, alltägliche Begegnung und bring durch ein nettes Wort etwas echte Freundlichkeit mitten in den Alltag."
   },
-"FEIERTAG-ALLERHEILIGEN": {
+  "FEIERTAG-ALLERHEILIGEN": {
     "original": "Allerheiligen",
-    "volltext": "<strong>Allerheiligen</strong> – der 1. November. Ein stiller Gedenktag und das Fest aller Vollendeten. Es wurde eingeführt, weil es unmöglich war, für jeden einzelnen Heiligen einen eigenen Tag im Kalender zu reservieren. Das Entzünden von Grablichtern ('Seelenlichtern') symbolisiert das ewige Licht, das für die Verstorbenen leuchtet. An diesem Tag wird all der Menschen gedacht, die ihren Glauben und ihre Liebe im Stillen gelebt haben.",
-    "code_knacker": "",
+    "volltext": "<strong>Allerheiligen</strong> – der 1. November. Ein stiller Gedenktag, an dem nicht nur der bekannten Heiligen gedacht wird, sondern aller Menschen, die ihren Glauben im Stillen gelebt haben.",
+    "code_knacker": "<strong>Das Fest aller Vollendeten</strong><br><br>Eingeführt, weil es schlicht unmöglich war, für jeden einzelnen Heiligen einen eigenen Tag im Kalender zu reservieren. Das Entzünden von Grablichtern ('Seelenlichter') an den Vortagen symbolisiert das ewige Licht, das für die Verstorbenen leuchtet.",
     "zeitgeist": "Heilige sind keine fehlerfreien Übermenschen aus dem Geschichtsbuch. Heilige sind Menschen, durch die die Liebe und das Licht in dieser Welt ein Stückchen sichtbarer geworden sind. Oft sind das die ganz 'stillen Helden' des Alltags: die Großmutter, die immer ein offenes Ohr hatte, der hilfsbereite Nachbar oder Menschen, die sich ohne großes Aufsehen für andere einsetzen. Heute ist der Tag, um dankbar an diese Vorbilder in unserem Leben zu denken.",
     "challenge": "Zünde heute eine Kerze an und denke für ein paar Minuten voller Dankbarkeit an einen Menschen, der nicht mehr da ist, aber der dein Leben durch seine Liebe und Wärme hell gemacht hat."
   },
@@ -1546,222 +1546,222 @@
     "zeitgeist": "Die Welt suggeriert uns: Wer am meisten leidet und am wenigsten schläft, gewinnt. Dieser Vers sagt das Gegenteil: Gönn dir den Schlaf! Sei ein 'Freund' einer höheren Ordnung. Dein Gehirn und deine Seele brauchen die Distanz. Oft lösen sich die schwierigsten Probleme am besten, wenn du sie loslässt und schläfst. Sei heute bewusst fertig mit der Arbeit und geh früh schlafen.",
     "challenge": "Schließe den Monat ab, indem du heute pünktlich Feierabend machst. Sei fertig mit der Arbeit. Alles andere klärt sich morgen."
   },
-  "08-01": {
-    "original": "Sprüche 17,1",
-    "volltext": "„Besser ein trockener Bissen mit Frieden als ein Haus voll Schlachtopfer voller Streit.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 17, Vers 1)</strong><br><br>Ein extrem pragmatischer Rat. Ein 'Schlachtopfer' war in der Antike ein großes, luxuriöses Festessen. Die Weisen stellen fest: Materielle Fülle ist wertlos, wenn das Klima im Haus vergiftet ist.",
-    "zeitgeist": "Wir stressen uns oft ab, um ein perfektes Haus, ein perfektes Umfeld oder ein perfektes Projekt zu haben. Dabei vergessen wir das Wesentliche: den inneren Frieden. Was bringt dir der größte Erfolg, wenn du ihn in einem Umfeld von Streit, Neid und Missgunst genießen musst? Priorisiere die Atmosphäre über das Ergebnis. Ein einfaches Leben mit echtem Frieden ist ein Reichtum, den man nicht kaufen kann.",
-    "challenge": "Wenn es heute zu Hause oder bei der Arbeit zu einer Spannung kommt, entscheide dich aktiv: Willst du recht haben oder willst du Frieden? Wähle den Frieden."
+  "07-01": {
+    "original": "Sprüche 17,27",
+    "volltext": "„Wer seine Worte zurückhält, der ist klug; und wer besonnen ist, der ist ein verständiger Mann.“",
+    "code_knacker": "<strong>Buch der Sprüche (Kapitel 17, Vers 27)</strong><br><br>Ein antiker Leitfaden für emotionale Intelligenz. Besonnenheit wird hier nicht als Schwäche oder Zögerlichkeit gesehen, sondern als höchste Form der Selbstbeherrschung.",
+    "zeitgeist": "Wir leben in einer Welt, in der sofortige Meinungsäußerung als Pflicht gilt. Ob in Kommentaren, Meetings oder Gesprächen: Wer nicht sofort etwas dazu sagt, wirkt oft verloren. Dieser Spruch lehrt uns das Gegenteil: Wahre Souveränität zeigt sich im Innehalten. Wer seine Worte dosiert, behält die Kontrolle über die Situation, anstatt sich von ihr treiben zu lassen.",
+    "challenge": "Halte dich heute bei einem Thema, zu dem du eine starke Meinung hast, bewusst zurück. Höre erst zu, bevor du etwas sagst."
   },
-  "08-02": {
-    "original": "Psalm 121,3",
-    "volltext": "„Er wird deinen Fuß nicht gleiten lassen, und der dich behütet, schläft nicht.“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 121, Vers 3)</strong><br><br>Ein Bild der absoluten Wachsamkeit. In der Antike, in der das Leben vor Gefahren wie Räubern oder Unfällen nur so strotzte, war dieser Zuspruch eine fundamentale existenzielle Versicherung.",
-    "zeitgeist": "Unser Kopf rattert oft auch nachts weiter. Wir planen, sorgen uns und versuchen, die Kontrolle zu behalten, damit wir nicht 'gleiten' (abrutschen). Dieser Vers lädt dich ein, die Nacht und die Pausen als Entlastung zu begreifen. Du musst nicht 24/7 wachsam sein. Es gibt eine Ordnung, die auch dann arbeitet, wenn du den Kopf auf das Kissen legst. Vertraue darauf.",
-    "challenge": "Lege dich heute Abend entspannt hin. Wenn die Sorgen kommen, sage dir: 'Jetzt schlafe ich. Das, was mich hält, ist ohnehin wach.'"
+  "07-02": {
+    "original": "Psalm 103,13",
+    "volltext": "„Wie sich ein Vater über Kinder erbarmt, so erbarmt sich der HERR über die, die ihn fürchten.“",
+    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 103, Vers 13)</strong><br><br>Ein tiefes Bild der elterlichen Liebe. Das hebräische Wort für 'Erbarmen' (Rachamim) ist eng mit dem Wort für 'Mutterleib' verbunden und steht für eine absolut schutzgebende, innige Zuneigung.",
+    "zeitgeist": "Erbarmen und Milde sind keine Zeichen von Schwäche, sondern die stärkste Form von Beziehungsarbeit. Wenn wir uns selbst oder unsere Nächsten oft nur an der harten Messlatte der Leistung prüfen, wird das Leben bitter. Diese Zusage lädt uns ein, den Leistungsdruck mal komplett beiseite zu schieben und sich in einer Annahme zu sonnen, die nicht an Bedingungen geknüpft ist.",
+    "challenge": "Gehe heute besonders milde mit dir selbst um. Wenn dir etwas nicht gelingt, behandle dich so verständnisvoll, wie ein Vater oder eine Mutter es mit ihrem Kind tun würde."
   },
-  "08-03": {
-    "original": "Matthäus 6,34",
-    "volltext": "„Darum sorgt nicht für morgen, denn der morgige Tag wird für das Seine sorgen. Es ist genug, dass jeder Tag seine eigene Plage hat.“",
-    "code_knacker": "<strong>Evangelium nach Matthäus (Kapitel 6, Vers 34)</strong><br><br>Das ultimative Antidotum gegen Überlastung aus der Bergpredigt. Jesus erkennt die menschliche Tendenz, sich bereits heute für die Katastrophen von übermorgen zu bestrafen.",
-    "zeitgeist": "Wir sind Weltmeister im 'Was-wäre-wenn'. Wir errichten im Kopf Szenarien für Probleme, die vielleicht nie eintreten werden, und zahlen den emotionalen Preis dafür bereits heute. Stopp das. Die Kapazität für die Probleme von morgen hast du erst morgen. Heute reicht es, die Dinge anzugehen, die direkt vor deiner Nase liegen. Das ist völlig ausreichend.",
-    "challenge": "Wenn heute ein Gedanke an ein Problem in der nächsten Woche auftaucht, sage bewusst: 'Das bearbeite ich, wenn es soweit ist.' Bleib bei heute."
+  "07-03": {
+    "original": "Sprüche 15,16",
+    "volltext": "„Besser wenig mit der Furcht des HERRN als großer Schatz, bei dem Unruhe ist.“",
+    "code_knacker": "<strong>Buch der Sprüche (Kapitel 15, Vers 16)</strong><br><br>Ein kritischer Blick auf das Streben nach unbegrenztem Reichtum. Die Weisen beobachteten, dass materieller Überfluss oft ein direkter Lieferant für Paranoia, Gier und schlaflose Nächte ist.",
+    "zeitgeist": "Wir streben oft nach dem 'Mehr': Mehr Geld, mehr Sicherheit, mehr Puffer. Doch wenn das 'Mehr' mit permanenter Sorge und dem Verlust des inneren Friedens erkauft wird, ist es ein schlechtes Geschäft. Dieser Spruch ist keine Aufforderung zur Armut, sondern zum vernünftigen Maßhalten. Was nützt dir der größte Schatz, wenn er dir den Schlaf raubt?",
+    "challenge": "Überlege heute, ob es einen materiellen Bereich in deinem Leben gibt, in dem du dich durch 'Mehr-wollen' selbst unter Druck setzt. Kannst du dort ein Stück loslassen?"
   },
-  "08-04": {
+  "07-04": {
+    "original": "Jesaja 55,1",
+    "volltext": "„Auf, alle, die ihr durstig seid, kommt her zum Wasser! Und die ihr kein Geld habt, kommt, kommt her, kauft und esst!“",
+    "code_knacker": "<strong>Buch des Propheten Jesaja (Kapitel 55, Vers 1)</strong><br><br>Ein dramatischer Aufruf mitten in einer Hungersnot. Der Prophet lädt ein, die ökonomischen Gesetze ('Geld haben') für einen Moment auszusetzen und sich an der Quelle des Lebens zu bedienen.",
+    "zeitgeist": "Wir leben in einer Welt, in der alles seinen Preis hat. Nichts gibt es umsonst. Dieser Vers ist eine wunderbare, poetische Rebellion: Die wirklich lebensnotwendigen Dinge – echte Liebe, innerer Friede, Hoffnung, Natur – sind nicht käuflich. Sie sind für alle da. Gönne dir heute etwas, das du nicht mit Geld kaufen musst, sondern das aus dem puren Erleben entsteht.",
+    "challenge": "Suche heute etwas, das dir 'umsonst' Freude bereitet: ein Sonnenuntergang, das Rauschen der Bäume oder ein einfaches Gespräch."
+  },
+  "07-05": {
+    "original": "Psalm 127,1",
+    "volltext": "„Wenn der HERR nicht das Haus baut, so arbeiten die Bauleute umsonst.“",
+    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 127, Vers 1)</strong><br><br>Ein Arbeitslied für alle, die sich abmühen. Der Psalmist behauptet nicht, dass man nicht arbeiten muss, sondern dass ohne den richtigen Sinn hinter der Arbeit jeder Schweißtropfen ins Leere läuft.",
+    "zeitgeist": "Wir arbeiten oft wie die Berserker, ohne uns zu fragen, ob das Gebäude, das wir da gerade errichten, überhaupt auf einem stabilen Fundament steht. Arbeit nur um der Arbeit willen oder für ein Ziel, das uns eigentlich gar nicht entspricht, ist frustrierend. Überprüfe heute kurz: Ist das, wofür ich mich heute anstrenge, wirklich das, wofür ich brenne?",
+    "challenge": "Nimm dir heute kurz Zeit für eine Inventur deiner Aufgaben. Gibt es eine Arbeit, die du nur aus Gewohnheit machst und die du eigentlich kritisch hinterfragen solltest?"
+  },
+  "07-06": {
+    "original": "Sprüche 12,28",
+    "volltext": "„Auf dem Pfad der Gerechtigkeit ist Leben, und der Weg der Frömmigkeit führt nicht zum Tod.“",
+    "code_knacker": "<strong>Buch der Sprüche (Kapitel 12, Vers 28)</strong><br><br>Ein logischer Schluss der Weisheitsliteratur. Gerechtigkeit wird hier nicht als moralisches Korsett verstanden, sondern als der natürlichste Lebensweg, der den Körper und die Seele gesund hält.",
+    "zeitgeist": "Ehrlichkeit und Fairness sind keine Altruismen, die dich benachteiligen. Sie sind die sicherste Strategie für ein gesundes, langes Leben. Jedes Mal, wenn wir krumme Dinger drehen, jemanden täuschen oder unfair spielen, zahlen wir einen Preis: Wir erhöhen unseren inneren Stresspegel. Der gerade Weg ist nicht nur der moralische, er ist schlicht der stressfreiere.",
+    "challenge": "Handle heute bei jeder Entscheidung – egal wie klein – absolut integer. Spüre die Erleichterung, keine Ausreden erfinden zu müssen."
+  },
+  "07-07": {
+    "original": "Psalm 25,4",
+    "volltext": "„HERR, zeige mir deine Wege und lehre mich deine Steige!“",
+    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 25, Vers 4)</strong><br><br>Ein Gebet für die Orientierungslosigkeit. Der Beter bittet hier nicht um eine große Offenbarung, sondern um ganz konkrete Wegweisung für die nächsten Schritte.",
+    "zeitgeist": "Wie oft verlaufen wir uns im Alltag? Wir verlieren uns in Details, jagen den falschen Zielen nach oder lassen uns von der Meinung anderer beeinflussen. Dieser Vers ist ein tägliches Gebet für deinen Kompass. Er macht dich hellhörig für das, was für dich persönlich wirklich dran ist. Wer heute morgen kurz nach dem Weg fragt, kommt abends viel sicherer an.",
+    "challenge": "Wenn du heute eine Entscheidung triffst, mache kurz die Augen zu und frage dich: 'Fühlt sich das richtig an, oder folge ich nur einem externen Druck?'"
+  },
+  "07-08": {
+    "original": "Matthäus 6,33",
+    "volltext": "„Trachtet zuerst nach dem Reich Gottes und nach seiner Gerechtigkeit, so wird euch das alles zufallen.“",
+    "code_knacker": "<strong>Evangelium nach Matthäus (Kapitel 6, Vers 33)</strong><br><br>Ein Kernsatz aus der Bergpredigt. Er sortiert die Prioritäten des Menschen radikal um. Das Reich Gottes meint hier den Zustand, in dem Frieden, Liebe und Gerechtigkeit herrschen.",
+    "zeitgeist": "Wir machen uns oft verrückt wegen der Absicherung des nächsten Schrittes. Dieser Spruch bietet ein geniales Lebensprinzip an: Wenn du dich um die wirklich großen, wichtigen Dinge – den fairen Umgang miteinander, den Frieden und die Integrität – kümmerst, ordnen sich die kleinen Dinge des Alltags oft von ganz alleine. Sei ein Baumeister des Guten, der Rest fällt dir zu.",
+    "challenge": "Vergiss heute kurz die Sorgen um den 'Rest'. Fokussiere dich darauf, in einer Begegnung heute absolut fair und gütig zu sein."
+  },
+  "07-09": {
+    "original": "Sprüche 11,24",
+    "volltext": "„Einer teilt aus und hat immer mehr; ein andrer kargt, wo er nicht soll, und wird doch ärmer.“",
+    "code_knacker": "<strong>Buch der Sprüche (Kapitel 11, Vers 24)</strong><br><br>Ein Paradoxon der antiken Ökonomie. Die Weisen beobachteten, dass eine Haltung des Geizes (Kargen) das Leben einschnürt, während Großzügigkeit den Horizont und die Möglichkeiten erweitert.",
+    "zeitgeist": "Geiz ist nicht nur das Festhalten an Geld. Es ist eine innere Haltung des Mangels: 'Ich habe nicht genug, also halte ich fest.' Dieser Mangelgedanke macht das Leben eng und bitter. Großzügigkeit dagegen – mit Wissen, mit Hilfe, mit Zeit oder mit Geld – ist ein Bekenntnis zur Fülle. Wer großzügig sät, erntet in der Regel immer eine reiche Ernte.",
+    "challenge": "Finde heute eine Stelle, an der du 'kargst', obwohl du eigentlich abgeben könntest. Teile dein Wissen, deine Zeit oder ein Kompliment – und beobachte den Effekt."
+  },
+  "07-10": {
+    "original": "1. Johannes 3,1",
+    "volltext": "„Seht, welch eine Liebe hat uns der Vater erwiesen, dass wir Gottes Kinder heißen sollen – und wir sind es auch!“",
+    "code_knacker": "<strong>1. Brief des Johannes (Kapitel 3, Vers 1)</strong><br><br>Eine Hymne auf die menschliche Würde. Der Text stellt fest, dass wir nicht durch unsere Leistung oder soziale Rolle definiert sind, sondern durch eine tiefe, unverlierbare Herkunft.",
+    "zeitgeist": "Wir versuchen oft, unsere Identität über unsere Arbeit, unsere Erfolge oder unser Auftreten zu definieren. Das ist ein extrem wackeliges Fundament, das jeden Tag durch eine Kündigung oder einen Fehler ins Wanken geraten kann. Dieser Vers erinnert dich an einen unumstößlichen Wert: Du bist einfach, weil du bist. Das ist dein fester Boden, auf dem du heute stehen kannst.",
+    "challenge": "Wenn du heute kritisiert wirst oder etwas nicht klappt, nimm den Satz als Schutzschild: 'Ich bin mehr als diese Aufgabe. Ich bin gewollt.'"
+  },
+  "07-11": {
+    "original": "Psalm 25,9",
+    "volltext": "„Er leitet die Elenden recht und lehrt die Elenden seinen Weg.“",
+    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 25, Vers 9)</strong><br><br>Ein interessanter Umkehrschluss der antiken Weisheit: Nicht die Hochmütigen, die alles zu wissen glauben, bekommen die beste Führung, sondern die 'Elenden' – also diejenigen, die zugeben, dass sie Hilfe brauchen.",
+    "zeitgeist": "Hochmut kommt vor dem Fall, weil der Hochmütige glaubt, er bräuchte niemanden. Wenn du aber zugeben kannst, dass du gerade nicht weiterweißt und Hilfe brauchst, öffnest du dich für echte Lösungen. Die besten Erkenntnisse fallen uns oft dann zu, wenn wir den Panzer ablegen und zugeben: 'Ich brauche Unterstützung.' Das ist der erste Schritt zur wahren Meisterschaft.",
+    "challenge": "Wenn du heute an einer Stelle nicht weiterkommst, überspiele es nicht. Frage jemanden: 'Wie würdest du das angehen? Ich brauche hier einen Rat.'"
+  },
+  "07-12": {
     "original": "Sprüche 12,25",
     "volltext": "„Kummer im Herzen drückt den Menschen nieder, aber ein freundliches Wort erfreut ihn.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 12, Vers 25)</strong><br><br>Eine psychologische Beobachtung über die physische Schwere von emotionalem Ballast. Die Wirbelsäule und die Schultern reagieren unmittelbar auf das, was wir 'im Herzen' tragen.",
-    "zeitgeist": "Kummer ist kein abstrakter Begriff, er hat physische Auswirkungen. Er macht uns schwer, träge und müde. Doch die Lösung ist oft verblüffend simpel. Ein ehrliches Wort, ein echtes Kompliment oder eine wertschätzende Nachricht wirken wie ein chiropraktischer Eingriff für die Seele. Sei heute die Medizin für jemanden in deinem Umfeld.",
-    "challenge": "Schicke heute eine kurze, wertschätzende Nachricht an jemanden, mit dem du länger nicht gesprochen hast. Bring jemanden zum Lächeln."
+    "code_knacker": "<strong>Buch der Sprüche (Kapitel 12, Vers 25)</strong><br><br>Eine psychologische Perle. Der Körper reagiert physisch auf emotionale Last – der Rücken beugt sich, die Schultern sacken ab. Ein einziges Wort wirkt hier wie ein chiropraktischer Griff für die Seele.",
+    "zeitgeist": "Man sieht Menschen ihren inneren Kummer an. Sie wirken schwer und lustlos. Wir unterschätzen oft, wie viel wir mit einem einfachen Satz bewirken können. Ein aufrichtiges 'Ich schätze, was du da machst' oder 'Wie schön, dich zu sehen' kann den Rücken des anderen sofort aufrichten. Sei heute ein Aufricht-Helfer. Es kostet dich nichts, rettet aber vielleicht einen ganzen Tag.",
+    "challenge": "Beobachte heute dein Umfeld. Wer wirkt gerade etwas schwer? Schenke dieser Person ein bewusst freundliches, aufmunterndes Wort."
   },
-  "08-05": {
-    "original": "Römer 12,18",
-    "volltext": "„Ist's möglich, soviel an euch liegt, so habt mit allen Menschen Frieden.“",
-    "code_knacker": "<strong>Brief an die Römer (Kapitel 12, Vers 18)</strong><br><br>Paulus ist ein Realist. Er weiß, dass man nicht mit jedem Menschen Frieden haben kann, weil das oft an der Sturheit des Gegenübers scheitert. Deshalb fügt er die wichtige Einschränkung hinzu: 'soviel an euch liegt'.",
-    "zeitgeist": "Du bist nicht für die Stimmung aller anderen verantwortlich. Manchmal stößt du auf Menschen, die einfach nur streiten wollen. Das ist okay. Dein Job ist es nur, bei dir selbst sauber zu bleiben. Wenn du alles getan hast, was du tun konntest, um fair und friedlich zu sein, kannst du das Ergebnis getrost den anderen überlassen. Du hast deinen Teil erfüllt.",
-    "challenge": "Gab es einen Streit, bei dem du eigentlich den ersten Schritt machen wolltest, dich aber nicht getraut hast? Heute ist der Tag dafür."
+  "07-13": {
+    "original": "Jesaja 40,29",
+    "volltext": "„Er gibt dem Müden Kraft und Stärke genug dem Unvermögenden.“",
+    "code_knacker": "<strong>Buch des Propheten Jesaja (Kapitel 40, Vers 29)</strong><br><br>Ein Trostwort an ein Volk, das jahrelang unter dem Joch der Fremdherrschaft litt. Die Stärke kommt hier nicht aus dem Muskel, sondern als Energie-Transfer von oben.",
+    "zeitgeist": "Es gibt Phasen, in denen wir einfach keine Reserven mehr haben. Alles ist verbraucht. In solchen Momenten nützen keine Disziplin-Appelle. Hier brauchst du das bewusste Loslassen. Leg die Verantwortung für das Ergebnis für einen Moment ab. Sei 'unvermögend'. Gib zu, dass du gerade nicht mehr kannst. Wenn du den Widerstand gegen deine eigene Schwäche aufgibst, kommt oft eine völlig neue Dynamik in dein System.",
+    "challenge": "Wenn du heute an eine Grenze stößt: Erzwinge nichts mehr. Lege eine bewusste Pause ein und erlaube dir, einfach mal kraftlos zu sein."
   },
-  "08-06": {
-    "original": "Psalm 119,105",
-    "volltext": "„Dein Wort ist meines Fußes Leuchte und ein Licht auf meinem Wege.“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 119, Vers 105)</strong><br><br>Das Bild der antiken Öllampe. Sie leuchtete nicht die ganze Straße aus, sondern nur den Bereich direkt vor den Füßen, um den nächsten Schritt sicher zu machen.",
-    "zeitgeist": "Wir wollen immer den Masterplan, den kompletten 5-Jahres-Plan, die Garantie für das Ende. Das Leben funktioniert aber so nicht. Es funktioniert durch den nächsten Schritt. Wenn du Klarheit für diesen einen Tag oder diese eine Entscheidung hast, ist das mehr als genug. Vertraue darauf, dass sich der Weg weiter erhellt, wenn du dich erst einmal in Bewegung gesetzt hast.",
-    "challenge": "Vergiss kurz die großen Ziele. Überlege dir heute: Was ist der eine, kleine Schritt, den ich heute gehen muss, damit ich sicher unterwegs bin?"
+  "07-14": {
+    "original": "Psalm 91,4",
+    "volltext": "„Er wird dich mit seinen Fittichen decken, und unter seinen Flügeln wirst du Zuflucht finden; seine Wahrheit ist Schirm und Schild.“",
+    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 91, Vers 4)</strong><br><br>Ein Bild der mütterlichen Fürsorge aus der Tierwelt. Eine Henne schützt ihre Küken bei Gefahr, indem sie sie komplett unter ihre Flügel nimmt und so von der Welt abschirmt.",
+    "zeitgeist": "Die Welt ist oft laut, fordernd und manchmal auch feindselig. Wir brauchen diesen mentalen Rückzugsort. Wenn der Stress zu groß wird, darfst du dich geistig 'unter die Flügel' begeben. Das bedeutet: Abschalten. Rückzug. Die Sicherheit spüren, dass du im Kern nicht gefährdet bist. Diese Zuflucht ist jederzeit verfügbar – du musst sie nur bewusst aufsuchen.",
+    "challenge": "Finde heute eine 'Flügel-Minute': Schließe für 60 Sekunden die Augen, atme tief und stell dir vor, wie du sicher und geborgen bist – völlig abgeschirmt vom Lärm draußen."
   },
-  "08-07": {
+  "07-15": {
+    "original": "Sprüche 14,21",
+    "volltext": "„Wer seinen Nächsten verachtet, der sündigt; wer aber den Elenden gnädig ist, der ist glücklich.“",
+    "code_knacker": "<strong>Buch der Sprüche (Kapitel 14, Vers 21)</strong><br><br>Ein Plädoyer für den sozialen Zusammenhalt. Verachtung ist hier die absolute Negativform von Gemeinschaft. Glück wird als direkte Folge von Barmherzigkeit definiert.",
+    "zeitgeist": "Wenn wir uns über Leute stellen, die gerade am Boden liegen, oder ihre Situation verächtlich bewerten, macht uns das innerlich klein. Wir vergiften unsere eigene Persönlichkeit. Glück findet man in der entgegengesetzten Richtung: Wer gütig ist, wer Hilfe anbietet, wer nicht urteilt, der merkt, wie er selbst ein glücklicheres, leichteres Leben führt. Barmherzigkeit ist das beste Rezept für inneren Frieden.",
+    "challenge": "Hüte dich heute vor jedem harten Urteil über jemanden, der gerade scheitert. Suche stattdessen nach einem Gedanken, der das Gegenüber menschlich macht."
+  },
+  "07-16": {
+    "original": "Jakobus 1,5",
+    "volltext": "„Fehlt es aber jemandem von euch an Weisheit, so erbitte er sie von Gott, der jedermann gern gibt und niemanden vorwirft; so wird sie ihm gegeben werden.“",
+    "code_knacker": "<strong>Brief des Jakobus (Kapitel 1, Vers 5)</strong><br><br>Ein Vers für die tägliche Entscheidungsfindung. Weisheit wird hier nicht als ein geheimer Schatz für wenige Auserwählte beschrieben, sondern als leicht zugängliches Werkzeug für den Alltag.",
+    "zeitgeist": "Wir sind oft blockiert, weil wir Angst haben, die falsche Entscheidung zu treffen. Wir grübeln, wägen ab und drehen uns im Kreis. Dieser Vers sagt: Probier es mal mit Bitten statt mit Grübeln. Öffne dich. Oft kommt die Lösung nicht durch noch mehr angestrengtes Nachdenken, sondern durch einen Impuls, der plötzlich in der Ruhe auftaucht, wenn wir die Blockade loslassen.",
+    "challenge": "Hast du eine Entscheidung vor dir, bei der du nicht weiterkommst? Schalte das Grübeln ab, lege es kurz beiseite und lass dich überraschen, ob heute ein neuer Gedanke von selbst zu dir kommt."
+  },
+  "07-17": {
+    "original": "Sprüche 16,3",
+    "volltext": "„Befiehl dem HERRN deine Werke, so werden deine Pläne gelingen.“",
+    "code_knacker": "<strong>Buch der Sprüche (Kapitel 16, Vers 3)</strong><br><br>Aus der antiken Lebensschule. Das 'Befehlen' meint hier nicht den Befehlston, sondern das bewusste 'Abwälzen' der letzten Verantwortung von den eigenen Schultern auf eine höhere Instanz.",
+    "zeitgeist": "Du kannst dein Bestes geben. Du kannst planen, ausführen, kontrollieren. Aber du hast nicht die volle Kontrolle über den Ausgang. Der Stress kommt von der Illusion, wir müssten die Welt eigenhändig drehen. Wenn du dein Projekt in eine höhere Ordnung einordnest, gewinnst du enorme Freiheit. Du machst dein Teil, aber die Schwere des Erfolgs liegt nicht allein auf deinem Rücken.",
+    "challenge": "Erledige heute eine Aufgabe so gut du kannst, aber hake sie danach sofort ab, ohne dich mit der Sorge um das Endergebnis zu quälen."
+  },
+  "07-18": {
+    "original": "Psalm 9,11",
+    "volltext": "„Und die deinen Namen kennen, verlassen sich auf dich; denn wer dich sucht, HERR, den lässt du nicht im Stich.“",
+    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 9, Vers 11)</strong><br><br>Ein Vertrauensbeweis in einer Zeit der Unsicherheit. Der 'Name' steht für den Charakter Gottes – eine absolute Verlässlichkeit, die sich in Krisenzeiten beweisen muss.",
+    "zeitgeist": "Wir machen uns oft Sorgen, ob wir im entscheidenden Moment die richtige Hilfe haben werden. Dieser Vers ist dein Garantieschein. Du bist nicht allein gelassen. Wer den Prozess des Suchens nicht aufgibt, wer am Ball bleibt, der wird nicht im Stich gelassen. Das gibt dir eine unerschütterliche Ruhe für alle anstehenden Herausforderungen.",
+    "challenge": "Stehst du vor einer schwierigen Situation? Geh mit dem festen Vertrauen hinein: Ich bin nicht alleine, ich werde unterstützt."
+  },
+  "07-19": {
+    "original": "Sprüche 15,1",
+    "volltext": "„Eine linde Antwort stillt den Zorn; aber ein hartes Wort erweckt den Grimm.“",
+    "code_knacker": "<strong>Buch der Sprüche (Kapitel 15, Vers 1)</strong><br><br>Eine psychologische Perle. Schon vor Jahrtausenden war klar, dass Kommunikation ein System aus Aktion und Reaktion ist – und wir die Macht haben, das System jederzeit zu stoppen.",
+    "zeitgeist": "Wenn dich jemand angreift, ist der erste Impuls sofortiger Gegenschlag. Das ist der direkteste Weg in die Eskalation. Probier heute das 'Judo der Sanftmut': Antworte mit einem völlig unerwarteten, ruhigen und freundlichen Satz. Du wirst sehen, wie das Gegenüber komplett aus dem Konzept gerät. Es ist die einzige Art, eine hitzige Situation sofort abzukühlen.",
+    "challenge": "Wenn dir heute jemand muffig kommt, versuche genau das: Antworte extrem sanft, ruhig und wohlwollend. Beobachte die Veränderung."
+  },
+  "07-20": {
+    "original": "2. Korinther 4,16",
+    "volltext": "„Darum werden wir nicht müde; sondern wenn auch unser äußerer Mensch verfällt, so wird doch der innere von Tag zu Tag erneuert.“",
+    "code_knacker": "<strong>2. Brief an die Korinther (Kapitel 4, Vers 16)</strong><br><br>Paulus schreibt dies aus einer massiven körperlichen Krise heraus. Er beschreibt eine faszinierende Diskrepanz zwischen der äußeren Abnutzung und einer unsichtbaren, inneren Dynamik.",
+    "zeitgeist": "Wir sind oft so auf die Fassade fixiert: Müdigkeit, Falten, Stressspuren. Wir definieren uns über unser Äußeres und unsere Leistungsfähigkeit. Dieser Text ist ein Plädoyer für den inneren Menschen. Erlaube dir, nach außen hin müde zu sein, aber achte peinlich genau darauf, dass dein innerer Kern – deine Freude, dein Glaube, deine Werte – jeden Tag eine kleine Erfrischung bekommt.",
+    "challenge": "Wie erfrischst du heute deinen 'inneren Menschen'? Gönne dir einen Gedanken, eine Musik oder einen Moment der Ruhe, der dich von innen heraus belebt."
+  },
+  "07-21": {
+    "original": "Psalm 23,5",
+    "volltext": "„Du bereitest vor mir einen Tisch im Angesicht meiner Feinde. Du salbst mein Haupt mit Öl und schenkst mir voll ein.“",
+    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 23, Vers 5)</strong><br><br>Ein Bild der radikalen Souveränität. Selbst wenn man von Sorgen oder Problemen (den Feinden) umzingelt ist, findet in der Mitte ein Festmahl statt.",
+    "zeitgeist": "Wir warten oft darauf, dass alle Probleme gelöst sind, bevor wir uns 'erlauben', glücklich zu sein. Das ist ein Fehler. Wenn du wartest, bis der Schreibtisch leer ist, wirst du nie feiern. Feiere mitten im Chaos. Setz dich an den Tisch, den dir das Leben deckt, auch wenn es gerade stressig ist. Diese innere Freude ist dein ultimativer Sieg über jeden Umstand.",
+    "challenge": "Gönne dir heute einen kleinen Moment der Freude oder des Genusses, auch wenn es eigentlich noch einiges zu erledigen gäbe. Lass dich nicht vom Stress diktieren."
+  },
+  "07-22": {
     "original": "Sprüche 17,22",
     "volltext": "„Ein fröhliches Herz tut dem Leibe wohl, aber ein betrübter Geist dörrt das Gebein aus.“",
     "code_knacker": "<strong>Buch der Sprüche (Kapitel 17, Vers 22)</strong><br><br>Die antike Psychosomatik. Ein 'fröhliches Herz' ist hier nicht nur ein Gefühl, sondern eine wirksame Therapie für das körperliche System.",
     "zeitgeist": "Lachen, Dankbarkeit und Humor sind keine Luxusgüter, sondern lebensnotwendige Arznei. Wenn wir uns permanent grämen, verbittern oder den Fokus nur auf das Defizit legen, werden wir buchstäblich trocken und schwer. Du hast die volle Verantwortung für dein emotionales Klima. Schütze dich vor Zynismus wie vor einem Gift.",
     "challenge": "Such heute bewusst nach einem Grund zu lächeln oder zu lachen. Sei es eine alte Erinnerung, ein lustiger Text oder das Gespräch mit einem fröhlichen Menschen."
   },
-  "08-08": {
-    "original": "Jakobus 1,19",
-    "volltext": "„Ihr wisst das, meine lieben Brüder: Ein jeder Mensch sei schnell zum Hören, langsam zum Reden, langsam zum Zorn.“",
-    "code_knacker": "<strong>Brief des Jakobus (Kapitel 1, Vers 19)</strong><br><br>Jakobus schreibt sehr direkt an die frühen Gemeinden. Seine Reihenfolge der Sinnesorgane ist pure Lebensklugheit: Wir haben zwei Ohren, aber nur einen Mund.",
-    "zeitgeist": "Wie oft unterbrechen wir andere, weil wir im Kopf schon unsere Antwort formulieren? Wie schnell rutscht uns im Ärger ein Wort heraus, das wir später bitter bereuen? Dieser Vers dreht den Spieß um. Geh heute mit einer inneren Bremse durch den Tag: Erst zuhören, richtig sacken lassen – und dann erst antworten. Du wirst merken, wie viel entspannter Gespräche laufen.",
-    "challenge": "Lass heute in jedem Gespräch dein Gegenüber komplett ausreden. Warte nach seinem letzten Satz bewusst zwei Sekunden, bevor du antwortest."
+  "07-23": {
+    "original": "Jesaja 41,13",
+    "volltext": "„Denn ich bin der HERR, dein Gott, der deine rechte Hand fasst und zu dir spricht: Fürchte dich nicht, ich helfe dir!“",
+    "code_knacker": "<strong>Buch des Propheten Jesaja (Kapitel 41, Vers 13)</strong><br><br>Ein sehr intimer, fast zärtlicher Zuspruch. Das Fassen der Hand ist ein Ausdruck von engster Begleitung und aktiver Führung.",
+    "zeitgeist": "Angst macht uns einsam. Sie isoliert uns in unserem Kopf und suggeriert uns, wir müssten da alleine durch. Dieser Text ist dein täglicher Korrekturwert. Du wirst nicht nur von oben beobachtet, du wirst aktiv an der Hand geführt. Das nimmt die Schwere aus jedem noch so anstrengenden Weg. Wenn du dich heute verunsichert fühlst, atme kurz ein und lass dich führen.",
+    "challenge": "Gehe heute mit dem Gedanken durch den Tag: 'Ich werde geführt.' Achte darauf, ob sich dadurch dein Stresslevel bei kleinen Entscheidungen verändert."
   },
-  "08-09": {
-    "original": "Sprüche 18,10",
-    "volltext": "„Der Name des HERRN ist eine feste Burg; der Gerechte läuft dorthin und wird beschützt.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 18, Vers 10)</strong><br><br>Das Bild der 'feste Burg' steht für ein massives, uneinnehmbares Bollwerk auf einem Felsen. Wenn Gefahr drohte, floh die Bevölkerung dorthin.",
-    "zeitgeist": "Manchmal prasseln die Anforderungen des Alltags wie ein Hagelschauer auf uns ein. Man fühlt sich gestresst, dünnhäutig und angegriffen. Dieser Spruch schenkt dir einen mentalen Zufluchtsort. Du musst nicht jeden Kampf im Außen sofort aufnehmen. Zieh dich innerlich in deine Festung zurück, werde still und sammle deine Kräfte in der Gewissheit, dass dein innerer Kern absolut unzerstörbar ist.",
-    "challenge": "Baue dir heute eine kleine 'Burgen-Pause' ein: Setze dich für drei Minuten ruhig hin, schließe die Augen und blende die Welt im Außen komplett aus."
-  },
-  "08-10": {
-    "original": "Psalm 23,2",
-    "volltext": "„Er weidet mich auf einer grünen Aue und führet mich zum frischen Wasser.“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 23, Vers 2)</strong><br><br>Verfasst aus der Perspektive eines Schafes. Im trockenen, steinigen Nahen Osten waren saftig grüne Wiesen und klares, ruhiges Wasser ein seltener Luxus. Der Hirte hetzt die Herde nicht.",
-    "zeitgeist": "Dieser Vers ist eine herzliche Einladung zur mentalen Pause. Wir hetzen oft von einem Termin zum nächsten und vergessen dabei das Auftanken. Deine Seele braucht diese 'grünen Auen' – Momente, in denen du einfach mal durchatmen, die Landschaft genießen und zur Ruhe kommen darfst. Erlaube dir heute bewusst diese Erholung.",
-    "challenge": "Nutze deine heutige Mittagspause für einen zehnminütigen Spaziergang im Grünen – komplett ohne Smartphone. Schau ins Grüne und atme tief durch."
-  },
-  "08-11": {
+  "07-24": {
     "original": "Sprüche 11,2",
     "volltext": "„Wo Stolz ist, da ist auch Schande; aber Weisheit ist bei den Demütigen.“",
     "code_knacker": "<strong>Buch der Sprüche (Kapitel 11, Vers 2)</strong><br><br>Eine Warnung vor der Arroganz aus der altorientalischen Weisheitsliteratur. Demut bedeutet hier schlicht die Fähigkeit, sich selbst realistisch und ohne Überhöhung einzuschätzen.",
     "zeitgeist": "Stolz macht blind. Wer denkt, er hätte das System durchschaut, macht die fatalsten Fehler. Weisheit dagegen ist extrem lernbereit. Sie ist immer bereit, sich korrigieren zu lassen. Wenn du heute merkst, dass dein Ego auf Hochtouren läuft und du recht behalten willst: tritt einen Schritt zurück. Die demütige Haltung ('Ich weiß es vielleicht noch nicht genau') öffnet dir die besten Türen.",
     "challenge": "Wenn du heute eine Diskussion führst, versuche bewusst, den Standpunkt des anderen einmal einzunehmen, ohne dein Ego zu verteidigen."
   },
-  "08-12": {
-    "original": "Psalm 9,2",
-    "volltext": "„Ich danke dem HERRN von ganzem Herzen und erzähle alle deine Wunder.“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 9, Vers 2)</strong><br><br>Ein überschäumender Jubelpsalm. Es geht hier nicht um ein stilles, heimliches Dankeschön, sondern um das bewusste, laute Formulieren der guten Erfahrungen nach außen.",
-    "zeitgeist": "Wir sind wahre Meister darin, uns über das Wetter, die Politik oder die Nachbarn lautstark zu beschweren. Aber wenn etwas gut läuft, schweigen wir oft, als sei es selbstverständlich. Brich dieses Muster. Wenn dir etwas Schönes passiert ist, wenn du etwas geschafft hast oder wenn dir jemand geholfen hat – mach es zum Thema. Gute Nachrichten sind ansteckend.",
-    "challenge": "Erzähle heute einer Person aus deinem Umfeld ganz bewusst von einer Sache, die in letzter Zeit in deinem Leben richtig gut funktioniert hat."
+  "07-25": {
+    "original": "Psalm 34,19",
+    "volltext": "„Der HERR ist nahe, denen, die zerbrochenen Herzens sind, und hilft denen, die ein zerschlagenes Gemüt haben.“",
+    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 34, Vers 19)</strong><br><br>Ein tröstendes Versprechen für Menschen im absoluten emotionalen Tief. Gott wird hier nicht als abstrakte Macht beschrieben, sondern als Anwesenheit bei den Niedergeschlagenen.",
+    "zeitgeist": "Wenn das Herz zerbrochen ist – durch Verrat, Verlust oder Scheitern –, dann wirken Worte von Optimismus oft wie Hohn. Dieser Vers verspricht keine schnelle Heilung, aber er verspricht eine Präsenz. Du bist in deinem Tal nicht allein. Die tiefste Ebene deiner Erschöpfung ist der Ort, an dem du wieder zu dir selbst und zur Verbindung mit dem Leben findest.",
+    "challenge": "Solltest du dich heute innerlich zerschlagen fühlen: Erlaube dir, heute keine Kraft zu haben. Sei einfach da und vertraue darauf, dass dies der Ort ist, an dem du heilst."
   },
-  "08-13": {
-    "original": "Sprüche 15,22",
-    "volltext": "„Die Pläne werden zunichte, wo man nicht miteinander berät; wo aber viele Ratgeber sind, gelingen sie.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 15, Vers 22)</strong><br><br>Ein zeitloser Rat für Projektmanagement aus dem alten Orient. Er warnt vor dem Alleingang und lobt die Schwarmintelligenz.",
-    "zeitgeist": "Wer immer alles alleine entscheiden will, verliert schnell den Blick für den toten Winkel. Das eigene Ego redet uns ein, nach Hilfe zu fragen sei ein Zeichen von Schwäche. Das Gegenteil ist wahr. Die schlausten Leute holen sich rechtzeitig kluge Köpfe an den Tisch. Nutze die Erfahrung anderer, lass deine Pläne von außen abklopfen – so vermeidest du teure Bruchlandungen.",
-    "challenge": "Teile heute eine Idee oder ein Vorhaben mit jemandem, dessen Meinung du schätzt, und frage aktiv nach ehrlichem Feedback."
+  "07-26": {
+    "original": "Sprüche 28,20",
+    "volltext": "„Ein treuer Mann hat viel Segen; wer aber will schnell reich werden, der bleibt nicht ungestraft.“",
+    "code_knacker": "<strong>Buch der Sprüche (Kapitel 28, Vers 20)</strong><br><br>Ein sehr moderner Rat für den Umgang mit Geld und Erfolg. Die antiken Weisen warnten vor dem 'schnellen Geld', weil es oft auf Kosten der Integrität geht.",
+    "zeitgeist": "Wir werden ständig mit Erfolgsgeschichten über Nacht bombardiert. Das erzeugt einen massiven Druck, den einfachen Weg zu suchen. Doch wer Integrität gegen Schnelligkeit tauscht, zahlt am Ende den höchsten Preis. 'Treue' im Sinne von Beständigkeit und Geradlinigkeit baut eine Substanz auf, die keine Krise erschüttern kann. Erfolg durch harte, saubere Arbeit schmeckt einfach besser.",
+    "challenge": "Investiere heute Zeit in eine Aufgabe, die erst in langer Zeit Früchte trägt, anstatt dich nur auf kurzfristige Ergebnisse zu konzentrieren."
   },
-  "08-14": {
-    "original": "Psalm 19,15",
-    "volltext": "„Lass dir gefallen die Rede meines Mundes und das Gespräch meines Herzens vor dir, HERR, mein Fels und mein Erlöser.“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 19, Vers 15)</strong><br><br>Der Schlusssatz eines großen Schöpfungsliedes. Das 'Gespräch des Herzens' meint die geheimen, leisen Gedanken, die wir im Stillen wälzen.",
-    "zeitgeist": "Wir achten oft penibel darauf, was wir nach außen hin sagen, um einen guten Eindruck zu machen. Aber was läuft eigentlich auf unserer inneren Tonspur? Welche Selbstgespräche führen wir im Kopf? Dieser Vers lädt dich ein, auch deine geheimen Gedanken aufzugreifen. Lass dort keinen Platz für giftigen Groll oder endlose Sorgen. Mach dein Inneres zu einem Ort des Friedens.",
-    "challenge": "Ewiges Gedankenkarussell im Kopf? Stoppe dich heute bei der ersten negativen Gedankenschleife und ersetze sie bewusst durch den Satz: 'Eins nach dem anderen. Alles wird gut.'"
+  "07-27": {
+    "original": "Epheser 4,2",
+    "volltext": "„Seid demütig, sanftmütig und geduldig, und ertragt einer den andern in Liebe.“",
+    "code_knacker": "<strong>Brief an die Epheser (Kapitel 4, Vers 2)</strong><br><br>Eine kurze Anleitung für den sozialen Zusammenhalt in der Gemeinde. Es ist das Fundament für jedes Team, das über einen längeren Zeitraum funktionieren soll.",
+    "zeitgeist": "Das ist keine weiche Kuschelanleitung. Das ist ein knallhartes Programm für soziale Stabilität. Wenn jeder auf sein Recht pocht, ist das System sofort tot. Wenn jeder nur sanftmütig und geduldig ist, bricht es zusammen. Die Mischung macht es: Sei klar, aber bleib demütig. Ertrage die Macken der anderen mit Liebe – so baust du ein Team, das durch nichts zu erschüttern ist.",
+    "challenge": "Ertrage heute bewusst eine Eigenschaft eines anderen Menschen, die du normalerweise als störend empfindest, mit einer Entscheidung für Geduld."
   },
-  "08-15": {
-    "original": "Sprüche 11,25",
-    "volltext": "„Wer reichlich gibt, wird gelabt, und wer reichlich tränkt, der wird auch getränkt werden.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 11, Vers 25)</strong><br><br>Das Gesetz der Resonanz aus der altorientalischen Weisheit. Das Bild stammt aus der Landwirtschaft: Wer großzügig Saatgut verteilt, erntet am Ende auch die Fülle.",
-    "zeitgeist": "Das Leben hat eine wunderbare Eigendynamik: Was du aussendest, kommt irgendwann auf überraschenden Umwegen zu dir zurück. Wer geizig mit seiner Zeit, seiner Liebe oder seiner Hilfe umgeht, dessen Leben wird oft eng und trocken. Wer aber großzügig Vorschussvertrauen schenkt, andere unterstützt und mit offenem Herzen gibt, merkt, wie das Leben ihn auf magische Weise bereichert.",
-    "challenge": "Sei heute in irgendeiner Form spürbar großzügig: Schenke jemandem deine Zeit, gib ein großzügiges Trinkgeld oder hilf ungefragt bei einer lästigen Aufgabe mit an."
+  "07-28": {
+    "original": "Psalm 121,2",
+    "volltext": "„Meine Hilfe kommt vom HERRN, der Himmel und Erde gemacht hat.“",
+    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 121, Vers 2)</strong><br><br>Der wohl kürzeste und kraftvollste Satz für die Krisenbewältigung. Er verknüpft die persönliche Not mit dem Schöpfer des gesamten Universums.",
+    "zeitgeist": "Wenn wir Hilfe brauchen, suchen wir sie oft beim Menschen – bei Experten, bei Freunden, beim Arzt. Das ist richtig so. Aber manchmal reichen diese Quellen nicht. Dann brauchst du einen Kontakt zu einer Instanz, die über dem ganzen Alltags-Wirrwarr steht. Dieser Satz ist eine Erinnerung an die göttliche Perspektive, die dir Gelassenheit gibt: Dein Problem ist nicht unlösbar.",
+    "challenge": "Lasse heute kurz alles los. Atme tief ein und wieder aus und sage dir: 'Ich bin eingebettet in eine Ordnung, die größer ist als mein heutiger Stress.'"
   },
-  "08-16": {
-    "original": "Psalm 23,4",
-    "volltext": "„Und ob ich schon wanderte im finstern Tal, fürchte ich kein Unglück; denn du bist bei mir, dein Stecken und Stab trösten mich.“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 23, Vers 4)</strong><br><br>Der berühmte Hirtenpsalm. Der 'Stecken' war eine Keule zur Abwehr wilder Tiere, der 'Stab' ein langer Stock mit Haken, um Schafe sanft aus dem Gebüsch zu ziehen.",
-    "zeitgeist": "Es gibt Phasen im Leben, die fühlen sich an wie ein langer Marsch durch ein finsteres Tal – schwere Zeiten, Krisen oder Phasen voller Einsamkeit. Dieser Vers verspricht dir mitten in der Dunkelheit eine unerschütterliche Gewissheit: Du bist da nicht alleine drin. Da ist eine Kraft an deiner Seite, die dich beschützt, dich sanft führt und dir den Rücken freihält. Hab keine Angst, das Tal hat ein Ende.",
-    "challenge": "Wenn du dich heute von einer Situation bedrückt oder einsam fühlst, atme tief aus und mache dir bewusst: 'Das ist nur eine Phase. Ich bin nicht allein. Ich gehe da durch.'"
+  "07-29": {
+    "original": "Sprüche 18,13",
+    "volltext": "„Wer antwortet, ehe er hört, dem ist es Torheit und Schande.“",
+    "code_knacker": "<strong>Buch der Sprüche (Kapitel 18, Vers 13)</strong><br><br>Eine Regel für die Diskussionskultur. Wer schon seine Antwort formuliert, während der andere noch spricht, hat den Kern der Kommunikation bereits verloren.",
+    "zeitgeist": "Wir sind Weltmeister im Antizipieren. Wir denken, wir wissen schon, was der andere sagen will, und unterbrechen ihn oder formulieren schon im Kopf unsere Antwort. Das Ergebnis: Wir hören nicht zu, wir warten nur darauf, selbst zu reden. Wer wirklich klug sein will, der hört bis zum letzten Wort zu – ohne Antwort-Druck. Das macht dich in jedem Gespräch zur wichtigsten Person.",
+    "challenge": "Höre heute bei einem Gespräch bewusst bis zum letzten Wort zu. Mache nach dem Ende des Satzes eine kurze Pause, bevor du antwortest."
   },
-  "08-17": {
-    "original": "Sprüche 16,18",
-    "volltext": "„Wer zugrunde gehen soll, der wird zuvor stolz; und Hochmut kommt vor dem Fall.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 16, Vers 18)</strong><br><br>Eine der bekanntesten Redewendungen der Welt. Der Spruch warnt vor der Arroganz des Egos, das den Bodenkontakt verliert und denkt, es brauche niemanden mehr.",
-    "zeitgeist": "Wenn man denkt, man hätte alles im Griff, wüsste alles besser und brauche keinen Rat mehr – dann steht man psychologisch gesehen auf extrem dünnem Eis. Hochmut macht blind für die eigenen Fehler und taub für die Mitmenschen. Wahre Souveränität zeigt sich auf Augenhöhe: Bleib bodenständig, bleib lernbereit und nimm dich selbst nicht so furchtbar wichtig. Das schützt vor harten Landungen.",
-    "challenge": "Lass heute in einem Gespräch einer anderen Person absolut den Vortritt. Lass sie glänzen, ohne deine eigene Leistung danebenstellen zu müssen."
+  "07-30": {
+    "original": "Jesaja 58,11",
+    "volltext": "„Und der HERR wird dich allezeit führen und dich sättigen in der Dürre und dein Gebein stärken; und du wirst sein wie ein bewässerter Garten und wie eine Wasserquelle, deren Wasser niemals versiegt.“",
+    "code_knacker": "<strong>Buch des Propheten Jesaja (Kapitel 58, Vers 11)</strong><br><br>Ein Bild für absolute mentale und spirituelle Resilienz. Mitten in der Wüste (Dürre) behält man den Zugang zu einer inneren Wasserquelle.",
+    "zeitgeist": "Wir fühlen uns oft wie in der Wüste: ausgebrannt, leer, ohne Inspiration. Die Antwort ist nicht, mehr Wasser von außen zu kaufen, sondern den inneren Brunnen freizulegen. Wenn du deine Verbindung zu deinem Kern, zu deiner Spiritualität und deinen Werten pflegst, wirst du selbst zur Oase. Du hast dann in dir eine Quelle, die niemals versiegt, egal wie hart es draußen zugeht.",
+    "challenge": "Nutze diesen Monatsschluss für eine kleine innere Inventur: Was nährt deine Seele? Plane für den August bewusst einen Termin mit dieser Quelle ein."
   },
-  "08-18": {
-    "original": "Psalm 119,14",
-    "volltext": "„Ich freue mich über den Weg deiner Zeugnisse wie über allen Reichtum.“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 119, Vers 14)</strong><br><br>Ein Satz aus dem großen Loblied auf die Lebensgesetze. Der Schreiber definiert Reichtum völlig neu: Nicht der Besitz von Gold oder Silber macht glücklich, sondern das Besitzen von innerer Klarheit und Weisheit.",
-    "zeitgeist": "Wir jagen oft materiellen Dingen hinterher in der Hoffnung, sie würden uns dauerhaft glücklich machen. Doch dieser Vers lenkt den Blick auf den wahren, unzerstörbaren Reichtum: Ein Leben in innerer Harmonie, Klarheit und Weisheit. Wer gute Prinzipien hat, danach handelt und im Reinen mit sich selbst ist, besitzt einen Schatz, den keine Inflation der Welt jemals entwerten kann.",
-    "challenge": "Mache heute eine kurze Inventur deines 'wahren Reichtums': Notiere dir im Kopf drei immaterielle Dinge in deinem Leben, die du für kein Geld der Welt hergeben würdest."
-  },
-  "08-19": {
-    "original": "2. Timotheus 1,7",
-    "volltext": "„Denn Gott hat uns nicht gegeben den Geist der Furcht, sondern der Kraft und der Liebe und der Besonnenheit.“",
-    "code_knacker": "<strong>2. Brief an Timotheus (Kapitel 1, Vers 7)</strong><br><br>Ein sehr persönlicher Rat von Paulus an seinen jüngeren Mitarbeiter. Er stellt der lähmenden Angst ein mächtiges Trio entgegen.",
-    "zeitgeist": "Angst ist oft ein schlechter Berater. Sie macht uns eng, lässt uns vorschnell reagieren und blockiert kreative Lösungen. Dieser Vers ist eine brillante Checkliste für gute Entscheidungen. Bevor du heute etwas Wichtiges tust, frage dich: Kommt mein Handeln gerade aus der Angst heraus? Oder ist es geprägt von Kraft (Mut), von Liebe (Empathie) und von Besonnenheit (kühlem Kopf)?",
-    "challenge": "Überprüfe heute eine kleine Entscheidung. Reagierst du gerade aus Angst oder Stress? Wenn ja, atme durch und wähle bewusst den Weg der Besonnenheit."
-  },
-  "08-20": {
-    "original": "Psalm 23,2",
-    "volltext": "„Er weidet mich auf einer grünen Aue und führet mich zum frischen Wasser.“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 23, Vers 2)</strong><br><br>Verfasst aus der Perspektive eines Schafes. Im trockenen, steinigen Nahen Osten waren saftig grüne Wiesen und klares Wasser ein Luxus.",
-    "zeitgeist": "Dieser Vers ist eine herzliche Einladung zur mentalen Pause. Wir hetzen oft von einem Termin zum nächsten und vergessen dabei das Auftanken. Deine Seele braucht aber genau diese 'grünen Auen' – Momente, in denen du einfach mal durchatmen, die Landschaft genießen und zur Ruhe kommen darfst. Erlaube dir heute bewusst diese Erholung.",
-    "challenge": "Nutze deine heutige Mittagspause für einen zehnminütigen Spaziergang im Grünen – komplett ohne Smartphone. Schau ins Grüne und atme tief durch."
-  },
-  "08-21": {
-    "original": "Sprüche 16,21",
-    "volltext": "„Ein Verständiger wird gerühmt als ein weiser Mann, und liebliche Rede mehrt die Einsicht.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 16, Vers 21)</strong><br><br>Ein weiser Rat zum Thema Kommunikation. Fachwissen allein beeindruckt niemanden. Erst wenn die Worte mit Herzlichkeit vorgetragen werden, kommt die Botschaft an.",
-    "zeitgeist": "Man kann in einer Sache absolut recht haben – wenn man es dem anderen aber arrogant oder muffig vor den Latz knallt, schaltet er sofort auf stur. Dieser Spruch erinnert uns daran, wie wichtig der Ton im Alltag ist. Freundlichkeit öffnet Türen und Herzen. Wer verständnisvoll und auf Augenhöhe spricht, überzeugt andere viel tiefer.",
-    "challenge": "Solltest du heute jemandem etwas erklären oder Feedback geben müssen, verpacke es ganz bewusst in besonders wertschätzende Worte."
-  },
-  "08-22": {
-    "original": "Jesaja 43,1",
-    "volltext": "„Fürchte dich nicht, denn ich habe dich erlöst; ich habe dich bei deinem Namen gerufen; du bist mein!“",
-    "code_knacker": "<strong>Buch des Propheten Jesaja (Kapitel 43, Vers 1)</strong><br><br>Ein gewaltiger Zuspruch. Im antiken Orient war der Name nicht nur Schall und Rauch, sondern drückte das tiefste Wesen einer Person aus.",
-    "zeitgeist": "In einer Welt voller Nummern, IDs und anonymer Prozesse fühlen wir uns oft wie ein kleines, ersetzbares Rädchen im Getriebe. Dieser Satz ist eine Liebeserklärung an deine Einzigartigkeit. Du bist gesehen. Du bist gekannt. Du bist keine Nummer, sondern wurdest mit all deinen Stärken und Schwächen ganz bewusst ins Leben gerufen. Das verleiht einen extrem stabilen Stand.",
-    "challenge": "Wenn du dich heute unbeachtet oder unbedeutend fühlst, rufe dir selbst leise deinen Vornamen ins Gedächtnis und sage: 'Ich bin hier. Und ich bin genau richtig so.'"
-  },
-  "08-23": {
-    "original": "Sprüche 15,30",
-    "volltext": "„Ein freundlicher Blick erfreut das Herz; eine gute Botschaft labt das Gebein.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 15, Vers 30)</strong><br><br>Eine faszinierende Beobachtung über die körperlichen Auswirkungen von positiven Signalen. 'Laben des Gebeins' meint eine tiefgreifende Erfrischung von innen heraus.",
-    "zeitgeist": "Wir unterschätzen oft, wie viel Macht wir im Alltag über das Wohlbefinden anderer haben. Ein einziger freundlicher, anerkennender Blick an der Supermarktkasse oder beim Bäcker kann dem Gegenüber den ganzen Tag retten. Und gute, aufbauende Nachrichten wirken wie Medizin auf unseren Körper. Sei heute ein Sender für diese positive Energie.",
-    "challenge": "Schenke heute drei Menschen, denen du im Alltag begegnest, einen ganz bewussten, freundlichen Blick und ein herzliches 'Danke' oder 'Guten Tag'."
-  },
-  "08-24": {
-    "original": "Prediger 3,12",
-    "volltext": "„Da merkte ich, dass es nichts Besseres dabei gibt als fröhlich sein und sich gütlich tun in seinem Leben.“",
-    "code_knacker": "<strong>Buch des Predigers (Kapitel 3, Vers 12)</strong><br><br>Geschrieben von einem extrem realistischen Philosophen. Nach all seinen philosophischen Grübeleien bricht er die Essenz des Lebens auf diese simple Formel herunter.",
-    "zeitgeist": "Wir machen das Leben viel zu kompliziert mit unseren Ansprüchen, Zweifeln und Theorien. Dieser Spruch sagt ganz einfach: Freu dich an den kleinen Dingen, genieße den Tag und tu den Menschen um dich herum etwas Gutes. Mehr brauchst du für ein erfülltes Leben nicht.",
-    "challenge": "Tu heute einer Person in deinem Umfeld eine kleine Freude und gönne dir selbst am Nachmittag etwas, das dich einfach nur glücklich macht."
-  },
-  "08-25": {
-    "original": "Psalm 121,7",
-    "volltext": "„Der HERR behüte dich vor allem Übel, er behüte deine Seele.“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 121, Vers 7)</strong><br><br>Die ultimative Schutzzusage. Hier wird nicht nur der Körper oder das Hab und Gut geschützt, sondern die 'Seele' – das tiefste Ich.",
-    "zeitgeist": "Man kann vieles verlieren: Geld, Ansehen, Materielles. Aber wenn dein innerer Kern beschädigt wird, verlierst du dich selbst. Dieser Vers ist dein Schutzschild für deine Integrität und deine innere Unversehrtheit. Egal was im Außen passiert, du bist in deinem Kern geschützt und gewahrt.",
-    "challenge": "Gehe heute mit der festen Gewissheit durch den Tag: 'Mein innerer Kern bleibt unangetastet, egal was von außen kommt.'"
-  },
-  "08-26": {
-    "original": "Sprüche 16,9",
-    "volltext": "„Des Menschen Herz erdenkt sich seinen Weg, aber der HERR allein lenkt seinen Schritt.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 16, Vers 9)</strong><br><br>Ein weiser, fast humorvoller Blick auf die menschliche Natur. Er beschreibt die Spannung zwischen unseren akribischen Plänen und der unvorhersehbaren Realität.",
-    "zeitgeist": "Wir lieben unsere To-Do-Listen und Terminplaner. Aber das Leben hält sich selten an unsere Skripte: Da streikt die Technik, ein Termin platzt oder ein spontaner Anruf wirft den ganzen Tag über den Haufen. Dieser Spruch nimmt dir den Druck. Mach deine Pläne, aber bleib flexibel genug, um die Umwege des Lebens als Führung zu begreifen.",
-    "challenge": "Wenn heute etwas absolut nicht nach deinem Plan läuft, ärgere dich nicht, sondern atme tief durch und sage dir: 'Okay, dann soll es wohl gerade so sein. Mal sehen, was daraus entsteht.'"
-  },
-  "08-27": {
-    "original": "Psalm 4,9",
-    "volltext": "„Ich liege und schlafe ganz mit Frieden; denn allein du, HERR, hilfst mir, dass ich sicher wohne.“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 4, Vers 9)</strong><br><br>Ein Abendlied, das in einer Zeit voller politischer Unruhen geschrieben wurde. Trotz der Gefahr findet der Schreiber eine tiefe Ruhe für die Nacht.",
-    "zeitgeist": "Kennst du die Abende, an denen das Gedankenkarussell im Bett einfach nicht stoppen will? Dieser Vers ist wie ein digitaler Ausschaltknopf. Er lädt dich ein, die To-Do-Listen, die Sorgen um Projekte oder den Trubel des Tages beim Schlafengehen an der Garderobe abzugeben. Du musst die Welt nachts nicht retten – du darfst einfach vertrauen und abschalten.",
-    "challenge": "Lege heute Abend das Smartphone eine Stunde vor dem Schlafen weg. Atme im Bett dreimal tief durch und sage dir selbst: 'Für heute ist alles erledigt. Ich darf jetzt ausruhen.'"
-  },
-  "08-28": {
-    "original": "Sprüche 3,27",
-    "volltext": "„Weigere dich nicht, dem Bedürftigen Gutes zu tun, wenn es in der Macht deiner Hand liegt.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 3, Vers 27)</strong><br><br>Ein handfester Rat aus der antiken Weisheitsliteratur. Es geht nicht um große Programme, sondern um das direkte Handeln im eigenen Umfeld.",
-    "zeitgeist": "Wie oft sehen wir etwas, das man verbessern könnte, oder jemanden, der Hilfe braucht, und denken: 'Müsste mal einer machen.' Dieser Spruch holt dich ganz pragmatisch ins Hier und Jetzt zurück. Wenn du die Möglichkeit, die Zeit oder die Mittel hast, um in diesem Moment unkompliziert zu helfen – dann tu es einfach. Die Macht liegt in deiner Hand.",
-    "challenge": "Wenn du heute eine kleine Gelegenheit siehst, unkompliziert zu helfen – sei es beim Tragen, beim Aufhalten einer Tür –, zögere nicht. Mach es einfach."
-  },
-  "08-29": {
-    "original": "Psalm 34,9",
-    "volltext": "„Schmecket und sehet, wie freundlich der HERR ist; wohl dem, der auf ihn trauet!“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 34, Vers 9)</strong><br><br>Ein Lied, das in einer Extremsituation voller Angst entstand. Glaube ist hier keine Kopfsache, sondern eine pure sinnliche Erfahrung.",
-    "zeitgeist": "Dieser Vers ist eine Einladung, das Leben mit allen Sinnen zu genießen. Die tiefe Güte ist keine abstrakte Theorie, sondern etwas, das man im Alltag ganz real 'schmecken' kann – im Duft des Kaffees, im Lachen eines lieben Menschen oder in der Ruhe des Feierabends. Wer mit dieser offenen, genießenden Haltung durch den Tag geht, entdeckt überall kleine Funken von Freundlichkeit.",
-    "challenge": "Nimm heute die erste Mahlzeit oder den ersten Kaffee des Tages ganz bewusst wahr. Schließe kurz die Augen und schmecke die pure Freundlichkeit des Moments."
-  },
-  "08-30": {
-    "original": "Sprüche 15,4",
-    "volltext": "„Eine heilsame Zunge ist ein Baum des Lebens; aber eine verkehrte Zunge bringt Herzeleid.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 15, Vers 4)</strong><br><br>Das Bild vom 'Baum des Lebens' steht im alten Orient für Energie, Schatten, Erholung und Gesundheit. Worte werden hier als handfeste Lebens-Medizin verstanden.",
-    "zeitgeist": "Deine Worte haben die Kraft, das Klima in deinem Umfeld komplett zu steuern. Wenn wir meckern, lästern oder sarkastisch austeilen, brennt das Wunden in die Seelen der Menschen um uns herum. Wenn wir aber aufbauend, freundlich und heilsam sprechen, schenken wir dem anderen regelrecht Schatten zum Aufatmen und neue Lebensenergie. Sei heute eine Oase, keine Wüste.",
-    "challenge": "Achte heute penibel darauf, in Gesprächen kein negatives Wort über abwesende Personen zu verlieren. Wenn gelästert wird, wechsle elegant das Thema."
-  },
-  "08-31": {
-    "original": "Sprüche 27,1",
-    "volltext": "„Rühme dich nicht des morgigen Tages; denn du weißt nicht, was ein einziger Tag gebären mag.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 27, Vers 1)</strong><br><br>Ein extrem bodenständiger Spruch über die Unvorhersehbarkeit des Lebens. Er warnt vor der arroganten Illusion, wir könnten die Zukunft besitzen.",
-    "zeitgeist": "Wir machen Pläne für das nächste Jahr, die nächste Woche oder den morgigen Tag – und das ist gut so. Aber dieser Vers erinnert uns mit einem Augenzwinkern daran, dass wir das 'Morgen' nicht besitzen. Das Einzige, was wir wirklich haben, ist das Hier und Jetzt, der heutige Tag. Verschiebe die Freude, das nette Wort oder das Leben nicht auf morgen. Lebe heute.",
-    "challenge": "Gibt es etwas Schönes, das du schon länger aufschiebst? Tue es heute. Warte nicht auf das perfekte 'Morgen', nutze das reale 'Heute'."
+  "07-31": {
+    "original": "Psalm 127,2",
+    "volltext": "„Es ist umsonst, dass ihr früh aufsteht und lange danach aufsitzt und esst mit Sorgen; denn seinen Freunden gibt er es im Schlaf.“",
+    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 127, Vers 2)</strong><br><br>Ein radikaler Satz gegen das Burnout-Syndrom. Er warnt vor dem Aberglauben, dass der Erfolg eines Projekts nur von der Länge der Arbeitszeit und dem Grad der Sorge abhängt.",
+    "zeitgeist": "Die Welt suggeriert uns: Wer am meisten leidet und am wenigsten schläft, gewinnt. Dieser Vers sagt das Gegenteil: Gönn dir den Schlaf! Sei ein 'Freund' einer höheren Ordnung. Dein Gehirn und deine Seele brauchen die Distanz. Oft lösen sich die schwierigsten Probleme am besten, wenn du sie loslässt und schläfst. Sei heute bewusst fertig mit der Arbeit und geh früh schlafen.",
+    "challenge": "Schließe den Monat ab, indem du heute pünktlich Feierabend machst. Sei fertig mit der Arbeit. Alles andere klärt sich morgen."
   },
   "09-01": {
     "original": "Psalm 23,3",
@@ -1784,7 +1784,7 @@
     "zeitgeist": "Wir wollen oft hundert Dinge gleichzeitig: Erfolg, Ruhe, Anerkennung, Materielles. Diese Zerrissenheit macht uns unruhig. Der Vers zeigt die Kraft der Reduktion: Finde das eine Zentrum, das dir wirklich Halt gibt. Wenn du einen festen Ort des Friedens in deinem Herzen kultivierst, verliert das Chaos im Außen augenblicklich seine Macht über deine Stimmung.",
     "challenge": "Streiche heute ein unwichtiges Vorhaben von deiner Liste und konzentriere dich vollkommen auf die eine Sache, die dir heute wirklich am Herzen liegt."
   },
-"09-04": {
+  "04-04": {
     "original": "Sprüche 4,27",
     "volltext": "„Weiche weder zur Rechten noch zur Linken; wende deinen Fuß vom Bösen!“",
     "code_knacker": "<strong>Buch der Sprüche (Kapitel 4, Vers 27)</strong><br><br>Ein disziplinierter Rat aus der altorientalischen Lebensschule. Das Bild beschreibt einen Wanderer, der stur auf dem sicheren Pfad bleibt, anstatt sich in unwegsames Gelände locken zu lassen.",
@@ -1896,7 +1896,7 @@
     "zeitgeist": "Ein falsches Wort, ein sarkastischer Kommentar – und schon ist der Riss im Damm. Wenn ein Konflikt erst einmal eskaliert ist, lässt er sich kaum noch stoppen und reißt Beziehungen rücksichtslos mit sich fort. Sei extrem wachsam an der Schwelle. Merkst du, dass eine Diskussion giftig wird? Lass ab davon. Zieh dich zurück, bevor die Emotionen den Verstand fluten.",
     "challenge": "Sollte heute eine Diskussion hitzig werden, stoppe dich mitten im Satz. Sage: 'Lass uns das später in aller Ruhe besprechen.' und brich ab."
   },
-"09-20": {
+  "05-20": {
     "original": "Psalm 100,2",
     "volltext": "„Dienet dem HERRN mit Freude, kommt vor sein Angesicht mit Frohlocken!“",
     "code_knacker": "<strong>Das Buch der Psalmen (Psalm 100, Vers 2)</strong><br><br>Ein klassischer Introitus-Psalm der jüdischen Liturgie. Er fordert dazu auf, Aufgaben und Pflichten ('Dienen') nicht mit mürrischem Gesicht, sondern mit einer leichten, fröhlichen Grundhaltung anzugehen.",
@@ -2036,11 +2036,11 @@
     "zeitgeist": "Dankbarkeit ist kein anstrengender Pflichttermin für das Lehrbuch, sondern purer Luxus für deine psychische Gesundheit. Wenn du dich darauf fokussierst, dem Leben für die guten Details zu danken, schüttet dein Gehirn sofort positive Botenstoffe aus. Es tut dir einfach unendlich gut. Mach dir das Leben köstlich, indem du die Fülle feierst.",
     "challenge": "Notiere dir heute am späten Nachmittag drei ganz konkrete, alltägliche Dinge, die heute reibungslos funktioniert haben oder dir ein Lächeln schenkten."
   },
-"10-10": {
+  "10-10": {
     "original": "Sprüche 15,2",
     "volltext": "„Die Zunge der Weisen macht die Erkenntnis lieblich; der Mund der Toren sprudelt nur Dummheit.“",
     "code_knacker": "<strong>Buch der Sprüche (Kapitel 15, Vers 2)</strong><br><br>Ein genialer Rat für Didaktik und Kommunikation. Es reicht nicht aus, inhaltlich recht zu haben – die Art und Weise, wie ein Gedanke verpackt und präsentiert wird, entscheidet über den Erfolg.",
-    "zeitgeist": "Du kannst die brillanteste Idee oder das beste Fachwissen besitzen – wenn du es den Menschen arrogant oder lieblos vor den Latz knallst, schalten sie sofort auf stur. Wahre Intelligenz zeigt sich in der Verpackung: Sprich verständlich, wertschätzend und auf Augenhöhe. Mach deine Erkenntnis „lieblich“, sodass andere sie gerne annehmen.",
+    "zeitgeist": "Du kannst die brillanteste Idee oder das beste Fachwissen besitzen – wenn du es den Menschen arrogant, arrogant oder lieblos vor den Latz knallst, schalten sie sofort auf stur. Wahre Intelligenz zeigt sich in der Verpackung: Sprich verständlich, wertschätzend und auf Augenhöhe. Mach deine Erkenntnis 'lieblich', sodass andere sie gerne annehmen.",
     "challenge": "Wenn du heute jemandem Feedback geben oder etwas erklären musst, wähle deine Formulierung besonders respektvoll und einladend."
   },
   "10-11": {
@@ -2078,11 +2078,11 @@
     "zeitgeist": "Wir sichern unzählige Daten auf Festplatten und in der Cloud. Aber was speichern wir eigentlich in unserer Seele? Dieser Vers lädt dich ein, dir eine solide innere Wissensdatenbank aus unzerstörbaren Werten und Weisheiten anzulegen. Wenn diese Prinzipien fest in deinem Herzen verankert sind, triffst du in stressigen Momenten des Alltags ganz intuitiv die absolut richtige und faire Entscheidung.",
     "challenge": "Suche dir heute einen Satz oder einen Wert aus, der dir extrem wichtig ist, und wiederhole ihn tagsüber mehrmals wie ein inneres Leitmotiv."
   },
-"10-16": {
+  "10-16": {
     "original": "Sprüche 19,12",
     "volltext": "„Der Grimm des Königs ist wie das Brüllen eines Löwen, aber seine Huld ist wie Tau auf dem Grase.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 19, Vers 12)</strong><br><br>Ein brillanter Kontrast aus der altorientalischen Herrschafts-Rhetorik. Er vergleicht die zerstörerische Macht von unkontrollierter Wut mit der lautlosen, erfrischenden und lebensspendenden Kraft der Huld.",
-    "zeitgeist": "Du hast in deinem Umfeld – ob als Partner, Vater oder Kollege – eine enorme Macht über das emotionale Klima. Wenn du laut wirst oder im Stress herumzickst, bist du wie der brüllende Löwe, der alle in Schockstarre versetzt. Entscheide dich für das Gegenteil: Sei wie der Tau am Morgen. Bring durch eine ruhige, freundliche und souveräne Präsenz lautlose Erfrischung und Stabilität in den Raum, ganz im Sinne des Wohlwollens.",
+    "code_knacker": "<strong>Buch der Sprüche (Kapitel 16, Vers 12)</strong><br><br>Ein brillanter Kontrast aus der altorientalischen Herrschafts-Rhetorik. Er vergleicht die zerstörerische Macht von unkontrollierter Wut mit der lautlosen, erfrischenden und lebensspendenden Kraft der Wohlwollen.",
+    "zeitgeist": "Du hast in deinem Umfeld – ob als Partner, Vater oder Kollege – eine enorme Macht über das emotionale Klima. Wenn du laut wirst oder im Stress herumzickst, bist du wie der brüllende Löwe, der alle in Schockstarre versetzt. Entscheide dich für das Gegenteil: Sei wie der Tau am Morgen. Bring durch eine ruhige, freundliche und souveräne Präsenz lautlose Erfrischung und Stabilität in den Raum.",
     "challenge": "Wenn heute in deiner Gegenwart Hektik oder schlechte Stimmung aufkommt, werde ganz bewusst leise, sprich langsamer und bring Ruhe ins System."
   },
   "10-17": {
@@ -2092,12 +2092,12 @@
     "zeitgeist": "Es ist extrem leicht, sich unbemerkt von äußeren Zwängen beherrschen zu lassen: von der Sucht nach Anerkennung, von der Angst vor Fehlern oder von ungesunden Gewohnheiten. Dieser Vers ist deine tägliche Unabhängigkeitserklärung. Lass gute Prinzipien deine Schritte lenken – dann stehst du felsenfest auf beiden Beinen und bist für keine Manipulation von außen mehr empfänglich.",
     "challenge": "Gibt es einen Lebensbereich, in dem du dich aktuell von Erwartungen anderer fremdbestimmt fühlst? Triff heute eine kleine Entscheidung rein für dich."
   },
-"10-18": {
+  "10-18": {
     "original": "Sprüche 20,22",
     "volltext": "„Sprich nicht: Ich will Böses vergelten! Harre auf den HERRN, der wird dir helfen.“",
-    "code_knacker": "<strong>Buch der Sprüche (Kapitel 20, Vers 22)</strong><br><br>Ein weiser Ratschlag zur Konfliktbewältigung. Die Weisheitsliteratur warnt vor dem unbändigen Rache-Impuls des Egos, der die Eskalationsspirale nur noch weiter anheizt.",
+    "code_knacker": "<strong>Buch der Sprüche (Kapitel 20, Vers 27)</strong><br><br>Ein weiser Ratschlag zur Konfliktbewältigung. Die Weisheitsliteratur warnt vor dem unbändigen Rache-Impuls des Egos, der die Eskalationsspirale nur noch weiter anheizt.",
     "zeitgeist": "Wenn uns jemand unfair behandelt oder kränkt, schießt das Adrenalin hoch: Wir wollen es dem anderen sofort heimzahlen, härter zurückschießen oder ihn blockieren. Dieser Spruch bremst dich aus: Stopp. Gib die Rächer-Rolle ab. Du musst nicht jeden Kampf im Außen eigenhändig ausfechten. Bleib besonnen, bewahre deine Energie und vertraue darauf, dass sich die Dinge von ganz alleine ausbalancieren.",
-    "challenge": "Sollte sich heute jemand dir gegenüber unfair verhalten, verzichte komplett auf einen bissigen Konter. Lass den Impuls vorbeizeihen."
+    "challenge": "Sollte sich heute jemand dir gegenüber unfair verhalten, verzichte komplett auf einen bissigen Konter. Lass den Impuls vorbeiziehen."
   },
   "10-19": {
     "original": "Psalm 138,3",
@@ -2260,12 +2260,13 @@
     "zeitgeist": "Worte sind mächtig. Kleine Notlügen oder das Schönreden von Fehlern mögen kurzfristig den Stress senken, zerstören aber langfristig das Vertrauen deines Umfelds. Setze konsequent auf die stabile Währung der Wahrheit. Wer treulich und verlässlich handelt, wird zur absoluten Festung. Auf dein Wort kann man sich blind verlassen.",
     "challenge": "Solltest du heute ein Missgeschick haben oder einen Fehler machen, suche absolut keine Ausrede. Steh sofort, unumwunden und gelassen dazu."
   },
-"11-11": {
+  "11-11": {
     "original": "Psalm 40,5",
     "volltext": "„Wohl dem, der seine Hoffnung setzt auf den HERRN und sich nicht wendet zu den Stolzen und zu denen, die in Lügen abirren!“",
     "code_knacker": "<strong>Das Buch der Psalmen (Psalm 40, Vers 5)</strong><br><br>Ein glückselig machender Weisheitsspruch. Er warnt vor der Orientierung an den Lauten, Stolzen und Blendern und lobt das stille, tiefe Urvertrauen.",
     "zeitgeist": "Die Welt ist voll von Blendern, die lautstark ihren Erfolg inszenieren und egoistische Spielchen spielen. Lass dich davon nicht verunsichern. Wahre Souveränität braucht keine laute Show. Setze deine Hoffnung auf dein festes Fundament und deine ehrliche Arbeit. Wer bodenständig bleibt, hat am Ende den unendlich längeren Atem.",
-    "challenge": "Mache heute einen bewussten Social-Media-Detox. Vergleiche dein echtes Leben nicht mit den inszenierten, geschönten Highlights anderer."
+    "challenge": "Mache heute einen bewussten Social-Media-Detox. Vergleiche dein echtes Leben nicht mit den inszenierten, geschönten Highlights anderer.",
+    "uebersetzung": ""
   },
   "11-12": {
     "original": "Sprüche 13,10",
@@ -2330,9 +2331,9 @@
     "zeitgeist": "Häuser, Besitztümer und Finanzen sind vergänglich. Was eine Partnerschaft aber wirklich felsenfest trägt, ist die gegenseitige Verständigkeit, der Respekt und das gemeinsame Gehen auf Augenhöhe. Wenn du einen Menschen an deiner Seite hast, der dich versteht und dir den Rücken freihält, dann besitzt du das größte Glück. Pflege diesen Schatz.",
     "challenge": "Überrasche deinen Partner oder einen geliebten Menschen heute mit einer kleinen, unangekündigten Aufmerksamkeit oder einem sehr ehrlichen Danke."
   },
-"11-21": {
+  "11-21": {
     "original": "Psalm 118,1",
-    "volltext": "„Danket dem HERRN; denn er ist freundlich, und seine Güte währet ewiglich.“",
+    "volltext": "„Danket dem HERRN; denn er is freundlich, und seine Güte währet ewiglich.“",
     "code_knacker": "<strong>Das Buch der Psalmen (Psalm 118, Vers 1)</strong><br><br>Die klassische Eröffnungsformel der jüdischen Dankesliturgie. Sie setzt die unendliche Freundlichkeit und die zeitlose Güte als absolute Fixsterne über das Leben.",
     "zeitgeist": "Egal wie grau, nebelig oder anstrengend der Novembertag draußen scheinen mag: Die Grundmelodie des Universums ist auf Freundlichkeit und unendliche Güte eingestellt. Lass dich von den kleinen alltäglichen Ärgernissen nicht täuschen. Richte deine Aufmerksamkeit ganz bewusst auf diesen positiven Pol aus. Das verändert deine Ausstrahlung sofort.",
     "challenge": "Begegne heute jedem Menschen – vom Postboten bis zum Kunden – mit einem ganz bewussten, extra herzlichen und freundlichen Gruß."
@@ -2365,9 +2366,9 @@
     "zeitgeist": "Materielle Besitztümer können durch Krisen oder Inflation entwertet werden. Was aber absolut inflationssicher ist, ist dein innerer Schatz: deine Klarheit, deine Weisheit und deine Werte. Wenn du diese Prinzipien als dein wahres Erbe begreifst, hast du eine tiefe, unzerstörbare Herzensfreude in dir, die dich durch jeden Winter trägt.",
     "challenge": "Notiere dir heute einen Gedanken oder eine Weisheit aus deiner Wissensdatenbank, die dir in den letzten Monaten am meisten Halt gegeben hat."
   },
-"11-26": {
+  "11-26": {
     "original": "Sprüche 25,25",
-    "volltext": "„Wie kühles Wasser für eine durstige Seele, so ist eine gute Botschaft aus fernen Landen.“",
+    "volltext": "„Ein gutes Wort aus fernen Landen ist wie kühles Wasser für eine durstige Seele.“",
     "code_knacker": "<strong>Buch der Sprüche (Kapitel 25, Vers 25)</strong><br><br>Ein herrlich erfrischendes poetisches Bild. Ein gutes, aufbauendes Wort wirkt wie ein eiskalter Brunnenstrahl mitten in einer ausgetrockneten Dürrephase der Seele.",
     "zeitgeist": "Wir unterschätzen oft, wie ausgetrocknet die Seelen der Menschen um uns herum durch Stress und Hektik manchmal sind. Du hast die Möglichkeit, die erfrischende Quelle für andere zu sein. Ein unerwartetes, ehrliches Lob oder ein aufbauendes Wort zur rechten Zeit wirkt Wunder. Sei heute großzügig mit diesem kostenlosen, kühlen Wasser.",
     "challenge": "Spreche heute einem Kollegen oder Partner ein ganz gezieltes, ehrliches und tiefes Lob für seine Art oder seine Arbeit aus."
@@ -2470,10 +2471,10 @@
     "zeitgeist": "Die Welt gibt ihre tiefsten Geheimnisse und besten Lösungen niemals an der oberflächlichen Oberfläche preis. Wer nur schnelle Antworten konsumiert, bleibt blind für die eigentlichen Zusammenhänge. Nimm dir die Ehre des Forschers: Geh den Dingen auf den Grund. Egal ob bei einem technischen Problem, einem geschäftlichen Projekt oder im Zwischenmenschlichen – schürfe tief, es lohnt sich.",
     "challenge": "Nimm dir heute eine Sache vor, die du bisher nur oberflächlich verstanden hast, und dringe durch gezielte Recherche tiefer in die Materie ein."
   },
-"12-11": {
+  "12-11": {
     "original": "Psalm 37,7",
     "volltext": "„Sei stille dem HERRN und harre sein! Erzürne dich nicht über den, dem sein Weg gelingt, der Ränke schmiedet.“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 37, Vers 7)</strong><br><br>Ein weiser, strukturierter Rat zum Umgang mit Ungerechtigkeit im Außen. Das 'Stille-Sein' fordert den kühlen Kopf, während das 'Harren' dich davor schützt, emotional voreilig auf die linken Touren anderer anzuspringen.",
+    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 37, Vers 7)</strong><br><br>Ein extrem wirksamer psychologischer Schutzfilter gegen den Sozialneid. Er fordert radikale innere Stille und warnt vor der emotionalen Selbstzerstörung durch das Vergleichen mit den Ungerechten.",
     "zeitgeist": "Es kann massiv frustrieren, wenn man sieht, wie Blender, Trickser oder Rücksichtlose im Leben scheinbar mühelos an einem vorbeiziehen und Erfolg haben. Dieser Vers beruhigt dich mit der Gelassenheit des Alters: Lass dich nicht triggern! Erzürne dich nicht. Ihr Erfolg ist auf Sand gebaut. Konzentriere dich ausschließlich auf deinen eigenen, sauberen Weg auf Augenhöhe. Bleib still und zieh dein Ding durch.",
     "challenge": "Solltest du heute Neid oder Ärger über den Erfolg einer unfairen Person spüren, stoppe den Gedanken sofort. Sage dir: 'Mein Weg ist sauber. Ich bleibe bei mir.'"
   },
@@ -2512,11 +2513,11 @@
     "zeitgeist": "Mitten in der Hochphase des weihnachtlichen Konsums rückt dieser Spruch die Relationen kompromisslos gerade. Wir jagen materiellen Wünschen hinterher und glauben, das perfekte Geschenk oder die neueste Anschaffung würde uns glücklich machen. Das ist ein Irrtum. Ein gelassener Geist, ein reines Gewissen und ein kluger Blick auf das Leben wiegen schwerer als jeder Luxus der Welt. Pflege deinen wahren Reichtum.",
     "challenge": "Verzichte heute ganz bewusst auf einen spontanen Konsumwunsch. Schenke dir selbst stattdessen eine Viertelstunde tiefe, weise Reflexion."
   },
-"12-17": {
+  "12-17": {
     "original": "Psalm 86,12",
     "volltext": "„Ich danke dir, HERR, mein Gott, von ganzem Herzen und ehre deinen Namen ewiglich.“",
     "code_knacker": "<strong>Das Buch der Psalmen (Psalm 86, Vers 12)</strong><br><br>Ein radikales Statement der totalen Dankbarkeit. Das 'ganze Herz' duldet keine kleinlichen Vorbehalte oder Bedingungen – es ist eine ungeteilte Entscheidung für die Würdigung des Guten.",
-    "zeitgeist": "Dankbarkeit ist der beste Denkmalschutz für deine mentale Gesundheit. Wenn wir nur mit halbem Herzen danken, weil wir gedanklich schon wieder beim nächsten Problem sind, verpufft der Effekt. Geh heute aufs Ganze: Bedanke dich mit vollem Einsatz für dein Leben, deine Familie und deine Möglichkeiten. Wer diese Haltung einnimmt, dem wird das Leben augenblicklich leicht und reich.",
+    "zeitgeist": "Dankbarkeit ist der beste Denkmalschutz für deine mentale Gesundheit. Wenn wir nur mit halbem Herzen danken, weil wir gedanklich schon wieder beim nächsten Problem sind, verpufft der EEG. Geh heute aufs Ganze: Bedanke dich mit vollem Einsatz für dein Leben, deine Familie und deine Möglichkeiten. Wer diese Haltung einnimmt, dem wird das Leben augenblicklich leicht und reich.",
     "challenge": "Sage heute einer Person aus deinem engsten Umfeld ein extrem ehrliches, tiefes und von ganzem Herzen kommendes 'Danke' für ihr Dasein."
   },
   "12-18": {
@@ -2582,11 +2583,11 @@
     "zeitgeist": "Das Heilige, das Gute und die Liebe gehören nicht in ferne, theoretische Sphären. Sie müssen mitten in unserem realen, prallen Alltag wohnen – dort wo gelacht, gegessen, gearbeitet und manchmal auch gestritten wird. Suche die Wahrheit und die Nachsicht heute nicht im Außergewöhnlichen, sondern direkt in den Augen der Menschen, die heute mit dir im Raum sitzen.",
     "challenge": "Betrachte heute eine ganz alltägliche, banale Situation oder Begegnung bewusst als einen Ort, an dem sich echte Liebe, Geduld und Güte ganz real manifestieren können."
   },
-"12-27": {
+  "12-27": {
     "original": "Psalm 145,8",
     "volltext": "„Gnädig und barmherzig ist der HERR, geduldig und von großer Güte.“",
-    "code_knacker": "<strong>Das Buch der Psalmen (Psalm 145, Vers 8)</strong><br><br>Eine der zentralsten gottesdienstlichen Formeln des Judentums. Sie definiert das Fundament des Universums nicht über Härte, Gesetz oder Bestrafung, sondern über unendliche Milde.",
-    "zeitgeist": "Nach den turbulenten Weihnachtstagen schleicht sich oft ein kleiner emotionaler Blues oder Müdigkeit ein. Dieser Vers herzt dich sanft. Wenn die höchste Instanz des gesamten Kosmos sich durch extreme Geduld, Milde und große Güte auszeichnet – warum gehst du dann eigentlich oft so unbarmherzig und streng mit dir selbst ins Gericht? Erlaube dir heute radikale Milde für deine eigenen Schwächen.",
+    "code_knacker": "<strong>Buch des Psalmen (Psalm 145, Vers 8)</strong><br><br>Eine der zentralsten gottesdienstlichen Formeln des Judentums. Sie definiert das Fundament des Universums nicht über Härte, Gesetz oder Bestrafung, sondern über unendliche Milde.",
+    "zeitgeist": "Nach den turbulenten Weihnachtstagen schleicht sich oft ein kleiner emotionaler Blues oder Müdigkeit ein. Dieser Vers holt dich sanft ab. Wenn die höchste Instanz des gesamten Kosmos sich durch extreme Geduld, Milde und große Güte auszeichnet – warum gehst du dann eigentlich oft so unbarmherzig und streng mit dir selbst ins Gericht? Erlaube dir heute radikale Milde für deine eigenen Schwächen.",
     "challenge": "Sollte dir heute ein Missgeschick passieren oder dir die Decke auf den Kopf fallen: Schimpfe nicht. Behandele dich selbst so nachsichtig wie einen guten Freund."
   },
   "12-28": {
