@@ -1251,10 +1251,15 @@
         if (buttonSelect) buttonSelect.value = savedButtonStyle;
 
         // Routensteuerung über URL-Parameter (Standard-Fallback: solingen-merscheid)
-        const urlParams = new URLSearchParams(window.location.search);
+       const urlParams = new URLSearchParams(window.location.search);
         let gemeindeParam = urlParams.get('gemeinde') || 'solingen-merscheid';
 
-        let jsonPfad = `data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
+        // HIER DIE ECHTE NETLIFY-ADRESSE DEINES CMS-SYSTEMS EINTRAGEN:
+        // Wichtig: Am Ende muss ein Schrägstrich / stehen!
+        const cmsBasisUrl = "https://pwa-cms-test.netlify.app/data/gemeinden/solingen-merscheid.json"; 
+
+        // Das Skript holt sich die Daten jetzt direkt aus dem CMS-Projekt
+        let jsonPfad = `${cmsBasisUrl}data/gemeinden/${gemeindeParam.toLowerCase()}.json`;
 
         fetch(jsonPfad)
             .then(response => {
