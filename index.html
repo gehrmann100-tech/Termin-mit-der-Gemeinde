@@ -1308,7 +1308,7 @@
         }
     }
 
-    function initHeader() {
+  function initHeader() {
         const imgBox = document.getElementById('gemeindeImageBox');
         const imgEl = document.getElementById('gemeindeImg');
         const subtitleEl = document.getElementById('appSubtitle');
@@ -1348,18 +1348,21 @@
 
             const newsCard = document.getElementById('newsCard');
             const newsBadge = document.getElementById('newsBadge');
-            if (gemeindeConfig.news_text && gemeindeConfig.news_text.trim() !== "") {
-                newsCard.style.display = 'block';
-                newsBadge.style.display = 'inline-block';
+            
+            // KORREKTUR: Das Skript sucht jetzt nach dem korrekten CMS-Feld "wochen_news"
+            const aktuellesText = gemeindeConfig.wochen_news || gemeindeConfig.news_text;
+            
+            if (aktuellesText && aktuellesText.trim() !== "") {
+                if (newsCard) newsCard.style.display = 'block';
+                if (newsBadge) newsBadge.style.display = 'inline-block';
                 document.getElementById('newsUeberschrift').innerText = gemeindeConfig.news_ueberschrift || "Mitteilung der Gemeinde";
-                document.getElementById('newsText').innerText = gemeindeConfig.news_text; 
+                document.getElementById('newsText').innerText = aktuellesText; 
             } else {
                 if (newsCard) newsCard.style.display = 'none';
                 if (newsBadge) newsBadge.style.display = 'none';
             }
         }
     }
-
     function renderDauerInfos() {
         if (!allData || !allData.dauer_infos) return;
         const infos = allData.dauer_infos;
